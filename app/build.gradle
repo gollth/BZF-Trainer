@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'BZF'
+            storeFile file('C:/Users/Thore Goll/Google Drive/android.jks')
+            keyPassword 'bzf3§BZF0'
+            storePassword 'and5%OID0'
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+    defaultConfig {
+        applicationId "de.tgoll.projects.bzf"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 14
+        versionName "0.2.7"
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            debuggable true
+            // Disable fabric build ID generation for debug builds
+            ext.enableCrashlytics = false
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            debuggable false
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile files('libs/gson-2.2.2.jar')
+    compile files('libs/mpandroidchartlibrary-2-1-6.jar')
+    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:support-v4:26.0.1'
+    compile 'com.android.support:design:26.0.1'
+    compile 'com.android.support:support-v4:26.0.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true
+    }
+}

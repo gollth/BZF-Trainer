@@ -1,0 +1,8 @@
+Requested permissions:
+
+• Record Audio: Needed only for the Simulator to speak with ATC. Not needed for the main questions page
+• Access and Change Wifi State: Also only used in the Simulator, since both the Text-to-Speech and speech recognition engine engine will work better with Internet connection.
+• Vibration: For indicating right or wrong answers in the main questsions page. This can be turned off in the settings
+
+
+Note that BZF-Trainer is collecting anonymous crash reports and stacktraces with the Fabric framework to improve quality and fix errors in future updates. No private data is accuired!
