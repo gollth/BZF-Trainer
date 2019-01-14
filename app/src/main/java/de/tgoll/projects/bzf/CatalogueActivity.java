@@ -53,7 +53,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogue);
 
-        Catalogue.initalize(getApplicationContext());
+        Catalogue.initialize(getApplicationContext());
 
         txt_questions = findViewById(R.id.txt_question);
         txt_answers = findViewById(R.id.lyt_ABCD);
