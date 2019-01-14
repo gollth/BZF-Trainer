@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+
+    tools:context="de.tgoll.projects.bzf.StatisticsActivity">
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:id="@+id/st_chart_history" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_ranking"
+        android:id="@+id/st_txt_ranking_title"
+        android:layout_below="@+id/st_chart_history"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"/>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/st_lyt_ranking_scroll"
+        android:layout_below="@+id/st_txt_ranking_title"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/st_lyt_ranking">
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:id="@+id/st_lyt_question_scroll"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/st_lyt_ranking_scroll"
+        android:layout_alignTop="@+id/st_lyt_ranking_scroll" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/st_txt_question" />
+    </ScrollView>
+
+    <com.github.mikephil.charting.charts.HorizontalBarChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/st_chart_bar"
+        android:layout_below="@+id/st_lyt_question_scroll"
+        android:layout_toStartOf="@+id/st_lyt_ranking_scroll"
+        android:layout_marginEnd="20dp" >
+
+    </com.github.mikephil.charting.charts.HorizontalBarChart>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/st_lyt_answers"
+        android:layout_below="@+id/st_lyt_question_scroll"
+        android:layout_toStartOf="@+id/st_lyt_ranking_scroll"
+        android:layout_marginEnd="20dp"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/st_txt_A"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:clickable="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/st_txt_B"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:clickable="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/st_txt_C"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:clickable="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/st_txt_D"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:clickable="false" />
+    </LinearLayout>
+
+</RelativeLayout>

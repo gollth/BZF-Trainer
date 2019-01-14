@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/catalogue">
+        <CheckBoxPreference
+            android:key="@string/settings_shuffle"
+            android:title="@string/settings_shuffle"
+            android:summary="@string/settings_shuffle_sum"
+            android:defaultValue="false" />
+
+        <EditTextPreference
+            android:key="@string/settings_delay"
+            android:title="@string/settings_delay"
+            android:summary="@string/settings_delay_sum"
+            android:defaultValue="1"
+            android:inputType="numberDecimal" />
+        <CheckBoxPreference android:key="@string/settings_vibrate"
+                            android:defaultValue="true"
+                            android:title="@string/settings_vibrate" />
+        <CheckBoxPreference
+            android:key="@string/settings_vibrate_correct"
+            android:summary="@string/settings_vibrate_correct"
+            android:dependency="@string/settings_vibrate"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="@string/settings_vibrate_false"
+            android:summary="@string/settings_vibrate_false"
+            android:dependency="@string/settings_vibrate"
+            android:defaultValue="false" />
+
+        <Preference
+            android:key="@string/settings_reset"
+            android:title="@string/settings_reset"
+            android:summary="@string/settings_reset_sum" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/simulator">
+        <SwitchPreference
+            android:key="@string/language"
+            android:title="@string/language"
+            android:summary="@string/settings_sim_language_sum"
+            android:defaultValue="true"
+            android:switchTextOff="@string/settings_sim_language_de"
+            android:switchTextOn="@string/settings_sim_language_en"
+            />
+        <EditTextPreference
+            android:key="@string/settings_sim_aircraft"
+            android:title="@string/settings_sim_aircraft"
+            android:summary="@string/settings_sim_aricraft_sum"
+            android:defaultValue="@string/sim_default_aircraft" />
+        <EditTextPreference
+            android:key="@string/settings_sim_callsign"
+            android:title="@string/settings_sim_callsign"
+            android:summary="@string/settings_sim_callsign_sum"
+            android:defaultValue="@string/sim_default_callsign"
+            android:inputType="textCapCharacters"
+            android:maxLength="5" />
+        <ListPreference
+            android:key="@string/settings_sim_level"
+            android:title="@string/settings_sim_level"
+            android:summary="@string/settings_sim_level_sum"
+            android:entries="@array/settings_sim_levels"
+            android:entryValues="@array/settings_sim_levels_indices"
+            android:defaultValue="-1" />
+        <CheckBoxPreference
+            android:key="@string/settings_pen"
+            android:title="@string/settings_pen"
+            android:summary="@string/settings_pen_sum"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="@string/settings_sim_recorder"
+            android:title="@string/settings_sim_recorder"
+            android:summary="@string/settings_sim_recorder_sum"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference android:key="@string/settings_sim_help"
+            android:defaultValue="false"
+            android:title="@string/settings_sim_help"
+            android:summary="@string/settings_sim_help_sum"/>
+        <CheckBoxPreference
+            android:key="@string/settings_sim_help_atc"
+            android:summary="@string/settings_sim_help_atc"
+            android:dependency="@string/settings_sim_help"
+            android:defaultValue="true" />
+
+        <CheckBoxPreference
+            android:key="@string/settings_sim_help_you"
+            android:summary="@string/settings_sim_help_you"
+            android:dependency="@string/settings_sim_help"
+            android:defaultValue="true" />
+
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,23 @@
+P: #airport Tower, #callsign
+T: #callsign, #airport Tower
+P: #callsign, #aircraft, VFR, 2000 ft, [information #atis, ](inbound) for landing
+T: #callsign, enter control zone via #fixpoint, 2000 ft or below, runway #runway, QNH #qnh
+P: #callsign, enter control zone, via #fixpoint, 2000 ft or below, runway #runway, QNH #qnh
+P: #callsign, #fixpoint, 2000 ft
+T: #callsign, report field in sight
+P: #callsign, field in sight
+[T: #callsign, join {right} downwind runway #runway, wind #wind_dir @ #wind_kn knots, {number 2, follow Bonanza, 3 miles final, }report base]
+[P: #callsign, join(ing) {right} downwind runway #runway, {traffic in sight,} wilco]
+[P: #callsign, {right} base runway #runway]
+{T: #callsign, continue approach, report final}
+{P: #callsign, wilco}
+{P: #callsign, final runway #runway}
+T: #callsign, [short landing, ]{expect backtrack, }wind #wind_dir degrees #wind_kn knots, runway #runway, cleared to land
+P: #callsign, [short landing, ]{expecting backtrack, } #runway, cleared to land{, caution wake turbulence}
+T: #callsign, {backtrack approved runway #runway, }call Ground on #freq
+P: #callsign, {backtrack, runway #runway, }calling Ground, #freq
+P: #airport Ground, #callsign
+G: #callsign, #airport Ground, taxi via #taxi_route to GAT
+P: #callsign, taxi via #taxi_route to GAT
+P: #callsign, GAT
+G: #callsign, Roger

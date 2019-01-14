@@ -1,0 +1,23 @@
+P: #airport Turm, #callsign
+T: #callsign, #airport Turm
+P: #callsign, #aircraft, VFR, 2000 Fuß, [Information #atis, ]zur Landung
+T: #callsign, fliegen Sie in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer, Piste #runway, QNH #qnh
+P: #callsign, fliege in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer, Piste #runway, QNH #qnh
+P: #callsign, #fixpoint, 2000 Fuß
+T: #callsign, melden Sie Platz in Sicht
+P: #callsign, Platz in Sicht
+[T: #callsign, fliegen Sie in den {rechten} Gegenanflug Piste #runway, Wind #wind_dir Grad #wind_kn Knoten, {Nummer 2, folgen Sie Bonanza, 3 Meilen im Endanflug, }melden Sie Queranflug]
+[P: #callsign, (fliege in den) {rechte(n)} Gegenanflug Piste #runway, {Verkehr in Sicht,} Wilco]
+[P: #callsign, {rechter} Gegenanflug Piste #runway]
+{T: #callsign, Anflug fortsetzen, melden Sie Endanflug}
+{P: #callsign, Wilco}
+{P: #callsign, Endanflug Piste #runway}
+T: #callsign, [kurze Landung, ]{erwarten Sie Anweisung zum Zurückrollen, } Wind #wind_dir Grad #wind_kn Knoten, Piste #runway, Landung frei{, achten Sie auf Wirbelschleppen}
+P: #callsign, [kurze Landung, ]{erwarte Zurückrollen, } Piste #runway, Landung frei
+T: #callsign, {Zurückrollen auf Piste #runway genehmigt, }rufen Sie Rollkontrolle auf #freq
+P: #callsign, {rolle (auf) Piste #runway zurück, }rufe Rollkontrolle, #freq
+P: #airport Rollkontrolle, #callsign
+G: #callsign, #airport Rollkontrolle, rollen Sie über #taxi_route zum Abstellplatz allgemeine Luftfahrt
+P: #callsign, rolle über #taxi_route zum Abstellplatz allgemeine Luftfahrt
+P: #callsign, Abstellplatz allgemeine Luftfahrt
+G: #callsign, Verstanden

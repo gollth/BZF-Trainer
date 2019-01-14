@@ -1,0 +1,26 @@
+P: #airport Rollkontrolle, #callsign
+G: #callsign, #airport Rollkontrolle
+P: #callsign, #aircraft, Abstellplatz allgemeine Luftfahrt, VFR über E, [Information #atis,] erbitte Rollen
+G: #callsign, QNH #qnh, rollen Sie zum Rollhalt Piste #runway, über #taxi_route[, überqueren Sie Piste #runway2]
+P: #callsign, QNH #qnh, rolle (zum) Rollhalt (Piste) #runway, über #taxi_route[, überquere Piste #runway2]
+[P: #callsign, erbitte überqueren (der) Piste #runway2]
+[G: #callsign, {hinter landender Piper,} überqueren Sie Piste #runway2]
+[P: #callsign, {hinter (landdender) Piper,} überquere Piste #runway2]
+{G: #callsign, Achtung, Cirrus 12Uhr, melden Sie in Sicht}
+{P: #callsign, (Verkehr) in Sicht}
+G: #callsign, wenn abflugbereit, rufen Sie Turm auf #freq
+P: #callsign, Turm, #freq
+P: #airport Turm, #callsign
+T: #callsign, #airport Turm
+P: #callsign, Piste #runway, abflugbereit
+T: #callsign, verlassen Sie die Kontrollzone über #fixpoint[, Squawk #squawk]
+P: #callsign, verlasse Kontrollzone, über #fixpoint[, Squawk #squawk]
+{T: #callsign, hinter abfliegendem Airbus 320, zum Abflugpunkt und halten, Piste #runway}
+{P: #callsign, hinter (abfliegendem) Airbus, zum Abflugpunkt und halten, Piste #runway}
+[T: #callsign, sind Sie bereit zum Sofortabflug?]
+[P: #callsign, positiv]
+T: #callsign, Wind #wind_dir Grad #wind_kn Knoten, Piste #runway, Start frei
+P: #callsign, Piste #runway, Start frei
+P: #callsign, #fixpoint, 2000 Fuß, erbitte Verlassen der Frequenz
+T: #callsign, Verstanden, Squawk VFR, Verlassen der Frequenz genehmigt
+P: #callsign, Squawk VFR, Verlassen der Frequenz genehmigt

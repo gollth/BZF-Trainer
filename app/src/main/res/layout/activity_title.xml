@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/title_lyt_root">
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/catalogue"
+        android:id="@+id/title_btn_main"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        android:onClick="onButtonClick" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/simulator"
+        android:id="@+id/title_btn_sim"
+        android:layout_below="@+id/title_btn_main"
+        android:layout_alignStart="@+id/title_btn_main"
+        android:layout_marginTop="30dp"
+        android:enabled="true"
+        android:onClick="onButtonClick" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        android:id="@+id/title_btn_settings"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="onButtonClick"
+        android:layout_below="@+id/title_btn_sim" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/feedback"
+        android:id="@+id/title_btn_feedback"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="onButtonClick"
+        android:layout_below="@+id/title_btn_settings" />
+</RelativeLayout>

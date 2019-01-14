@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions">
+        <!-- 1 ... 10 -->
+		<item>1. Welche zwischenstaatliche Organisation hat für den weltweiten Flugfunkdienst besondere Bedeutung?</item>
+        <item>2. Was ist die rechtliche Grundlage für das Errichten und Betreiben von Funkanlagen in der Bundesrepublik Deutschland?</item>
+        <item>3. Wer erteilt in der Bundesrepublik Deutschland die Frequenzzuteilung zum Betrieb von Boden- und Luftfunkstellen?</item>
+		<item>4. Wer benötigt zur Durchführung des Sprechfunkverkehrs ein Flugfunkzeugnis?</item>
+        <item>5. Zur Durchführung des Sprechfunkverkehrs ist der Besitz eines Flugfunkzeugnisses erforderlich. Kein Flugfunkzeugnis braucht der&#8230;</item>
+        <item>6. Zur Durchführung des Sprechfunkverkehrs ist der Besitz eines Flugfunkzeugnisses erforderlich. Kein Flugfunkzeugnis braucht der&#8230;</item>
+        <item>7. Wozu berechtigt das “Beschränkt Gültige Sprechfunkzeugnis II für den Flugfunkdienst“ (BZF II)? Zur Ausübung des Sprechfunkverkehrs&#8230;</item>
+        <item>8. Wozu berechtigt das “Beschränkt Gültige Sprechfunkzeugnis II für den Flugfunkdienst“ (BZF II)? Zur Ausübung des Sprechfunkverkehrs bei&#8230;</item>
+        <item>9. Welches Flugfunkzeugnis benötigt der Inhaber eines Luftfahrerscheines, um bei einem Uberlandflug nach Sichtflugregeln den Sprechfunkverkehr in englischer Sprache durchführen zu dürfen?</item>
+        <item>10. Was ist eine Luftfunkstelle? Eine Funkstelle&#8230;</item>
+        
+		<!-- 11 ... 20 -->
+		<item>11. Was ist eine Bodenfunkstelle?</item>
+        <item>12. Was bedeutet der Begriff “Blindsendung“?</item>
+        <item>13. Was bedeutet der Begriff “Rundsendung“?</item>
+        <item>14. Was bedeutet der Begriff “Rollhalt“?</item>
+        <item>15. Welche Abkürzung wird für den Begriff “Kontrollzone“ verwendet?</item>
+        <item>16. Welche Bedeutung hat die Abkürzung “IMC“?</item>
+        <item>17. Welche Bedeutung hat die Abkürzung “FIR“?</item>
+        <item>18. Was bedeutet die Abkürzung “H24“?</item>
+        <item>19. Was bedeutet die Abkürzung “HX“?</item>
+        <item>20. Was bedeutet die Abkürzung “HJ“?</item>
+        
+		<!-- 21 ... 30 -->
+		<item>21. Welche Bedeutung hat die Abkürzung “AIS“?</item>
+        <item>22. Welche Bedeutung hat die Abkürzung “SAR“?</item>
+        <item>23. Welche Abkürzung wird für den Begriff “Koordinierte Weltzeit verwendet ?</item>
+        <item>24. Welche Bedeutung hat die Abkürzung “ATIS“?</item>
+        <item>25. Was bedeutet die Q-Gruppe “QFE“?</item>
+        <item>26. Was bedeutet die Q-Gruppe “QNH“?</item>
+        <item>27. Wenn Sie auf dem Höhenmesser die Höhe über NN ablesen wollen, welcher Luftdruckwert muss dann auf dem Höhenmesser eingestellt sein?</item>
+        <item>28. Wenn Sie auf dem Höhenmesser die Höhe über GND ablesen wollen, welcher Luftdruckwert muss dann auf dem Höhenmesser eingestellt sein?</item>
+        <item>29. Was bedeutet die Q-Gruppe “QDM“?</item>
+        <item>30. Wie heißt die Q-Gruppe für “missweisender Kurs zur Station“?</item>
+        
+		<!-- 31 ... 40 -->
+	<item>31. Was bedeutet die Q-Gruppe “QTE“?</item>
+        <item>32. Wie heißt die Q-Gruppe für “rechtweisende Funkstandlinie / Peilung von der Station“ ? </item>
+        <item>33. Was bedeutet die Q-Gruppe “QDR“?</item>
+        <item>34. Wie heißt die Q-Gruppe für “missweisende Peilung / Funkstandlinie von der Station“?</item>
+        <item>35. Was sind Peilfunkmeldungen? Meldungen, die&#8230;</item>
+        <item>36. Welche Meldungsart steht in der Rangfolge vor den Flugsicherheitsmeldungen?</item>
+        <item>37. Meldungen, die bei der Durchführung der Flugverkehrskontrollel übermittelt werden, sind&#8230;</item>
+        <item>38. Eine Meldung, welche die Sicherheit eines anderen Luftfahrzeuges, Fahrzeuges oder einer Person betrifft, ist eine&#8230;</item>
+        <item>39. Eine Meldung betreffend dringend benötigter Flugzeugteile ist eine&#8230;</item>
+        <item>40. Welche der aufgeführten Meldungen sind im beweglichen Flugfunkdienst zulässig?</item>
+        
+	<!-- 41 ... 50 -->
+	<item>41. Die Meldung eines Piloten an den Kontrollturm “meine voraussichtliche Ankunftszeit ist 1206, bestellen Sie mir bitte ein Taxi“ ist&#8230;</item>
+        <item>42. Die Meldung eines Piloten an den Flugverkehrskontrolldienst “erbitte Radar-Führung zum Umfliegen des Gewitters“ ist eine&#8230;</item>
+        <item>43. Die Freigabe “Start frei, Piste 05“ ist eine&#8230;</item>
+        <item>44. Die Priorität der Meldung “erbitte QDM“ ist&#8230;</item>
+        <item>45. Die Priorität der Anweisung “Rollen Sie zum Rollhalt Piste 12 über C ist&#8230;</item>
+        <item>46. Wie wird die Uhrzeit im Flugfunkdienst übermittelt, wenn Verwechslungen ausgeschlossen sind?</item>
+        <item>47. Zahlen sind grundsätzlich in einzelnen Ziffern zu übermitteln. Ausgenommen von dieser Regelung sind?</item>
+        <item>48. Wie ist das Rufzeichen DIJYF richtig buchstabiert?</item>
+        <item>49. Wie wird die Zahl 4500 richtig übermittelt?</item>
+        <item>50. Wie übermittelt man “QNH 1001“ richtig?</item>
+		
+	<!-- 51 ... 60 -->
+	<item>51. Wie wird die Frequenz 120.275 MHz übermittelt (Kanalabstand 25 kHz)?</item>
+	<item>52. Wie übermittelt man die Zeit 1318, wenn man einen Irrtum oder eine Verwechslung ausschließen will?</item>
+	<item>53. Wie lautet das Rufzeichen einer Bodenfunkstelle an einem kontrollierten Flugplatz für die Bewegungslenkung auf dem Rollfeld?</item>
+	<item>54. Wie lautet das Rufzeichen einer Bodenfunkstelle an einem kontrollierten Flugplatz für die Bewegungslenkung in der Platzrunde?</item>
+	<item>55. Wie werden die Rufzeichen von deutschen Bodenfunkstellen bei einem unkontrollierten Landeplatz gebildet? Aus dem Ortsnamen des Landeplatzes in Verbindung mit dem Begriff:</item>
+	<item>56. Wie werden Rufzeichen von deutschen Bodenfunkstellen bei Segelfluggeländen gebildet? Aus dem Namen des Segelfluggeländes in Verbindung mit dem Begriff:</item>
+	<item>57. Das Rufzeichen für den Fluginformationsdienst durch das Flugsicherungsunternehmen lautet:</item>
+	<item>58. Was erhält man von einer Bodenfunkstelle mit dem Rufzeichen “INFORMATION“?</item>
+	<item>59. Wann darf bei der Abwicklung des Sprechfunkverkehrs das Rufzeichen der Bodenfunkstelle weggelassen werden?</item>
+	<item>60. Wie werden Rufzeichen deutscher Luftfunkstellen gebildet? Aus&#8230;</item>
+		
+	<!-- 61 ... 70 -->
+	<item>61. Das Rufzeichen einer Luftfunkstelle darf während des Fluges durch den Piloten nicht geändert werden. Eine Änderung ist nur erlaubt&#8230;</item>
+	<item>62. Wie wird das abgekürzte Rufzeichen einer Luftfunkstelle gebildet? Aus&#8230;</item>
+	<item>63. Wann darf eine Luftfunkstelle ihr abgekürztes Rufzeichen verwenden?</item>
+	<item>64. Mit welchem Flugsicherungsbetriebsdienst kann man während des Fluges im Luftraum “E“ Sprechfunkverbindung aufnehmen? Mit dem/der&#8230;</item>
+	<item>65. Mit welchem Flugsicherungsbetriebsdienst kann man während des Fluges Sprechfunkverbindung aufnehmen? Mit dem&#8230;</item>
+	<item>66. Welche Verfahrenssprechgruppe ist anzuwenden, wenn bei einem Anruf das Rufzeichen der rufenden Funkstelle nicht verstanden wurde?</item>
+	<item>67. Eine Meldung wird von einem Luftfahrzeugführer nicht vollständig wiederholt, obwohl es die Art der Meldung erfordert. Mit welcher Verfahrenssprechgruppe wird er zur Wiederholung aufgefordert?</item>
+	<item>68. Wie lautet die Verfahrenssprechgruppe für „Ja“?</item>
+	<item>69. Wie lautet die Verfahrenssprechgruppe für “Erlaubnis wird nicht erteilt“?</item>
+	<item>70. Wie lautet die Verfahrenssprechgruppe für “Ich habe Ihre letzte Meldung vollständig erhalten“?</item>
+	
+	<!-- 71 ... 80 -->
+	<item>71. Der Inhalt einer klar verständlichen Meldung erscheint Ihnen zweifelhaft. Welche Redewendung wenden Sie an, um die Zweifel auszuräumen?</item>
+	<item>72. Der Höhenmesser ist auf den Druckwert 1013,2 hPa eingestellt und zeigt 7500 Fuß an. Die Bodenfunkstelle fragt nach der augenblicklichen Höhe des Luftfahrzeuges. Wie muss die Antwort des Luftfahrzeugführers lauten?</item>
+	<item>73. Welche Verfahrenssprechgruppe soll angewandt werden um auszudrücken: ‘Bei der Übermittlung ist ein Fehler unterlaufen, es muss richtig heißen&#8230;?</item>
+	<item>74. Welche Verfahrenssprechgruppe wird angewandt um auszudrücken: “Genehmigung, unter festgesetzten Bedingungen zu verfahren“?</item>
+	<item>75. Mit welcher Verfahrenssprechgruppe wird ein Pilot angewiesen, mit seinem SSR-Antwortgerät (Transponder) einen bestimmten Modus / Code zu senden?</item>
+	<item>76. Die Verfahrenssprechgruppe “WILCO“ bedeutet:</item>
+	<item>77. Die Verfahrenssprechgruppe “MONITOR“ bedeutet:</item>
+	<item>78. Mit welcher Sprechgruppe bestätigt ein Pilot die Anweisung des Kontrollturmes: “STARTEN SIE DURCH PISTE BLOCKIERT!“?</item>
+	<item>79. Mit welcher Sprechgruppe bestätigt ein Pilot die Anweisung “DEKMG HALTEN SIE POSITION STARTFREIGABE AUFGEHOBEN, DEKMG ICH WIEDERHOLE STARTFREIGABE AUFGEHOBEN“?</item>
+	<item>80. DEHOL erhält Startfreigabe am Abflugpunkt der Piste 24. Wie bestätigt der Pilot?</item>
+		
+	<!-- 81 ... 90 -->
+	<item>81. DEKUL hat seine Startvorbereitungen beendet. Mit welcher Sprechgruppe teilt er dies dem TWR mit?</item>
+	<item>82. Was bedeutet die Anweisung einer Flugverkehrskontrollstelle “(Rufzeichen) SQUAWK 1234“?</item>
+	<item>83. Von der Radarkontrolle erhalten Sie folgenden Verkehrshinweis: “UNBEKANNTES FLUGZIEL ZEHN UHR ENTFERNUNG 4NM“. Wo befindet sich das Flugziel, wenn Sie aus der Flugzeugkanzel sehen?</item>
+	<item>84. Wann ist ein Einleitungsanruf abzusetzen?</item>
+	<item>85. Welches der folgenden Beispiele ist ein Einleitungsanruf?</item>
+	<item>86. Muss ein “Allgemeiner Anruf“ bestätigt werden?</item>
+	<item>87. Welcher der folgenden Funkanrufe ist ein “Allgemeiner Anruf“?</item>
+	<item>88. Welcher der folgenden Anrufe ist ein “Mehrfachanruf“?</item>
+	<item>89. Muss ein “Mehrfachanruf“ bestätigt werden?</item>
+	<item>90. Ein Luftfahrzeugführer empfängt einen Funkanruf, ist sich aber nicht sicher, ob er gerufen wurde. Wie verhält er sich richtig? Er&#8230;</item>
+		
+	<!-- 91 ... 100 -->
+	<item>91. Was ist vor Aufnahme des Sprechfunkverkehrs zu beachten?</item>
+	<item>92. Vor Einflug in den Luftraum “C“ unter FL 100 in der Umgebung von Verkehrsflughäfen muss Sprechfunkverbindung mit der zuständigen Flugverkehrskontrollstelle spätestens aufgenommen werden:</item>
+	<item>93. Der Sprechfunkverkehr bei VFR Flügen in und oberhalb Flugfläche 100 wird durchgeführt in</item>
+	<item>94. DGIGA erhält die Anweisung, HAMBURG TURM auf Frequenz 126.85 MHz zu rufen. Wie lautet die richtige Bestätigung des Piloten?</item>
+	<item>95. Dauernde Hörbereitschaft ist aufrechtzuerhalten bei VFR-Flügen im Luftraum</item>
+	<item>96. Ein Luftfahrzeugführer führt ein Luftfahrzeug nach Sichtflugregeln in der Platzrunde eines Flugplatzes mit Flugverkehrskontrolle. Wozu ist er grundsätzlich verpflichtet?</item>
+	<item>97. Bei welchen Flügen muss ein Luftfahrzeugführer ständige Hörbereitschaft halten? Bei VFR-Flügen&#8230;</item>
+	<item>98. Bei welchen Flügen nach Sichtflugregeln muss der Luftfahrzeugführer ständige Hörbereitschaft auf der zugewiesenen Frequenz halten? Bei Flügen&#8230;</item>
+	<item>99. Wer ein Luftfahrzeug auf einem Flugplatz mit Flugverkehrskontrolle oder in dessen Umgebung führt, ist u.a. verpflichtet, durch Funk oder Zeichen die vorherige Genehmigung für alle Bewegungen einzuholen, durch die das&#8230;</item>
+	<item>100. Wer ein Luftfahrzeug nach Sichtflugregeln auf einem Flugplatz mit Flugverkehrskontrolle oder in dessen Umgebung führt, ist verpflichtet&#8230;</item>
+		
+	<!-- 101 ... 110 -->
+	<item>101. Was bedeutet bei einer Testsendung der Hinweis “HÖRE SIE ZWO“? Die Testsendung ist&#8230;</item>
+	<item>102. Was bedeutet bei einer Testsendung der Hinweis “HÖRE SIE DREI“? Die Testsendung ist&#8230;</item>
+	<item>103. Was bedeutet bei einer Testsendung der Hinweis “HÖRE SIE VIER“? Die Testsendung ist&#8230;</item>
+	<item>104. Was bedeutet bei einer Testsendung der Hinweis “HÖRE SIE FÜNF“? Die Testsendung ist&#8230;</item>
+	<item>105. Eine Testsendung ist “verständlich“. Wie wird dieses im Sprechfunkverkehr ausge¬drückt?</item>
+	<item>106. Eine Testsendung ist “schwer verständlich“. Wie wird dieses im Sprechfunkverkehr ausgedrückt?</item>
+	<item>107. Wie lange sollte eine Testsendung längstens dauern?</item>
+	<item>108. Welche Meldung muss ein Luftfahrzeugführer wiederholen?</item>
+	<item>109. Welche Meldungen müssen wiederholt werden?</item>
+	<item>110. Welche Meldungen müssen wiederholt werden?</item>
+
+	<!-- 111 ... 120 -->
+	<item>111. Wie wird der Empfang einer Flugverkehrskontrollfreigabe bestätigt? Durch&#8230;</item>
+	<item>112. D-ESEL erhält die folgende Freigabe/Anweisung: „D-EL NACH DEM ABHEBEN STEIGEN SIE GERADEAUS AUF FLUGHOHE 3000 FUSS, MACHEN SIE DANN EINE RECHTSKURVE, WIND 250, 7 KNOTEN, START FREI“. Wie lautet die richtige Bestätigung seitens D-ESEL?</item>
+	<item>113. Welche Teile der nachfolgenden Anweisungen oder Informationen müssen bestätigt werden?</item>
+	<item>114. Bei welchen VFR-Flügen ist in der Regel die Übermittlung von Standortmeldungen erforderlich? Bei&#8230; </item>
+	<item>115. Bei einem VFR-Anflug zu einem Flughafen mit Flugverkehrskontrolle gelten die im “Luftfahrthandbuch VFR“ festgelegten Verfahren. Standortmeldungen über den Pflichtmeldepunkten müssen&#8230;</item>
+	<item>116. Wann hat ein Luftfahrzeugführer bei einem VFR Flug während des Tages der zuständigen Flugverkehrskontrollstelle eine Standortmeldung zu übermitteln?</item>
+	<item>117. Eine Standortmeldung besteht normalerweise aus Funkrufzeichen, Standort, Überflugzeit und Flughöhe. Welche Angabe kann unter bestimmten Voraussetzungen bei einem VFR Flug entfallen?</item>
+	<item>118. Welche Angaben enthält eine Standortmeldung bei Flügen in der Platzrunde?</item>
+	<item>119. Welche Bedeutung hat das abgebildete Symbol auf der Sichtanflugkarte? (△)</item>
+	<item>120. Welche Bedeutung hat das abgebildete Symbol auf der Sichtanflugkarte? (▲)</item>
+
+	<!-- 121 ... 130 -->
+	<item>121. Wann kann der Luftfahrzeugführer anstelle der Landemeldung die voraussichtliche Landezeit mittels Sprechfunk der zuständigen Flugsicherungsstelle übermitteln?</item>
+	<item>122. Bei Flugplanabgabe und Abflug von einem unkontrollierten Flugplatz kann die Startmeldung mittels Sprechfunk übermittelt werden. An wen erfolgt sie in diesem Fall?</item>
+	<item>123. Welche Angaben muss eine Startmeldung enthalten, wenn sie über Sprechfunk übermittelt wird?</item>
+	<item>124. Wenn der Bedeckungsgrad des Himmels mit Wolken in einer Routinewettermeldung (METAR) mit “aufgelockert (SCT)“ angegeben wird, dann beträgt die (den Himmel bedeckende) Wolkenmenge:</item>
+	<item>125. Wenn der Bedeckungsgrad des Himmels mit Wolken in einer Routinewettermeldung (METAR) mit “durchbrochen (BKN)“ angegeben wird, dann beträgt die (den Himmel bedeckende) Wolkenmenge:</item>
+	<item>126. Wenn der Bedeckungsgrad des Himmels mit Wolken in einer Routinewettermeldung mit “bedeckt (OVC)“ angegeben wird, dann beträgt die (den Himmel bedeckende) Wolkenmenge:</item>
+	<item>127. Wenn die Angabe “CAVOK“ in einer Routinewettermeldung (METAR) steht, dann betragen die Werte für Sicht und Wolken:</item>
+	<item>128. Wie werden Sichtangaben in einer Routinewettermeldung (METAR) im Klartext angegeben?</item>
+	<item>129. Welche Übermittlung der Bodensicht ist richtig?</item>
+	<item>130. Was versteht man unter VOLMET?</item>
+
+	<!-- 131 ... 140 -->
+	<item>131. Ein Luftfahrzeugführer hat während des Fluges zu einem internationalen Verkehrsflughafen die Möglichkeit, das Flugplatzwetter einzuholen über&#8230; </item>
+	<item>132. ATIS-Aussendungen dienen unter anderem der Unterrichtung von Luftfahrzeugführern. Welche Angaben enthalten sie?</item>
+	<item>133. Wie werden SIGMET-Meldungen verbreitet?</item>
+	<item>134. SIGMET-Informationen dienen der Sicherung von Flügen der Allgemeinen Luftfahrt im unteren Luftraum. Welche Angaben enthalten sie?</item>
+	<item>135. Welche Angaben soll eine Notmeldung enthalten?</item>
+	<item>136. Das Notzeichen MAYDAY bedeutet, dass&#8230;</item>
+	<item>137. Ein Notanruf soll übermittelt werden:</item>
+	<item>138. Wie wird ein Notanruf eingeleitet?</item>
+	<item>139. Welches der folgenden Signale ist ein Notsignal?</item>
+	<item>140. Wie wird ein Dringlichkeitsanruf eingeleitet?</item>
+
+	<!-- 141 ... 150 -->
+	<item>141. Das durch Sprechfunk übermittelte Signal PANPAN bedeutet, dass ein anderes Luftfahrzeug&#8230;</item>
+	<item>142. Welchen SSR-Antwortmode/-code soll ein Luftfahrzeug in einer Notlage senden?</item>
+	<item>143. Was zeigt ein Luftfahrzeug der Bodenstation/den Bodenstationen an, wenn es den SSR-Antwortcode A/C/S 7700 sendet?</item>
+	<item>144. Bei Funkausfall vor Erhalt bzw. Bestätigung der Einflugfreigabe in eine Kontrollzone hat der Luftfahrzeugführer&#8230;</item>
+	<item>145. Was ist ein besonderes Merkmal der Blindsendung?</item>
+	<item>146. Was ist ein besonderes Merkmal der Blindsendung?</item>
+	<item>147. Welchen SSR-Antwortmode/-code soll ein Luftfahrzeug bei Funkausfall senden?</item>
+	<item>148. Was zeigt ein Luftfahrzeug der Bodenstation/den Bodenstationen an, wenn es den SSR-Antwortcode A/C/S 7600 sendet?</item>
+	<item>149. Beobachtet ein Luftfahrzeugführer ein auf ihn gerichtetes Lichtsignal, so hat er die vorgeschriebenen Maßnahmen zu treffen. Was hat er dabei grundsätzlich zu beachten?</item>
+	<item>150. Nach der Luftverkehrsordnung haben Funkanweisungen Vorrang vor Licht- und Bodensignalen sowie Zeichen. Dies gilt nicht gegenüber&#8230;</item>
+
+	<!-- 151 ... 160 -->
+	<item>151. Ein Luftfahrzeugführer hat vorrangig zu befolgen:</item>
+	<item>152. In welchem Frequenzbereich wird der Sprechfunkverkehr im zivilen beweglichen Flugfunkdienst abgewickelt?</item>
+	<item>153. Welcher Kanalabstand (Frequenzbereich 117.975 MHz - 137.000 MHz) wird im Flugfunkdienst im unteren verwendet?</item>
+	<item>154. In welcher Betriebsart wird der Sprechfunkverkehr im Flugfunkdienst durchgeführt?</item>
+	<item>155. Welche Bezeichnung hat die Frequenz 121.500 MHz?</item>
+	<item>156. Wodurch kann eine Sprechfunkfrequenz blockiert werden?</item>
+	<item>157. Wie breiten sich Ultrakurzwellen (UKW) aus?</item>
+	<item>158. Welche Phänomene können beim Flugfunk die Empfangsqualität der UKW beeinflussen?</item>
+	<item>159. In welcher der folgenden Situationen kann die Funkverbindung zwischen Luftfahrzeug und TURM auf Frequenz 118.25 MHz als problemlos erwartet werden?</item>
+	<item>160. Welches ist die maximal zu erwartende Entfernung für eine einwandfreie UKW-Funkverbindung über flachem Gelände in FL 65?</item>
+
+	<!-- 161 ... 170 -->
+	<item>161. Welche Flugsicherungsbetriebsdienste gibt es?</item>
+	<item>162. Der Flugberatungsdienst hat u. a. folgende Aufgaben:</item>
+	<item>163. Wer ist für die Bewegungslenkung des Luftverkehrs in der Bundesrepublik Deutschland zuständig?</item>
+	<item>164. Wann steht der FIS dem Luftfahrzeugführer zur Verfügung?</item>
+	<item>165. Zur Flugvorbereitung verpflichtet sind:</item>
+	<item>166. Eine Wetterberatung ist grundsätzlich einzuholen bei&#8230;</item>
+	<item>167. Worauf beziehen sich grundsätzlich Zeitangaben in der Luftfahrt? Auf...</item>
+	<item>168. Welches ist die Maßeinheit für die horizontale Geschwindigkeit in der Luftfahrt?</item>
+	<item>169. Welches ist die Maßeinheit für die vertikale Geschwindigkeit in der Luftfahrt?</item>
+	<item>170. Welches ist die Maßeinheit für Höhenangaben in der Luftfahrt?</item>
+
+	<!-- 171 ... 180 -->
+	<item>171. Welches ist die Maßeinheit für Entfernungen in der Luftfahrt zum Zwecke der Navigation?</item>
+	<item>172. Welches ist die Maßeinheit für den Luftdruck in der Luftfahrt?</item>
+	<item>173. Welcher horizontale Mindestabstand ist im Fluge zu einzelnen Bauwerken oder Hindernissen einzuhalten?</item>
+	<item>174. Ein Flugzeug und ein Segelflugzeug nähern sich auf Gegenkurs. Wer muss ausweichen?</item>
+	<item>175. Luftfahrzeuge, die Gegenstände schleppen, haben Vorflugrecht vor&#8230;</item>
+	<item>176. Ein Flugzeugführer beobachtet einen Motorsegler (Motor in Betrieb), der in nahezu gleicher Höhe von links kommt und seinen Flugweg kreuzen wird. Wer muss ausweichen?</item>
+	<item>177. Bei Luftfahrzeugen im Endanflug hat&#8230;</item>
+	<item>178. Wann müssen in Betrieb befindliche Luftfahrzeuge Positionslichter einschalten?</item>
+	<item>179. Das Zusammenstoß-Warnlicht (anti-collision light) ist&#8230;</item>
+	<item>180. Ein in der Signalfläche ausgelegtes waagrechtes quadratisches rotes Feld mit zwei gelben Diagonalstreifen bedeutet:</item>
+
+	<!-- 181 ... 190 -->
+	<item>181. Eine in der Signalfläche ausgelegte weiße Fläche in Form einer Hantel bedeutet:</item>
+	<item>182. Ein weißes oder orangefarbenes T (Lande-T), das bei Nacht entweder beleuchtet oder durch weiße Lichter dargestellt ist, bedeutet:</item>
+	<item>183. Eine zweistellige Zahl auf einer Tafel, die am Kontrollturm oder in dessen Nähe angebracht ist, bedeutet:</item>
+	<item>184. Ein in der Signalfläche oder am Ende der Piste waagrechtausgelegter und nach rechts abgewinkelter Pfeil in auffallender Farbe bedeutet:</item>
+	<item>185. Welche Bedeutung hat ein grünes Dauersignal, das auf ein Luftfahrzeug im Flug gerichtet ist?</item>
+	<item>186. Welche Bedeutung hat ein rotes Dauersignal, das auf ein Luftfahrzeug im Flug gerichtet ist?</item>
+	<item>187. Welche Bedeutung hat ein grünes Blinksignal, das auf ein Luftfahrzeug im Gegenanflug gerichtet ist?</item>
+	<item>188. Welche Bedeutung hat ein rotes Blinksignal, das auf ein Luftfahrzeug im Flug gerichtet ist?</item>
+	<item>189. Welche Bedeutung hat ein weißes Blinksignal, das auf ein Luftfahrzeug im Flug gerichtet ist?</item>
+	<item>190. WeIche Bedeutung hat ein roter Feuerwerkskörper, der auf ein Luftfahrzeug im Flug gerichtet ist?</item>
+
+	<!-- 191 ... 200 -->
+	<item>191. Welche Bedeutung hat ein grünes Dauersignal, das auf ein Luftfahrzeug am Boden gerichtet ist?</item>
+	<item>192. Welche Bedeutung hat ein rotes Dauersignal, das auf ein Lufttahrzeug am Boden gerichtet ist?</item>
+	<item>193. Welche Bedeutung hat ein grünes Blinksignal, das auf ein Luftfahrzeug am Boden gerichtet ist?</item>
+	<item>194. Welche Bedeutung hat ein rotes Blinksignal, das auf ein Luftfahrzeug am Boden gerichtet ist?</item>
+	<item>195. Welche Bedeutung hat ein weißes Blinksignal, das auf ein Luftfahrzeug am Boden gerichtet ist?</item>
+	<item>196. Flugplatzverkehr ist der Verkehr&#8230;</item>
+	<item>197. Wann befindet sich ein Luftfahrzeug im “Gegenanflug 16“ ? Wenn es einen Kurs von&#8230;</item>
+	<item>198. Richtungsänderungen in der Platzrunde, beim Landeanflug und nach dem Start sind normalerweise&#8230;</item>
+	<item>199. Wessen Signale und Zeichen (nach der Anlage zur LuftVO) hat der Luftfahrzeugführer auf dem Vorfeld und den Abstellflächen eines Flugplatzes mit Flugverkehrskontrolle zu befolgen? Die&#8230;</item>
+	<item>200. Ein Luftfahrzeugführer befindet sich auf einem VFR-Flug zu einem Flugplatz mit Flugverkehrskontrolle. Mit dem Kontrollturm kann keine Funkverbindung hergestellt werden. Was muss der Luftfahrzeugführer beachten?</item>
+
+	<!-- 201 ... 210 -->
+	<item>201. Bei einem Flug nach Sichtflugregeln hat der Luftfahrzeugführer eine Freigabe zum Einflug in die Kontrollzone und Landeanweisungen erhalten und bestätigt. Kurze Zeit danach fällt das Sprechfunkgerät aus. Wie hat sich der Luftfahrzeugführer zu verhalten?</item>
+	<item>202. Die Flugsicht wird definiert als die&#8230;</item>
+	<item>203. Der horizontale Mindestabstand zu Wolken bei einem VFR-Flug in Lufträumen der Klassen C bis F beträgt:</item>
+	<item>204. Im Luftraum E sind Flüge nach Sichtflugregeln so durchzuführen, dass&#8230;</item>
+	<item>205. Bei Flügen nach Sichtflugregeln im Luftraum G müssen folgende Voraussetzungen erfüllt sein:</item>
+	<item>206. Ist für einen VFR-Flug im Luftraum G ein bestimmter Wolkenabstand vorgeschrieben?</item>
+	<item>207. In welchem Luftraum können Sonderflüge nach Sichtflugregeln durchgeführt werden?</item>
+	<item>208. Wann ist mit der Standard-Höhenmessereinstellung bei Flügen nach den Sichtflugregeln zu fliegen?</item>
+	<item>209. Bei VFR-Flügen oberhalb einer Höhe von 5000 ft MSL oder 2000 ft GND, sofern diese Flughöhe 5000 ft MSL überschreitet, ist der Höhenmesser einzustellen auf:</item>
+	<item>210. Bei VFR-Flügen bis zu einer Höhe von 5000 ft MSL oder 2000 ft GND, sofern diese Flughöhe 5000 ft MSL überschreitet, ist der Höhenmesser einzustellen auf:</item>
+
+	<!-- 211 ... 220 -->
+	<item>211. Woraus ergibt sich die Festlegung des Sektors für die Halbkreisflughöhen nach Sichtflugregeln? Aus dem&#8230;</item>
+	<item>212. Welche Flugfläche/n ist/sind bei einem VFR-Flug nach Standard-Höhenmessereinstellung bei einem missweisenden Kurs über Grund von 135° einzuhalten?</item>
+	<item>213. Welche Fluginformationsgebiete (FIR) unter deutscher Zuständigkeit gibt es im unteren Luftraum?</item>
+	<item>214. Der Luftraum ‘G befindet sich unterhalb einer Höhe von&#8230;</item>
+	<item>215. In Deutschland sind Kontrollzonen klassifiziert&#8230;</item>
+	<item>216. Eine mit HX gekennzeichnete Kontrollzone kann außerhalb der Betriebszeit ohne Freigabe durchflogen werden, wenn der Luftfahrzeugführer&#8230;</item>
+	<item>217. Welche Luftraumklassen sind kontrollierter Luftraum?</item>
+	<item>218. Der Luftraum E erstreckt sich, soweit nicht anders klassifiziert&#8230;</item>
+	<item>219. Ein mit “ED-R&#8230;(TRA) gekennzeichnetes Gebiet ist ein&#8230;</item>
+	<item>220. Ein mit “ED-D“ gekennzeichnetes Gebiet ist ein&#8230;</item>
+
+	<!-- 221 ... 230 -->
+	<item>221. Wann müssen Luftfahrzeuge für Überlandflüge nach Sichtflugregeln mit einem UKW-Sende- und Empfangsgerät ausgerüstet sein?</item>
+	<item>222. VFR-Flüge über geschlossenen Wolkendecken dürfen durchgeführt werden:</item>
+	<item>223. Welcher Transponder-Code muss von motorgetriebenen Luftfahrzeugen bei VFR-Flügen im Luftraum E oberhalb 5000 ft MSL oder oberhalb 3500 ft GND, wobei der höhere Wert maßgebend ist, unaufgefordert geschaltet werden?</item>
+	<item>224. Beim Sinkflug von FL 85 auf Flughöhe 3500 ft MSL hat der Führer eines motorgetriebenen Luftfahrzeuges vor Erreichen der neuen Reiseflughöhe den Höhenmesser und den Transponder wie folgt einzustellen:</item>
+	<item>225. Was versteht man unter dem Begriff “Eigenpeilung“?</item>
+	<item>226. Mit welcher Navigationsfunkanlage kann Fremdpeilung durchgeführt werden? Mit einer&#8230;</item>
+	<item>227. Die Kennung eines UKW-Drehfunkfeuers (VOR) besteht in der Regel aus&#8230;</item>
+	<item>228. Ein VOR-Anzeigegerät ist ein “Kommandogerät“, wenn mit&#8230;</item>
+	<item>229. Wovon ist die Empfangsreichweite eines UKW-Drehfunkfeuers (VOR) abhängig? Von&#8230;</item>
+	<item>230. Der mit “OBS“ gekennzeichnete Knopf am VOR-Anzeigegerät ist der&#8230;</item>
+
+	<!-- 231 ... 240 -->
+	<item>231. Auf welche Richtung ist der Radial einer VOR-Station bezogen? Auf&#8230;</item>
+	<item>232. UKW-Drehfunkfeuer (VOR) arbeiten im Frequenzbereich von&#8230;</item>
+	<item>233. Wann wechselt am VOR-Anzeigegerät die Richtungsanzeige von “TO“ auf “FROM“?</item>
+	<item>234. Ein Luftfahrzeug befindet sich im Anflug auf eine VOR-Station. Eingestellt ist 320° bei einer Richtungsanzeige “TO“. Der Ablageanzeiger (CDI) wandert nach links aus. Wo befindet sich das Luftfahrzeug?</item>
+	<item>235. Ein mit einer VOR-Navigations-Empfangsanlage ausgerüstetes Luftfahrzeug will eine VOR-Station auf dem kürzesten Weg anfliegen. Welche Aussage ist richtig? Der Kurswähler wird so lange gedreht, bis die&#8230;</item>
+	<item>236. Wie groß ist die Kursablage pro Punkt (dot) auf dem VOR-Anzeigegerät?</item>
+	<item>237. Auf der ICAO-Luftfahrtkarte 1:500.000 finden Sie die Angabe TRENT 108,45 TRT. Um welche Art von Funknavigationsanlage handelt es sich dabei? Um ein(e)&#8230;</item>
+	<item>238. Beim Anflug auf eine VOR-Station erscheint kurz vor der berechneten Überflugzeit die OFF-Flagge. Was ist wahrscheinlich die Ursache?</item>
+	<item>239. Die Richtung eines VOR-Leitstrahls (Radial) entspricht dem&#8230;</item>
+	<item>240. Welche Kennung hat ein ungerichtetes Funkfeuer (NDB)?</item>
+
+	<!-- 241 ... 250 -->
+	<item>241. Ungerichtete Funkfeuer (NDB) haben eine festgelegte Betriebsentfernung von&#8230;</item>
+	<item>242. Ungerichtete Funkfeuer (NDB) arbeiten im&#8230;</item>
+	<item>243. Mit welcher bordseitigen Navigationsempfangsanlage kann ein NDB empfangen werden? Mit einem&#8230;</item>
+	<item>244. Welcher Winkel wird am Anzeigegerät (RBI) des Funkkompasses (ADF) angezeigt? Der Winkel zwischen&#8230;</item>
+	<item>245. Der missweisende Steuerkurs eines Luftfahrzeuges beträgt 155°. Die Bezugspeilung ist 025°. Wie groß ist das QDM?</item>
+	<item>246. Welche Ausrüstung an Bord eines Luftfahrzeuges ist erforderlich, um mit Hilfe von Peilfunkstellen navigieren zu können? Ein&#8230;</item>
+	<item>247. Ein Luftfahrzeug fliegt einen missweisenden Steuerkurs von 090°. Das übermittelte QDR beträgt 180°. Wo liegt die Peilfunkstelle?</item>
+	<item>248. Von einer mit einem UKW-Peiler ausgestatteten Bodenfunkstelle erhält man ein QDM von 225°. Wo befindet sich das Luftfahrzeug?</item>
+	<item>249. Auf der ICAO-Luftfahrtkarte 1:500.000 ist die Frequenz einer Bodenfunkstelle an einem Landeplatz unterstrichen. Was bedeutet die Unterstreichung der Frequenz?</item>
+	<item>250. Wozu dient Sekundärradar u.a. in der Flugsicherung? Zur&#8230;</item>
+
+	<!-- 251 ... 254 -->
+	<item>251. Welche Angaben kann ein Luftfahrzeugführer von einer Flugverkehrskontrollstelle mit Radar erhalten? Angaben über&#8230;</item>
+	<item>252. Die Abkürzung “GPS“ bedeutet in der Luftfahrt:</item>
+	<item>253. Das Global Positioning System (GPS)“ ist ein&#8230;</item>
+	<item>254. Wozu dienen GPS-Empfänger an Bord von Luftfahrzeugen?</item>
+
+    </string-array>
+
+</resources>

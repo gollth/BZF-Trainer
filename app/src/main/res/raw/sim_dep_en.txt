@@ -1,0 +1,26 @@
+P: #airport Ground, #callsign
+G: #callsign, #airport Ground
+P: #callsign, #aircraft, GAT, VFR to the east, [information #atis,] request taxi
+G: #callsign, QNH #qnh, taxi to holding point runway #runway, via #taxi_route[, hold short of runway #runway2]
+P: #callsign, QNH #qnh, taxi (to) hold(ing point), (runway) #runway, via #taxi_route[, hold short (of), runway #runway2]
+[P: #callsign, request (to) cross runway #runway2]
+[G: #callsign, {behind landing piper,} cross runway #runway2]
+[P: #callsign, {behind (landing) piper,} cross runway #runway2]
+{G: #callsign, caution, Cirrus 12'o clock, report in sight}
+{P: #callsign, traffic in sight}
+G: #callsign, when ready, contact Tower #freq
+P: #callsign, Tower, #freq
+P: #airport Tower, #callsign
+T: #callsign, #airport Tower
+P: #callsign, runway #runway, ready for departure
+T: #callsign, leave control zone via #fixpoint[, Squawk #squawk]
+P: #callsign, leav(ing) control zone, via #fixpoint[, Squawk #squawk]
+{T: #callsign, behind departing Airbus 320, line up and wait runway #runway}
+{P: #callsign, behind (departing) Airbus, line up and wait, runway #runway}
+[T: #callsign, are you ready for immediate departure?]
+[P: #callsign, affirmative]
+T: #callsign, wind #wind_dir degrees @ #wind_kn knots, runway #runway, cleared for takeoff
+P: #callsign, runway #runway, clear(ed) for takeoff
+P: #callsign, #fixpoint, 2000 ft, request (to) leav(e) frequency
+T: #callsign, Roger, Squawk VFR, frequency change approved
+P: #callsign, Squawk VFR, frequency change approved

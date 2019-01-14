@@ -1,0 +1,135 @@
+<resources>
+    <string name="app_name">BZF-Trainer</string>
+    <string name="app_description">Wenn du genauso wie ich dich theoretisch und praktisch auf die BZF-Flugfunkprüfung nur eher schlecht als recht vorbereitest fühlst, ist der BZF-Simulator vielleicht genau das richtige für dich.  Diese App beinhaltet:\n\n&#8226;&#8195;ca. 250 Fragen mit jeweils vier Antwortmöglichkeiten im Wer-wird-Millionär-Stil\n\n&#8226;&#8195;einen Simulator, mit welchem ein Ab- und Anflug zu einem kontrollierten Platz durchgespielt werden kann.\n\nDie App befindet sich momentan noch im Beta-Stadium, deswegen kann es eventuell zu Abstürzen kommen. Ich bitte das zu entschuldigen und versuche, auftretende Probleme ASAP zu beheben.\n\nBitte beachte noch folgendes:  Ich bin kein erfahrender Android-Entwickler, sondern habe mit dieser App angefangen, um mich für die Prüfung vorzubereiten. Daher möchte ich Leuten denen es ähnlich geht, diese App zur freien Verfügung stellen. Ich garantiere jedoch in keinster Art und Weise, dass die Fragen im Katalog oder die Redewendungen im Simulator aktuell sind oder dass sie in dieser Form in der Prüfung abgefragt werden. Diese App dient nur als <i>Vorbereitung</i> und ersetzt <b>nicht</b> ein richtiges BZF-Training.\n\nAnsonsten viel Spaß mit dem BZF-Simulator und viel Erfolg in der Prüfung ;)</string>
+    <string name="positive">Ja</string>
+    <string name="negative">Nein</string>
+    <string name="language">Sprache</string>
+
+    <string name="btn_info">Info</string>
+    <string name="txt_questions">Frage %1$d</string>
+    <string name="txt_progress">Frage %1$d von %2$d</string>
+    <string name="txt_ranking">Ranking</string>
+    <string name="txt_notes">Notizen</string>
+
+    <string name="crash_msg">Entschuldigung, da ging leider etwas schief. Ein Fehlerbericht wurde automatisch versendet, damit das Problem so schnell wie möglich behoben werden kann.</string>
+
+    <string name="catalogue">Fragen-Katalog</string>
+    <string name="simulator">Simulator</string>
+    <string name="feedback">Feedback</string>
+
+    <string name="btn_right">▷</string>
+    <string name="btn_left">◁</string>
+
+    <string name="msg_finsih_pass">Glückwunsch, du hast bestanden</string>
+    <string name="msg_finish_fail">Schade, leider hast du nicht bestanden&#8230;</string>
+    <string name="msg_finish">Du hast %1$d %% aller Fragen richtig beantwortet. </string>
+    <string name="msg_finish_sim">%1$d %% richtig gesagt</string>
+    <string name="msg_record_explanation">Gedrückt halten zum Senden</string>
+
+    <string name="back_to_title">Zurück zum Hauptmenu</string>
+    <string name="restart">Von vorne</string>
+    <string name="restart_alert">Bist du sicher, dass du die Fragen von vorne beantworten möchtest?</string>
+
+    <string name="statistics">Ergebnisse</string>
+    <string name="statistics_history">Erfolgsrate</string>
+    <string name="settings_reset">Ergebnisse zurücksetzen</string>
+    <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Ergebnisse wieder auf null</string>
+    <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
+
+    <string name="settings">Einstellungen</string>
+    <string name="settings_shuffle">Zufällige Fragen</string>
+    <string name="settings_shuffle_sum">Sollen die Fragen zufällig oder nacheinander abgefragt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
+    <string name="settings_delay">Verzögerung</string>
+    <string name="settings_delay_sum">Wie viele Sekunden soll die richtige Lösung angezeigt werden, bis zur nächsten Frage gewechselt wird? </string>
+    <string name="settings_vibrate">Vibration</string>
+    <string name="settings_vibrate_correct">&#8230;bei richtigen Antworten</string>
+    <string name="settings_vibrate_false">&#8230;bei falschen Antworten</string>
+    <string name="title_activity_settings_new">Settings</string>
+    <string name="settings_pen">Schreiben mit Stift</string>
+    <string name="settings_pen_sum">Wenn du mit einem Stift schreibst, kannst du mit dem Finger radieren. Ansonsten mit einem Finger schreiben und mit zwei radieren.</string>
+    <string name="settings_sim_language_sum">Willst du in Englisch funken?</string>
+    <string name="settings_sim_language_en">EN</string>
+    <string name="settings_sim_language_de">DE</string>
+    <string name="settings_sim_aircraft">Flugzeug</string>
+    <string name="settings_sim_aricraft_sum">Welchen Typ willst du fliegen? (Namen wie \"Cessna\" ausschreiben, damit Spracherkennung funktioniert)</string>
+    <string name="settings_sim_callsign">Rufzeichen</string>
+    <string name="settings_sim_callsign_sum">Auf welches Rufzeichen ist dein Flugzeug eingetragen?</string>
+    <string name="settings_sim_level">Schwierigkeit</string>
+    <string name="settings_sim_level_sum">Wie komplex sollen die Freigaben sein?</string>
+    <string name="settings_sim_recorder">Spracherkennung überbrücken</string>
+    <string name="settings_sim_recorder_sum">Bewirkt, dass deine Sprache nicht mehr aufgenommen wird, sondern die nächste Meldung von ATC direkt abgespielt wird (falls Probleme mit der Spracherkennung auftreten)</string>
+    <string-array name="settings_sim_levels">
+        <item>leicht</item>
+        <item>mittel</item>
+        <item>schwer</item>
+    </string-array>
+    <string-array name="settings_sim_levels_indices">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string name="settings_sim_help">Hilfe</string>
+    <string name="settings_sim_help_sum">Sollen Untertitel angezeigt werden?</string>
+    <string name="settings_sim_help_atc">&#8230;von ATC-Meldungen</string>
+    <string name="settings_sim_help_you">&#8230;von deiner nächsten Meldung</string>
+
+    <string name="please_wait">Bitte warten</string>
+    <string name="sim_init">Die Spracherkennung arbeitet am besten mit bestehender Internetverbindung. Soll das WLAN aktiviert werden?</string>
+    <string name="sim_info">Die Spracherkennung von Google hat es mit den Eigenarten der Funkjargons nicht leicht. Deswegen werden viele Ausdrücke falsch oder nicht verstanden.\n\nVersuche alles langsam und, so gut es geht, \"amerikanisch\" auszusprechen.\nAußerdem sorgt eine Internetverbindung für bessere Ergebnisse.</string>
+    <string name="sim_info_mic">Dieser Teil der App benötigt die Berechtigung deine Stimme aufzuzeichen. Möchtest du zu den App-Einstellungen wechseln um sie zu aktivieren?</string>
+    <string name="sim_info_wifi_deny">OK, falls du es dir überlegst, starte den Simulator neu</string>
+    <string name="sim_info_volume">Denk daran, die Lautstärke zu erhöhen um ATC zu hören</string>
+    <string name="sim_default_callsign">DEABC</string>
+    <string name="sim_default_aircraft">Cessna 172</string>
+    <string name="sim_txt_atis">ATIS: %1$s</string>
+    <string name="sim_msg_departure_select">Wo soll gestartet werden?</string>
+    <string name="sim_msg_arrival_select">Wo soll gelandet werden?</string>
+    <string name="sim_msg_departure_complete">Abflug abgeschlossen, jetzt beim Anflugturm melden</string>
+    <string name="sim_msg_arrival_complete">Anflug abgeschlossen. Die Simulation ist beendet.</string>
+
+    <string-array name="airports">
+        <item>EDDB</item>
+        <item>EDDF</item>
+        <item>EDDH</item>
+        <item>EDDM</item>
+    </string-array>
+    <string-array name="airport_names_en">
+        <item>Berlin</item>
+        <item>Frankfurt</item>
+        <item>Hamburg</item>
+        <item>Munich</item>
+    </string-array>
+    <string-array name="airport_names_de">
+        <item>Berlin</item>
+        <item>Frankfurt</item>
+        <item>Hamburg</item>
+        <item>München</item>
+    </string-array>
+
+    <string name="feedback_text">Ist dir ein Fehler aufgefallen oder möchtest du sonst etwas zum BZF-Trainer sagen?</string>
+    <string name="feedback_type">Worum geht es?</string>
+    <string name="feedback_comment">Kommentar</string>
+    <string name="feedback_sent">Vielen Dank für dein Feedback</string>
+    <string name="feedback_warranty">Diese Daten werden natürlich anonym behandelt und dienen nur der Verbesserung der App.</string>
+    <string-array name="feedback_types">
+        <item>Fehler/Bug</item>
+        <item>Absturz</item>
+        <item>Bemerkung</item>
+        <item>etwas anderes</item>
+    </string-array>
+    <string-array name="feedback_activities">
+        <item>Fragen-Katalog</item>
+        <item>Simulator</item>
+        <item>Einstellungen</item>
+        <item>allgemein</item>
+    </string-array>
+    <string name="send">Senden</string>
+    <string name="cancel">Doch nicht</string>
+
+    <string name="changelog_full_title">Change Log</string>
+    <string name="changelog_title">What\'s New</string>
+    <string name="changelog_ok_button">OK</string>
+    <string name="changelog_show_full">more&#8230;</string>
+    <string name="background_color">black</string>
+
+</resources>

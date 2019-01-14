@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".SimulatorActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sim_lyt_info"
+        android:background="#d7ccc8">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout"
+            android:layout_toEndOf="@+id/sim_txt_aircraft"
+            android:layout_above="@+id/sim_lyt_table_help"
+            android:gravity="center_vertical|end"
+            android:layout_centerInParent="true"
+            android:layout_alignParentStart="false">
+
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/departure_icon"
+                    android:id="@+id/textView" />
+                <Spinner
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sim_cbx_dep"
+                    android:entries="@array/airports"
+                    android:prompt="@string/sim_msg_departure_select"
+                    android:spinnerMode="dropdown"
+                    android:gravity="center" />
+                <Spinner
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sim_cbx_arr"
+                    android:entries="@array/airports"
+                    android:prompt="@string/sim_msg_departure_select"
+                    android:spinnerMode="dropdown"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrival"
+                    android:id="@+id/textView3" />
+            </LinearLayout>
+
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/sim_txt_callsign"
+            android:text="@string/sim_default_callsign"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/sim_txt_callsign"
+            android:id="@+id/sim_txt_aircraft"
+            android:text="@string/sim_default_aircraft"
+            android:layout_below="@+id/sim_txt_callsign" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/sim_txt_callsign"
+            android:id="@+id/sim_txt_atis"
+            android:text="@string/sim_txt_atis"
+            android:layout_below="@+id/sim_txt_aircraft" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shrinkColumns="1"
+            android:id="@+id/sim_lyt_table_help"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:layout_below="@+id/sim_txt_atis">
+
+            <de.tgoll.projects.bzf.LineView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/settings_sim_help"
+                    android:layout_column="0"
+                    android:layout_margin="10dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sim_txt_atc_lbl"
+                    android:layout_column="0"
+                    android:layout_marginRight="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/sim_txt_atc"
+                    android:gravity="center_vertical|start"
+                    android:visibility="visible"
+                    android:layout_column="1" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Du:"
+                    android:id="@+id/sim_txt_you_lbl"
+                    android:layout_marginRight="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:id="@+id/sim_txt_you"
+                    android:gravity="center_vertical|start"
+                    android:visibility="visible" />
+            </TableRow>
+
+        </TableLayout>
+    </RelativeLayout>
+
+    <de.tgoll.projects.bzf.PaintView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/canvas"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/sim_lyt_info" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_record"
+        android:background="@drawable/record_button"
+        android:adjustViewBounds="true"
+        android:clickable="true"
+        android:layout_marginBottom="50dp"
+        android:layout_alignBottom="@+id/canvas"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_notes"
+        android:id="@+id/txt_notes"
+        android:layout_alignTop="@+id/canvas"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp" />
+
+</RelativeLayout>
