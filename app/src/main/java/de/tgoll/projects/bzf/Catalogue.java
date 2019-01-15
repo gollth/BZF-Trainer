@@ -93,7 +93,8 @@ class Catalogue {
     }
     static String[] getAnswers(int question) {
         try {
-            return (String[]) answers.get(question).toArray();
+            List<String> list = answers.get(question);
+            return list.toArray(new String[list.size()]);
         } catch (Exception e) {
             Crashlytics.log("Error occurred in asking \"getAnswers\" of question " + question + ": " + e.getMessage());
             return new String[]{"Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen", "", "", ""};
