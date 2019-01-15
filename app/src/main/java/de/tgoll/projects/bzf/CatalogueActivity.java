@@ -68,7 +68,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         gson = new Gson();
         String s = settings.getString("SavedState", "");
-        if (s.isEmpty()) resetQuestions();
+        if (s == null || s.isEmpty()) resetQuestions();
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
             playlist = state.playlist;

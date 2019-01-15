@@ -26,9 +26,9 @@ class Catalogue {
         solutions = new int[questions.length];
 
         String[] tmp = c.getResources().getStringArray(R.array.answers);
-        if (questions.length != tmp.length) {
+        if (questions.length != tmp.length/4) {
             throw new Resources.NotFoundException("The amount of questions (" + questions.length +
-                    ") does not match with the amount of answers (" + tmp.length + ")");
+                    ") does not match with the amount of answers (" + tmp.length/4 + ")");
         }
 
         for (int i = 0; i < questions.length; i++) {

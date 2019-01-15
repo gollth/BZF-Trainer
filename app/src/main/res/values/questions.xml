@@ -64,7 +64,8 @@
     <item>59. Ein Luftfahrzeug darf den Typ seines Rufzeichens im Sprechfunkverkehr während des Fluges nicht ändern, ausgenommen vorübergehend …</item>
     <item>60. Wie wird das abgekürzte Rufzeichen einer Luftfunkstelle gebildet? Aus ...</item>
     <item>61. Wann darf eine Luftfunkstelle ihr abgekürztes Rufzeichen verwenden?</item>
-    <item>62. Mit welchem Flugsicherungsbetriebsdienst kann man während des Fluges im Luftraum 63 Mit welchem Flugsicherungsbetriebsdienst kann man während des Fluges Sprechfunkverbindung aufnehmen? Mit dem …</item>
+    <item>62. Mit welchem Flugsicherungsbetriebsdienst kann man während des Fluges im Luftraum C Sprechfunkverbindung aufnehmen? Mit dem/der ...</item>
+    <item>63. Mit welchem Flugsicherungsbetriebsdienst kann man während des Fluges Sprechfunkverbindung aufnehmen? Mit dem …</item>
     <item>64. Welche Redewendung ist anzuwenden, wenn bei einem Anruf das Rufzeichen der rufenden Funkstelle nicht verstanden wurde?</item>
     <item>65. Eine Meldung wird von einem Pilot nicht vollständig wiederholt, obwohl es die Art der Meldung erfordert. Mit welcher Redewendung wird er zur Wiederholung aufgefordert?</item>
     <item>66. Wie lautet die Redewendung für "JA"?</item>
@@ -214,10 +215,8 @@
     <item>210. Ist für einen VFR-Flug im Luftraum G in und unter 3000 ft AMSL/1000 ft AGL ein bestimmter Wolkenabstand vorgeschrieben?</item>
     <item>211. In welchem Luftraum können Sonderflüge nach Sichtflugregeln durchgeführt werden?</item>
     <item>212. Wann ist mit der Standard-Höhenmessereinstellung bei Flügen nach den Sichtflugregeln zu fliegen?</item>
-    <item>213. Bei VFR-Flügen oberhalb einer Höhe von 5000 ft AMSL oder 2000 ft AGL, sofern diese Flughöhe</item>
-    <item>5000 ft AMSL überschreitet, ist der Höhenmesser einzustellen auf:</item>
-    <item>214. Bei VFR-Flügen bis zu einer Höhe von 5000 ft AMSL oder 2000 ft AGL, sofern diese Flughöhe</item>
-    <item>5000 ft AMSL überschreitet, ist der Höhenmesser einzustellen auf:</item>
+    <item>213. Bei VFR-Flügen oberhalb einer Höhe von 5000 ft AMSL oder 2000 ft AGL, sofern diese Flughöhe 5000 ft AMSL überschreitet, ist der Höhenmesser einzustellen auf:</item>
+    <item>214. Bei VFR-Flügen bis zu einer Höhe von 5000 ft AMSL oder 2000 ft AGL, sofern diese Flughöhe 5000 ft AMSL überschreitet, ist der Höhenmesser einzustellen auf:</item>
     <item>215. Woraus ergibt sich die Festlegung des Sektors für die Halbkreisflughöhen nach Sichtflugregeln? Aus dem ...</item>
     <item>216. Welche Flugfläche/n ist / sind bei einem VFR-Flug nach Standard-Höhenmessereinstellung bei einem missweisenden Kurs über Grund von 135° einzuhalten?</item>
     <item>217. Welche Fluginformationsgebiete (FIR) unter deutscher Zuständigkeit gibt es im unteren Luftraum?</item>
@@ -256,8 +255,7 @@
     <item>250. Welcher Winkel wird am Anzeigegerät (RBI) des Funkkompasses (ADF) angezeigt? Der Winkel zwischen ...</item>
     <item>251. Der missweisende Steuerkurs eines Luftfahrzeuges beträgt 155°. Die Bezugspeilung ist 025°. Wie groß ist das QDM?</item>
     <item>252. Welche Ausrüstung an Bord eines Luftfahrzeuges ist erforderlich, um mit Hilfe von Peilfunkstellen navigieren zu können? Ein ...</item>
-    <item>253. Ein Luftfahrzeug fliegt einen missweisenden Steuerkurs von 090°. Das übermittelte QDR beträgt</item>
-    <item>180°. Wo liegt die Peilfunkstelle?</item>
+    <item>253. Ein Luftfahrzeug fliegt einen missweisenden Steuerkurs von 090°. Das übermittelte QDR beträgt 180°. Wo liegt die Peilfunkstelle?</item>
     <item>254. Von einer mit einem UKW-Peiler ausgestatteten Bodenfunkstelle erhält man ein QDM von 225°. Wo befindet sich das Luftfahrzeug?</item>
     <item>255. Auf der ICAO-Luftfahrtkarte 1:500000 ist die Frequenz einer Bodenfunkstelle an einem Landeplatz unterstrichen. Was bedeutet die Unterstreichung der Frequenz?</item>
     <item>256. Wozu dient Sekundärradar in der Flugsicherung? Zur ...</item>
