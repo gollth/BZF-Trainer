@@ -23,7 +23,7 @@
     <item>Der Betreiber einer Bodenfunkstelle, die ausschließlich der Übermittlung von Flugbetriebsmeldungen dient</item>
     <item>Der Flugschüler an Bord eines Ausbildungsluftfahrzeuges in der Platzrunde eines kontrollierten Flugplatzes</item>
     <!-- 5 -->
-    <item>Betreiber einer Funkstelle mit dem Rufzeichen "RÜCKHOLER"</item>
+    <item>Betreiber einer Funkstelle mit dem Rufzeichen \"RÜCKHOLER\"</item>
     <item>Fluglotse</item>
     <item>Flugleiter an einem Segelfluggelände</item>
     <item>Luftsportgeräteführer im Luftraum C</item>
@@ -109,7 +109,7 @@
     <item>Allwetter-Informationssystem</item>
     <!-- 22 -->
     <item>Such- und Rettungsdienst</item>
-    <item>"STOPP AM ROLLHALT"</item>
+    <item>\"STOPP AM ROLLHALT\"</item>
     <item>Sekundär-Anflugradar</item>
     <item>Standardanflugroute</item>
     <!-- 23 -->
@@ -208,15 +208,15 @@
     <item>Dringlichkeitsmeldung</item>
     <item>Flugbetriebsmeldung</item>
     <!-- 42 -->
-    <item>höher als "START FREI"</item>
-    <item>niedriger als "ERBITTE QNH"</item>
-    <item>niedriger als "STEIGEN SIE AUF FLUGFLÄCHE 85"</item>
-    <item>gleichwertig mit "PISTE 32, LANDUNG FREI"</item>
+    <item>höher als \"START FREI\"</item>
+    <item>niedriger als \"ERBITTE QNH\"</item>
+    <item>niedriger als \"STEIGEN SIE AUF FLUGFLÄCHE 85\"</item>
+    <item>gleichwertig mit \"PISTE 32, LANDUNG FREI\"</item>
     <!-- 43 -->
-    <item>gleichwertig mit "ROLLEN SIE ZUM ABFLUGPUNKT PISTE 05, DORT HALTEN"</item>
-    <item>niedriger als "LANDUNG FREI"</item>
-    <item>höher als "SENDEN SIE FÜR PEILUNG"</item>
-    <item>höher als "BEACHTEN SIE BAUARBEITEN LINKS DER ROLLBAHN G"</item>
+    <item>gleichwertig mit \"ROLLEN SIE ZUM ABFLUGPUNKT PISTE 05, DORT HALTEN\"</item>
+    <item>niedriger als \"LANDUNG FREI\"</item>
+    <item>höher als \"SENDEN SIE FÜR PEILUNG\"</item>
+    <item>höher als \"BEACHTEN SIE BAUARBEITEN LINKS DER ROLLBAHN G\"</item>
     <!-- 44 -->
     <item>In Minuten, zweistellig</item>
     <item>In Stunden und Minuten</item>
@@ -291,7 +291,7 @@
     <item>den Zeichen des Eintragungszeichen des Luftfahrzeugs</item>
     <item>der Musterbezeichnung des Luftfahrzeuges und den drei letzten Stellen des Eintragungszeichens</item>
     <item>der Flugnummer in Verbindung mit dem Eintragungszeichen</item>
-    <item>dem Buchstaben "D" und drei weiteren Buchstaben</item>
+    <item>dem Buchstaben \"D\" und drei weiteren Buchstaben</item>
     <!-- 59 -->
     <item>auf Anweisung einer Flugverkehrskontrollstelle im Interesse der Sicherheit</item>
     <item>für Motorsegler beim Wechsel vom Motor- zum Segelflug</item>
@@ -440,8 +440,8 @@
     <!-- 88 -->
     <item>wartet ab, bis der Anruf wiederholt wird</item>
     <item>nennt das eigene Rufzeichen und wartet dann ab</item>
-    <item>nennt das eigene Rufzeichen mit der Sprechgruppe "WIEDERHOLEN SIE IHR RUFZEICHEN"</item>
-    <item>antwortet mit der Sprechgruppe "WIEDERHOLEN SIE"</item>
+    <item>nennt das eigene Rufzeichen mit der Sprechgruppe \"WIEDERHOLEN SIE IHR RUFZEICHEN\"</item>
+    <item>antwortet mit der Sprechgruppe \"WIEDERHOLEN SIE\"</item>
     <!-- 89 -->
     <item>Nach Wahl der richtigen Frequenz sicherstellen, dass kein laufender Funkverkehr gestört wird</item>
     <item>Es muss eine Funkprobe stattgefunden haben</item>
@@ -523,10 +523,10 @@
     <item>Höre Sie zwo</item>
     <item>Höre Sie KOMMEN</item>
     <!-- 105 -->
-    <item>Die Wörter "RADIO CHECK"</item>
-    <item>Die Wörter "TRANSMISSION CHECK"</item>
-    <item>Die Wörter "TEST CHECK"</item>
-    <item>Die Wörter "CHECK CHECK "</item>
+    <item>Die Wörter \"RADIO CHECK\"</item>
+    <item>Die Wörter \"TRANSMISSION CHECK\"</item>
+    <item>Die Wörter \"TEST CHECK\"</item>
+    <item>Die Wörter \"CHECK CHECK \"</item>
     <!-- 106 -->
     <item>START FREI</item>
     <item>ACHTEN SIE AUF ENTGEGENKOMMENDEN HUBSCHRAUBER</item>
@@ -563,7 +563,7 @@
     <item>Flügen während der Nacht im Luftraum G</item>
     <item>Flügen über den Wolken im Luftraum E</item>
     <!-- 113 -->
-    "Luftfahrthandbuch
+    \"Luftfahrthandbuch
     <item>unabhängig von der erteilten Freigabe in jedem Fall abgesetzt werden, sofern nicht ausdrücklich darauf verzichtet wird</item>
     <item>nur abgesetzt werden, wenn es sich um einen Sonderflug nach Sichtflugregeln handelt</item>
     <item>unabhängig von der erteilten Freigabe nur dann abgesetzt werden, wenn die Platzkontrollstelle dazu auffordert</item>
@@ -649,10 +649,10 @@
     <item>Bis 1500 m in Metern, darüber in Kilometern</item>
     <item>Nur in NM</item>
     <!-- 130 -->
-    <item>"SICHT DREI TAUSEND METER"</item>
-    <item>"SICHT ETWA NEUN TAUSEND FUSS"</item>
-    <item>"SICHT DREI KILOMETER"</item>
-    <item>"SICHT EINS KOMMA ACHT SEEMEILEN"</item>
+    <item>\"SICHT DREI TAUSEND METER\"</item>
+    <item>\"SICHT ETWA NEUN TAUSEND FUSS\"</item>
+    <item>\"SICHT DREI KILOMETER\"</item>
+    <item>\"SICHT EINS KOMMA ACHT SEEMEILEN\"</item>
     <!-- 131 -->
     <item>Die Wetterrundsendungen für Flughafenwettermeldungen für Flughäfen</item>
     <item>Den Fluginformationsdienst</item>
@@ -799,7 +799,7 @@
     <item>Zu leises Sprechen</item>
     <item>Ein- und Ausschalten der Sprechfunkanlage</item>
     <!-- 160 -->
-    <item>Ähnlich wie das Licht, d.h. "quasi optisch"</item>
+    <item>Ähnlich wie das Licht, d.h. \"quasi optisch\"</item>
     <item>Wie Kurzwellen, wobei aber atmosphärische Störungen keinen Einfluss auf sie haben</item>
     <item>Sie breiten sich als Bodenwellen entlang der Erdoberfläche aus und dringen somit z.B. auch in Täler ein, so dass sie von topographischen Hindernissen nicht beeinflusst werden</item>
     <item>Sie werden von der Ionosphäre in ca. 100 km Höhe reflektiert und gelangen als sogenannte Raumwellen zur Erdoberfläche zurück</item>
@@ -810,8 +810,8 @@
     <item>Atmosphärische Störungen, wie sie besonders bei Gewittern auftreten</item>
     <!-- 162 -->
     <item>Das Flugzeug befindet sich in ausreichend großer Höhe und nahe der Bodenfunkstelle</item>
-    <item>Das Luftfahrzeug befindet sich im Tiefflug in einem Tal, nahe der Bodenstation im "Funkschatten"</item>
-    <item>Das Flugzeug befindet sich in geringer Flughöhe im "Funkschatten" eines Berges, in weiter Entfernung von der Bodenfunkstelle</item>
+    <item>Das Luftfahrzeug befindet sich im Tiefflug in einem Tal, nahe der Bodenstation im \"Funkschatten\"</item>
+    <item>Das Flugzeug befindet sich in geringer Flughöhe im \"Funkschatten\" eines Berges, in weiter Entfernung von der Bodenfunkstelle</item>
     <item>Das Flugzeug befindet sich in geringer Höhe sehr weit von der Bodenfunkstelle entfernt</item>
     <!-- 163 -->
     <item>Ca. 95 NM</item>
@@ -1145,7 +1145,7 @@
     <item>A/C 7700</item>
     <!-- 229 -->
     <item>QNH einstellen und den Mode/Code A/C 7000 beibehalten</item>
-    <item>QNH 1013,2 hPa einstellen und Transponder auf "STAND-BY" schalten</item>
+    <item>QNH 1013,2 hPa einstellen und Transponder auf \"STAND-BY\" schalten</item>
     <item>QNH einstellen und Mode/Code A/C 7600 beibehalten</item>
     <item>1013,2 hPa einstellen und Mode/Code A/C 7600 einschalten</item>
     <!-- 230 -->
@@ -1204,10 +1204,10 @@
     <item>Auf dem Radial</item>
     <item>Südlich des Radiales</item>
     <!-- 241 -->
-    <item>vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger "TO" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an</item>
-    <item>vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger "FROM" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an</item>
-    <item>horizontale Nadel in der Mitte steht und die "OFF-Anzeige" verschwindet. Der am Kurswähler angezeigte Zahlenwert gibt immer den direkten Kurs zur Station an</item>
-    <item>vertikale Nadel bei einer "TO-Anzeige" voll links ausschlägt. Der am Kurswähler angezeigte Zahlenwert stellt die kürzeste Verbindung zur Station dar</item>
+    <item>vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger \"TO\" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an</item>
+    <item>vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger \"FROM\" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an</item>
+    <item>horizontale Nadel in der Mitte steht und die \"OFF-Anzeige\" verschwindet. Der am Kurswähler angezeigte Zahlenwert gibt immer den direkten Kurs zur Station an</item>
+    <item>vertikale Nadel bei einer \"TO-Anzeige\" voll links ausschlägt. Der am Kurswähler angezeigte Zahlenwert stellt die kürzeste Verbindung zur Station dar</item>
     <!-- 242 -->
     <item>2°</item>
     <item>10°</item>
@@ -1303,5 +1303,5 @@
     <item>Der Standortbestimmung mittels bordeigenem Radar</item>
     <item>Der Bestimmung des Abstandes zu anderen Luftfahrzeugen</item>
     <item>Der Auswertung von Signalen bodenseitiger Funknavigationsanlagen zur Positions- und Kursbestimmung</item>
-        </string-array>
+  </string-array>
 </resources>
