@@ -44,7 +44,10 @@ class Catalogue {
             for (int j = 0; j < 4; j++) {
                 int id = idx.get(j);
                 bs.add(as.get(id));
-                if (id == 0) solutions[i] = id;
+
+                // The first answer (A) is always correct in answers.xml
+                // That's why we save the index to that solution
+                if (id == 0) solutions[i] = j;
             }
             answers.add(bs);
         }
