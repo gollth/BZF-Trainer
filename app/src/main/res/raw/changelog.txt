@@ -19,6 +19,13 @@
     </style>
   </head>
   <body>
+    $ 0.3.0
+      % Version 0.3.0
+      _ 2019-01-16
+       * Upgrade to Android Pie (9)
+       * Neuer Fragenkatalog von 2019 der BNetzA
+       * Zeitgemäßeres Icon
+       * Vielen Dank an Christian, Alfred und Monika für den Hinweis mit den neuen Fragen!
     $ 0.2.7
       % Version 0.2.7
       _ 2019-01-13
