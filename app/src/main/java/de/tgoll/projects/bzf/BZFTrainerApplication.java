@@ -36,14 +36,10 @@ public class BZFTrainerApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Crashlytics crashlyticsKit = new Crashlytics.Builder()
-                .core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
+        CrashlyticsCore crashlytics = new CrashlyticsCore.Builder()
+                .disabled(BuildConfig.DEBUG)
                 .build();
-        final Fabric fabric = new Fabric.Builder(this)
-                .kits(crashlyticsKit)
-                .debuggable(BuildConfig.DEBUG)
-                .build();
-        Fabric.with(fabric);
+        Fabric.with(this, crashlytics);
 
         defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(handler);
