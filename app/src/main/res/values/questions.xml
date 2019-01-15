@@ -6,7 +6,7 @@
     <item>1. Welche zwischenstaatliche Organisation hat für den weltweiten Flugfunkdienst besondere Bedeutung?</item>
     <item>2. Was ist die rechtliche Grundlage für das Errichten und Betreiben von Funkanlagen in der Bundesrepublik Deutschland?</item>
     <item>3. Wer ist in der Bundesrepublik Deutschland für Frequenzzuteilungen zum Betrieb von Boden- und Luftfunkstellen zuständig?</item>
-    <item>4. Wer benötigt zur Durchführung des Sprechfunkverkehrs ein Flugfunkzeugnis? Der Flugschüler an Bord eines Ausbildungsluftfahrzeuges in der Platzrunde eines unkontrollierten Flugplatzes Der Betreiber einer Bodenfunkstelle, die ausschließlich der Übermittlung von Flugbetriebsmeldungen dient Flugplatzes</item>
+    <item>4. Wer benötigt zur Durchführung des Sprechfunkverkehrs ein Flugfunkzeugnis?</item>
     <item>5. Wer benötigt zur Durchführung des Sprechfunkverkehrs kein Flugfunkzeugnis?</item>
     <item>6. Wer benötigt zur Durchführung des Sprechfunkverkehrs kein Flugfunkzeugnis?</item>
     <item>7. Wozu berechtigt das \"Beschränkt Gültige Sprechfunkzeugnis II für den Flugfunkdienst\" (BZF II)? Zur Ausübung des Sprechfunkverkehrs &#8230;</item>
@@ -15,8 +15,8 @@
     <item>10. Was ist eine Luftfunkstelle? Eine Funkstelle &#8230;</item>
     <item>11. Was ist eine Bodenfunkstelle? Seefahrzeugs oder auf einer Plattform auf See Funkmeldungen</item>
     <item>12. Was bedeutet der Begriff \"BLINDSENDUNG\"?</item>
-    <item>13. Was bedeutet der Begriff \"ALLGEMEINER ANRUF\"? gerichtet ist betreffen können, die an eine oder mehrere bestimmte Stellen gerichtet ist</item>
-    <item>14. Was bedeutet der Begriff \"ROLLHALT\"? Luftfahrzeuge und Fahrzeuge anhalten und warten müssen</item>
+    <item>13. Was bedeutet der Begriff \"ALLGEMEINER ANRUF\"?</item>
+    <item>14. Was bedeutet der Begriff \"ROLLHALT\"?</item>
     <item>15. Welche Abkürzung wird für den Begriff \"KONTROLLZONE\" verwendet?</item>
     <item>16. Welche Bedeutung hat die Abkürzung \"IMC\"?</item>
     <item>17. Welche Bedeutung hat die Abkürzung \"FIR\"?</item>
@@ -100,10 +100,10 @@
     <item>95. Bei welchen Flügen muss ein Pilot ständige Hörbereitschaft halten? Bei VFR-Flügen &#8230;</item>
     <item>96. Bei welchen Flügen nach Sichtflugregeln muss der Pilot ständige Hörbereitschaft auf der zugewiesenen Frequenz halten? Bei Flügen &#8230;</item>
     <item>97. Wer ein Luftfahrzeug auf einem Flugplatz mit Flugverkehrskontrolle oder in dessen Umgebung führt, ist u.a. verpflichtet, durch Funk oder Zeichen die vorherige Genehmigung für alle Bewegungen einzuholen, durch die das &#8230;</item>
-    <item>98. Wer ein Luftfahrzeug nach Sichtflugregeln auf einem Flugplatz mit Flugverkehrskontrolle oder in dessen Umgebung führt, ist verpflichtet &#8230; auf Anweisungen durch Licht- und Bodensignale sowie Zeichen zu achten</item>
+    <item>98. Wer ein Luftfahrzeug nach Sichtflugregeln auf einem Flugplatz mit Flugverkehrskontrolle oder in dessen Umgebung führt, ist verpflichtet &#8230;</item>
     <item>99. Was bedeutet bei einem Funktest der Hinweis \"HÖRE SIE ZWO\"? Der Funktest ist &#8230;</item>
-    <item>100. Was bedeutet bei einem Funktest der Hinweis \"HÖRE SIE DREI\"? Die Funktest ist &#8230;</item>
-    <item>101. Was bedeutet bei einem Funktest der Hinweis \"HÖRE SIE VIER\"? Die Funktest ist &#8230;</item>
+    <item>100. Was bedeutet bei einem Funktest der Hinweis \"HÖRE SIE DREI\"? Der Funktest ist &#8230;</item>
+    <item>101. Was bedeutet bei einem Funktest der Hinweis \"HÖRE SIE VIER\"? Der Funktest ist &#8230;</item>
     <item>102. Was bedeutet bei einem Funktest der Hinweis \"HÖRE SIE FÜNF\"? Der Funktest ist &#8230;</item>
     <item>103. Ein Funktest ist \"verständlich\". Wie wird die Verständlichkeit im Sprechfunkverkehr ausgedrückt?</item>
     <item>104. Ein Funktest ist \"schwer verständlich\". Wie wird die Verständlichkeit im Sprechfunkverkehr ausgedrückt?</item>
@@ -113,7 +113,7 @@
     <item>108. Welche Meldungen müssen wiederholt werden?</item>
     <item>109. Wie wird der Empfang einer Flugverkehrskontrollfreigabe bestätigt? Durch &#8230;</item>
     <item>110. DESEL erhält die folgende Freigabe/Anweisung: \"DEL NACH DEM ABHEBEN STEIGEN SIE GERADEAUS AUF FLUGHÖHE 3000 FUSS, MACHEN SIE DANN EINE RECHTSKURVE, WINFREI</item>
-    <item>111. Welche Teile der nachfolgenden Anweisungen oder Informationen müssen bestätigt werden? Geschwindigkeitsanweisungen, Frequenz bei Frequenzwechsel Windrichtung, Startfreigabe und Frequenz bei Frequenzwechsel</item>
+    <item>111. Welche Teile der nachfolgenden Anweisungen oder Informationen müssen bestätigt werden?</item>
     <item>112. Bei welchen VFR-Flügen ist in der Regel die Übermittlung von Standortmeldungen erforderlich? Bei &#8230;</item>
     <item>113. Bei einem VFR-Flug zu einem Flughafen mit Flugverkehrskontrolle gelten die im \"Luftfahrthandbuch VFR\" festgelegten Verfahren. Standortmeldungen über den Pflichtmeldepunkten müssen &#8230;</item>
     <item>114. Wann hat ein Pilot bei einem VFR-Flug während des Flugverkehrskontrollstelle eine Standortmeldung zu übermitteln?</item>
@@ -136,10 +136,10 @@
     <item>131. Was versteht man unter VOLMET?</item>
     <item>132. Ein Pilot hat während des Fluges zu einem internationalen Verkehrsflughafen die Möglichkeit das Flugplatzwetter einzuholen über &#8230;</item>
     <item>133. ATIS-Aussendungen dienen unter anderem der Unterrichtung von Piloten. Welche Angaben enthalten sie?</item>
-    <item>134. Wie werden SIGMET-Meldungen in der Zeit von 0700 (0600 während der gesetzlichen Sommerzei) bis SS+30 verbreitet? und vollen Stunde</item>
+    <item>134. Wie werden SIGMET-Meldungen in der Zeit von 0700 (0600 während der gesetzlichen Sommerzeit) bis SS+30 verbreitet?</item>
     <item>135. SIGMET-Meldungen dienen der Sicherheit des Flugbetriebs der Allgemeinen Luftfahrt. Welche Angaben enthalten sie?</item>
-    <item>136. Welche Angaben soll eine Notmeldung enthalten? Kurs und Flughöhe</item>
-    <item>137. Das Notsignal MAYDAY bedeutet, dass &#8230; Hilfe benötigen</item>
+    <item>136. Welche Angaben soll eine Notmeldung enthalten?</item>
+    <item>137. Das Notsignal MAYDAY bedeutet, dass &#8230;</item>
     <item>138. Ein Notanruf soll übermittelt werden &#8230;</item>
     <item>139. Wie wird ein Notanruf eingeleitet?</item>
     <item>140. Welches der folgenden Signale ist ein Notsignal?</item>
@@ -261,7 +261,7 @@
     <item>256. Wozu dient Sekundärradar in der Flugsicherung? Zur &#8230;</item>
     <item>257. Welche Angaben kann ein Pilot von einer Flugverkehrskontrollstelle mit Radar erhalten? Angaben über &#8230;</item>
     <item>258. Die Abkürzung \"GPS\" bedeutet in der Luftfahrt:</item>
-    <item>259. Das \"GLOBAL POSITIONSBESTIMMUNGSSYSTEM (GPS)\" ist ein &#8230;</item>
+    <item>259. Das \"Globale Positionsbestimmungssystem (GPS)\" ist ein &#8230;</item>
     <item>260. Wozu dienen GPS-Empfänger an Bord von Luftfahrzeugen?</item>
 
   </string-array>

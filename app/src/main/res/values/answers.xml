@@ -624,20 +624,20 @@
     <item>3 bis 4 Achtel</item>
     <item>1 bis 2 Achtel</item>
     <!-- 125 -->
-    <item>LOCKERE BEWÖLKUNG (SCATTERED)</item>
-    <item>BEDECKT (OVERCAST)</item>
-    <item>DURCHBROCHEN BEWÖLKT (BROKEN)</item>
-    <item>KEINE MARKANTEN WOLKEN (NO SIGNIFICANT CLOUDS)</item>
+    <item>locker Bewölkung (SCATTERED)</item>
+    <item>bedeckt (OVERCAST)</item>
+    <item>durchbrochen bewölkt (BROKEN)</item>
+    <item>keine markanten Wolken (NO SIGNIFICANT CLOUDS)</item>
     <!-- 126 -->
-    <item>DURCHBROCHEN BEWÖLKT (BROKEN)</item>
-    <item>GERING BEWÖLKT (FEW)</item>
-    <item>BEDECKT (OVERCAST)</item>
-    <item>LOCKERE BEWÖLKUNG (SCATTERED)</item>
+    <item>durchbrochen bewölkt (BROKEN)</item>
+    <item>gering bewölkt (FEW)</item>
+    <item>bedeckt (OVERCAST)</item>
+    <item>lockere Bewölkung (SCATTERED)</item>
     <!-- 127 -->
-    <item>GERING BEWÖLKT (FEW)</item>
-    <item>DURCHBROCHEN BEWÖLKT (BROKEN)</item>
-    <item>LOCKERE BEWÖLKUNG (SCATTERED)</item>
-    <item>KEINE MARKANTEN WOLKEN (NO SIGNIFICANT CLOUDS)</item>
+    <item>gering bewölkt (FEW)</item>
+    <item>durchbrochen bewölkt (BROKEN)</item>
+    <item>lockere Bewölkung (SCATTERED)</item>
+    <item>keine markanten Wolken (NO SIGNIFICANT CLOUDS)</item>
     <!-- 128 -->
     <item>Sicht 10 km oder mehr, keine Bewölkung unter 5000 ft AGL</item>
     <item>Sicht 5000 m oder mehr, keine Bewölkung unter 5000 ft AGL</item>
@@ -726,7 +726,7 @@
     <!-- 145 -->
     <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich; auf dem nächstgelegenen geeigneten Flugplatz zu landen; und der zuständigen Flugverkehrskontrollstelle schnellstmöglich die Landezeit zu übermitteln</item>
     <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich; und ein geeignetes Notlandegelände zu erkunden</item>
-    <item>den Transpondercde Mode A 7600 zu schalten, sofern möglich; und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen</item>
+    <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich; und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen</item>
     <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich; und nach einer Umkehrkurve von 180° zum Startflugplatz zurück zu kehren</item>
     <!-- 146 -->
     <item>Die Meldung ist zweimal zu übermitteln</item>
@@ -1044,7 +1044,7 @@
     <item>der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 300 m, in senkrechter Richtung mindestens 300 ft Abstand hält</item>
     <item>der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält, sowie eine Bodensicht von mindestens 5 km herrscht</item>
     <!-- 209 -->
-    <item>Bodensicht, Flugsicht mindestens 1500 m, frei von Wolken, maximal 140 kt</item>
+    <item>Erdsicht, Flugsicht mindestens 1500 m, frei von Wolken, maximal 140 kt</item>
     <item>Flugsicht mindestens 1500 m, Wolken dürfen nicht berührt werden</item>
     <item>Bodensicht mindestens 5 km, Hauptwolkenuntergrenze mindestens 1500 ft, maximal 140 kt</item>
     <item>Flugsicht mindestens 1500 m, Abstand von Wolken in waagerechter Richtung 300 m, in senkrechter Richtung 2000 ft</item>
