@@ -205,7 +205,7 @@ public class SimulatorActivity  extends AppCompatActivity
         int correct = Math.round(totalSuccessRates * 100 / answeredFromYou);
 
         // Send to Crashlytics, that the user completed the Simulator
-        Answers.getInstance().logLevelEnd(new LevelEndEvent()
+        if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
                 .putLevelName(getString(R.string.simulator))
                 .putScore(correct)
                 .putSuccess(correct > 50));
@@ -415,7 +415,7 @@ public class SimulatorActivity  extends AppCompatActivity
             case MotionEvent.ACTION_DOWN:
                 //If the record button got pushed the first time, send it to Crashlytics
                 if (!loggedLevelStart) {
-                    Answers.getInstance().logLevelStart(new LevelStartEvent()
+                    if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
                             .putLevelName(getString(R.string.simulator))
                             .putCustomAttribute(getString(R.string.language), getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de))
                             .putCustomAttribute(getString(R.string.settings_sim_level), getDifficultyName()));
