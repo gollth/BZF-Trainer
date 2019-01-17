@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.core.CrashlyticsCore;
 
 import io.fabric.sdk.android.Fabric;
@@ -39,7 +40,7 @@ public class BZFTrainerApplication extends Application {
         CrashlyticsCore crashlytics = new CrashlyticsCore.Builder()
                 .disabled(BuildConfig.DEBUG)
                 .build();
-        Fabric.with(this, crashlytics);
+        Fabric.with(this, crashlytics, new Answers());
 
         defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(handler);
