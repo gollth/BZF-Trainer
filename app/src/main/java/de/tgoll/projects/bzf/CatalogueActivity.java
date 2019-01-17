@@ -66,6 +66,9 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         vibrator = (Vibrator)  getSystemService(Context.VIBRATOR_SERVICE);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        enableInput();
+
         gson = new Gson();
         String s = settings.getString("SavedState", "");
         if (s == null || s.isEmpty()) resetQuestions();
@@ -75,7 +78,6 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             choices = state.choices;
             loadQuestion(state.progress);
         }
-
     }
 
     @Override
@@ -208,17 +210,31 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     }
 
-    public void startHighlightAnimation() {
-        if (highlightCorrectAnswer())
-            if (settings.getBoolean(getString(R.string.settings_vibrate_correct),true))
-                vibrator.vibrate(new long[]{0,100,100,200},-1); // Correct
-        else
-            if (settings.getBoolean(getString(R.string.settings_vibrate_false), true))
-                vibrator.vibrate(200);                          // Wrong
+    public void ignoreInput() {
+        for(int i = 0; i < 4; i++) txt_answers.getChildAt(i).setClickable(false);
+    }
+    public void enableInput() {
+        for(int i = 0; i < 4; i++) txt_answers.getChildAt(i).setClickable(true);
+    }
 
+    public void startHighlightAnimation() {
+        ignoreInput();
+        boolean isVibrationGloballyEnabled = settings.getBoolean(getString(R.string.settings_vibrate), true);
+        boolean isVibrationOnFalseEnabled = settings.getBoolean(getString(R.string.settings_vibrate_false), true);
+        boolean isVibrationOnTrueEnabled = settings.getBoolean(getString(R.string.settings_vibrate_correct), true);
+
+        if (highlightCorrectAnswer()) {
+            if (isVibrationGloballyEnabled && isVibrationOnTrueEnabled)
+                vibrator.vibrate(new long[]{0, 100, 100, 200}, -1); // Correct
+        }
+        else {
+            if (isVibrationGloballyEnabled && isVibrationOnFalseEnabled)
+                vibrator.vibrate(200);                          // Wrong
+        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                enableInput();
                 if (allQuestionsAnswered()) showResultDialog();
                 else if (!isFinalQuestion()) loadQuestion();
 
