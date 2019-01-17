@@ -103,7 +103,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             Collections.shuffle(playlist);
 
         // Send to Crashlytics, that the user started a new trial
-        Answers.getInstance().logLevelStart(new LevelStartEvent()
+        if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
             .putLevelName(getString(R.string.catalogue))
             .putCustomAttribute(getString(R.string.settings_shuffle), ""+settings.getBoolean(getString(R.string.settings_shuffle), false)));
 
@@ -255,7 +255,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
                 }).show();
 
         // Send to Crashlytics, that the user has successfully finished the catalogue
-        Answers.getInstance().logLevelEnd(new LevelEndEvent()
+        if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
             .putLevelName(getString(R.string.catalogue))
             .putScore(trial.getSuccessRate())
             .putSuccess(success));
