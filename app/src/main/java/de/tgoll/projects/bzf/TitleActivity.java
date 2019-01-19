@@ -3,6 +3,7 @@ package de.tgoll.projects.bzf;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -51,29 +52,12 @@ public class TitleActivity extends AppCompatActivity {
                 break;
 
             case R.id.title_btn_feedback:
-                final AlertDialog dialog = new AlertDialog.Builder(this)
-                        .setView(LayoutInflater.from(this).inflate(R.layout.dialog_feedback, null))
-                        .setCancelable(true)
-                        .setTitle(R.string.feedback)
-                        .setNegativeButton(R.string.cancel, null)   // simple dismiss
-                        .setPositiveButton(R.string.send, null)
-                        .create();
-                dialog.show();
-                dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Spinner act = dialog.findViewById(R.id.cbx_feedback_activity);
-                        Spinner type = dialog.findViewById(R.id.cbx_feedback_type);
-                        EditText comment = dialog.findViewById(R.id.txt_feedback_comment);
-                        Answers.getInstance().logCustom(new CustomEvent(getString(R.string.feedback))
-                            .putCustomAttribute("Activity", act.getSelectedItem().toString())
-                            .putCustomAttribute("Type", type.getSelectedItem().toString())
-                            .putCustomAttribute(getString(R.string.feedback_comment), comment.getText().toString())
-                        );
-                        Snackbar.make(root, R.string.feedback_sent, Snackbar.LENGTH_LONG).show();
-                        dialog.dismiss();
-                    }
-                });
+                Intent feedback = new Intent(
+                        Intent.ACTION_SENDTO,
+                        Uri.fromParts("mailto", "thoregoll@googlemail.com", null)
+                ).putExtra(Intent.EXTRA_SUBJECT, "[BZF-Trainer] Feedback");
+
+                startActivity(Intent.createChooser(feedback, "Mail"));
                 break;
         }
 
