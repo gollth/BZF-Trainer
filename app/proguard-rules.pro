@@ -24,6 +24,8 @@
 # For using GSON @Expose annotation
 -keepattributes *Annotation*
 
+-keepattributes SourceFile,LineNumberTable
+
 # Gson specific classes
 -keep class sun.misc.Unsafe { *; }
 #-keep class com.google.gson.stream.** { *; }
@@ -41,6 +43,9 @@
 -keep class de.tgoll.projects.bzf.StatisticsActivity { *; }
 -keep class de.tgoll.projects.bzf.StatisticsActivity.NoneValueFormatter { *; }
 -keep class de.tgoll.projects.bzf.StatisticsActivity.LabelFormatter { *; }
+
+-keep class com.crashlytics.** { *; }
+-dontwarn com.crashlytics.**
 
 # Add the path to the jar
 #-libraryjars C:\Android\Projects\BZF\app\libs\gson-2.2.2.jar
