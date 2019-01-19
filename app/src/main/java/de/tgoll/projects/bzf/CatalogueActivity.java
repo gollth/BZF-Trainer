@@ -76,7 +76,10 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             SavedState state = gson.fromJson(s, SavedState.class);
             playlist = state.playlist;
             choices = state.choices;
-            loadQuestion(state.progress);
+
+            // if we contain an old state saved in app data, we clear it.
+            if (playlist.size() != Catalogue.size()) resetQuestions();
+            else loadQuestion(state.progress);
         }
     }
 
