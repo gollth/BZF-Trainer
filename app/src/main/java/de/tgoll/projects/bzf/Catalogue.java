@@ -2,11 +2,10 @@ package de.tgoll.projects.bzf;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -17,39 +16,24 @@ import java.util.Map;
 class Catalogue {
 
     private static String[] questions;
-    private static List<List<String>> answers;
+    private static String[][] answers;
     private static int[] solutions;
 
     static void initialize(Context c) {
         questions = c.getResources().getStringArray(R.array.questions);
-        answers = new ArrayList<>();
-        solutions = new int[questions.length];
+        answers = new String[questions.length][];
+        solutions = c.getResources().getIntArray(R.array.solutions);
 
         String[] tmp = c.getResources().getStringArray(R.array.answers);
-        if (questions.length != tmp.length/4) {
+        if (questions.length != tmp.length) {
             throw new Resources.NotFoundException("The amount of questions (" + questions.length +
-                    ") does not match with the amount of answers (" + tmp.length/4 + ")");
+                    ") does not match with the amount of answers (" + tmp.length + ")");
         }
 
         for (int i = 0; i < questions.length; i++) {
-            int offset = i * 4;
-            List<String> as = new ArrayList<>();
-            for (int j = 0; j < 4; j++) as.add(tmp[offset+j]);
-
-            // Shuffle the list of answers
-
-            List<Integer> idx = Arrays.asList(0,1,2,3);
-            Collections.shuffle(idx);
-            List<String> bs = new ArrayList<>();
-            for (int j = 0; j < 4; j++) {
-                int id = idx.get(j);
-                bs.add(as.get(id));
-
-                // The first answer (A) is always correct in answers.xml
-                // That's why we save the index to that solution
-                if (id == 0) solutions[i] = j;
-            }
-            answers.add(bs);
+            answers[i] = tmp[i].split(c.getString(R.string.answer_separator));
+            if (answers[i].length < 4) Log.e("Question " + (i+1), "Missing ;");
+            if (answers[i].length > 4) Log.e("Question " + (i+1), "To much ;");
         }
     }
 
@@ -85,7 +69,7 @@ class Catalogue {
     }
     static String getAnswer(int question, int answer) {
         try {
-            return answers.get(question).get(answer);
+            return answers[question][answer];
         } catch (Exception e) {
             Crashlytics.log("Error occurred in asking \"getAnswer\" of question " + question + " and answer " + answer + ": " + e.getMessage());
             return "Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen";
@@ -93,8 +77,7 @@ class Catalogue {
     }
     static String[] getAnswers(int question) {
         try {
-            List<String> list = answers.get(question);
-            return list.toArray(new String[list.size()]);
+            return answers[question];
         } catch (Exception e) {
             Crashlytics.log("Error occurred in asking \"getAnswers\" of question " + question + ": " + e.getMessage());
             return new String[]{"Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen", "", "", ""};
