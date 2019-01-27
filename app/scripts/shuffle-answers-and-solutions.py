@@ -16,24 +16,24 @@ parser.add_argument('--path', default=p.join(*'.. src main res values'.split()))
 args = parser.parse_args()
 
 paths = {
-    'questions': p.join(dir, args.path, 'questions.xml'),
-    'answers'  : p.join(dir, args.path, 'answers.xml'),
-    'solutions': p.join(dir, args.path, 'solutions.xml')
+    'questions'   : p.join(dir, args.path, 'questions.xml'),
+    'answers'     : p.join(dir, args.path, 'answers.xml'),
+    'answers.bak' : p.join(dir, 'answers.bak.xml'),
+    'solutions'   : p.join(dir, args.path, 'solutions.xml')
 }
 
 resources = {
     'questions': xml.parse(paths['questions']).getroot(),
-    'answers':   xml.parse(paths['answers']).getroot(),
+    'answers':   xml.parse(paths['answers.bak']).getroot(),
     'solutions': xml.Element('resources')
 }
 questions = resources['questions'][0]
 answers   = resources['answers'][0]
-solutions = xml.SubElement(resources['solutions'], 'string-array')
+solutions = xml.SubElement(resources['solutions'], 'integer-array')
 solutions.set('name', 'solutions')
 
 if len(answers) / 4 != len(questions):
     raise Exception('Not enough/too many answers %s for amount of questions %s' % (answers.length/4, questions.length))
-
 
 data = []
 for i in range(0, len(answers), 4):
@@ -42,18 +42,19 @@ for i in range(0, len(answers), 4):
     solution = idx.index(0)
     xml.SubElement(solutions, 'item').text = str(solution)
 
-    data.extend([answers[i+j].text for j in idx])
+    data.append([answers[i+j].text for j in idx])
 
-for value, answer in zip(data, answers):
-    answer.text = value
+seperator = xml.SubElement(resources['answers'], 'string')
+seperator.set('name', 'answer_separator')
+seperator.text=';'
+answers.clear()
+answers.set('formatted', 'false')
+answers.set('name', 'answers')
 
-
-def pretty(x, newl):
-    return minidom.parseString(xml.tostring(x, 'utf-8'))\
-                  .toprettyxml(indent='    ', newl=newl)
-
+for row in data:
+    xml.SubElement(answers, 'item').text = u'A) {};\nB) {};\nC) {};\nD) {}'.format(*row)
 
 for item in ['answers', 'solutions']:
     print('Writing file %s' % paths[item])
-    with open(paths[item], 'w') as file:
-        file.write(xml.tostring(resources[item]))
+    with open(paths[item], 'wb') as file:
+        file.write(xml.tostring(resources[item], encoding='utf-8'))
