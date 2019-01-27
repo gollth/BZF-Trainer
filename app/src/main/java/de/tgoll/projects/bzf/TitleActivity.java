@@ -19,8 +19,6 @@ import com.crashlytics.android.answers.CustomEvent;
 public class TitleActivity extends AppCompatActivity {
 
 
-    private View root;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +28,6 @@ public class TitleActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setIcon(R.drawable.bzf);
         }
-        root = findViewById(R.id.title_lyt_root);
 
         ChangeLog changelog = new ChangeLog(this);
         if (changelog.firstRun())
