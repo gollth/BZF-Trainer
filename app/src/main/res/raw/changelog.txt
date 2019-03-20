@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+    $ 0.3.3
+      % Version 0.3.3
+      _ 2019-01-27
+      * kleinere Rechtschreibfehler entfernt
+      * Pflichtmeldepunkte wieder in den Fragen
+      * Problem mit zufälligen Antworten beim Fortsetzen des Katalogs behoben
     $ 0.3.2
       % Version 0.3.2
       _ 2019-01-19

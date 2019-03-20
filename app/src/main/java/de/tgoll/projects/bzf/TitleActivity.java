@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -19,8 +20,6 @@ import com.crashlytics.android.answers.CustomEvent;
 public class TitleActivity extends AppCompatActivity {
 
 
-    private View root;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +29,17 @@ public class TitleActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setIcon(R.drawable.bzf);
         }
-        root = findViewById(R.id.title_lyt_root);
 
         ChangeLog changelog = new ChangeLog(this);
-        if (changelog.firstRun())
+        if (changelog.firstRun()) {
             changelog.getFullLogDialog().show();
+
+            // Remove the catalog progress on a new version, since the questions/answers might have changed
+            PreferenceManager.getDefaultSharedPreferences(this)
+                    .edit().remove("SavedState").apply();
+
+
+        }
     }
 
     public void onButtonClick (View v) {
