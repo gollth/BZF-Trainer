@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+    $ 0.3.4
+      % Version 0.3.4
+      _ 2019-03-20
+      * Frage 110 + 169 gefixt
+      * sorry, dass es so lange gedauert hat =P
     $ 0.3.3
       % Version 0.3.3
       _ 2019-01-27
