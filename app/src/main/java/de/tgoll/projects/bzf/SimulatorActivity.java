@@ -23,6 +23,7 @@ import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.Manifest;
@@ -66,6 +67,7 @@ public class SimulatorActivity  extends AppCompatActivity
                                 implements View.OnTouchListener,
                                 AdapterView.OnItemSelectedListener {
 
+    public static final int PERMISSON_RECORD_AUDIO = 19;
 
     public static final int EASY = -1;
     public static final int MEDIOCRE = 0;
@@ -294,20 +296,7 @@ public class SimulatorActivity  extends AppCompatActivity
         highlightHelp(false, true);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            new AlertDialog.Builder(SimulatorActivity.this)
-                    .setMessage(getString(R.string.sim_info_mic))
-                    .setNegativeButton(getString(R.string.negative), new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    }).setPositiveButton(getString(R.string.positive), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    startInstalledAppDetailsActivity(SimulatorActivity.this);
-                    dialog.dismiss();
-                }
-            }).show();
+             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSON_RECORD_AUDIO);
         }
 
         final WifiManager wifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
