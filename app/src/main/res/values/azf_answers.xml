@@ -1,6 +1,8 @@
-<?xml version="1.0" encoding="utf8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array formatted="false" name="azf_answers">
+
         <item>A) The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to navigation aids, from which it is intended, that an instrument approach will be commenced;
 B) In any case that time at which the aircraft will arrive over the aerodrome;
 C) The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to visual aids, from which it is intended, that an approach will be commenced;
@@ -61,7 +63,7 @@ D) Surface Strength of Runway</item>
 B) Route navigation;
 C) Area navigation;
 D) Radar aided navigation</item>
-        <item>A) Recleared Via Route â€¦.;
+        <item>A) Recleared Via Route  …;
 B) Radar Vectors Requested;
 C) Runway Visual Range;
 D) Runway Visibility Report</item>
@@ -137,10 +139,10 @@ D) Aeronautical Security Messages</item>
 B) Meteorological Messages;
 C) Radio Teletype Messages;
 D) Urgency Messages</item>
-        <item>A) lower than &quot;CLEARED TO LAND&quot;;
-B) higher than &quot;TRANSMIT FOR QDM&quot;;
-C) higher than &quot;CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G&quot;;
-D) same as &quot;LINE UP RUNWAY 07 AND WAIT&quot;</item>
+        <item>A) lower than \"CLEARED TO LAND\";
+B) higher than \"TRANSMIT FOR QDM\";
+C) higher than \"CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G\";
+D) same as \"LINE UP RUNWAY 07 AND WAIT\"</item>
         <item>A) an Urgency Message;
 B) a Meteorological Message;
 C) a Message Relating to Direction Finding;
@@ -161,10 +163,10 @@ D) Meteorological message, Message Relating to Direction Finding, Flight Regular
 B) Meteorological Message, Message Relating to Direction Finding, Flight Safety Message;
 C) Flight Regularity Message, Distress Message, Meteorological Message;
 D) Flight Safety Message, Message Relating to Direction Finding, Urgency Message</item>
-        <item>A) same as &quot;LATEST QNH 1018&quot;;
-B) higher than &quot;REQUEST CLIMB FLIGHT LEVEL â€¦&quot;;
-C) lower than &quot;DECEND FLIGHT LEVEL â€¦&quot;;
-D) higher than &quot;TURN LEFT HEADING â€¦&quot;</item>
+        <item>A) same as \"LATEST QNH 1018\";
+B) higher than \"REQUEST CLIMB FLIGHT LEVEL …\";
+C) lower than \"DECEND FLIGHT LEVEL …\";
+D) higher than \"TURN LEFT HEADING …\"</item>
         <item>A) Hotel Bravo Juliett Yankee Charlie;
 B) Hotel Bravo India Yankee Charlie;
 C) Hotel Bravo India Victor Charlie;
@@ -175,10 +177,10 @@ C) Fox Romeo India - VOR;
 D) Foxtrot Romeo Juliett - VOR</item>
         <item>A) Three thousand five hundred;
 B) Three five zero zero;
-C) Three five double &quot;O&quot;;
+C) Three five double \"O\";
 D) Three five hundred</item>
         <item>A) QNH one double zero one;
-B) QNH one double &quot;O&quot; one;
+B) QNH one double \"O\" one;
 C) QNH one zero zero one;
 D) QNH one thousand and one</item>
         <item>A) One one eight decimal zero one zero;
@@ -322,7 +324,7 @@ B) ROGER;
 C) YES;
 D) AFFIRMATIVE</item>
         <item>A) Listen out on (frequency/channel);
-B) Establish radio contact withâ€¦;
+B) Establish radio contact with …;
 C) Examine a system or procedure;
 D) Wait and I will call you</item>
         <item>A) Fastair 345 may be requested on frequency 118.900 on which aerodrome data are being broadcast;
@@ -353,24 +355,24 @@ D) SQUAWK ALPHA 0410 AND CHARLIE</item>
 B) The pilot indicates that his landing is assured and he will not submit the landing time;
 C) The pilot closes his flight plan;
 D) The pilot changes from IFR to VFR</item>
-        <item>A) CANCEL POSITION REPORT OVER â€¦. (fix);
-B) NO POSITION REPORT OVER â€¦. (fix);
-C) DO NOT REPORT OVER â€¦. (fix);
-D) OMIT POSITION REPORT OVER â€¦. (fix)</item>
-        <item>A) RUNWAY ... TAXI VIA â€¦;
-B) CLEARED TO RUNWAY â€¦ VIA â€¦;
-C) TAXI TO HOLDING POINT RUNWAY ... VIA â€¦.;
-D) TAXI VIA ... TO RUNWAY â€¦</item>
-        <item>A) WHEN READY CLIMB/DESCEND FL â€¦;
-B) CLIMB/DESCEND FL ... AT ANY TIME;
-C) CLIMB/DESCEND FL ... AT YOUR CONVENIENCE;
-D) CLIMB/DESCEND FL â€¦</item>
-        <item>A) CLEARED FL ...;
-B) LEAVE FL ... FOR FL â€¦;
-C) MAINTAIN FL ...;
-D) DESCEND FL â€¦</item>
+        <item>A) CANCEL POSITION REPORT OVER  … (fix);
+B) NO POSITION REPORT OVER  … (fix);
+C) DO NOT REPORT OVER  … (fix);
+D) OMIT POSITION REPORT OVER  … (fix)</item>
+        <item>A) RUNWAY … TAXI VIA  …;
+B) CLEARED TO RUNWAY  … VIA  …;
+C) TAXI TO HOLDING POINT RUNWAY … VIA  …;
+D) TAXI VIA … TO RUNWAY  …</item>
+        <item>A) WHEN READY CLIMB/DESCEND FL  …;
+B) CLIMB/DESCEND FL … AT ANY TIME;
+C) CLIMB/DESCEND FL … AT YOUR CONVENIENCE;
+D) CLIMB/DESCEND FL  …</item>
+        <item>A) CLEARED FL …;
+B) LEAVE FL … FOR FL  …;
+C) MAINTAIN FL …;
+D) DESCEND FL  …</item>
         <item>A) TAXI TO TAKE-OFF POSITION;
-B) LINE UP RUNWAY â€¦.;
+B) LINE UP RUNWAY  …;
 C) CONTINUE TO TAKE-OFF POSITION AND HOLD;
 D) CLEARED INTO POSITION AND HOLD</item>
         <item>A) RUNWAY VACATED;
@@ -389,10 +391,10 @@ D) CONFIRM SQUAWKING ALPHA 6620</item>
 B) REQUEST TAXI CLEARANCE;
 C) REQUEST PERMISSION TO TAXI;
 D) WHAT IS MY TAXI CLEARENCE</item>
-        <item>A) CLEARED FL â€¦.;
-B) LEAVE FL â€¦. FOR FL â€¦.;
-C) CLIMB FL â€¦.;
-D) MAINTAIN FL â€¦.</item>
+        <item>A) CLEARED FL  …;
+B) LEAVE FL  … FOR FL  …;
+C) CLIMB FL  …;
+D) MAINTAIN FL  …</item>
         <item>A) REQUEST TO CANCEL IFR;
 B) WILL CONTINTUE VFR;
 C) WILL CONTINUE VMC;
@@ -585,8 +587,8 @@ D) Up to 5000 m in metres, above in kilometres</item>
 B) Visibility 1.2 kilometres;
 C) Visibility 1200 feet;
 D) Visibility 1.2 nautical miles</item>
-        <item>A) THE VALUES OF THE TRANSMISSION ARE: â€¦. METRES AND ... METRES;
-B) RVR AT THE BEGINNING OF RUNWAY 16 IS ... METRES;
+        <item>A) THE VALUES OF THE TRANSMISSION ARE:  … METRES AND … METRES;
+B) RVR AT THE BEGINNING OF RUNWAY 16 IS … METRES;
 C) RVR RUNWAY 16, TOUCHDOWN ZONE, METRES, MID POINT, METRES, STOP END, METRES;
 D) RVR RUNWAY 16, METRES DIAGONAL, METRES DIAGONAL METRES</item>
         <item>A) Braking action medium;
@@ -713,10 +715,10 @@ D) Squawk mode A code 7500</item>
 B) on the international emergency frequency;
 C) on the regional guard frequency;
 D) to all available aeronautical stations</item>
-        <item>A) &quot;READ YOU ONE, READ YOU ONE&quot;;
-B) &quot;TRANSMITTING BLIND&quot;;
-C) &quot;PAN PAN, PAN PAN, PAN PAN&quot;;
-D) &quot;HOW DO YOU READ?&quot;</item>
+        <item>A) \"READ YOU ONE, READ YOU ONE\";
+B) \"TRANSMITTING BLIND\";
+C) \"PAN PAN, PAN PAN, PAN PAN\";
+D) \"HOW DO YOU READ?\"</item>
         <item>A) only once on the designated frequency;
 B) during VFR flights only;
 C) on the emergency frequency only;
@@ -769,7 +771,7 @@ D) squawk 7600 and maintain the heading last assigned by ATC for a period of 3 m
 B) squawk 7600;
 C) inform the competent ATC unit immediately;
 D) continue the flight in VMC</item>
-        <item>A) insert under item 18 of the flight plan &quot;TRANSPONDER UNSERVICEABLE&quot;;
+        <item>A) insert under item 18 of the flight plan \"TRANSPONDER UNSERVICEABLE\";
 B) inform FIS for relay to AlS;
 C) inform ATC after departure;
 D) obtain prior permission by ATC to conduct the flight</item>
@@ -897,10 +899,10 @@ D) G1 N0120/ABC VFR</item>
 B) 0120/XYZFO8O IFR;
 C) XYZ/N0120F080 IFR;
 D) F080 XYZ IFR</item>
-        <item>A) .â€¦ A101 N0250/F150 LEG G98 ...;
-B) â€¦. A101 LEG/N0250F150 G98 ...;
-C) â€¦. A101 LEG/F150 G98 ...;
-D) â€¦. A101 F150/N0250 LEG G98 ...</item>
+        <item>A) . … A101 N0250/F150 LEG G98 …;
+B)  … A101 LEG/N0250F150 G98 …;
+C)  … A101 LEG/F150 G98 …;
+D)  … A101 F150/N0250 LEG G98 …</item>
         <item>A) Z;
 B) V;
 C) I;
@@ -1157,5 +1159,7 @@ D) A SRE approach</item>
 B) ADF;
 C) VOR/DME;
 D) ILS</item>
+
     </string-array>
+
 </resources>
