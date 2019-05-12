@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <string-array name="questions">
+  <string-array name="bzf_questions">
 
     <item>1. Welche zwischenstaatliche Organisation hat für den weltweiten Flugfunkdienst besondere Bedeutung?</item>
     <item>2. Was ist die rechtliche Grundlage für das Errichten und Betreiben von Funkanlagen in der Bundesrepublik Deutschland?</item>
