@@ -47,13 +47,16 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     private Vibrator vibrator;
     private SharedPreferences settings;
     private Gson gson;
+    private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogue);
 
-        Catalogue.initialize(getApplicationContext());
+        key = getIntent().getStringExtra("key");
+
+        Catalogue.initialize(getApplicationContext(), key);
 
         txt_questions = findViewById(R.id.txt_question);
         txt_answers = findViewById(R.id.lyt_ABCD);
@@ -109,7 +112,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         // Send to Crashlytics, that the user started a new trial
         if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
-            .putLevelName(getString(R.string.catalogue))
+            .putLevelName(key)
             .putCustomAttribute(getString(R.string.settings_shuffle), ""+settings.getBoolean(getString(R.string.settings_shuffle), false)));
 
         loadQuestion(0);
@@ -262,7 +265,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         boolean success = trial.getSuccessRate() > 0.75;
 
         new AlertDialog.Builder(CatalogueActivity.this)
-                .setTitle(getString(success ? R.string.msg_finsih_pass : R.string.msg_finish_fail))
+                .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
                 .setMessage(String.format(getString(R.string.msg_finish), Math.round(trial.getSuccessRate() * 100)))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
                 .setPositiveButton(getString(R.string.back_to_title), new DialogInterface.OnClickListener() {
@@ -275,7 +278,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         // Send to Crashlytics, that the user has successfully finished the catalogue
         if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
-            .putLevelName(getString(R.string.catalogue))
+            .putLevelName(key)
             .putScore(trial.getSuccessRate())
             .putSuccess(success));
 

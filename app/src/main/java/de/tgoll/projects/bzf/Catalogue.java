@@ -19,12 +19,18 @@ class Catalogue {
     private static String[][] answers;
     private static int[] solutions;
 
-    static void initialize(Context c) {
-        questions = c.getResources().getStringArray(R.array.questions);
-        answers = new String[questions.length][];
-        solutions = c.getResources().getIntArray(R.array.solutions);
+    static int idStringArray(Context context, String name) {
+        int id = context.getResources().getIdentifier(name, "array", context.getPackageName());
+        if (id == 0) Log.e("BZF", "Resource " + name + " not found.");
+        return id;
+    }
 
-        String[] tmp = c.getResources().getStringArray(R.array.answers);
+    static void initialize(Context c, String key) {
+        questions = c.getResources().getStringArray(idStringArray(c,key + "_questions"));
+        answers = new String[questions.length][];
+        solutions = c.getResources().getIntArray(idStringArray(c,key + "_solutions"));
+
+        String[] tmp = c.getResources().getStringArray(idStringArray(c,key + "_answers"));
         if (questions.length != tmp.length) {
             throw new Resources.NotFoundException("The amount of questions (" + questions.length +
                     ") does not match with the amount of answers (" + tmp.length + ")");

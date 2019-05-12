@@ -14,13 +14,15 @@
     <string name="crash_msg">Entschuldigung, da ging leider etwas schief. Ein Fehlerbericht wurde automatisch versendet, damit das Problem so schnell wie möglich behoben werden kann.</string>
 
     <string name="catalogue">Fragen-Katalog</string>
+    <string name="azf">AZF</string>
+    <string name="bzf">BZF</string>
     <string name="simulator">Simulator</string>
     <string name="feedback">Feedback</string>
 
     <string name="btn_right">▷</string>
     <string name="btn_left">◁</string>
 
-    <string name="msg_finsih_pass">Glückwunsch, du hast bestanden</string>
+    <string name="msg_finish_pass">Glückwunsch, du hast bestanden</string>
     <string name="msg_finish_fail">Schade, leider hast du nicht bestanden&#8230;</string>
     <string name="msg_finish">Du hast %1$d %% aller Fragen richtig beantwortet. </string>
     <string name="msg_finish_sim">%1$d %% richtig gesagt</string>
