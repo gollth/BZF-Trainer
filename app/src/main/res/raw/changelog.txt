@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+    $ 0.4.0
+      % Version 0.4.0
+      _ 2019-05-12
+      * NEU: AZF-Fragenkatalog nun auch verfügbar (Danke an Fabian)!
+      * Intuitivere Berechtigungsanfrage für's Mikrophon
+      * Kleinere Bugfixes & Rechtschreibfehler
     $ 0.3.4
       % Version 0.3.4
       _ 2019-03-20
