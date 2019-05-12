@@ -1,21 +1,12 @@
 package de.tgoll.projects.bzf;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.Spinner;
-
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.CustomEvent;
 
 public class TitleActivity extends AppCompatActivity {
 
@@ -46,8 +37,11 @@ public class TitleActivity extends AppCompatActivity {
 
 
         switch(v.getId()) {
-            case R.id.title_btn_main:
-                startActivity(new Intent(this, CatalogueActivity.class));
+            case R.id.title_btn_bzf:
+                startActivity(new Intent(this, CatalogueActivity.class).putExtra("key", "bzf"));
+                break;
+            case R.id.title_btn_azf:
+                startActivity(new Intent(this, CatalogueActivity.class).putExtra("key", "azf"));
                 break;
             case R.id.title_btn_sim:
                 startActivity(new Intent(this, SimulatorActivity.class));

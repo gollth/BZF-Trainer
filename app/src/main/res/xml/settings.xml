@@ -74,6 +74,16 @@
             android:summary="@string/settings_sim_recorder_sum"
             android:defaultValue="false" />
 
+        <Preference
+            android:key="@string/settings_open_speech_api"
+            android:title="@string/settings_open_speech_api"
+            android:summary="@string/settings_open_speech_api_sum" />
+
+        <Preference
+            android:key="@string/settings_open_tts_api"
+            android:title="@string/settings_open_tts_api"
+            android:summary="@string/settings_open_tts_api_sum" />
+
         <CheckBoxPreference android:key="@string/settings_sim_help"
             android:defaultValue="false"
             android:title="@string/settings_sim_help"

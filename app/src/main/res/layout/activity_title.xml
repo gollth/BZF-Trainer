@@ -4,22 +4,33 @@
     android:id="@+id/title_lyt_root">
 
     <Button
+        android:id="@+id/title_btn_bzf"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/catalogue"
-        android:id="@+id/title_btn_main"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp"
-        android:onClick="onButtonClick" />
+        android:onClick="onButtonClick"
+        android:text="@string/bzf" />
+
+    <Button
+        android:id="@+id/title_btn_azf"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_btn_bzf"
+        android:layout_alignStart="@+id/title_btn_bzf"
+        android:layout_marginTop="30dp"
+        android:enabled="true"
+        android:onClick="onButtonClick"
+        android:text="@string/azf" />
 
     <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/simulator"
         android:id="@+id/title_btn_sim"
-        android:layout_below="@+id/title_btn_main"
-        android:layout_alignStart="@+id/title_btn_main"
+        android:layout_below="@+id/title_btn_azf"
+        android:layout_alignStart="@+id/title_btn_bzf"
         android:layout_marginTop="30dp"
         android:enabled="true"
         android:onClick="onButtonClick" />

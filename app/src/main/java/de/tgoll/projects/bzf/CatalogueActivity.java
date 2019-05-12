@@ -11,6 +11,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,13 +48,16 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     private Vibrator vibrator;
     private SharedPreferences settings;
     private Gson gson;
+    private String key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogue);
 
-        Catalogue.initialize(getApplicationContext());
+        key = getIntent().getStringExtra("key");
+
+        Catalogue.initialize(getApplicationContext(), key);
 
         txt_questions = findViewById(R.id.txt_question);
         txt_answers = findViewById(R.id.lyt_ABCD);
@@ -70,15 +74,17 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         enableInput();
 
         gson = new Gson();
-        String s = settings.getString("SavedState", "");
+        String s = settings.getString(key + "-state", "");
         if (s == null || s.isEmpty()) resetQuestions();
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
+            Log.i("BZF", "Loading State:");
+            Log.i("BZF", s);
             playlist = state.playlist;
             choices = state.choices;
 
             // if we contain an old state saved in app data, we clear it.
-            if (playlist.size() != Catalogue.size()) resetQuestions();
+            if (playlist == null || playlist.size() != Catalogue.size()) resetQuestions();
             else loadQuestion(state.progress);
         }
     }
@@ -89,14 +95,14 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         // Only save, it at least one question has been answered
         for (Integer c : choices)  if (c != -1) {
-            settings.edit().putString("SavedState", gson.toJson(new SavedState(playlist, choices, getProgress()))).apply();
+            settings.edit().putString(key + "-state", gson.toJson(new SavedState(playlist, choices, getProgress()))).apply();
             break;
         }
 
     }
 
     public void resetQuestions() {
-        settings.edit().remove("SavedState").apply();
+        settings.edit().remove(key + "-state").apply();
 
         playlist = new ArrayList<>();
         choices = new ArrayList<>();
@@ -109,7 +115,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         // Send to Crashlytics, that the user started a new trial
         if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
-            .putLevelName(getString(R.string.catalogue))
+            .putLevelName(key)
             .putCustomAttribute(getString(R.string.settings_shuffle), ""+settings.getBoolean(getString(R.string.settings_shuffle), false)));
 
         loadQuestion(0);
@@ -262,7 +268,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         boolean success = trial.getSuccessRate() > 0.75;
 
         new AlertDialog.Builder(CatalogueActivity.this)
-                .setTitle(getString(success ? R.string.msg_finsih_pass : R.string.msg_finish_fail))
+                .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
                 .setMessage(String.format(getString(R.string.msg_finish), Math.round(trial.getSuccessRate() * 100)))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
                 .setPositiveButton(getString(R.string.back_to_title), new DialogInterface.OnClickListener() {
@@ -275,7 +281,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         // Send to Crashlytics, that the user has successfully finished the catalogue
         if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
-            .putLevelName(getString(R.string.catalogue))
+            .putLevelName(key)
             .putScore(trial.getSuccessRate())
             .putSuccess(success));
 
