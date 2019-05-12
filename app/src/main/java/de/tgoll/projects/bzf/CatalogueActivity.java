@@ -11,6 +11,7 @@ import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -73,15 +74,17 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         enableInput();
 
         gson = new Gson();
-        String s = settings.getString("SavedState", "");
+        String s = settings.getString(key + "-state", "");
         if (s == null || s.isEmpty()) resetQuestions();
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
+            Log.i("BZF", "Loading State:");
+            Log.i("BZF", s);
             playlist = state.playlist;
             choices = state.choices;
 
             // if we contain an old state saved in app data, we clear it.
-            if (playlist.size() != Catalogue.size()) resetQuestions();
+            if (playlist == null || playlist.size() != Catalogue.size()) resetQuestions();
             else loadQuestion(state.progress);
         }
     }
@@ -92,14 +95,14 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         // Only save, it at least one question has been answered
         for (Integer c : choices)  if (c != -1) {
-            settings.edit().putString("SavedState", gson.toJson(new SavedState(playlist, choices, getProgress()))).apply();
+            settings.edit().putString(key + "-state", gson.toJson(new SavedState(playlist, choices, getProgress()))).apply();
             break;
         }
 
     }
 
     public void resetQuestions() {
-        settings.edit().remove("SavedState").apply();
+        settings.edit().remove(key + "-state").apply();
 
         playlist = new ArrayList<>();
         choices = new ArrayList<>();
