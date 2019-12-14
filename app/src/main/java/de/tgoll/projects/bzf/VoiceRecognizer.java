@@ -3,7 +3,7 @@ package de.tgoll.projects.bzf;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
-import android.support.design.widget.Snackbar;
+import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
 
 import java.util.ArrayList;

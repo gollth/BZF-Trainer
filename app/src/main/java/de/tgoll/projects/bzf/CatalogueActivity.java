@@ -9,7 +9,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -75,7 +75,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         gson = new Gson();
         String s = settings.getString(key + "-state", "");
-        if (s == null || s.isEmpty()) resetQuestions();
+        if (s.isEmpty()) resetQuestions();
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
             Log.i("BZF", "Loading State:");
@@ -166,7 +166,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     }
 
     public void updateButtons () {
-        btn_next.setEnabled(!isFinalQuestion());
+        btn_next.setEnabled(isNotFinalQuestion());
         btn_prev.setEnabled(getProgress() != 0);
     }
 
@@ -245,7 +245,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             public void run() {
                 enableInput();
                 if (allQuestionsAnswered()) showResultDialog();
-                else if (!isFinalQuestion()) loadQuestion();
+                else if (isNotFinalQuestion()) loadQuestion();
 
             }
         }, (long) (Double.parseDouble(settings.getString(getString(R.string.settings_delay), "1")) * 1000));
@@ -287,8 +287,8 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     }
 
-    public boolean isFinalQuestion() {
-        return getProgress() == Catalogue.size()-1;
+    public boolean isNotFinalQuestion() {
+        return getProgress() != Catalogue.size()-1;
     }
 
     public void unhighlightAnswers(boolean alsoClearCheck) {
