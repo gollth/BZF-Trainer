@@ -142,7 +142,7 @@ public class SimulatorActivity  extends AppCompatActivity
         }
 
         List<Phrase> phrases = new ArrayList<>();
-        for (String line : file.split("\r\n")) {
+        for (String line : file.split("\r?\n")) {
             if (line.isEmpty()) continue;
             phrases.add(new Phrase(line, english));
         }
@@ -344,7 +344,7 @@ public class SimulatorActivity  extends AppCompatActivity
                         }
                     });
 
-                    if (wifi.isWifiEnabled()) return;
+                    if (wifi != null && wifi.isWifiEnabled()) return;
 
                     AlertDialog dialog = new AlertDialog.Builder(SimulatorActivity.this)
                     .setMessage(getString(R.string.sim_init))
