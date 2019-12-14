@@ -1,5 +1,7 @@
 package de.tgoll.projects.bzf;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
@@ -35,6 +37,7 @@ public class Trial implements Comparable<Trial> {
         return rate;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Trial-" + timestamp.toString();

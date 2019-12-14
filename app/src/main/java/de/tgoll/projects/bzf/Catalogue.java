@@ -19,7 +19,7 @@ class Catalogue {
     private static String[][] answers;
     private static int[] solutions;
 
-    static int idStringArray(Context context, String name) {
+    private static int idStringArray(Context context, String name) {
         int id = context.getResources().getIdentifier(name, "array", context.getPackageName());
         if (id == 0) Log.e("BZF", "Resource " + name + " not found.");
         return id;

@@ -61,9 +61,9 @@
     <string name="settings_sim_recorder">Spracherkennung überbrücken</string>
     <string name="settings_sim_recorder_sum">Bewirkt, dass deine Sprache nicht mehr aufgenommen wird, sondern die nächste Meldung von ATC direkt abgespielt wird (falls Probleme mit der Spracherkennung auftreten)</string>
     <string name="settings_open_speech_api">Öffne Spracheinstellungen</string>
-    <string name="settings_open_speech_api_sum">Wenn du Fehler beim Senden im Simulator hast, probiere die Sprach-Engine auf \"Google\&quot; to stellen</string>
+    <string name="settings_open_speech_api_sum">Wenn du Fehler beim Senden im Simulator hast, probiere die Sprach-Engine auf \"Google\&quot; zu stellen</string>
     <string name="settings_open_tts_api">Öffne Text-zu-Sprach-Einstellungen</string>
-    <string name="settings_open_tts_api_sum">Wenn ATC im Simulator schlecht klingt, probiere die TTS-Engine zurück auf \&quot;Google\&quot; zo stellen</string>
+    <string name="settings_open_tts_api_sum">Wenn ATC im Simulator schlecht klingt, probiere die TTS-Engine zurück auf \&quot;Google\&quot; zu stellen</string>
 
     <string-array name="settings_sim_levels">
         <item>leicht</item>

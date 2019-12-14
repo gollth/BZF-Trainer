@@ -4,7 +4,6 @@ import android.app.Application;
 import android.os.Looper;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.core.CrashlyticsCore;
 
@@ -21,7 +20,7 @@ public class BZFTrainerApplication extends Application {
                 public void run() {
                     Looper.prepare();
                     Toast.makeText(getApplicationContext(),
-                                    R.string.crash_msg,
+                            R.string.crash_msg,
                             Toast.LENGTH_LONG).show();
 
                     Looper.loop();

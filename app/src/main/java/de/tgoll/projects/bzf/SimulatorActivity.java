@@ -1,5 +1,6 @@
 package de.tgoll.projects.bzf;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
@@ -14,7 +16,6 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -22,12 +23,6 @@ import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.ActionBar;
-import android.Manifest;
-
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -35,7 +30,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -47,10 +41,16 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -191,7 +191,7 @@ public class SimulatorActivity  extends AppCompatActivity
 
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View dialog = inflater.inflate(R.layout.dialog_sim_results, null);
-        ScrollView scroller = (ScrollView)dialog.findViewById(R.id.scroll_sim_diag);
+        ScrollView scroller = dialog.findViewById(R.id.scroll_sim_diag);
         scroller.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (int) (size.y * 0.8f)));
         LinearLayout l = dialog.findViewById(R.id.lyt_sim_diag_results);
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
@@ -237,17 +237,17 @@ public class SimulatorActivity  extends AppCompatActivity
 
         Phrase.initialize(this, english);
 
-        txt_aircraft = (TextView)findViewById(R.id.sim_txt_aircraft);
-        txt_callsign = (TextView) findViewById(R.id.sim_txt_callsign);
-        txt_atis = (TextView) findViewById(R.id.sim_txt_atis);
-        cbx_departure = (Spinner) findViewById(R.id.sim_cbx_dep);
-        cbx_arrival = (Spinner) findViewById(R.id.sim_cbx_arr);
+        txt_aircraft = findViewById(R.id.sim_txt_aircraft);
+        txt_callsign = findViewById(R.id.sim_txt_callsign);
+        txt_atis = findViewById(R.id.sim_txt_atis);
+        cbx_departure = findViewById(R.id.sim_cbx_dep);
+        cbx_arrival = findViewById(R.id.sim_cbx_arr);
 
-        txt_atc = (TextView) findViewById(R.id.sim_txt_atc);
-        txt_you = (TextView) findViewById(R.id.sim_txt_you);
-        lbl_atc = (TextView) findViewById(R.id.sim_txt_atc_lbl);
+        txt_atc = findViewById(R.id.sim_txt_atc);
+        txt_you = findViewById(R.id.sim_txt_you);
+        lbl_atc = findViewById(R.id.sim_txt_atc_lbl);
 
-        btn_record = (ImageButton) findViewById(R.id.btn_record);
+        btn_record = findViewById(R.id.btn_record);
         btn_record.setOnTouchListener(this);
 
         // Update the Callsign from preferences
@@ -284,7 +284,7 @@ public class SimulatorActivity  extends AppCompatActivity
         }
 
         // Update the Help panel
-        TableLayout helpPanel = (TableLayout) findViewById(R.id.sim_lyt_table_help);
+        TableLayout helpPanel = findViewById(R.id.sim_lyt_table_help);
         if (settings.getBoolean(getString(R.string.settings_sim_help), false)) {
             helpPanel.setVisibility(View.VISIBLE);
             if (settings.getBoolean(getString(R.string.settings_sim_help_atc), true))

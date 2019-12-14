@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string-array formatted="false" name="azf_answers">
+    <string-array formatted="false" name="azf_answers" tools:keep="@array/azf_answers">
 
         <item>A) The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to navigation aids, from which it is intended, that an instrument approach will be commenced;
 B) In any case that time at which the aircraft will arrive over the aerodrome;
@@ -175,7 +175,7 @@ D) Hotel Bravo Juliett India Kilo</item>
 B) Foxtrot Romeo India - VOR;
 C) Fox Romeo India - VOR;
 D) Foxtrot Romeo Juliett - VOR</item>
-        <item>A) Three thousand five hundred;
+        <item tools:ignore="Typos">A) Three thousand five hundred;
 B) Three five zero zero;
 C) Three five double \"O\";
 D) Three five hundred</item>

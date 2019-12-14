@@ -12,7 +12,6 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Here comes some question?"
             android:id="@+id/txt_question"
             android:textColor="@color/colorDefaultText"
         android:minHeight="100dp" />
@@ -27,7 +26,6 @@
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="A"
             android:id="@+id/A"
             android:onClick="onCheckboxSelect"
             android:textColor="@color/colorDefaultText"
@@ -37,7 +35,6 @@
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="B"
             android:id="@+id/B"
             android:onClick="onCheckboxSelect"
             android:textColor="@color/colorDefaultText"
@@ -47,7 +44,6 @@
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="C"
             android:id="@+id/C"
             android:onClick="onCheckboxSelect"
             android:textColor="@color/colorDefaultText"
@@ -57,7 +53,6 @@
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="D"
             android:id="@+id/D"
             android:onClick="onCheckboxSelect"
             android:textColor="@color/colorDefaultText"

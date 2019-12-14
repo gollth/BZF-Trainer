@@ -13,7 +13,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,7 +20,6 @@ import android.view.View;
 public class PaintView extends View {
 
     private int eraserSize = 50;
-    private int color = Color.BLACK;
     private Paint paint, eraser;
 
     private Bitmap bmp;
@@ -33,7 +31,6 @@ public class PaintView extends View {
     private PointF touch;
 
     private SharedPreferences settings;
-    private boolean usesPen;
     private boolean erasing;
     private boolean eraseflag;
 
@@ -43,7 +40,7 @@ public class PaintView extends View {
         settings = PreferenceManager.getDefaultSharedPreferences(context);
         touch = new PointF(-1,-1);
         paint = new Paint();
-        paint.setColor(color);
+        paint.setColor(Color.BLACK);
         paint.setAntiAlias(true);
         paint.setStrokeWidth(2);
         paint.setStrokeJoin(Paint.Join.ROUND);
@@ -75,7 +72,7 @@ public class PaintView extends View {
 
     @Override
     public boolean onTouchEvent (MotionEvent event) {
-        usesPen = settings.getBoolean(getContext().getString(R.string.settings_pen), true);
+        boolean usesPen = settings.getBoolean(getContext().getString(R.string.settings_pen), true);
 
         touch = new PointF(event.getX(),event.getY());
         if (usesPen) eraseflag = event.getPressure() >= 0.9;
@@ -120,9 +117,4 @@ public class PaintView extends View {
 
         canvas.drawLine(0,0,getWidth(),0,paint);
     }
-
-
-
-
-
 }

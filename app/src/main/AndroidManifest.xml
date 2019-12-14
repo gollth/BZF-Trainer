@@ -10,17 +10,19 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:name=".BZFTrainerApplication"
+        android:allowBackup="true"
         android:description="@string/app_description"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@drawable/bzf"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:process=":bzf"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TitleActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
