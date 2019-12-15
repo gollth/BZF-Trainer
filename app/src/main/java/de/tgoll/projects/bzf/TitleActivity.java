@@ -33,32 +33,26 @@ public class TitleActivity extends AppCompatActivity {
         }
     }
 
-    public void onButtonClick (View v) {
-
-
-        switch(v.getId()) {
-            case R.id.title_btn_bzf:
-                startActivity(new Intent(this, CatalogueActivity.class).putExtra("key", "bzf"));
-                break;
-            case R.id.title_btn_azf:
-                startActivity(new Intent(this, CatalogueActivity.class).putExtra("key", "azf"));
-                break;
-            case R.id.title_btn_sim:
-                startActivity(new Intent(this, SimulatorActivity.class));
-                break;
-            case R.id.title_btn_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
-                break;
-
-            case R.id.title_btn_feedback:
-                Intent feedback = new Intent(
-                        Intent.ACTION_SENDTO,
-                        Uri.fromParts("mailto", "thoregoll@googlemail.com", null)
-                ).putExtra(Intent.EXTRA_SUBJECT, "[BZF-Trainer] Feedback");
-
-                startActivity(Intent.createChooser(feedback, "Mail"));
-                break;
-        }
-
+    public void onBZFClick(View v) {
+        startActivity(new Intent(this, CatalogueActivity.class).putExtra("key", "bzf"));
+    }
+    public void onAZFClick(View v) {
+        startActivity(new Intent(this, CatalogueActivity.class).putExtra("key", "azf"));
+    }
+    public void onSimulatorClick(View v) {
+        startActivity(new Intent(this, SimulatorActivity.class));
+    }
+    public void onSettingsClick(View v) {
+        startActivity(new Intent(this, SettingsActivity.class));
+    }
+    public void onStatisticsClick(View v) {
+        startActivity(new Intent(this, StatisticsActivity.class));
+    }
+    public void onFeedbackClick(View v) {
+        Intent feedback = new Intent(
+                Intent.ACTION_SENDTO,
+                Uri.fromParts("mailto", "thoregoll@googlemail.com", null)
+        ).putExtra(Intent.EXTRA_SUBJECT, "[BZF-Trainer] Feedback");
+        startActivity(Intent.createChooser(feedback, "Mail"));
     }
 }

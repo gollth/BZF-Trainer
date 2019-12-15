@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="86dp"
-        android:onClick="onButtonClick"
+        android:layout_marginTop="30dp"
+        android:onClick="onBZFClick"
         android:text="@string/bzf" />
 
     <Button
@@ -21,7 +21,7 @@
         android:layout_alignStart="@+id/title_btn_bzf"
         android:layout_marginTop="30dp"
         android:enabled="true"
-        android:onClick="onButtonClick"
+        android:onClick="onAZFClick"
         android:text="@string/azf" />
 
     <Button
@@ -33,27 +33,39 @@
         android:layout_alignStart="@+id/title_btn_bzf"
         android:layout_marginTop="30dp"
         android:enabled="true"
-        android:onClick="onButtonClick" />
+        android:onClick="onSimulatorClick" />
 
     <Button
+        android:id="@+id/title_btn_statistics"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/settings"
+        android:layout_below="@id/title_btn_sim"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="onStatisticsClick"
+        android:text="@string/statistics" />
+
+    <Button
         android:id="@+id/title_btn_settings"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:onClick="onButtonClick"
-        android:layout_below="@+id/title_btn_sim" />
-
-    <Button
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/feedback"
-        android:id="@+id/title_btn_feedback"
+        android:layout_below="@id/title_btn_statistics"
         android:layout_alignParentTop="false"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:onClick="onButtonClick"
-        android:layout_below="@+id/title_btn_settings" />
+        android:onClick="onSettingsClick"
+        android:text="@string/settings" />
+
+    <Button
+        android:id="@+id/title_btn_feedback"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_btn_settings"
+        android:layout_alignParentTop="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:onClick="onFeedbackClick"
+        android:text="@string/feedback" />
+
 </RelativeLayout>
