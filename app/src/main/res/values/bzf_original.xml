@@ -366,7 +366,7 @@
     <item>SQUAWK</item>
     <item>SENDEN SIE MITTELS TRANSPONDER</item>
     <item>TRANSPOND</item>
-    <item>RESPOND MODE …. / CODE ….</item>
+    <item>RESPOND MODE … / CODE …</item>
     <!-- 74 -->
     <item>Ich habe Ihre Nachricht verstanden und werde entsprechend handeln</item>
     <item>Warten Sie, ich werde Sie rufen</item>
@@ -423,7 +423,7 @@
     <item>Ja, von allen Piloten in beliebiger Reihenfolge</item>
     <item>Ja, von allen Piloten in der Reihenfolge des Anrufs</item>
     <!-- 85 -->
-    <item>AN ALLE HAMBURG TURM ... ENDE</item>
+    <item>AN ALLE HAMBURG TURM … ENDE</item>
     <item>DEKOF, DIEBS, DKARL NÜRNBERG ROLLKONTROLLE</item>
     <item>D8765 BERLIN INFORMATION</item>
     <item>LUFTHANSA 123, LUFTHANSA 456</item>
@@ -724,7 +724,7 @@
     <item>Das Luftfahrzeug wird entführt</item>
     <item>Das Luftfahrzeug fliegt in den Luftraum E ein</item>
     <!-- 145 -->
-    <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich, auf dem nächstgelegenen geeigneten Flugplatz zu landen; und der zuständigen Flugverkehrskontrollstelle schnellstmöglich die Landezeit zu übermitteln</item>
+    <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich, auf dem nächstgelegenen geeigneten Flugplatz zu landen, und der zuständigen Flugverkehrskontrollstelle schnellstmöglich die Landezeit zu übermitteln</item>
     <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich, und ein geeignetes Notlandegelände zu erkunden</item>
     <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich, und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen</item>
     <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich, und nach einer Umkehrkurve von 180° zum Startflugplatz zurück zu kehren</item>
@@ -844,7 +844,7 @@
     <item>Nur die Luftfahrzeugführer von motorgetriebenen Luftfahrzeugen</item>
     <item>Unerfahrene Luftfahrzeugführer</item>
     <!-- 169 -->
-    <item>Flügen, die über die Instrumentenflugregeln</item>
+    <item>Flügen, die über die Umgebung des Startflugplatzes hinausführen und vor Flügen nach Instrumentenflugregeln</item>
     <item>zweifelhaften Wetterlagen</item>
     <item>Flügen, für die ein Flugplan zu übermitteln ist</item>
     <item>Flügen zu gewerblichen Zwecken</item>
