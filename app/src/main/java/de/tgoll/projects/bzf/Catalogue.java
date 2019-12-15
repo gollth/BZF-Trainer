@@ -15,17 +15,17 @@ import java.util.Map;
 
 class Catalogue {
 
-    private static String[] questions;
-    private static String[][] answers;
-    private static int[] solutions;
+    private String[] questions;
+    private String[][] answers;
+    private int[] solutions;
 
-    private static int idStringArray(Context context, String name) {
+    private int idStringArray(Context context, String name) {
         int id = context.getResources().getIdentifier(name, "array", context.getPackageName());
         if (id == 0) Log.e("BZF", "Resource " + name + " not found.");
         return id;
     }
 
-    static void initialize(Context c, String key) {
+    public Catalogue(Context c, String key) {
         questions = c.getResources().getStringArray(idStringArray(c,key + "_questions"));
         answers = new String[questions.length][];
         solutions = c.getResources().getIntArray(idStringArray(c,key + "_solutions"));
@@ -43,20 +43,22 @@ class Catalogue {
         }
     }
 
-    static boolean isCorrect(int question, int answer) {
+    boolean isCorrect(int question, int answer) {
         try {
             return solutions[question] == answer;
         } catch (Exception e) {
-            Crashlytics.log("Error occurred in asking \"isCorrect\" of question " + question + " and answer " + answer + ": " + e.getMessage());
+            String error = "Error occurred in asking \"isCorrect\" of question " + question + " and answer " + answer + ": " + e.getMessage();
+            Log.e("BZF", error);
+            Crashlytics.log(error);
             return false;
         }
     }
 
-    static int size() {
+    int size() {
         return questions.length;
     }
 
-    static String getQuestion(int i) {
+    String getQuestion(int i) {
         try {
             return questions[i];
         } catch (Exception e) {
@@ -65,7 +67,7 @@ class Catalogue {
         }
     }
 
-    static int getSolution(int question) {
+    int getSolution(int question) {
         try {
             return solutions[question];
         } catch (Exception e) {
@@ -73,7 +75,7 @@ class Catalogue {
             return 0;
         }
     }
-    static String getAnswer(int question, int answer) {
+    String getAnswer(int question, int answer) {
         try {
             return answers[question][answer];
         } catch (Exception e) {
@@ -81,7 +83,7 @@ class Catalogue {
             return "Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen";
         }
     }
-    static String[] getAnswers(int question) {
+    String[] getAnswers(int question) {
         try {
             return answers[question];
         } catch (Exception e) {
@@ -90,7 +92,7 @@ class Catalogue {
         }
     }
 
-    static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
+    <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
         List<Map.Entry<K, V>> list = new LinkedList<>( map.entrySet() );
         Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
             public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {

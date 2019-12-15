@@ -49,6 +49,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     private SharedPreferences settings;
     private Gson gson;
     private String key;
+    private Catalogue cat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         key = getIntent().getStringExtra("key");
 
-        Catalogue.initialize(getApplicationContext(), key);
+        cat = new Catalogue(getApplicationContext(), key);
 
         txt_questions = findViewById(R.id.txt_question);
         txt_answers = findViewById(R.id.lyt_ABCD);
@@ -66,7 +67,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         btn_prev = findViewById(R.id.btn_prev);
         progress = findViewById(R.id.progress);
         progress.setOnSeekBarChangeListener(this);
-        progress.setMax(Catalogue.size() - 1);
+        progress.setMax(cat.size() - 1);
 
         vibrator = (Vibrator)  getSystemService(Context.VIBRATOR_SERVICE);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
@@ -84,7 +85,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             choices = state.choices;
 
             // if we contain an old state saved in app data, we clear it.
-            if (playlist == null || playlist.size() != Catalogue.size()) resetQuestions();
+            if (playlist == null || playlist.size() != cat.size()) resetQuestions();
             else loadQuestion(state.progress);
         }
     }
@@ -106,7 +107,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         playlist = new ArrayList<>();
         choices = new ArrayList<>();
-        for (int i = 0; i < Catalogue.size(); i++) {
+        for (int i = 0; i < cat.size(); i++) {
             playlist.add(i);
             choices.add(-1);    // Not set
         }
@@ -194,19 +195,19 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     private void setQuestionProgress(int i) {
         progress.setProgress(i);
-        txt_progress.setText(String.format(getString(R.string.txt_progress), i + 1, Catalogue.size()));
+        txt_progress.setText(String.format(getString(R.string.txt_progress), i + 1, cat.size()));
     }
 
     public void loadQuestion(int i) throws IndexOutOfBoundsException {
         setQuestionProgress(i);
         updateButtons();
         unhighlightAnswers(true);
-        txt_questions.setText(Catalogue.getQuestion(playlist.get(i)));
+        txt_questions.setText(cat.getQuestion(playlist.get(i)));
         int choice = choices.get(i);
         if (choice != -1) highlightCorrectAnswer();
         for (int n = 0; n < 4; n++) {
             RadioButton r = (RadioButton) txt_answers.getChildAt(n);
-            r.setText(Catalogue.getAnswer(playlist.get(i),n));
+            r.setText(cat.getAnswer(playlist.get(i),n));
             if (n == choice) r.setChecked(true);
         }
     }
@@ -259,7 +260,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     public void showResultDialog() {
         SharedPreferences.Editor e = settings.edit();
-        Trial trial = new Trial(playlist, choices);
+        Trial trial = new Trial(key, cat, playlist, choices);
         Set<String> history = new HashSet<>(settings.getStringSet(key + "-history", EMPTY_SET));
         history.add(gson.toJson(trial));
         e.remove(key + "-history");
@@ -288,7 +289,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     }
 
     public boolean isNotFinalQuestion() {
-        return getProgress() != Catalogue.size()-1;
+        return getProgress() != cat.size()-1;
     }
 
     public void unhighlightAnswers(boolean alsoClearCheck) {
@@ -305,7 +306,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
      */
     public boolean highlightCorrectAnswer() {
         unhighlightAnswers(false);
-        RadioButton option = (RadioButton) txt_answers.getChildAt(Catalogue.getSolution(getCurrentQuestion()));
+        RadioButton option = (RadioButton) txt_answers.getChildAt(cat.getSolution(getCurrentQuestion()));
         option.setTypeface(Typeface.DEFAULT_BOLD);
         option.setTextColor(getResources().getColor(R.color.colorHighlight));
         return option.isChecked();
