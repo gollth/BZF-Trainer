@@ -89,6 +89,7 @@
     <string name="sim_default_callsign">DEABC</string>
     <string name="sim_default_aircraft">Cessna 172</string>
     <string name="sim_txt_atis">ATIS: %1$s</string>
+    <string name="sim_lbl_you">Du:</string>
     <string name="sim_msg_departure_select">Wo soll gestartet werden?</string>
     <string name="sim_msg_arrival_select">Wo soll gelandet werden?</string>
     <string name="sim_msg_departure_complete">Abflug abgeschlossen, jetzt beim Anflugturm melden</string>
