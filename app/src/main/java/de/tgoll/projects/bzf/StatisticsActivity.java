@@ -12,9 +12,10 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
@@ -38,11 +39,6 @@ import java.util.Set;
 
 public class StatisticsActivity extends AppCompatActivity {
 
-    private LineChart history;
-    private BarChart barchart;
-
-    private Map<String, List<Trial>> trials;
-
     Random rng;
 
     @Override
@@ -58,7 +54,7 @@ public class StatisticsActivity extends AppCompatActivity {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         Gson gson = new Gson();
 
-        trials = new HashMap<>();
+        Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf")) {
             Set<String> history = settings.getStringSet(key + "-history", CatalogueActivity.EMPTY_SET);
             List<Trial> list = new ArrayList<>();
@@ -66,38 +62,49 @@ public class StatisticsActivity extends AppCompatActivity {
             trials.put(key, list);
         }
 
-        history = findViewById(R.id.st_chart_history);
+        LineChart history = findViewById(R.id.st_chart_history);
+        setupHistoryChart(history);
+        fillHistory(history, trials);
+
+        HorizontalBarChart barazf = findViewById(R.id.st_chart_answers_azf);
+        HorizontalBarChart barbzf = findViewById(R.id.st_chart_answers_bzf);
+        setupBarChart(barazf, XAxis.XAxisPosition.TOP);
+        setupBarChart(barbzf, XAxis.XAxisPosition.BOTTOM);
+
+        fillBarChart(barazf, trials.get("azf"), R.color.colorStatAZF);
+        fillBarChart(barbzf, trials.get("bzf"), R.color.colorStatBZF);
+
+    }
+
+    void setupHistoryChart(LineChart history) {
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
         history.setPinchZoom(true);
         history.getAxisRight().setEnabled(true);
-        history.getAxisRight().setValueFormatter(new LabelFormatter());
+        history.getAxisRight().setValueFormatter(new PercentFormatter());
         history.getAxisLeft().setEnabled(false);
         history.getXAxis().setEnabled(true);
         history.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        history.getXAxis().setGranularity(1f);
         history.getLegend().setEnabled(true);
         history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         history.getLegend().setOrientation(Legend.LegendOrientation.VERTICAL);
         history.getLegend().setDrawInside(true);
-        history.setDescription(new Description(){{ setText(""); }});
-
-        fillHistory();
-
-        barchart = (HorizontalBarChart) findViewById(R.id.st_chart_bar);
+        history.getDescription().setEnabled(false);
+    }
+    void setupBarChart(HorizontalBarChart barchart, XAxis.XAxisPosition position) {
+        barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
-        barchart.getXAxis().setEnabled(true);
-        barchart.getAxisRight().setEnabled(true);
-        barchart.getAxisLeft().setEnabled(false);
-        barchart.getAxisLeft().setValueFormatter(new LabelFormatter());
-        barchart.getAxisLeft().setAxisMinimum(0);
-        barchart.getAxisLeft().setAxisMaximum(100);
-        barchart.setTouchEnabled(false);
-        barchart.setScaleYEnabled(true);
-        barchart.setScaleXEnabled(false);
         barchart.setDrawGridBackground(false);
-
-        //fillBarChart(i, Catalogue.getAnswers(i));
+        barchart.setFitBars(true);
+        barchart.getXAxis().setDrawAxisLine(false);
+        barchart.getXAxis().setDrawGridLines(false);
+        barchart.getXAxis().setEnabled(true);
+        barchart.getXAxis().setPosition(position);
+        barchart.getAxisLeft().setEnabled(false);
+        barchart.getAxisRight().setEnabled(false);
+        barchart.getXAxis().setGranularity(1f);
     }
 
     @Override
@@ -108,35 +115,49 @@ public class StatisticsActivity extends AppCompatActivity {
         } else return super.onOptionsItemSelected(item);
     }
 
-    public void fillBarChart(int question, String[] answers) {
-        List<BarEntry> values = new ArrayList<>();
-        int[] choices = new int[4];
-        String[] labels = new String[4];
-        //for (Map.Entry<String,List<Trial>> entry : trials.entrySet())
-        //    choices[3 - trial.getChoice(question)] += 1;
+    public void fillBarChart(BarChart chart, List<Trial> trials, int color) {
+        if (trials == null) return;
 
-        for (int c = 0; c < choices.length; c++) {
-            values.add(new BarEntry(choices[c], c));
-            labels[c] = String.format(Locale.GERMAN, "%d", choices[c]);
+        // Create a list capable of holding all choices
+        int max = 0;
+        for (Trial trial : trials) {
+            if (trial.size() > max) max = trial.size();
+        }
+        List<Float> questions = new ArrayList<Float>(Collections.nCopies(max, 0f));
+
+        // Fill the list with data
+        for (Trial trial : trials) {
+            for (int i = 0; i < trial.size(); i++) {
+                if (!trial.isCorrect(i)) continue;
+                questions.set(i, questions.get(i) + 1f);
+            }
         }
 
-        BarDataSet data = new BarDataSet(values, "answers");
-        data.setValueFormatter(new NoneValueFormatter());
-        int[] colors = new int[]{Color.LTGRAY, Color.LTGRAY, Color.LTGRAY, Color.LTGRAY};
-        //colors[3 - Catalogue.getSolution(question)] = getResources().getColor(R.color.colorHighlight);
-        data.setColors(colors);
+        // Convert the data to BarChart entries
+        List<BarEntry> entries = new ArrayList<>();
+        for (int i = 0; i < questions.size(); i ++) {
+            float correct = questions.get(i) / trials.size();
+            entries.add(new BarEntry(i+1, new float[] { correct, 1f-correct }));
+        }
 
-        //barchart.setData(new BarData(labels, data));
-        barchart.notifyDataSetChanged();
-        barchart.invalidate();
+        int[] colors = new int[]{ getResources().getColor(color), Color.LTGRAY};
+
+        BarDataSet data = new BarDataSet(entries, "Antworten");
+        data.setValueFormatter(new NoneValueFormatter());
+        data.setColors(colors);
+        //chart.setVisibleYRange(0, trials.size(), YAxis.AxisDependency.RIGHT);
+        chart.getAxisLeft().setAxisMaximum(1);
+        chart.getAxisLeft().setAxisMinimum(0);
+        chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
+        chart.notifyDataSetChanged();
+        chart.invalidate();
     }
 
 
-    public void fillHistory() {
+    public void fillHistory(LineChart history, Map<String, List<Trial>> trials) {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         List<Trial> dates = new ArrayList<>();
         Map<String, List<Entry>> entries = new HashMap<>();
-        List<String> labels = new ArrayList<>();
 
         for (Map.Entry<String,List<Trial>> entry : trials.entrySet()) {
             dates.addAll(entry.getValue());
@@ -148,7 +169,7 @@ public class StatisticsActivity extends AppCompatActivity {
 
         for (int i = 0; i < dates.size(); i++) {
             Trial trial = dates.get(i);
-            entries.get(trial.key).add(new Entry(i, 100f * (float)trial.getSuccessRate()));
+            entries.get(trial.key).add(new Entry(i, (float)trial.getSuccessRate()));
         }
 
         for (Map.Entry<String,List<Entry>> entry : entries.entrySet()) {
@@ -173,8 +194,8 @@ public class StatisticsActivity extends AppCompatActivity {
         }
 
         LineData data = new LineData(dataSets);
-        history.setData(data);
         history.getXAxis().setValueFormatter(new DateAxisFormatter(dates));
+        history.setData(data);
         history.notifyDataSetChanged();
         history.invalidate();
     }
@@ -186,10 +207,22 @@ public class StatisticsActivity extends AppCompatActivity {
         }
     }
 
-    public class LabelFormatter extends ValueFormatter {
+    public class IntegerFormatter extends ValueFormatter {
+        private final String format;
+        public IntegerFormatter() {
+            this("%.0f");
+        }
+        public IntegerFormatter(String format) { this.format = format; }
         @Override
         public String getFormattedValue(float value) {
-            return String.format(Locale.GERMAN, "%.0f%%", value);
+            return String.format(Locale.GERMAN, this.format , value);
+        }
+    }
+
+    public class PercentFormatter extends ValueFormatter {
+        @Override
+        public String getFormattedValue(float value) {
+            return String.format(Locale.GERMAN, "%.0f%%", value * 100);
         }
     }
 
@@ -201,11 +234,12 @@ public class StatisticsActivity extends AppCompatActivity {
 
         DateAxisFormatter(List<Trial> trials) {
             this.trials = trials;
-            this.formatter = new SimpleDateFormat("dd.MM.", Locale.getDefault());
+            this.formatter = new SimpleDateFormat("dd.MMM", Locale.getDefault());
         }
 
         @Override
         public String getAxisLabel(float value, AxisBase axis) {
+            if (value < 0 || value >= trials.size()) return "";
             return formatter.format(trials.get((int)value).getTimestamp());
         }
     }

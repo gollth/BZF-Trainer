@@ -34,6 +34,8 @@
 
     <string name="statistics">Statistik</string>
     <string name="statistics_history">Erfolgsrate</string>
+    <string name="statistics_azf">AZF Antworten</string>
+    <string name="statistics_bzf">BZF Antworten</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
     <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>

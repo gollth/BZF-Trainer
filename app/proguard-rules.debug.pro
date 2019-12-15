@@ -44,7 +44,7 @@
 -keep class de.tgoll.projects.bzf.CatalogueActivity { *; }
 -keep class de.tgoll.projects.bzf.StatisticsActivity { *; }
 -keep class de.tgoll.projects.bzf.StatisticsActivity.NoneValueFormatter { *; }
--keep class de.tgoll.projects.bzf.StatisticsActivity.LabelFormatter { *; }
+-keep class de.tgoll.projects.bzf.StatisticsActivity.PercentFormatter { *; }
 
 -keep class com.crashlytics.** { *; }
 -dontwarn com.crashlytics.**

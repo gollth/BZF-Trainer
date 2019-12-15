@@ -14,6 +14,7 @@ public class Trial implements Comparable<Trial> {
 
     private final Date timestamp;
     private Integer[] choices;
+    private Boolean[] corrects;
     final String key;
     private float success;
 
@@ -24,12 +25,18 @@ public class Trial implements Comparable<Trial> {
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for(int i = 0; i < playlist.size(); i++) map.put(playlist.get(i), choices.get(i));
         map.values().toArray(this.choices);
+        corrects = new Boolean[this.choices.length];
         success = 0;
-        for(int i = 0; i < choices.size(); i++)
-            if (cat.isCorrect(i, getChoice(i))) success += 1;
+        for(int i = 0; i < choices.size(); i++) {
+            boolean correct = cat.isCorrect(i, getChoice(i));
+            corrects[i] = correct;
+            if (correct) success += 1;
+        }
         success /= choices.size();
     }
-    int getChoice(int i) { return this.choices[i];}
+    int size() { return this.choices.length; }
+    int getChoice(int i) { return this.choices[i]; }
+    boolean isCorrect(int i) { return this.corrects[i]; }
 
     double getSuccessRate() {
         return success;
