@@ -27,7 +27,11 @@ public class TitleActivity extends AppCompatActivity {
 
             // Remove the catalog progress on a new version, since the questions/answers might have changed
             PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit().remove("SavedState").apply();
+                    .edit()
+                    .remove("SavedState")
+                    .remove("azf-history")
+                    .remove("bzf-history")
+                    .apply();
 
 
         }
