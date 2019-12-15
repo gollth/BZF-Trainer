@@ -1,782 +1,1044 @@
 <resources>
-  <string-array formatted="false" name="bzf_answers"><item>A) UNESCO;
+    <string-array name="bzf_answers" formatted="false"><item>A) UNESCO;
 B) IATA;
 C) NATO;
-D) ITU</item><item>A) Die Verordnung über die Flugsicherungsausrüstung der Luftfahrzeuge;
+D) ITU</item>
+        <item>A) Die Verordnung über die Flugsicherungsausrüstung der Luftfahrzeuge;
 B) Das Internationale Zivile Luftfahrtabkommen;
 C) Das Telekommunikationsgesetz (TKG);
-D) Das Luftverkehrsgesetz</item><item>A) Der Bundesminister des Innern;
+D) Das Luftverkehrsgesetz</item>
+        <item>A) Der Bundesminister des Innern;
 B) Das Flugsicherungsunternehmen (DFS);
 C) Die Luftfahrtbehörden der Länder;
-D) Die Bundesnetzagentur</item><item>A) Der Flugschüler an Bord eines Ausbildungsluftfahrzeuges in der Platzrunde eines unkontrollierten Flugplatzes;
+D) Die Bundesnetzagentur</item>
+        <item>A) Der Flugschüler an Bord eines Ausbildungsluftfahrzeuges in der Platzrunde eines unkontrollierten Flugplatzes;
 B) Der Betreiber einer Bodenfunkstelle, die ausschließlich der Übermittlung von Flugbetriebsmeldungen dient;
 C) Der Luftsportgeräteführer im Luftraum D;
-D) Der Flugschüler an Bord eines Ausbildungsluftfahrzeuges in der Platzrunde eines kontrollierten Flugplatzes</item><item>A) Fluglotse;
+D) Der Flugschüler an Bord eines Ausbildungsluftfahrzeuges in der Platzrunde eines kontrollierten Flugplatzes</item>
+        <item>A) Fluglotse;
 B) Flugleiter an einem Segelfluggelände;
 C) Luftsportgeräteführer im Luftraum C;
-D) Betreiber einer Funkstelle mit dem Rufzeichen \"RÜCKHOLER\"</item><item>A) Fluglotse;
+D) Betreiber einer Funkstelle mit dem Rufzeichen \"RÜCKHOLER\"</item>
+        <item>A) Fluglotse;
 B) Beauftragte für Luftaufsicht;
 C) Flugleiter an einem Landeplatz;
-D) Flugschüler in der Platzrunde von Flugplätzen mit / ohne Flugverkehrskontrolle</item><item>A) bei IFR-Flügen;
+D) Flugschüler in der Platzrunde von Flugplätzen mit / ohne Flugverkehrskontrolle</item>
+        <item>A) bei IFR-Flügen;
 B) bei VFR-Flügen in englischer Sprache;
 C) in deutscher Sprache innerhalb der Bundesrepublik Deutschland;
-D) in deutscher und englischer Sprache bei allen deutschen Bodenfunkstellen</item><item>A) VFR-Flügen innerhalb der Bundesrepublik Deutschland in englischer Sprache;
+D) in deutscher und englischer Sprache bei allen deutschen Bodenfunkstellen</item>
+        <item>A) VFR-Flügen innerhalb der Bundesrepublik Deutschland in englischer Sprache;
 B) VFR-Flügen in einer der ICAO-Sprachen;
 C) VFR-Flügen innerhalb der Bundesrepublik Deutschland in deutscher Sprache;
-D) IFR-Flügen</item><item>A) BZF I;
+D) IFR-Flügen</item>
+        <item>A) BZF I;
 B) Kein Flugfunkzeugnis, da es sich um einen VFR-Flug handelt;
 C) BZF II;
-D) Kein Flugfunkzeugnis, wenn der Fluglehrer einen schriftlichen Flugauftrag erteilt hat</item><item>A) des beweglichen Flugfunkdienstes an einem internationalen Verkehrsflughafen;
+D) Kein Flugfunkzeugnis, wenn der Fluglehrer einen schriftlichen Flugauftrag erteilt hat</item>
+        <item>A) des beweglichen Flugfunkdienstes an einem internationalen Verkehrsflughafen;
 B) des beweglichen Flugfunkdienstes an einem Landeplatz;
 C) des beweglichen Flugfunkdienstes an Bord eines Luftfahrzeuges;
-D) an Bord eines Flugzeugträgers</item><item>A) Jede Funkstelle zur Aussendung von Funksprüchen;
+D) an Bord eines Flugzeugträgers</item>
+        <item>A) Jede Funkstelle zur Aussendung von Funksprüchen;
 B) Eine Funkstelle des festen Flugfernmeldedienstes;
 C) Eine Funkstelle des Flugfernmeldedienstes an Land oder an Bord eines Schiffes für den Austausch von Funkmeldungen;
-D) Eine ortsfeste Funkstelle im beweglichen Flugfunkdienst. In bestimmten Fällen an Bord eines Seefahrzeugs oder auf einer Plattform auf See</item><item>A) Ein Funkspruch, dessen Erhalt vom Empfänger wiederholt werden muss;
+D) Eine ortsfeste Funkstelle im beweglichen Flugfunkdienst. In bestimmten Fällen an Bord eines Seefahrzeugs oder auf einer Plattform auf See</item>
+        <item>A) Ein Funkspruch, dessen Erhalt vom Empfänger wiederholt werden muss;
 B) Eine Übermittlung von Informationen für die Luftfahrt, die nicht an einen bestimmten Empfänger gerichtet ist;
 C) Eine Übermittlung von meteorologischen und flugbetrieblichen Informationen für Flugzeuge über der hohen See oder Wüstengebieten außerhalb der Funküberdeckung von UKW-Bodenfunkstellen;
-D) Das Übermitteln einer Meldung an einen Empfänger, wenn Wechselsprechverkehr nicht hergestellt werden kann, unter der Annahme, dass die gerufene Station die Meldung empfangen kann</item><item>A) Eine Meldung mittels Sprechfunk von einer Bodenfunkstelle an eine bestimmte Luftfunkstelle;
+D) Das Übermitteln einer Meldung an einen Empfänger, wenn Wechselsprechverkehr nicht hergestellt werden kann, unter der Annahme, dass die gerufene Station die Meldung empfangen kann</item>
+        <item>A) Eine Meldung mittels Sprechfunk von einer Bodenfunkstelle an eine bestimmte Luftfunkstelle;
 B) Die Übermittlung von Meldungen über Wettererscheinungen, welche die Sicherheit des Flugbetriebes betreffen können, die an eine oder mehrere bestimmte Stellen gerichtet ist;
 C) Eine Übermittlung von Informationen für die Luftfahrt, die nicht an eine oder mehrere bestimmte Stellen gerichtet ist;
-D) Eine Übermittlung, deren Empfang bestätigt werden muss</item><item>A) Eine markierte Position auf einer Startbahn, wo der Startlauf begonnen wird;
+D) Eine Übermittlung, deren Empfang bestätigt werden muss</item>
+        <item>A) Eine markierte Position auf einer Startbahn, wo der Startlauf begonnen wird;
 B) Jeder markierte Abstellplatz auf dem Vorfeld eines Verkehrsflughafens;
 C) Eine nicht markierte Position auf dem Abstellplatz für die Allgemeine Luftfahrt;
-D) Ein bezeichneter Ort zum Schutz einer Piste, einer Hindernisbegrenzungsfläche, an dem rollende Luftfahrzeuge und Fahrzeuge anhalten und warten müssen</item><item>A) CTR;
+D) Ein bezeichneter Ort zum Schutz einer Piste, einer Hindernisbegrenzungsfläche, an dem rollende Luftfahrzeuge und Fahrzeuge anhalten und warten müssen</item>
+        <item>A) CTR;
 B) CZ;
 C) CTA;
-D) CTZ</item><item>A) Sichtflug;
+D) CTZ</item>
+        <item>A) Sichtflug;
 B) Instrumentenwetterbedingungen;
 C) Instrumentenflug;
-D) Sichtwetterbedingungen</item><item>A) Fluginformations-Radar;
+D) Sichtwetterbedingungen</item>
+        <item>A) Fluginformations-Radar;
 B) Fluginformation erhalten;
 C) Fluginformation erbeten;
-D) Fluginformationsgebiet</item><item>A) Sonnenuntergang bis Sonnenaufgang;
+D) Fluginformationsgebiet</item>
+        <item>A) Sonnenuntergang bis Sonnenaufgang;
 B) Höhe 2400 Fuss;
 C) Ununterbrochener Betrieb bei Tag und Nacht;
-D) Keine festgelegte Betriebszeit</item><item>A) Ununterbrochener Betrieb bei Tag und Nacht;
+D) Keine festgelegte Betriebszeit</item>
+        <item>A) Ununterbrochener Betrieb bei Tag und Nacht;
 B) Sonnenaufgang bis Sonnenuntergang;
 C) Höhe nicht festgelegt;
-D) Keine festgelegte Betriebszeit</item><item>A) Sonnenaufgang bis Sonnenuntergang;
+D) Keine festgelegte Betriebszeit</item>
+        <item>A) Sonnenaufgang bis Sonnenuntergang;
 B) Keine festgelegte Betriebszeit;
 C) Sonnenuntergang bis Sonnenaufgang;
-D) Ununterbrochener Betrieb bei Tag und Nacht</item><item>A) Flugberatungsdienst;
+D) Ununterbrochener Betrieb bei Tag und Nacht</item>
+        <item>A) Flugberatungsdienst;
 B) Allgemeine Informationsstelle;
 C) Allwetter-Informationssystem;
-D) Flughafeninformationssystem</item><item>A) Such- und Rettungsdienst;
+D) Flughafeninformationssystem</item>
+        <item>A) Such- und Rettungsdienst;
 B) Standardanflugroute;
 C) Sekundär-Anflugradar;
-D) \"STOPP AM ROLLHALT\"</item><item>A) GMT;
+D) \"STOPP AM ROLLHALT\"</item>
+        <item>A) GMT;
 B) CUT;
 C) Z-Zeit;
-D) UTC</item><item>A) Flughafengebäude Informationsdienst (AIRPORT TERMINAL INFORMATION SERVICE);
+D) UTC</item>
+        <item>A) Flughafengebäude Informationsdienst (AIRPORT TERMINAL INFORMATION SERVICE);
 B) Automatisches Informationssystem (AUTOMATIC INFORMATION SYSTEM);
 C) Automatische Ausstrahlung von Lande- und Startinformationen (AUTOMATIC TERMINAL INFORMATION SERVICE);
-D) Flugverkehrsinformationsdienst (AIR TRAFFIC INFORMATION SERVICE)</item><item>A) Der Luftdruck bezogen auf das höchste feste Hindernis eines Flugplatzes;
+D) Flugverkehrsinformationsdienst (AIR TRAFFIC INFORMATION SERVICE)</item>
+        <item>A) Der Luftdruck bezogen auf das höchste feste Hindernis eines Flugplatzes;
 B) Der Luftdruck in Flugplatzhöhe oder an der Start- und Landebahnschwelle;
 C) Der Luftdruck bezogen auf einen Punkt auf der Erdoberfläche;
-D) Die Höhenmesser-Skalaeinstellung, die nach der Landung die Platzhöhe anzeigt</item><item>A) Der Luftdruck in Flugplatzhöhe oder an der Landebahnschwelle;
+D) Die Höhenmesser-Skalaeinstellung, die nach der Landung die Platzhöhe anzeigt</item>
+        <item>A) Der Luftdruck in Flugplatzhöhe oder an der Landebahnschwelle;
 B) Der Luftdruck bezogen auf das höchste Hindernis auf einem Flughafen;
 C) Skaleneinstellung am Höhenmesser, damit bei der Landung die Flugplatzhöhe angezeigt wird;
-D) Der am Flughafenbezugspunkt gemessene Luftdruck</item><item>A) QDM;
+D) Der am Flughafenbezugspunkt gemessene Luftdruck</item>
+        <item>A) QDM;
 B) QUJ;
 C) QFE;
-D) QNH</item><item>A) QDR;
+D) QNH</item>
+        <item>A) QDR;
 B) QTE;
 C) QFE;
-D) QNH</item><item>A) Rechtweisender Steuerkurs zur Station (kein Wind);
+D) QNH</item>
+        <item>A) Rechtweisender Steuerkurs zur Station (kein Wind);
 B) Rechtweisende Peilung von der Station;
 C) Missweisender Kurs zur Station;
-D) Missweisende Peilung von der Station</item><item>A) QDM;
+D) Missweisende Peilung von der Station</item>
+        <item>A) QDM;
 B) QNE;
 C) QDR;
-D) QTE</item><item>A) Rechtweisende Peilung / Funkstandlinie von der Station;
+D) QTE</item>
+        <item>A) Rechtweisende Peilung / Funkstandlinie von der Station;
 B) Missweisende Peilung von der Station;
 C) Rechtweisender Steuerkurs zur Station;
-D) Missweisender Steuerkurs zur Station (kein Wind)</item><item>A) QDR;
+D) Missweisender Steuerkurs zur Station (kein Wind)</item>
+        <item>A) QDR;
 B) QFE;
 C) QTE;
-D) QDM</item><item>A) der Übermittlung von QDM-Werten dienen;
+D) QDM</item>
+        <item>A) der Übermittlung von QDM-Werten dienen;
 B) den Ausfall von Funknavigationsanlagen an Bord eines Luftfahrzeuges betreffen;
 C) der Übermittlung von QNH-Werten dienen;
-D) den Ausfall von Funknavigationsanlagen am Boden betreffen</item><item>A) Staatstelegramm;
+D) den Ausfall von Funknavigationsanlagen am Boden betreffen</item>
+        <item>A) Staatstelegramm;
 B) Flugbetriebsmeldung;
 C) Peilfunkmeldung;
-D) Wettermeldung</item><item>A) Peilfunkmeldungen;
+D) Wettermeldung</item>
+        <item>A) Peilfunkmeldungen;
 B) Flugbetriebsmeldungen;
 C) Flugsicherheitsmeldungen;
-D) Dringlichkeitsmeldungen</item><item>A) Flugbetriebsmeldung;
+D) Dringlichkeitsmeldungen</item>
+        <item>A) Flugbetriebsmeldung;
 B) Notmeldung;
 C) Flugsicherheitsmeldung;
-D) Dringlichkeitsmeldung</item><item>A) Dringlichkeitsmeldung;
+D) Dringlichkeitsmeldung</item>
+        <item>A) Dringlichkeitsmeldung;
 B) Flugbetriebsmeldung;
 C) Flugsicherheitsmeldung;
-D) Flugverkehrskontrollmeldung</item><item>A) Peilfunkmeldungen;
+D) Flugverkehrskontrollmeldung</item>
+        <item>A) Peilfunkmeldungen;
 B) Meldungen von Luftfahrzeughaltern;
 C) Verwaltungsmeldungen der Luftfahrtbehörden;
-D) Fernschreibmeldungen</item><item>A) eine Dringlichkeitsmeldung;
+D) Fernschreibmeldungen</item>
+        <item>A) eine Dringlichkeitsmeldung;
 B) eine unerlaubte Meldung im beweglichen Flugfunkdienst;
 C) eine Flugbetriebsmeldung;
-D) eine Flugsicherheitsmeldung</item><item>A) Peilfunkmeldung;
+D) eine Flugsicherheitsmeldung</item>
+        <item>A) Peilfunkmeldung;
 B) Wettermeldung;
 C) Dringlichkeitsmeldung;
-D) Flugsicherheitsmeldung</item><item>A) Flugbetriebsmeldung;
+D) Flugsicherheitsmeldung</item>
+        <item>A) Flugbetriebsmeldung;
 B) unerlaubte Meldung;
 C) Flugsicherheitsmeldung;
-D) Dringlichkeitsmeldung</item><item>A) niedriger als \"STEIGEN SIE AUF FLUGFLÄCHE 85\";
+D) Dringlichkeitsmeldung</item>
+        <item>A) niedriger als \"STEIGEN SIE AUF FLUGFLÄCHE 85\";
 B) niedriger als \"ERBITTE QNH\";
 C) höher als \"START FREI\";
-D) gleichwertig mit \"PISTE 32, LANDUNG FREI\"</item><item>A) höher als \"BEACHTEN SIE BAUARBEITEN LINKS DER ROLLBAHN G\";
+D) gleichwertig mit \"PISTE 32, LANDUNG FREI\"</item>
+        <item>A) höher als \"BEACHTEN SIE BAUARBEITEN LINKS DER ROLLBAHN G\";
 B) niedriger als \"LANDUNG FREI\";
 C) höher als \"SENDEN SIE FÜR PEILUNG\";
-D) gleichwertig mit \"ROLLEN SIE ZUM ABFLUGPUNKT PISTE 05, DORT HALTEN\"</item><item>A) Nach Belieben;
+D) gleichwertig mit \"ROLLEN SIE ZUM ABFLUGPUNKT PISTE 05, DORT HALTEN\"</item>
+        <item>A) Nach Belieben;
 B) In Minuten, zweistellig;
 C) In Minuten und Sekunden;
-D) In Stunden und Minuten</item><item>A) die Bezeichnung von Start-/Landebahnen;
+D) In Stunden und Minuten</item>
+        <item>A) die Bezeichnung von Start-/Landebahnen;
 B) Richtungsangaben nach Uhrzeigerstellung bei Verkehrshinweisen;
 C) Kursangaben;
-D) Höhenangaben</item><item>A) DELTA INDIA JULIETT YANKEE FOX;
+D) Höhenangaben</item>
+        <item>A) DELTA INDIA JULIETT YANKEE FOX;
 B) DELTA INDIA JULIETT YANKEE FOXTROT;
 C) DELTA INDIA JANKEE YULIETT FOXTROT;
-D) DELTA YULIETT INDIA JANKEE FOXTROT</item><item>A) viertausend fünf null null;
+D) DELTA YULIETT INDIA JANKEE FOXTROT</item>
+        <item>A) viertausend fünf null null;
 B) vier füneff hundert;
 C) vier fünf null null;
-D) vier tausend fünf hundert</item><item>A) QNH ein tausend eins;
+D) vier tausend fünf hundert</item>
+        <item>A) QNH ein tausend eins;
 B) QNH eins zero zero eins;
 C) QNH eins null null eins;
-D) QNH eintausend und eins</item><item>A) eins zwo null zwo sieben füneff;
+D) QNH eintausend und eins</item>
+        <item>A) eins zwo null zwo sieben füneff;
 B) eins zwo null Komma zwo sieben fünf;
 C) eins zwanzig Komma zwo sieben;
-D) eins zwei null Komma zwo sieben</item><item>A) dreizehn eins acht;
+D) eins zwei null Komma zwo sieben</item>
+        <item>A) dreizehn eins acht;
 B) dreizehn achtzehn;
 C) eins acht nach dreizehn Uhr;
-D) eins drei eins acht</item><item>A) TURM;
+D) eins drei eins acht</item>
+        <item>A) TURM;
 B) INFORMATION;
 C) RADAR;
-D) ROLLKONTROLLE</item><item>A) RÜCKHOLER;
+D) ROLLKONTROLLE</item>
+        <item>A) RÜCKHOLER;
 B) INFORMATION;
 C) VORFELD;
-D) TURM</item><item>A) INFO;
+D) TURM</item>
+        <item>A) INFO;
 B) FLUGLEITUNG;
 C) TURM;
-D) LUFTAUFSICHT</item><item>A) SEGELFLUG;
+D) LUFTAUFSICHT</item>
+        <item>A) SEGELFLUG;
 B) BODEN;
 C) INFORMATION;
-D) INFO</item><item>A) FLUGINFORMATION;
+D) INFO</item>
+        <item>A) FLUGINFORMATION;
 B) INFORMATION;
 C) INFO;
-D) RADIO</item><item>A) Flugplatzwetter;
+D) RADIO</item>
+        <item>A) Flugplatzwetter;
 B) Startfreigaben;
 C) Rollanweisungen;
-D) Landefreigaben</item><item>A) Nach Herstellen der Sprechfunkverbindung;
+D) Landefreigaben</item>
+        <item>A) Nach Herstellen der Sprechfunkverbindung;
 B) Wenn sich das Luftfahrzeug in der Platzrunde befindet;
 C) Bei jedem Funkanruf;
-D) Wenn eine Verwechslung mit anderen Luftfunkstellen ausgeschlossen ist</item><item>A) der Musterbezeichnung des Luftfahrzeuges und den drei letzten Stellen des Eintragungszeichens;
+D) Wenn eine Verwechslung mit anderen Luftfunkstellen ausgeschlossen ist</item>
+        <item>A) der Musterbezeichnung des Luftfahrzeuges und den drei letzten Stellen des Eintragungszeichens;
 B) der Flugnummer in Verbindung mit dem Eintragungszeichen;
 C) dem Buchstaben \"D\" und drei weiteren Buchstaben;
-D) den Zeichen des Eintragungszeichen des Luftfahrzeugs</item><item>A) auf Antrag des Piloten;
+D) den Zeichen des Eintragungszeichen des Luftfahrzeugs</item>
+        <item>A) auf Antrag des Piloten;
 B) wenn der IFR-Flugplan aufgehoben und der Flug nach VFR fortgesetzt wird;
 C) für Motorsegler beim Wechsel vom Motor- zum Segelflug;
-D) auf Anweisung einer Flugverkehrskontrollstelle im Interesse der Sicherheit</item><item>A) der Bezeichnung des Luftfahrzeugmusters in Verbindung mit der letzten Stelle des Rufzeichens;
+D) auf Anweisung einer Flugverkehrskontrollstelle im Interesse der Sicherheit</item>
+        <item>A) der Bezeichnung des Luftfahrzeugmusters in Verbindung mit der letzten Stelle des Rufzeichens;
 B) dem ersten Zeichen des Eintragungszeichens und mindestens den zwei letzten Zeichen des Rufzeichens;
 C) den beiden letzten Stellen des Eintragungszeichens;
-D) den drei letzten Stellen des Rufzeichens</item><item>A) Nur bei Flügen in der Platzrunde;
+D) den drei letzten Stellen des Rufzeichens</item>
+        <item>A) Nur bei Flügen in der Platzrunde;
 B) Bei jedem Funkanruf;
 C) Nach Herstellung der Sprechfunkverbindung mit der Bodenfunkstelle;
-D) Nachdem die Bodenfunkstelle es bereits verwendet hat</item><item>A) Flugberatungsdienst;
+D) Nachdem die Bodenfunkstelle es bereits verwendet hat</item>
+        <item>A) Flugberatungsdienst;
 B) Flugfernmeldedienst;
 C) Flugverkehrskontrolldienst;
-D) Flugnavigationsdienst</item><item>A) Flugfernmeldedienst;
+D) Flugnavigationsdienst</item>
+        <item>A) Flugfernmeldedienst;
 B) Flugberatungsdienst;
 C) Fluginformationsdienst;
-D) Flugnavigationsdienst</item><item>A) WIEDERHOLEN SIE IHR RUFZEICHEN;
+D) Flugnavigationsdienst</item>
+        <item>A) WIEDERHOLEN SIE IHR RUFZEICHEN;
 B) MONITOR IHR RUFZEICHEN;
 C) BESTÄTIGEN SIE IHR RUFZEICHEN;
-D) ÜBERPRÜFEN SIE IHR RUFZEICHEN</item><item>A) LESEN SIE ZURÜCK;
+D) ÜBERPRÜFEN SIE IHR RUFZEICHEN</item>
+        <item>A) LESEN SIE ZURÜCK;
 B) WIEDERHOLEN SIE WÖRTLICH;
 C) BESTÄTIGEN SIE;
-D) KOMMEN</item><item>A) RICHTIG;
+D) KOMMEN</item>
+        <item>A) RICHTIG;
 B) VERSTANDEN;
 C) POSITIV;
-D) DAS IST RICHTIG</item><item>A) FALSCH;
+D) DAS IST RICHTIG</item>
+        <item>A) FALSCH;
 B) NICHT RICHTIG;
 C) NEGATIV;
-D) NEIN</item><item>A) WILCO;
+D) NEIN</item>
+        <item>A) WILCO;
 B) POSITIV;
 C) WIRD AUSGEFÜHRT;
-D) VERSTANDEN</item><item>A) BESTÄTIGEN SIE;
+D) VERSTANDEN</item>
+        <item>A) BESTÄTIGEN SIE;
 B) BERICHTIGUNG;
 C) WIEDERHOLEN SIE WÖRTLICH;
-D) ÜBERMITTELN SIE NOCHMALS</item><item>A) 7500 ft;
+D) ÜBERMITTELN SIE NOCHMALS</item>
+        <item>A) 7500 ft;
 B) FL 75;
 C) 7500 ft AGL;
-D) 7500 ft AMSL</item><item>A) QNH 1003 NEGATIV QNH 1002;
+D) 7500 ft AMSL</item>
+        <item>A) QNH 1003 NEGATIV QNH 1002;
 B) QNH 1003 TRENNUNG TRENNUNG 1002;
 C) QNH 1003 ICH WIEDERHOLE 1002;
-D) QNH 1003 BERICHTIGUNG QNH 1002</item><item>A) POSITIV;
+D) QNH 1003 BERICHTIGUNG QNH 1002</item>
+        <item>A) POSITIV;
 B) KORREKT;
 C) FREI;
-D) GENEHMIGT</item><item>A) TRANSPOND;
+D) GENEHMIGT</item>
+        <item>A) TRANSPOND;
 B) RESPOND MODE … / CODE …;
 C) SQUAWK;
-D) SENDEN SIE MITTELS TRANSPONDER</item><item>A) Ich habe Ihre letzte Meldung vollständig erhalten;
+D) SENDEN SIE MITTELS TRANSPONDER</item>
+        <item>A) Ich habe Ihre letzte Meldung vollständig erhalten;
 B) Ich habe Ihre Nachricht verstanden und werde entsprechend handeln;
 C) Ich wiederhole zur Klarstellung oder Betonung;
-D) Warten Sie, ich werde Sie rufen</item><item>A) Teilen Sie mit, dass die Meldung empfangen und verstanden wurde;
+D) Warten Sie, ich werde Sie rufen</item>
+        <item>A) Teilen Sie mit, dass die Meldung empfangen und verstanden wurde;
 B) Hören Sie (Frequenz / Kanal) ab;
 C) Betrachten Sie diese Übermittlung als nicht gesendet;
-D) Stellen Sie Funkverbindung her mit (Station)</item><item>A) WILCO;
+D) Stellen Sie Funkverbindung her mit (Station)</item>
+        <item>A) WILCO;
 B) POSITIV;
 C) VERSTANDEN;
-D) STARTE DURCH</item><item>A) DEKMG VERSTANDEN;
+D) STARTE DURCH</item>
+        <item>A) DEKMG VERSTANDEN;
 B) DEKMG POSITIV;
 C) DEKMG;
-D) DEKMG HALTE</item><item>A) DEHOL START FREI;
+D) DEKMG HALTE</item>
+        <item>A) DEHOL START FREI;
 B) DEHOL WILCO;
 C) DEHOL ICH STARTE;
-D) DEHOL PISTE 24 START FREI</item><item>A) DEKUL ABFLUGBEREIT;
+D) DEHOL PISTE 24 START FREI</item>
+        <item>A) DEKUL ABFLUGBEREIT;
 B) DEKUL STARTBEREIT;
 C) DEKUL START FREI;
-D) DEKUL STARTET</item><item>A) Erbitte Testsendung auf Frequenz 135,200 MHz;
+D) DEKUL STARTET</item>
+        <item>A) Erbitte Testsendung auf Frequenz 135,200 MHz;
 B) Schalten Sie den Transponder auf Mode/Code 1352;
 C) Schalten Sie um auf Frequenz 135,200;
-D) Zählen Sie 1-3-5-2- für Funkpeilung</item><item>A) Rechts voraus;
+D) Zählen Sie 1-3-5-2- für Funkpeilung</item>
+        <item>A) Rechts voraus;
 B) Links voraus;
 C) In Flugrichtung voraus;
-D) Querab rechts</item><item>A) Bei Herstellung des ersten Funkkontaktes;
+D) Querab rechts</item>
+        <item>A) Bei Herstellung des ersten Funkkontaktes;
 B) Wenn eine Meldung nicht verstanden wurde;
 C) Nur in Notfällen;
-D) Bei jedem Funkkontakt</item><item>A) AACHEN INFO DELID;
+D) Bei jedem Funkkontakt</item>
+        <item>A) AACHEN INFO DELID;
 B) D2468 FÜR WASSERKUPPE SEGELFLUG WIE HÖREN SIE MICH?;
 C) SAARBRÜCKEN TURM HIER DIAMK;
-D) HAMBURG TURM VON DER DEMIL KOMMEN</item><item>A) Ja, von allen Piloten in beliebiger Reihenfolge;
+D) HAMBURG TURM VON DER DEMIL KOMMEN</item>
+        <item>A) Ja, von allen Piloten in beliebiger Reihenfolge;
 B) Ja, von allen Piloten in der Reihenfolge des Anrufs;
 C) Nein;
-D) Ja, nur von dem zuerst gerufenen Piloten</item><item>A) LUFTHANSA 123, LUFTHANSA 456;
+D) Ja, nur von dem zuerst gerufenen Piloten</item>
+        <item>A) LUFTHANSA 123, LUFTHANSA 456;
 B) D8765 BERLIN INFORMATION;
 C) AN ALLE HAMBURG TURM … ENDE;
-D) DEKOF, DIEBS, DKARL NÜRNBERG ROLLKONTROLLE</item><item>A) DIENO DELLW;
+D) DEKOF, DIEBS, DKARL NÜRNBERG ROLLKONTROLLE</item>
+        <item>A) DIENO DELLW;
 B) DEAMM ERFURT ROLLKONTROLLE;
 C) DEABC, DGIAL, DHHIA LEIPZIG TURM;
-D) AN ALLE DRESDEN TURM</item><item>A) Ja, in beliebiger Reihenfolge;
+D) AN ALLE DRESDEN TURM</item>
+        <item>A) Ja, in beliebiger Reihenfolge;
 B) Ja, von allen Luftfahrzeugen in der Reihenfolge des Anrufes;
 C) Nein;
-D) Ja, nur von dem zuerst angerufenen Luftfahrzeug</item><item>A) nennt das eigene Rufzeichen und wartet dann ab;
+D) Ja, nur von dem zuerst angerufenen Luftfahrzeug</item>
+        <item>A) nennt das eigene Rufzeichen und wartet dann ab;
 B) antwortet mit der Sprechgruppe \"WIEDERHOLEN SIE\";
 C) nennt das eigene Rufzeichen mit der Sprechgruppe \"WIEDERHOLEN SIE IHR RUFZEICHEN\";
-D) wartet ab, bis der Anruf wiederholt wird</item><item>A) Die Entfernung zwischen Boden- und Luftfunkstelle darf nicht weniger als 30 NM betragen;
+D) wartet ab, bis der Anruf wiederholt wird</item>
+        <item>A) Die Entfernung zwischen Boden- und Luftfunkstelle darf nicht weniger als 30 NM betragen;
 B) Das Luftfahrzeug muss sich in der Luft befinden;
 C) Nach Wahl der richtigen Frequenz sicherstellen, dass kein laufender Funkverkehr gestört wird;
-D) Es muss eine Funkprobe stattgefunden haben</item><item>A) Unmittelbar nach dem Start;
+D) Es muss eine Funkprobe stattgefunden haben</item>
+        <item>A) Unmittelbar nach dem Start;
 B) 5 Minuten vor Einflug in diesen Luftraum;
 C) Oberhalb von 3500 ft AGL;
-D) Beim Einflug in diesen Luftraum</item><item>A) deutscher oder englischer Sprache;
+D) Beim Einflug in diesen Luftraum</item>
+        <item>A) deutscher oder englischer Sprache;
 B) englischer Sprache;
 C) einer der ICAO-Sprachen;
-D) deutscher Sprache</item><item>A) HAMBURG TURM DGIGA;
+D) deutscher Sprache</item>
+        <item>A) HAMBURG TURM DGIGA;
 B) DGIGA werde TURM rufen DGIGA;
 C) DGIGA wechsele Frequenz;
-D) DGIGA rufe 126,850</item><item>A) G;
+D) DGIGA rufe 126,850</item>
+        <item>A) G;
 B) nur D;
 C) C und D;
-D) E</item><item>A) Ständige Hörbereitschaft auf der Frequenz der Flugplatzkontrollstelle zu halten;
+D) E</item>
+        <item>A) Ständige Hörbereitschaft auf der Frequenz der Flugplatzkontrollstelle zu halten;
 B) Eine Wetterberatung einzuholen;
 C) In jedem Fall vor Beginn des Fluges einen Flugplan abzugeben;
-D) In jedem Teil der Platzrunde eine Standortmeldung abzusetzen</item><item>A) bei Nacht in den Lufträumen C, D und E (außerhalb der Umgebung des Flugplatzes);
+D) In jedem Teil der Platzrunde eine Standortmeldung abzusetzen</item>
+        <item>A) bei Nacht in den Lufträumen C, D und E (außerhalb der Umgebung des Flugplatzes);
 B) über den Alpen;
 C) über geschlossenen Wolkendecken;
-D) bei Nacht im Luftraum G</item><item>A) über geschlossenen Wolkendecken;
+D) bei Nacht im Luftraum G</item>
+        <item>A) über geschlossenen Wolkendecken;
 B) im Luftraum C;
 C) im Luftraum F;
-D) während der Nacht im Luftraum G</item><item>A) Rollen, Starten und Landen eingeleitet werden;
+D) während der Nacht im Luftraum G</item>
+        <item>A) Rollen, Starten und Landen eingeleitet werden;
 B) Starten und Landen eingeleitet werden oder damit in Zusammenhang stehen;
 C) Starten und Landen eingeleitet werden;
-D) Rollen, Starten und Landen eingeleitet werden oder damit in Zusammenhang stehen</item><item>A) in jedem Teil der Platzrunde eine Standortmeldung abzusetzen;
+D) Rollen, Starten und Landen eingeleitet werden oder damit in Zusammenhang stehen</item>
+        <item>A) in jedem Teil der Platzrunde eine Standortmeldung abzusetzen;
 B) eine Wetter- und Flugberatung einzuholen;
 C) in jedem Fall vor Beginn des Fluges einen Flugplan abzugeben;
-D) dauernde Hörbereitschaft auf der vorgesehenen Funkfrequenz zu halten oder, falls dies nicht möglich ist, auf Anweisungen durch Licht- und Bodensignale sowie Zeichen zu achten</item><item>A) sehr gut verständlich;
+D) dauernde Hörbereitschaft auf der vorgesehenen Funkfrequenz zu halten oder, falls dies nicht möglich ist, auf Anweisungen durch Licht- und Bodensignale sowie Zeichen zu achten</item>
+        <item>A) sehr gut verständlich;
 B) schwer verständlich;
 C) zeitweise verständlich;
-D) verständlich</item><item>A) verständlich;
+D) verständlich</item>
+        <item>A) verständlich;
 B) zeitweise verständlich;
 C) sehr gut verständlich;
-D) schwer verständlich</item><item>A) sehr gut verständlich;
+D) schwer verständlich</item>
+        <item>A) sehr gut verständlich;
 B) schwer verständlich;
 C) verständlich;
-D) unverständlich</item><item>A) unverständlich;
+D) unverständlich</item>
+        <item>A) unverständlich;
 B) sehr gut verständlich;
 C) schlecht verständlich;
-D) zeitweise verständlich</item><item>A) Höre Sie drei;
+D) zeitweise verständlich</item>
+        <item>A) Höre Sie drei;
 B) Höre Sie vier;
 C) Höre Sie;
-D) Höre Sie laut und deutlich</item><item>A) Höre Sie zwo;
+D) Höre Sie laut und deutlich</item>
+        <item>A) Höre Sie zwo;
 B) Höre Sie drei;
 C) Höre Sie KOMMEN;
-D) Höre Sie</item><item>A) Die Wörter \"TRANSMISSION CHECK\";
+D) Höre Sie</item>
+        <item>A) Die Wörter \"TRANSMISSION CHECK\";
 B) Die Wörter \"CHECK CHECK \";
 C) Die Wörter \"TEST CHECK\";
-D) Die Wörter \"RADIO CHECK\"</item><item>A) SCHWERE GEWITTER IM RHEINTAL BEI MANNHEIM;
+D) Die Wörter \"RADIO CHECK\"</item>
+        <item>A) SCHWERE GEWITTER IM RHEINTAL BEI MANNHEIM;
 B) START FREI;
 C) ACHTEN SIE AUF ENTGEGENKOMMENDEN HUBSCHRAUBER;
-D) BAUARBEITEN LINKS DER ROLLBAHN</item><item>A) Rollbahnzustand;
+D) BAUARBEITEN LINKS DER ROLLBAHN</item>
+        <item>A) Rollbahnzustand;
 B) Verkehrshinweise;
 C) Höhenmessereinstellungen;
-D) Wettermeldungen</item><item>A) Wetterinformationen;
+D) Wettermeldungen</item>
+        <item>A) Wetterinformationen;
 B) Die Frequenz bei Frequenzwechsel;
 C) Hinweise auf Bauarbeiten an der Start-/Landebahn;
-D) Windrichtung und -stärke</item><item>A) dreimaliges Drücken der Mikrofontaste;
+D) Windrichtung und -stärke</item>
+        <item>A) dreimaliges Drücken der Mikrofontaste;
 B) zweimaliges Drücken der Mikrofontaste;
 C) Nennung des eigenen, abgekürzten Rufzeichens;
-D) wörtliche Wiederholung der Freigabe</item><item>A) DEL START FREI, PISTE 22, WIND 250 GRAD, 7 KNOTEN;
+D) wörtliche Wiederholung der Freigabe</item>
+        <item>A) DEL START FREI, PISTE 22, WIND 250 GRAD, 7 KNOTEN;
 B) DEL AUF 3000 FUSS STEIGEN, START FREI;
 C) DEL GERADEAUS STEIGEN AUF FLUGHÖHE 3000 FUSS, DANN RECHTSKURVE, PISTE 22, START FREI;
-D) DEL WILCO, PISTE 22, START FREI</item><item>A) Anweisungen über Steuerkurs, Flughöhe, Geschwindigkeit, Höhenmessereinstellung, Flugsicht, Windrichtung, Startfreigabe und Frequenz bei Frequenzwechsel;
+D) DEL WILCO, PISTE 22, START FREI</item>
+        <item>A) Anweisungen über Steuerkurs, Flughöhe, Geschwindigkeit, Höhenmessereinstellung, Flugsicht, Windrichtung, Startfreigabe und Frequenz bei Frequenzwechsel;
 B) Betriebsstart-/Landebahn, Bodensicht, Taupunkt, Startfreigabe, Frequenz bei Frequenzwechsel;
 C) Freigaben, Rollanweisungen, Betriebspiste, QNH, SSR-Codes, Höhenanweisungen, Steuerkurs- und Geschwindigkeitsanweisungen, Frequenz bei Frequenzwechsel;
-D) Freigaben, Windrichtung/-geschwindigkeit, Steuerkursanweisungen, QNH, Frequenz bei Frequenzwechsel</item><item>A) Einflügen in den Luftraum D;
+D) Freigaben, Windrichtung/-geschwindigkeit, Steuerkursanweisungen, QNH, Frequenz bei Frequenzwechsel</item>
+        <item>A) Einflügen in den Luftraum D;
 B) Flügen über den Wolken im Luftraum E;
 C) Flügen während der Nacht im Luftraum G;
-D) allen Flügen im Luftraum E</item><item>A) nur abgesetzt werden, wenn es sich um einen Sonderflug nach Sichtflugregeln handelt;
+D) allen Flügen im Luftraum E</item>
+        <item>A) nur abgesetzt werden, wenn es sich um einen Sonderflug nach Sichtflugregeln handelt;
 B) unabhängig von der erteilten Freigabe in jedem Fall abgesetzt werden, sofern nicht ausdrücklich darauf verzichtet wird;
 C) unabhängig von der erteilten Freigabe nur dann abgesetzt werden, wenn die Platzkontrollstelle dazu auffordert;
-D) nicht abgesetzt werden. Durch die Anweisung, in die Platzrunde einzufliegen, wird auf jede weitere Standortmeldung über Pflichtmeldepunkten verzichtet</item><item>A) Beim Verlassen des Luftraumes D;
+D) nicht abgesetzt werden. Durch die Anweisung, in die Platzrunde einzufliegen, wird auf jede weitere Standortmeldung über Pflichtmeldepunkten verzichtet</item>
+        <item>A) Beim Verlassen des Luftraumes D;
 B) Nur beim Überflug von Funknavigationsanlagen (z.B. VOR, NDB);
 C) Beim Einflug in die Lufträume E und F;
-D) Beim Überflug von Pflichtmeldepunkten</item><item>A) Die Flughöhe, wenn diese nicht höher als 3500 ft AGL ist;
+D) Beim Überflug von Pflichtmeldepunkten</item>
+        <item>A) Die Flughöhe, wenn diese nicht höher als 3500 ft AGL ist;
 B) Das Funkrufzeichen, wenn es sich um einen nichtgewerblichen Flug handelt;
 C) Der Standort, wenn dieser auf der Sichtflugkarte veröffentlicht ist;
-D) Die Zeitangabe, wenn die Meldung zum Zeitpunkt des Überfluges erfolgt</item><item>A) Funkrufzeichen des Luftfahrzeuges, Standort, Zeit;
+D) Die Zeitangabe, wenn die Meldung zum Zeitpunkt des Überfluges erfolgt</item>
+        <item>A) Funkrufzeichen des Luftfahrzeuges, Standort, Zeit;
 B) Funkrufzeichen des Luftfahrzeuges, Standort, Höhe;
 C) Funkrufzeichen des Luftfahrzeuges, Standort;
-D) Funkrufzeichen des Luftfahrzeuges, Standort, Höhe, Zeit</item><item>A) Meldepunkt auf Anforderung (Bedarfsmeldepunkt);
+D) Funkrufzeichen des Luftfahrzeuges, Standort, Höhe, Zeit</item>
+        <item>A) Meldepunkt auf Anforderung (Bedarfsmeldepunkt);
 B) Pflichtmeldepunkt;
 C) Luftfahrthindernis;
-D) Funknavigationsanlage</item><item>A) Pflichtmeldepunkt;
+D) Funknavigationsanlage</item>
+        <item>A) Pflichtmeldepunkt;
 B) Beleuchtetes Hindernis;
 C) Meldepunkt auf Anforderung (Bedarfsmeldepunkt);
-D) Militärflugplatz</item><item>A) Nach Zustimmung der Flugleitung des Landeplatzes;
+D) Militärflugplatz</item>
+        <item>A) Nach Zustimmung der Flugleitung des Landeplatzes;
 B) Auf Anforderung der Flugleitung des Landeplatzes, wenn die Landung sichergestellt erscheint;
 C) Wenn der Verkehr in der Platzrunde beobachtet wird;
-D) Wenn sich das Luftfahrzeug in der Platzrunde befindet und die Landung sichergestellt erscheint</item><item>A) An die Bodenfunkstelle des Zielflugplatzes;
+D) Wenn sich das Luftfahrzeug in der Platzrunde befindet und die Landung sichergestellt erscheint</item>
+        <item>A) An die Bodenfunkstelle des Zielflugplatzes;
 B) An den Flugberatungsdienst;
 C) An die zuständige Flugverkehrskontrollstelle oder an den zuständigen FIS zur Weiterleitung an den AIS-C;
-D) An den Funknavigationsdienst zur Weiterleitung an den AIS-C</item><item>A) Luftfahrzeugkennung, Startflugplatz, Zielflugplatz;
+D) An den Funknavigationsdienst zur Weiterleitung an den AIS-C</item>
+        <item>A) Luftfahrzeugkennung, Startflugplatz, Zielflugplatz;
 B) Luftfahrzeugkennung, Startflugplatz, Startzeit, Zielflugplatz;
 C) Luftfahrzeugkennung, Startzeit, Zielflugplatz;
-D) Luftfahrzeugkennung, Startflugplatz, Startzeit</item><item>A) 3 bis 4 Achtel;
+D) Luftfahrzeugkennung, Startflugplatz, Startzeit</item>
+        <item>A) 3 bis 4 Achtel;
 B) 1 bis 2 Achtel;
 C) 5 bis 7 Achtel;
-D) 8 Achtel</item><item>A) 1 bis 2 Achtel;
+D) 8 Achtel</item>
+        <item>A) 1 bis 2 Achtel;
 B) 5 bis 7 Achtel;
 C) 8 Achtel;
-D) 3 bis 4 Achtel</item><item>A) 5 bis 7 Achtel;
+D) 3 bis 4 Achtel</item>
+        <item>A) 5 bis 7 Achtel;
 B) 1 bis 2 Achtel;
 C) 8 Achtel;
-D) 3 bis 4 Achtel</item><item>A) durchbrochen bewölkt (BROKEN);
+D) 3 bis 4 Achtel</item>
+        <item>A) durchbrochen bewölkt (BROKEN);
 B) bedeckt (OVERCAST);
 C) locker Bewölkung (SCATTERED);
-D) keine markanten Wolken (NO SIGNIFICANT CLOUDS)</item><item>A) bedeckt (OVERCAST);
+D) keine markanten Wolken (NO SIGNIFICANT CLOUDS)</item>
+        <item>A) bedeckt (OVERCAST);
 B) lockere Bewölkung (SCATTERED);
 C) durchbrochen bewölkt (BROKEN);
-D) gering bewölkt (FEW)</item><item>A) keine markanten Wolken (NO SIGNIFICANT CLOUDS);
+D) gering bewölkt (FEW)</item>
+        <item>A) keine markanten Wolken (NO SIGNIFICANT CLOUDS);
 B) gering bewölkt (FEW);
 C) durchbrochen bewölkt (BROKEN);
-D) lockere Bewölkung (SCATTERED)</item><item>A) Sicht 5000 m oder mehr, keine Bewölkung unter 1500 ft AGL;
+D) lockere Bewölkung (SCATTERED)</item>
+        <item>A) Sicht 5000 m oder mehr, keine Bewölkung unter 1500 ft AGL;
 B) Sicht 10 km oder mehr, keine Bewölkung unter 1500 ft AGL;
 C) Sicht 10 km oder mehr, keine Bewölkung unter 5000 ft AGL;
-D) Sicht 5000 m oder mehr, keine Bewölkung unter 5000 ft AGL</item><item>A) Bis 5000 m in Metern, darüber in Kilometern;
+D) Sicht 5000 m oder mehr, keine Bewölkung unter 5000 ft AGL</item>
+        <item>A) Bis 5000 m in Metern, darüber in Kilometern;
 B) Bis 1500 m in Metern, darüber in Kilometern;
 C) In Fuss und NM;
-D) Nur in NM</item><item>A) \"SICHT EINS KOMMA ACHT SEEMEILEN\";
+D) Nur in NM</item>
+        <item>A) \"SICHT EINS KOMMA ACHT SEEMEILEN\";
 B) \"SICHT DREI KILOMETER\";
 C) \"SICHT ETWA NEUN TAUSEND FUSS\";
-D) \"SICHT DREI TAUSEND METER\"</item><item>A) Die Wetterrundsendungen für Flughafenwettermeldungen für Flughäfen;
+D) \"SICHT DREI TAUSEND METER\"</item>
+        <item>A) Die Wetterrundsendungen für Flughafenwettermeldungen für Flughäfen;
 B) Den Fluginformationsdienst;
 C) Das Funkrufzeichen für eine Dienststelle des Deutschen Wetterdienstes (DWD);
-D) Das Rufzeichen des Flugverkehrsberatungsdienstes</item><item>A) AIS-C;
+D) Das Rufzeichen des Flugverkehrsberatungsdienstes</item>
+        <item>A) AIS-C;
 B) GAFOR;
 C) UHF;
-D) ATIS</item><item>A) Lande- und Startinformationen zur sicheren Durchführung von Flügen nach VFR und IFR;
+D) ATIS</item>
+        <item>A) Lande- und Startinformationen zur sicheren Durchführung von Flügen nach VFR und IFR;
 B) Die rechtweisende Peilung zum Zielflugplatz;
 C) Wetterinformationen für mehrere Flughäfen;
-D) Wetterinformationen für Überlandflüge unter VMC</item><item>A) Auf Anforderung des Luftfahrzeugführers;
+D) Wetterinformationen für Überlandflüge unter VMC</item>
+        <item>A) Auf Anforderung des Luftfahrzeugführers;
 B) Als Flugrundfunksendung (broadcast) auf den für VOLMET veröffentlichten Frequenzen;
 C) Als Flugrundfunksendung (broadcast) auf den Frequenzen der Flugverkehrskontrolle;
-D) Als Flugrundfunksendung (broadcast) auf den Frequenzen des Fluginformationsdienstes zu jeder halben und vollen Stunde</item><item>A) Besondere Wettererscheinungen, z.B. Gewitter, Turbulenzen, Vereisung;
+D) Als Flugrundfunksendung (broadcast) auf den Frequenzen des Fluginformationsdienstes zu jeder halben und vollen Stunde</item>
+        <item>A) Besondere Wettererscheinungen, z.B. Gewitter, Turbulenzen, Vereisung;
 B) Angabe der Wolkenuntergrenze in Lufträumen der Klassen F und G;
 C) Meteorologische Angaben in Kartenform, erhältlich bei Flugwetterwarten;
-D) Routinewettermeldungen</item><item>A) Art der Notlage, Ursache der Notlage, Bitte um Frequenzwechsel auf 121,500 MHz;
+D) Routinewettermeldungen</item>
+        <item>A) Art der Notlage, Ursache der Notlage, Bitte um Frequenzwechsel auf 121,500 MHz;
 B) Art der Notlage, Absichten des Luftfahrzeugführers, Art der gewünschten Hilfe, Angaben über Standort, Kurs und Flughöhe;
 C) Steuerkurs, Absichten des Luftfahrzeugführers;
-D) Absichten des Luftfahrzeugführers, TAS, Standort, Sinkflugrate</item><item>A) ein Luftfahrzeugführer eine außerplanmäßige Landung durchgeführt hat oder durchführen wird;
+D) Absichten des Luftfahrzeugführers, TAS, Standort, Sinkflugrate</item>
+        <item>A) ein Luftfahrzeugführer eine außerplanmäßige Landung durchgeführt hat oder durchführen wird;
 B) ein Luftfahrzeug und dessen Insassen von schwerer und unmittelbarer Gefahr bedroht sind und sofortige Hilfe benötigen;
 C) sich ein Luftfahrzeug in einer schwierigen Lage befindet;
-D) sich ein schwerkranker Passagier an Bord eines Luftfahrzeuges befindet</item><item>A) auf einer SAR-Frequenz;
+D) sich ein schwerkranker Passagier an Bord eines Luftfahrzeuges befindet</item>
+        <item>A) auf einer SAR-Frequenz;
 B) nur auf einer FIS-Frequenz;
 C) auf der Betriebsfrequenz oder einer Notfrequenz;
-D) immer auf der Notfrequenz 121,500 MHz</item><item>A) MAYDAY NOTFALL MAYDAY;
+D) immer auf der Notfrequenz 121,500 MHz</item>
+        <item>A) MAYDAY NOTFALL MAYDAY;
 B) NOTFALL, vorzugsweise dreimaliges Aussenden;
 C) PAN PAN, vorzugsweise dreimaliges Aussenden;
-D) MAYDAY, vorzugsweise dreimaliges Aussenden</item><item>A) Das wiederholte Ein- und Ausschalten der Landescheinwerfer oder der Positionslichter;
+D) MAYDAY, vorzugsweise dreimaliges Aussenden</item>
+        <item>A) Das wiederholte Ein- und Ausschalten der Landescheinwerfer oder der Positionslichter;
 B) Das durch Sprechfunk übermittelte Wort MAYDAY;
 C) Das Abfeuern von grünen und roten Leuchtkugeln;
-D) Das durch Sprechfunk übermittelte Wort PAN PAN</item><item>A) PAN PAN, vorzugsweise dreimaliges Aussenden;
+D) Das durch Sprechfunk übermittelte Wort PAN PAN</item>
+        <item>A) PAN PAN, vorzugsweise dreimaliges Aussenden;
 B) ACHTUNG, ICH HABE EINE DRINGENDE MELDUNG;
 C) MAYDAY‚ vorzugsweise dreimaliges Aussenden;
-D) DRINGLICHKEIT DRINGLICHKEIT</item><item>A) in schwerer und unmittelbarer Gefahr ist und sofortige Hilfe benötigt;
+D) DRINGLICHKEIT DRINGLICHKEIT</item>
+        <item>A) in schwerer und unmittelbarer Gefahr ist und sofortige Hilfe benötigt;
 B) versehentlich in ein Gebiet mit Flugbeschränkungen eingeflogen ist;
 C) entführt worden ist;
-D) sich in einer schwierigen Lage befindet</item><item>A) A 7700;
+D) sich in einer schwierigen Lage befindet</item>
+        <item>A) A 7700;
 B) A 7500;
 C) A 7000;
-D) A 7600</item><item>A) Das Luftfahrzeug befindet sich in einer Notlage;
+D) A 7600</item>
+        <item>A) Das Luftfahrzeug befindet sich in einer Notlage;
 B) Das Luftfahrzeug fliegt in den Luftraum E ein;
 C) Das Luftfahrzeug hat Funkausfall;
-D) Das Luftfahrzeug wird entführt</item><item>A) den Transpondercode Mode A 7600 zu schalten, sofern möglich, und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen;
+D) Das Luftfahrzeug wird entführt</item>
+        <item>A) den Transpondercode Mode A 7600 zu schalten, sofern möglich, und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen;
 B) den Transpondercode Mode A 7600 zu schalten, sofern möglich, und nach einer Umkehrkurve von 180° zum Startflugplatz zurück zu kehren;
 C) den Transpondercode Mode A 7600 zu schalten, sofern möglich, auf dem nächstgelegenen geeigneten Flugplatz zu landen, und der zuständigen Flugverkehrskontrollstelle schnellstmöglich die Landezeit zu übermitteln;
-D) den Transpondercode Mode A 7600 zu schalten, sofern möglich, und ein geeignetes Notlandegelände zu erkunden</item><item>A) Am Ende der Blindsendung wird das Rufzeichen des Luftfahrzeuges wiederholt;
+D) den Transpondercode Mode A 7600 zu schalten, sofern möglich, und ein geeignetes Notlandegelände zu erkunden</item>
+        <item>A) Am Ende der Blindsendung wird das Rufzeichen des Luftfahrzeuges wiederholt;
 B) Die Meldung ist zweimal zu übermitteln;
 C) Die Meldung ist dreimal zu übermitteln;
-D) Am Ende der Blindsendung wird das Rufzeichen der Bodenfunkstelle wiederholt</item><item>A) Am Ende einer Blindsendung wird das Rufzeichen der Bodenfunkstelle wiederholt;
+D) Am Ende der Blindsendung wird das Rufzeichen der Bodenfunkstelle wiederholt</item>
+        <item>A) Am Ende einer Blindsendung wird das Rufzeichen der Bodenfunkstelle wiederholt;
 B) Angabe der Zeit und/oder der Position für die nächste Blindsendung;
 C) Der Meldung wird dreimal die Redewendung BLINDSENDUNG vorangestellt;
-D) Am Ende der Blindsendung wird das Rufzeichen der Luftfunkstelle wiederholt</item><item>A) A 7000;
+D) Am Ende der Blindsendung wird das Rufzeichen der Luftfunkstelle wiederholt</item>
+        <item>A) A 7000;
 B) A 7600;
 C) A 7700;
-D) A 7500</item><item>A) Funkausfall;
+D) A 7500</item>
+        <item>A) Funkausfall;
 B) Erbitte Landeanweisungen;
 C) Notlage;
-D) Fliege in den Luftraum C ein</item><item>A) Anweisungen über Funk haben Vorrang vor Signalen und Zeichen, ausgenommen rote Feuerwerkskörper;
+D) Fliege in den Luftraum C ein</item>
+        <item>A) Anweisungen über Funk haben Vorrang vor Signalen und Zeichen, ausgenommen rote Feuerwerkskörper;
 B) Signale und Zeichen haben Vorrang vor Anweisungen über Funk;
 C) Auch akustische Signale können gegeben werden;
-D) Bodensignale haben Vorrang vor Lichtsignalen</item><item>A) roten Feuerwerkskörpern;
+D) Bodensignale haben Vorrang vor Lichtsignalen</item>
+        <item>A) roten Feuerwerkskörpern;
 B) roten Blinksignalen;
 C) roten Dauersignalen;
-D) grünen Dauersignalen</item><item>A) Leuchtgeschosse, die in Abständen von ca. 10 Sekunden abgefeuert werden und sich in rote und grüne Lichter und Sterne zerlegen;
+D) grünen Dauersignalen</item>
+        <item>A) Leuchtgeschosse, die in Abständen von ca. 10 Sekunden abgefeuert werden und sich in rote und grüne Lichter und Sterne zerlegen;
 B) Funkanweisungen;
 C) Bodensignale;
-D) Lichtsignale</item><item>A) 117,975 MHz – 137,000 MHz;
+D) Lichtsignale</item>
+        <item>A) 117,975 MHz – 137,000 MHz;
 B) 108,000 kHz – 136,000 kHz;
 C) 200 - 490 kHz;
-D) 108,000 MHz – 117,975 MHz</item><item>A) 25 MHz + 8,33 MHz;
+D) 108,000 MHz – 117,975 MHz</item>
+        <item>A) 25 MHz + 8,33 MHz;
 B) 25 MHz;
 C) 8,33 kHz;
-D) 25 kHz + 8,33 kHz</item><item>A) Gegensprechverkehr;
+D) 25 kHz + 8,33 kHz</item>
+        <item>A) Gegensprechverkehr;
 B) Wechsel- und Gegensprechverkehr;
 C) Wechselsprechverkehr;
-D) Duplexverkehr</item><item>A) Schul- und Übungsfrequenz;
+D) Duplexverkehr</item>
+        <item>A) Schul- und Übungsfrequenz;
 B) Bord-Bord-Frequenz;
 C) Informationsfrequenz;
-D) Internationale Notfrequenz</item><item>A) 121,500 MHz;
+D) Internationale Notfrequenz</item>
+        <item>A) 121,500 MHz;
 B) 130,780 MHz;
 C) 109,550 MHz;
-D) 200 kHz</item><item>A) 109,550 MHz;
+D) 200 kHz</item>
+        <item>A) 109,550 MHz;
 B) 134,555 MHz;
 C) 121,500 MHz;
-D) 200 kHz</item><item>A) Klemmen der Sprechtaste;
+D) 200 kHz</item>
+        <item>A) Klemmen der Sprechtaste;
 B) Zu leises Sprechen;
 C) Zu lautes Sprechen;
-D) Ein- und Ausschalten der Sprechfunkanlage</item><item>A) Sie werden von der Ionosphäre in ca. 100 km Höhe reflektiert und gelangen als sogenannte Raumwellen zur Erdoberfläche zurück;
+D) Ein- und Ausschalten der Sprechfunkanlage</item>
+        <item>A) Sie werden von der Ionosphäre in ca. 100 km Höhe reflektiert und gelangen als sogenannte Raumwellen zur Erdoberfläche zurück;
 B) Sie breiten sich als Bodenwellen entlang der Erdoberfläche aus und dringen somit z.B. auch in Täler ein, so dass sie von topographischen Hindernissen nicht beeinflusst werden;
 C) Ähnlich wie das Licht, d.h. \"quasi optisch\";
-D) Wie Kurzwellen, wobei aber atmosphärische Störungen keinen Einfluss auf sie haben</item><item>A) Die Ionosphäre;
+D) Wie Kurzwellen, wobei aber atmosphärische Störungen keinen Einfluss auf sie haben</item>
+        <item>A) Die Ionosphäre;
 B) Atmosphärische Störungen, wie sie besonders bei Gewittern auftreten;
 C) Der Tag-/Nachteffekt;
-D) Die Flughöhe des Luftfahrzeuges und topographische Verhältnisse</item><item>A) Das Flugzeug befindet sich in ausreichend großer Höhe und nahe der Bodenfunkstelle;
+D) Die Flughöhe des Luftfahrzeuges und topographische Verhältnisse</item>
+        <item>A) Das Flugzeug befindet sich in ausreichend großer Höhe und nahe der Bodenfunkstelle;
 B) Das Flugzeug befindet sich in geringer Höhe sehr weit von der Bodenfunkstelle entfernt;
 C) Das Flugzeug befindet sich in geringer Flughöhe im \"Funkschatten\" eines Berges, in weiter Entfernung von der Bodenfunkstelle;
-D) Das Luftfahrzeug befindet sich im Tiefflug in einem Tal, nahe der Bodenstation im \"Funkschatten\"</item><item>A) Ca. 20 NM;
+D) Das Luftfahrzeug befindet sich im Tiefflug in einem Tal, nahe der Bodenstation im \"Funkschatten\"</item>
+        <item>A) Ca. 20 NM;
 B) Ca. 150 NM;
 C) Ca. 10 NM;
-D) Ca. 95 NM</item><item>A) Alarm-, Rettungs-, Informations- und Beratungsdienst;
+D) Ca. 95 NM</item>
+        <item>A) Alarm-, Rettungs-, Informations- und Beratungsdienst;
 B) Wetterdienst, Beratungsdienst, Such- und Rettungsdienst (SAR) und Kontrolldienst;
 C) FS-Kontrolldienst, Such- und Rettungsdienst, Fernmeldedienst;
-D) Flugverkehrskontrolldienst, Flugalarmdienst, Fluginformationsdienst, Flugverkehrsberatungsdienst</item><item>A) Annahme und Weiterleitung von Flugplan- und Flugplanfolgemeldungen;
+D) Flugverkehrskontrolldienst, Flugalarmdienst, Fluginformationsdienst, Flugverkehrsberatungsdienst</item>
+        <item>A) Annahme und Weiterleitung von Flugplan- und Flugplanfolgemeldungen;
 B) Wettermeldungen zu verbreiten;
 C) Freigaben zu erteilen;
-D) Den Such- und Rettungsdienst (SAR) zu organisieren</item><item>A) Die vom Bundesaufsichtsamt für Flugsicherung zugelassenen Flugsicherungsorganisationen;
+D) Den Such- und Rettungsdienst (SAR) zu organisieren</item>
+        <item>A) Die vom Bundesaufsichtsamt für Flugsicherung zugelassenen Flugsicherungsorganisationen;
 B) Das Luftfahrtbundesamt;
 C) Die Landesluftfahrtbehörden;
-D) Die DFS Deutsche Flugsicherung GmbH</item><item>A) Vor Antritt eines Fluges;
+D) Die DFS Deutsche Flugsicherung GmbH</item>
+        <item>A) Vor Antritt eines Fluges;
 B) Während des Fluges, jedoch ausschließlich bei Flügen im Luftraum C und E;
 C) Während des Fluges;
-D) Während des Fluges, jedoch ausschließlich bei Flügen im Luftraum G</item><item>A) Nur die Luftfahrzeugführer von motorgetriebenen Luftfahrzeugen;
+D) Während des Fluges, jedoch ausschließlich bei Flügen im Luftraum G</item>
+        <item>A) Nur die Luftfahrzeugführer von motorgetriebenen Luftfahrzeugen;
 B) Alle Luftfahrzeugführer;
 C) Nur Luftfahrzeugführer, die Überlandflüge durchführen;
-D) Unerfahrene Luftfahrzeugführer</item><item>A) Flügen, die über die Umgebung des Startflugplatzes hinausführen und vor Flügen nach Instrumentenflugregeln;
+D) Unerfahrene Luftfahrzeugführer</item>
+        <item>A) Flügen, die über die Umgebung des Startflugplatzes hinausführen und vor Flügen nach Instrumentenflugregeln;
 B) zweifelhaften Wetterlagen;
 C) Flügen zu gewerblichen Zwecken;
-D) Flügen, für die ein Flugplan zu übermitteln ist</item><item>A) Koordinierte Weltzeit (UTC);
+D) Flügen, für die ein Flugplan zu übermitteln ist</item>
+        <item>A) Koordinierte Weltzeit (UTC);
 B) Zonenzeit (Z-Zeit);
 C) MEZ bzw. MESZ Knoten;
-D) Ortszeit</item><item>A) Meter je Minute;
+D) Ortszeit</item>
+        <item>A) Meter je Minute;
 B) Meilen je Minute;
 C) Kilometer je Stunde;
-D) Knoten</item><item>A) Fuss je Minute;
+D) Knoten</item>
+        <item>A) Fuss je Minute;
 B) Knoten;
 C) Meter je Minute;
-D) Fuss je Sekunde</item><item>A) Zoll;
+D) Fuss je Sekunde</item>
+        <item>A) Zoll;
 B) Fuss;
 C) Kilometer;
-D) Meter</item><item>A) Landmeile;
+D) Meter</item>
+        <item>A) Landmeile;
 B) Kilometer;
 C) Seemeilen und Zehntel;
-D) Knoten</item><item>A) Atmosphäre Überdruck;
+D) Knoten</item>
+        <item>A) Atmosphäre Überdruck;
 B) Hektopascal;
 C) Millimeter Quecksilber;
-D) Millibar</item><item>A) 600 ft;
+D) Millibar</item>
+        <item>A) 600 ft;
 B) 300 m;
 C) 150 m;
-D) 300 ft</item><item>A) Beide nach rechts;
+D) 300 ft</item>
+        <item>A) Beide nach rechts;
 B) Das schneller fliegende Luftfahrzeug;
 C) Das Segelflugzeug;
-D) Das motorgetriebene Luftfahrzeug</item><item>A) allen Luftfahrzeugen;
+D) Das motorgetriebene Luftfahrzeug</item>
+        <item>A) allen Luftfahrzeugen;
 B) Segelflugzeugen;
 C) motorgetriebenen Luftfahrzeugen;
-D) Motorseglern mit abgeschaltetem Motor</item><item>A) Das Luftfahrzeug mit der höheren Geschwindigkeit;
+D) Motorseglern mit abgeschaltetem Motor</item>
+        <item>A) Das Luftfahrzeug mit der höheren Geschwindigkeit;
 B) Der Motorsegler dem Flugzeug;
 C) Das Flugzeug dem Motorsegler;
-D) Beide Luftfahrzeuge müssen die Kurse ändern</item><item>A) in jedem Fall das mehrsitzige Luftfahrzeug Vorflugrecht;
+D) Beide Luftfahrzeuge müssen die Kurse ändern</item>
+        <item>A) in jedem Fall das mehrsitzige Luftfahrzeug Vorflugrecht;
 B) das tiefer fliegende Luftfahrzeug Vorflugrecht;
 C) das höher fliegende Luftfahrzeug Vorflugrecht;
-D) das tiefer fliegende Luftfahrzeug eine lange Landung zu machen</item><item>A) Nachts;
+D) das tiefer fliegende Luftfahrzeug eine lange Landung zu machen</item>
+        <item>A) Nachts;
 B) Von SS+30 bis SR+30;
 C) Bei Nacht und schlechten Sichtverhältnissen;
-D) Von SS+30 bis SR</item><item>A) vom Start bis zur Landung von Luftfahrzeugen zu führen;
+D) Von SS+30 bis SR</item>
+        <item>A) vom Start bis zur Landung von Luftfahrzeugen zu führen;
 B) von allen Luftfahrzeugen in der Nacht zu führen;
 C) vom Start bis zur Landung in der Nacht und am Tage bei ungünstigen Sichtverhältnissen zu führen;
-D) von in Betrieb befindlichen Luftfahrzeugen in der Nacht und am Tage bei ungünstigen Sichtverhältnissen zu führen</item><item>A) Der Flugplatz ist für längere Zeit unbenutzbar;
+D) von in Betrieb befindlichen Luftfahrzeugen in der Nacht und am Tage bei ungünstigen Sichtverhältnissen zu führen</item>
+        <item>A) Der Flugplatz ist für längere Zeit unbenutzbar;
 B) Der Flugplatz ist für kurze Zeit gesperrt;
 C) Landeverbot für längere Zeit;
-D) Start- und Landeverbot für längere Zeit</item><item>A) Landeverbot für Luftsportgeräte;
+D) Start- und Landeverbot für längere Zeit</item>
+        <item>A) Landeverbot für Luftsportgeräte;
 B) Zum Starten, Landen und Rollen dürfen nur Start- und Landebahnen und Rollbahnen benutzt werden;
 C) Zum Starten ist die Rollbahn zu benutzen;
-D) Rollbahn darf zur Zeit nicht benutzt werden</item><item>A) Starts und Landungen sind parallel zum Längsbalken des Lande-T in Richtung auf den Querbalken durchzuführen;
+D) Rollbahn darf zur Zeit nicht benutzt werden</item>
+        <item>A) Starts und Landungen sind parallel zum Längsbalken des Lande-T in Richtung auf den Querbalken durchzuführen;
 B) Starts und Landungen nur auf der Piste durchführen;
 C) Startverbot;
-D) Neben dem Lande-T aufsetzen</item><item>A) Die Landerichtung, abgerundet auf den missweisenden Steuerkurs;
+D) Neben dem Lande-T aufsetzen</item>
+        <item>A) Die Landerichtung, abgerundet auf den missweisenden Steuerkurs;
 B) Die Startrichtung, gerundet auf die nächstliegenden 10° der missweisenden Kompassrose;
 C) Die Temperatur;
-D) Die beiden Endziffern des QNH</item><item>A) Rechts neben der Bahn starten und landen;
+D) Die beiden Endziffern des QNH</item>
+        <item>A) Rechts neben der Bahn starten und landen;
 B) Vorflugrecht von rechts kommender Luftfahrzeuge beachten;
 C) Rollbewegungen nur nach rechts ausführen;
-D) Nach dem Start und vor der Landung sind Richtungsänderungen nur nach rechts erlaubt</item><item>A) Zum Startflugplatz zurückkehren;
+D) Nach dem Start und vor der Landung sind Richtungsänderungen nur nach rechts erlaubt</item>
+        <item>A) Zum Startflugplatz zurückkehren;
 B) Auf diesem Flugplatz landen und zum Vorfeld rollen;
 C) Platzrunde fortsetzen, anderes Luftfahrzeug hat Vorflug;
-D) Landung freigegeben</item><item>A) Nicht landen, Flugplatz unbenutzbar;
+D) Landung freigegeben</item>
+        <item>A) Nicht landen, Flugplatz unbenutzbar;
 B) Anderes Luftfahrzeug hat Vorflug, Platzrunde fortsetzen;
 C) Ungeachtet aller früheren Anweisungen und Freigaben zur Zeit nicht landen;
-D) Zwecks Landung zurückkehren (Lande- und Rollfreigaben werden zum gegebenen Zeitpunkt erteilt)</item><item>A) Auf diesem Flugplatz landen und zum Vorfeld rollen;
+D) Zwecks Landung zurückkehren (Lande- und Rollfreigaben werden zum gegebenen Zeitpunkt erteilt)</item>
+        <item>A) Auf diesem Flugplatz landen und zum Vorfeld rollen;
 B) Platzrunde fortsetzen, anderes Luftfahrzeug hat Vorflug;
 C) Landung freigegeben;
-D) Zwecks Landung zurückkehren (Lande- und Rollfreigaben werden zum gegebenen Zeitpunkt erteilt)</item><item>A) Sofort landen;
+D) Zwecks Landung zurückkehren (Lande- und Rollfreigaben werden zum gegebenen Zeitpunkt erteilt)</item>
+        <item>A) Sofort landen;
 B) Platzrunde fortsetzen;
 C) Nicht landen, Flugplatz unbenutzbar;
-D) Platzrunde verlassen</item><item>A) Auf diesem Flugplatz landen und zum Vorfeld rollen (Lande- und Rollfreigaben werden zum gegebenen Zeitpunkt erteilt);
+D) Platzrunde verlassen</item>
+        <item>A) Auf diesem Flugplatz landen und zum Vorfeld rollen (Lande- und Rollfreigaben werden zum gegebenen Zeitpunkt erteilt);
 B) Platzrunde fortsetzen;
 C) Auf diesem Flugplatz nicht landen;
-D) Platzrunde verlassen</item><item>A) Ungeachtet aller früheren Anweisungen und Freigaben zur Zeit nicht landen;
+D) Platzrunde verlassen</item>
+        <item>A) Ungeachtet aller früheren Anweisungen und Freigaben zur Zeit nicht landen;
 B) Gefahrengebiet! Gebiet sofort verlassen;
 C) Gefahr! Platzrunde sofort verlassen;
-D) Flugbeschränkungsgebiet! Gebiet sofort verlassen</item><item>A) Zum Ausgangspunkt auf dem Flugplatz zurückkehren;
+D) Flugbeschränkungsgebiet! Gebiet sofort verlassen</item>
+        <item>A) Zum Ausgangspunkt auf dem Flugplatz zurückkehren;
 B) Rollerlaubnis erteilt;
 C) Halt!;
-D) Start freigegeben</item><item>A) Piste verlassen;
+D) Start freigegeben</item>
+        <item>A) Piste verlassen;
 B) Rollbahn verlassen;
 C) Benutzte Landefläche freimachen;
-D) Halt!</item><item>A) Start freigegeben;
+D) Halt!</item>
+        <item>A) Start freigegeben;
 B) Zum Ausgangspunkt auf dem Flugplatz zurückrollen;
 C) Piste frei von Hindernissen;
-D) Rollerlaubnis erteilt</item><item>A) Halt!;
+D) Rollerlaubnis erteilt</item>
+        <item>A) Halt!;
 B) Start freigegeben;
 C) Zum Ausgangspunkt auf dem Flugplatz zurückrollen;
-D) Benutzte Landefläche freimachen</item><item>A) Start freigegeben;
+D) Benutzte Landefläche freimachen</item>
+        <item>A) Start freigegeben;
 B) Benutzte Landefläche freimachen;
 C) Ungeachtet aller früheren Anweisungen und Freigaben zur Zeit nicht rollen und nicht starten;
-D) Zum Ausgangspunkt auf dem Flughafen zurückkehren</item><item>A) alle Luftfahrzeuge, die sich auf dem Rollfeld befinden;
+D) Zum Ausgangspunkt auf dem Flughafen zurückkehren</item>
+        <item>A) alle Luftfahrzeuge, die sich auf dem Rollfeld befinden;
 B) den gesamten Verkehr auf dem Rollfeld eines Flugplatzes und alle Luftfahrzeuge, die in die Platzrunde einfliegen;
 C) den gesamten Verkehr auf dem Rollfeld eines Flugplatzes und alle in der Nähe eines Flugplatzes fliegenden Luftfahrzeuge. Ein Luftfahrzeug ist in der Nähe eines Flugplatzes, wenn es sich unter anderem in einer Platzrunde befindet, in diese einfliegt oder sie verlässt;
-D) alle Luftfahrzeuge, die sich in der Platzrunde befinden</item><item>A) 340° fliegt und der Flugplatz rechts vom Luftfahrzeug liegt;
+D) alle Luftfahrzeuge, die sich in der Platzrunde befinden</item>
+        <item>A) 340° fliegt und der Flugplatz rechts vom Luftfahrzeug liegt;
 B) 160° fliegt und der Flugplatz rechts vom Luftfahrzeug liegt;
 C) 160° fliegt und der Flugplatz links vom Luftfahrzeug liegt;
-D) 340° fliegt und der Flugplatz links vom Luftfahrzeug liegt</item><item>A) in Linkskurven auszuführen;
+D) 340° fliegt und der Flugplatz links vom Luftfahrzeug liegt</item>
+        <item>A) in Linkskurven auszuführen;
 B) nach Süden auszuführen;
 C) in Rechtskurven auszuführen;
-D) nach Norden auszuführen</item><item>A) nach Süden auszuführen;
+D) nach Norden auszuführen</item>
+        <item>A) nach Süden auszuführen;
 B) nach Norden auszuführen;
 C) in Linkskurven auszuführen;
-D) in Rechtskurven auszuführen</item><item>A) der Landesluftfahrtbehörde;
+D) in Rechtskurven auszuführen</item>
+        <item>A) der Landesluftfahrtbehörde;
 B) des Flugplatzunternehmers;
 C) des Luftfahrtbundesamtes;
-D) des Kontrollturmes</item><item>A) Er muss eine Blindsendung absetzen und den Flug entsprechend der im Luftfahrthandbuch festgelegten VFR-Einflugstrecke fortsetzen;
+D) des Kontrollturmes</item>
+        <item>A) Er muss eine Blindsendung absetzen und den Flug entsprechend der im Luftfahrthandbuch festgelegten VFR-Einflugstrecke fortsetzen;
 B) Er darf in keinem Fall in die Kontrollzone einfliegen;
 C) Er muss in jedem Fall zu dem im Flugplan angegebenen Ausweichflugplatz weiterfliegen;
-D) Er muss auf einem Flugplatz außerhalb der Kontrollzone landen. Nur aus flugbetrieblichen Gründen darf der Flug in die CTR fortgesetzt werden</item><item>A) Auf einem Flugplatz außerhalb der Kontrollzone landen und eine Landemeldung durchgeben;
+D) Er muss auf einem Flugplatz außerhalb der Kontrollzone landen. Nur aus flugbetrieblichen Gründen darf der Flug in die CTR fortgesetzt werden</item>
+        <item>A) Auf einem Flugplatz außerhalb der Kontrollzone landen und eine Landemeldung durchgeben;
 B) Den Flug entsprechend der Flugverkehrskontrollfreigabe fortsetzen;
 C) Den Flug zu dem im Flugplan angegebenen Ausweichflugplatz fortsetzen;
-D) 10 Minuten außerhalb der Kontrollzone kreisen und dann den Anflug fortsetzen</item><item>A) maximale Voraussicht aus dem Cockpit eines Luftfahrzeuges am Boden;
+D) 10 Minuten außerhalb der Kontrollzone kreisen und dann den Anflug fortsetzen</item>
+        <item>A) maximale Voraussicht aus dem Cockpit eines Luftfahrzeuges am Boden;
 B) mittlere Schrägsicht aus dem Cockpit eines Luftfahrzeuges im Flug;
 C) Sicht aus dem Cockpit eines Luftfahrzeuges im Flug zum Erdboden;
-D) Sicht in Flugrichtung aus dem Cockpit eines im Flug befindlichen Luftfahrzeuges</item><item>A) 300 ft;
+D) Sicht in Flugrichtung aus dem Cockpit eines im Flug befindlichen Luftfahrzeuges</item>
+        <item>A) 300 ft;
 B) 300 m;
 C) 1500 ft;
-D) 1500 m</item><item>A) eine Bodensicht von mindestens 5 km herrscht;
+D) 1500 m</item>
+        <item>A) eine Bodensicht von mindestens 5 km herrscht;
 B) der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält, sowie eine Bodensicht von mindestens 5 km herrscht;
 C) der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 300 m, in senkrechter Richtung mindestens 300 ft Abstand hält;
-D) der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</item><item>A) Erdsicht, Flugsicht mindestens 1500 m, frei von Wolken, maximal 140 kt;
+D) der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</item>
+        <item>A) Erdsicht, Flugsicht mindestens 1500 m, frei von Wolken, maximal 140 kt;
 B) Flugsicht mindestens 1500 m, Wolken dürfen nicht berührt werden;
 C) Flugsicht mindestens 1500 m, Abstand von Wolken in waagerechter Richtung 300 m, in senkrechter Richtung 2000 ft;
-D) Bodensicht mindestens 5 km, Hauptwolkenuntergrenze mindestens 1500 ft, maximal 140 kt</item><item>A) Ja, mindestens 1,5 NM in waagerechter Richtung;
+D) Bodensicht mindestens 5 km, Hauptwolkenuntergrenze mindestens 1500 ft, maximal 140 kt</item>
+        <item>A) Ja, mindestens 1,5 NM in waagerechter Richtung;
 B) Ja, mindestens 1,5 km in waagerechter und mindestens 1000 ft in senkrechter Richtung;
 C) Nein, der Luftraum muss frei von Wolken sein;
-D) Ja, mindestens 1,5 km in waagerechter Richtung</item><item>A) Nur in FL 100 und darüber;
+D) Ja, mindestens 1,5 km in waagerechter Richtung</item>
+        <item>A) Nur in FL 100 und darüber;
 B) Im Luftraum E;
 C) In den Lufträumen C und D;
-D) Im Luftraum D (CTR)</item><item>A) Hierfür gelten unterschiedliche Vorschriften;
+D) Im Luftraum D (CTR)</item>
+        <item>A) Hierfür gelten unterschiedliche Vorschriften;
 B) Bei Flügen bis zu 5000 ft AGL;
 C) Bei Flügen unter 5000 ft AMSL;
-D) Bei Flügen oberhalb 5000 ft AMSL oder 2000 ft AGL, sofern diese Flughöhe 5000 ft AMSL überschreitet</item><item>A) QFF;
+D) Bei Flügen oberhalb 5000 ft AMSL oder 2000 ft AGL, sofern diese Flughöhe 5000 ft AMSL überschreitet</item>
+        <item>A) QFF;
 B) 1013,2 hPa;
 C) QNH;
-D) QFE</item><item>A) das QFE des nächstgelegenen Flugplatzes mit Flugverkehrskontrolle;
+D) QFE</item>
+        <item>A) das QFE des nächstgelegenen Flugplatzes mit Flugverkehrskontrolle;
 B) das QNH des nächstgelegenen Flughafens;
 C) das QNH des zur Flugstrecke nächstgelegenen Flugplatzes mit Flugverkehrskontrolle;
-D) 1013,2 hPa</item><item>A) missweisenden Kurs über Grund;
+D) 1013,2 hPa</item>
+        <item>A) missweisenden Kurs über Grund;
 B) Kompasskurs;
 C) rechtweisenden Kartenkurs;
-D) rechtweisenden Kurs über Grund</item><item>A) 60, 80, 100;
+D) rechtweisenden Kurs über Grund</item>
+        <item>A) 60, 80, 100;
 B) 55, 75, 95;
 C) 65, 85, 105;
-D) 50, 70, 90</item><item>A) Berlin, Hannover, Maastricht, Rhein, Langen;
+D) 50, 70, 90</item>
+        <item>A) Berlin, Hannover, Maastricht, Rhein, Langen;
 B) Bremen, Berlin, Hannover, Düsseldorf, Stuttgart;
 C) Berlin, Hamburg, Frankfurt, München;
-D) Bremen, Langen, München</item><item>A) 1000 ft AGL;
+D) Bremen, Langen, München</item>
+        <item>A) 1000 ft AGL;
 B) 3000 ft AMSL;
 C) 2500 ft AGL;
-D) 1000 ft AMSL</item><item>A) 2500 ft AGL;
+D) 1000 ft AMSL</item>
+        <item>A) 2500 ft AGL;
 B) 1700 ft AGL;
 C) 1000 ft AGL;
-D) 3000 ft AGL</item><item>A) um Militärflugplätze als Luftraum B, um Flughäfen als Luftraum C, alle übrigen als Luftraum D;
+D) 3000 ft AGL</item>
+        <item>A) um Militärflugplätze als Luftraum B, um Flughäfen als Luftraum C, alle übrigen als Luftraum D;
 B) überwiegend als Luftraum D, nur einige als Luftraum C;
 C) als Luftraum D;
-D) um Flughäfen als Luftraum C, die übrigen als Luftraum D</item><item>A) sich vor dem Durchflug von der zuständigen Flugplatzkontrolle (TWR), außerhalb der TWR-Betriebszeiten beim Flugplatzinformationsdienst (INFO), oder beim Fluginformationsdienst (FIS) die Nichtwirksamkeit bestätigen lässt;
+D) um Flughäfen als Luftraum C, die übrigen als Luftraum D</item>
+        <item>A) sich vor dem Durchflug von der zuständigen Flugplatzkontrolle (TWR), außerhalb der TWR-Betriebszeiten beim Flugplatzinformationsdienst (INFO), oder beim Fluginformationsdienst (FIS) die Nichtwirksamkeit bestätigen lässt;
 B) sich vor Antritt des Fluges bei der militärischen Flugleitung die Nichtwirksamkeit nochmals bestätigen lässt;
 C) sich über die Nichtwirksamkeit im Luftfahrthandbuch informiert;
-D) eine schriftliche Zustimmung des Flugplatzkommandanten erhalten hat</item><item>A) C, D, E;
+D) eine schriftliche Zustimmung des Flugplatzkommandanten erhalten hat</item>
+        <item>A) C, D, E;
 B) C, E, F;
 C) C, D, F;
-D) E, F, G</item><item>A) ab 1000 ft und 1700 ft AGL, ansonsten ab 5000 ft AMSL bis FL 200;
+D) E, F, G</item>
+        <item>A) ab 1000 ft und 1700 ft AGL, ansonsten ab 5000 ft AMSL bis FL 200;
 B) ab 1000 ft und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL 200;
 C) von 1000 ft und 1700 ft AGL bis 5000 ft AMSL;
-D) ab 1000 ft AGL und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL 100</item><item>A) Sperrgebiet;
+D) ab 1000 ft AGL und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL 100</item>
+        <item>A) Sperrgebiet;
 B) Gefahrengebiet;
 C) Segelflugbeschränkungsgebiet;
-D) Gebiet mit Flugbeschränkungen</item><item>A) Gebiet mit Flugbeschränkungen;
+D) Gebiet mit Flugbeschränkungen</item>
+        <item>A) Gebiet mit Flugbeschränkungen;
 B) Gefahrengebiet;
 C) Truppenübungsplatz;
-D) Sperrgebiet</item><item>A) Stets;
+D) Sperrgebiet</item>
+        <item>A) Stets;
 B) Nur bei Flügen von und zu Flugplätzen ohne Flugverkehrskontrolle;
 C) Nur bei Auslandsflügen;
-D) Nur bei Flügen zu kontrollierten Flugplätzen</item><item>A) grundsätzlich nicht;
+D) Nur bei Flügen zu kontrollierten Flugplätzen</item>
+        <item>A) grundsätzlich nicht;
 B) nur mit einer CVFR-Berechtigung;
 C) wenn das Luftfahrzeug u.a. mit einem UKW-Sende-/Empfangsgerät und einer VOR-NavigationsEmpfangsanlage oder mit einem automatischen Funkpeilgerät (ADF) ausgerüstet ist;
-D) nur nach Freigabe durch die Flugverkehrskontrolle</item><item>A) A/C 7700;
+D) nur nach Freigabe durch die Flugverkehrskontrolle</item>
+        <item>A) A/C 7700;
 B) Der Transponder darf unaufgefordert nicht geschaltet werden;
 C) A/C 7000;
-D) A/C 7600</item><item>A) QNH einstellen und den Mode/Code A/C 7000 beibehalten;
+D) A/C 7600</item>
+        <item>A) QNH einstellen und den Mode/Code A/C 7000 beibehalten;
 B) QNH einstellen und Mode/Code A/C 7600 beibehalten;
 C) 1013,2 hPa einstellen und Mode/Code A/C 7600 einschalten;
-D) QNH 1013,2 hPa einstellen und Transponder auf \"STAND-BY\" schalten</item><item>A) Transponder mit automatischer Höhenübermittlung ausgerüstet sein und den Code 7000 unaufgefordert abstrahlen;
+D) QNH 1013,2 hPa einstellen und Transponder auf \"STAND-BY\" schalten</item>
+        <item>A) Transponder mit automatischer Höhenübermittlung ausgerüstet sein und den Code 7000 unaufgefordert abstrahlen;
 B) Transponder mit automatischer Höhenübermittlung ausgerüstet sein und den Code 7500 unaufgefordert abstrahlen;
 C) Transponder mit automatischer Höhenübermittlung ausgerüstet sein und den Code 7600 unaufgefordert abstrahlen;
-D) Transponder mit automatischer Höhenübermittlung ausgerüstet sein und den Code 7700 unaufgefordert abstrahlen</item><item>A) Standortbestimmung durch bordeigene Navigationsempfangsanlagen;
+D) Transponder mit automatischer Höhenübermittlung ausgerüstet sein und den Code 7700 unaufgefordert abstrahlen</item>
+        <item>A) Standortbestimmung durch bordeigene Navigationsempfangsanlagen;
 B) Terrestrische Navigation;
 C) Standortbestimmung durch bodenseitigen Einsatz von Radar;
-D) Kreuzpeilung mittels Peilfunkstellen</item><item>A) UKW-Peilstelle (VDF);
+D) Kreuzpeilung mittels Peilfunkstellen</item>
+        <item>A) UKW-Peilstelle (VDF);
 B) VOR/DME-Anlage;
 C) TACAN-Anlage;
-D) NDB-Anlage</item><item>A) drei Buchstaben im Morsecode;
+D) NDB-Anlage</item>
+        <item>A) drei Buchstaben im Morsecode;
 B) zwei Buchstaben im Morsecode;
 C) einem Blinkzeichen;
-D) einem Rufnamen</item><item>A) FROM-Anzeige die VOR-Anlage angeflogen wird;
+D) einem Rufnamen</item>
+        <item>A) FROM-Anzeige die VOR-Anlage angeflogen wird;
 B) OFF-Anzeige die VOR-Anlage angeflogen wird;
 C) FROM-Anzeige von der VOR-Anlage abgeflogen wird;
-D) TO-Anzeige von der VOR-Anlage abgeflogen wird</item><item>A) der Art des Luftfahrzeugmusters;
+D) TO-Anzeige von der VOR-Anlage abgeflogen wird</item>
+        <item>A) der Art des Luftfahrzeugmusters;
 B) dem Kurs des Luftfahrzeuges;
 C) der Flughöhe des Luftfahrzeuges;
-D) der Geschwindigkeit des Luftfahrzeuges</item><item>A) Lautstärkeregler;
+D) der Geschwindigkeit des Luftfahrzeuges</item>
+        <item>A) Lautstärkeregler;
 B) TO/FROM-Umschalter;
 C) Kurswähler;
-D) Frequenzwahlschalter</item><item>A) missweisend Nord;
+D) Frequenzwahlschalter</item>
+        <item>A) missweisend Nord;
 B) QTE;
 C) rechtweisend Nord;
-D) die Flugzeuglängsachse</item><item>A) 108 MHz bis 112 MHz;
+D) die Flugzeuglängsachse</item>
+        <item>A) 108 MHz bis 112 MHz;
 B) 200 MHz bis 1750 MHz;
 C) 118 MHz bis 137 MHz;
-D) 108 MHz bis 117,975 MHz</item><item>A) Bei einer Änderung des Steuerkurses um 180°;
+D) 108 MHz bis 117,975 MHz</item>
+        <item>A) Bei einer Änderung des Steuerkurses um 180°;
 B) Beim Überfliegen der VOR-Station;
 C) Beim Betätigen des IDENT-Knopfes;
-D) Bei einer Änderung des Steuerkurses um 90°</item><item>A) Links vom Radial;
+D) Bei einer Änderung des Steuerkurses um 90°</item>
+        <item>A) Links vom Radial;
 B) Südlich des Radiales;
 C) Rechts vom Radial;
-D) Auf dem Radial</item><item>A) vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger \"FROM\" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an;
+D) Auf dem Radial</item>
+        <item>A) vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger \"FROM\" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an;
 B) vertikale Nadel bei einer \"TO-Anzeige\" voll links ausschlägt. Der am Kurswähler angezeigte Zahlenwert stellt die kürzeste Verbindung zur Station dar;
 C) vertikale Nadel in Mittelstellung ist und der Richtungsanzeiger \"TO\" anzeigt. Der am Kurswähler angezeigte Zahlenwert gibt den direkten Kurs zur Station an;
-D) horizontale Nadel in der Mitte steht und die \"OFF-Anzeige\" verschwindet. Der am Kurswähler angezeigte Zahlenwert gibt immer den direkten Kurs zur Station an</item><item>A) 10°;
+D) horizontale Nadel in der Mitte steht und die \"OFF-Anzeige\" verschwindet. Der am Kurswähler angezeigte Zahlenwert gibt immer den direkten Kurs zur Station an</item>
+        <item>A) 10°;
 B) 2°;
 C) 1°;
-D) 5°</item><item>A) Peilfunkanlage (VDF);
+D) 5°</item>
+        <item>A) Peilfunkanlage (VDF);
 B) Ungerichtetes Funkfeuer (NDB);
 C) UKW-Drehfunkfeuer (VOR);
-D) Instrumenten-Landesystem (ILS)</item><item>A) Das Flugzeug befindet sich über der Station;
+D) Instrumenten-Landesystem (ILS)</item>
+        <item>A) Das Flugzeug befindet sich über der Station;
 B) Die TO/FROM-Anzeige ist defekt;
 C) Der VOR-Empfänger ist ausgefallen;
-D) Die VOR-Station ist ausgefallen</item><item>A) QTE;
+D) Die VOR-Station ist ausgefallen</item>
+        <item>A) QTE;
 B) QDR;
 C) QDM;
-D) QUJ</item><item>A) Eine Sprachkennung;
+D) QUJ</item>
+        <item>A) Eine Sprachkennung;
 B) Ziffern und Buchstaben im Morsecode;
 C) Zwei oder drei Ziffern im Morsecode;
-D) Zwei oder drei Buchstaben im Morsecode</item><item>A) mindestens 60 NM;
+D) Zwei oder drei Buchstaben im Morsecode</item>
+        <item>A) mindestens 60 NM;
 B) höchstens 25 NM;
 C) weit über 100 NM;
-D) 15 NM bis 100 NM</item><item>A) UKW-Bereich;
+D) 15 NM bis 100 NM</item>
+        <item>A) UKW-Bereich;
 B) KW-Bereich;
 C) LW- und MW-Bereich;
-D) UHF-Bereich</item><item>A) VOR-Empfänger;
+D) UHF-Bereich</item>
+        <item>A) VOR-Empfänger;
 B) ILS-Empfänger;
 C) Funkkompass (ADF);
-D) Marker-Empfänger</item><item>A) recht- und missweisend Nord;
+D) Marker-Empfänger</item>
+        <item>A) recht- und missweisend Nord;
 B) geographisch Nord und dem eingestellten NDB;
 C) missweisend Nord und der Flugzeuglängsachse;
-D) Flugzeuglängsachse und der Richtung zu dem eingestellten NDB</item><item>A) 360°;
+D) Flugzeuglängsachse und der Richtung zu dem eingestellten NDB</item>
+        <item>A) 360°;
 B) 180°;
 C) 130°;
-D) 025°</item><item>A) UKW-Sprechfunkgerät;
+D) 025°</item>
+        <item>A) UKW-Sprechfunkgerät;
 B) Funkkompass;
 C) Transponder;
-D) VOR-Empfänger</item><item>A) Links vom Flugweg;
+D) VOR-Empfänger</item>
+        <item>A) Links vom Flugweg;
 B) Rechts vom Flugweg;
 C) Südlich vom Flugweg;
-D) Voraus</item><item>A) Südwestlich der Station;
+D) Voraus</item>
+        <item>A) Südwestlich der Station;
 B) Nordöstlich der Station;
 C) Nordwestlich der Station;
-D) Südöstlich der Station</item><item>A) Die Bodenfunkstelle ist H24 betriebsbereit;
+D) Südöstlich der Station</item>
+        <item>A) Die Bodenfunkstelle ist H24 betriebsbereit;
 B) Die Bodenfunkstelle wird nur auf Anforderung betrieben;
 C) Auf dieser Frequenz ist ATIS verfügbar;
-D) Peilungen sind auf Anforderung verfügbar</item><item>A) frühzeitigen Erkennung von Schlechtwettergebieten;
+D) Peilungen sind auf Anforderung verfügbar</item>
+        <item>A) frühzeitigen Erkennung von Schlechtwettergebieten;
 B) Identifizierung von Luftfahrzeugen und Erlangung zusätzlicher Informationen über VFR-Flüge;
 C) Standortbestimmung durch den Piloten;
-D) Erkennung der wahren Eigengeschwindigkeit von Luftfahrzeugen</item><item>A) den beabsichtigten Flugweg;
+D) Erkennung der wahren Eigengeschwindigkeit von Luftfahrzeugen</item>
+        <item>A) den beabsichtigten Flugweg;
 B) die Fluglage des Luftfahrzeuges;
 C) den Standort des Luftfahrzeuges;
-D) die wahre Eigengeschwindigkeit</item><item>A) Geographisches Punktsystem;
+D) die wahre Eigengeschwindigkeit</item>
+        <item>A) Geographisches Punktsystem;
 B) Großkreis-Planungsschablone;
 C) GAT-Positionierungssystem;
-D) Globales Positionsbestimmungssystem</item><item>A) satellitengestütztes Navigationssystem;
+D) Globales Positionsbestimmungssystem</item>
+        <item>A) satellitengestütztes Navigationssystem;
 B) Verfahren zur Positionierung von Flugzeugen auf dem Vorfeld;
 C) weltweites System zur Vereinheitlichung der terrestrischen Navigation;
-D) bodenabhängiges Funknavigationssystem</item><item>A) Der Standortbestimmung mittels bordeigenem Radar;
+D) bodenabhängiges Funknavigationssystem</item>
+        <item>A) Der Standortbestimmung mittels bordeigenem Radar;
 B) Der Auswertung von Signalen bodenseitiger Funknavigationsanlagen zur Positions- und Kursbestimmung;
 C) Der Auswertung und Anzeige von Satellitensignalen zu navigatorischen Zwecken (z.B. Position, Kurs, Geschwindigkeit, Entfernung);
-D) Der Bestimmung des Abstandes zu anderen Luftfahrzeugen</item></string-array><string name="answer_separator">;</string></resources>
+D) Der Bestimmung des Abstandes zu anderen Luftfahrzeugen</item>
+    </string-array>
+    <string name="answer_separator">;</string>
+</resources>
