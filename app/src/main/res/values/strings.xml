@@ -139,4 +139,6 @@
     <string name="changelog_show_full">more&#8230;</string>
     <string name="background_color">black</string>
 
+    <string name="answer_separator">;</string>
+
 </resources>

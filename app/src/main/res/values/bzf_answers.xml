@@ -1040,5 +1040,4 @@ B) Der Auswertung von Signalen bodenseitiger Funknavigationsanlagen zur Position
 C) Der Auswertung und Anzeige von Satellitensignalen zu navigatorischen Zwecken (z.B. Position, Kurs, Geschwindigkeit, Entfernung);
 D) Der Bestimmung des Abstandes zu anderen Luftfahrzeugen</item>
     </string-array>
-    <string name="answer_separator">;</string>
 </resources>
