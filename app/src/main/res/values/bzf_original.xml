@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="answers" formatted="false">
+    <string-array name="bzf_original" formatted="false">
         <!-- Correct is always the first answer -->
         <!-- 1 -->
         <item>ITU</item>
