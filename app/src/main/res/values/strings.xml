@@ -32,10 +32,10 @@
     <string name="restart">Von vorne</string>
     <string name="restart_alert">Bist du sicher, dass du die Fragen von vorne beantworten möchtest?</string>
 
-    <string name="statistics">Ergebnisse</string>
+    <string name="statistics">Statistik</string>
     <string name="statistics_history">Erfolgsrate</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
-    <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Ergebnisse wieder auf null</string>
+    <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
 
     <string name="settings">Einstellungen</string>
