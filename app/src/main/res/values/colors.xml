@@ -6,4 +6,6 @@
     <color name="colorHighlight">#22CC22</color>
     <color name="colorDefaultText">#111111</color>
     <color name="colorButton">#EEEEEE</color>
+    <color name="colorStatAZF">#006699</color>
+    <color name="colorStatBZF">#66ccff</color>
 </resources>

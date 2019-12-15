@@ -5,31 +5,30 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.formatter.YAxisValueFormatter;
-import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -37,16 +36,12 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-public class StatisticsActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private TextView txt_question;
-    private TextView[] txt_answers;
+public class StatisticsActivity extends AppCompatActivity {
 
     private LineChart history;
     private BarChart barchart;
-    private DateFormat formatter;
 
-    private List<Trial> trials;
+    private Map<String, List<Trial>> trials;
 
     Random rng;
 
@@ -59,83 +54,50 @@ public class StatisticsActivity extends AppCompatActivity implements View.OnClic
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        txt_question = findViewById(R.id.st_txt_question);
-        txt_answers = new TextView[]{
-                findViewById(R.id.st_txt_A),
-                findViewById(R.id.st_txt_B),
-                findViewById(R.id.st_txt_C),
-                findViewById(R.id.st_txt_D)
-        };
 
-        formatter = new SimpleDateFormat("dd. MMM'|'hh:mm 'Uhr'", Locale.getDefault());
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         Gson gson = new Gson();
 
-        Set<String> h = settings.getStringSet("history", CatalogueActivity.EMPTY_SET);
-        trials = new ArrayList<>();
-        for (String json : h) trials.add(gson.fromJson(json, Trial.class));
+        trials = new HashMap<>();
+        for (String key : Arrays.asList("bzf", "azf")) {
+            Set<String> history = settings.getStringSet(key + "-history", CatalogueActivity.EMPTY_SET);
+            List<Trial> list = new ArrayList<>();
+            for (String json : history) list.add(gson.fromJson(json, Trial.class));
+            trials.put(key, list);
+        }
 
         history = findViewById(R.id.st_chart_history);
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
-        history.setScaleXEnabled(true);
-        history.getAxisLeft().setEnabled(false);
+        history.setPinchZoom(true);
         history.getAxisRight().setEnabled(true);
-        history.getAxisRight().setStartAtZero(true);
-        history.getXAxis().setEnabled(false);
-        history.getLegend().setEnabled(false);
-        history.setDescription(getString(R.string.statistics_history));
-        history.setDescriptionTextSize(16);
+        history.getAxisRight().setValueFormatter(new LabelFormatter());
+        history.getAxisLeft().setEnabled(false);
+        history.getXAxis().setEnabled(true);
+        history.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        history.getLegend().setEnabled(true);
+        history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        history.getLegend().setOrientation(Legend.LegendOrientation.VERTICAL);
+        history.getLegend().setDrawInside(true);
+        history.setDescription(new Description(){{ setText(""); }});
+
         fillHistory();
 
         barchart = (HorizontalBarChart) findViewById(R.id.st_chart_bar);
         barchart.getLegend().setEnabled(false);
-        barchart.getXAxis().setEnabled(false);
-        barchart.getAxisLeft().setEnabled(false);
+        barchart.getXAxis().setEnabled(true);
         barchart.getAxisRight().setEnabled(true);
-        barchart.getAxisRight().setStartAtZero(true);
-        barchart.getAxisRight().setValueFormatter(new YAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float v, YAxis yAxis) {
-                if (v == Math.round(v)) return String.format(Locale.GERMAN, "%.0f", v);
-                else return "";
-            }
-        });
+        barchart.getAxisLeft().setEnabled(false);
+        barchart.getAxisLeft().setValueFormatter(new LabelFormatter());
+        barchart.getAxisLeft().setAxisMinimum(0);
+        barchart.getAxisLeft().setAxisMaximum(100);
         barchart.setTouchEnabled(false);
         barchart.setScaleYEnabled(true);
         barchart.setScaleXEnabled(false);
-        barchart.setDescription("");
         barchart.setDrawGridBackground(false);
 
-
-        LinearLayout lyt = findViewById(R.id.st_lyt_ranking);
-        Map<Integer, Integer> ranking = new HashMap<>();
-        for (int q = 0; q < Catalogue.size(); q++) {
-            int value = -1;
-            for (Trial trial : trials)
-                if (!trial.wasQuestionCorrect(q))
-                    value++;
-            if (value != -1) ranking.put(q, value);
-        }
-        ranking = Catalogue.sortByValue(ranking);
-        for (Map.Entry<Integer, Integer> entry : ranking.entrySet()) {
-            TextView label = (TextView) getLayoutInflater().inflate(R.layout.button_question, null);
-            LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            params.setMargins(0, 5, 0, 0);
-            label.setId(entry.getKey());
-            label.setText(String.format(getString(R.string.txt_questions), entry.getKey() + 1));
-            label.setOnClickListener(this);
-            lyt.addView(label, params);
-        }
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        int i = view.getId();
-        txt_question.setText(Catalogue.getQuestion(i));
-        fillBarChart(i, Catalogue.getAnswers(i));
-
+        //fillBarChart(i, Catalogue.getAnswers(i));
     }
 
     @Override
@@ -150,8 +112,8 @@ public class StatisticsActivity extends AppCompatActivity implements View.OnClic
         List<BarEntry> values = new ArrayList<>();
         int[] choices = new int[4];
         String[] labels = new String[4];
-        for (Trial trial : trials)
-            choices[3 - trial.getChoice(question)] += 1;
+        //for (Map.Entry<String,List<Trial>> entry : trials.entrySet())
+        //    choices[3 - trial.getChoice(question)] += 1;
 
         for (int c = 0; c < choices.length; c++) {
             values.add(new BarEntry(choices[c], c));
@@ -161,69 +123,90 @@ public class StatisticsActivity extends AppCompatActivity implements View.OnClic
         BarDataSet data = new BarDataSet(values, "answers");
         data.setValueFormatter(new NoneValueFormatter());
         int[] colors = new int[]{Color.LTGRAY, Color.LTGRAY, Color.LTGRAY, Color.LTGRAY};
-        colors[3 - Catalogue.getSolution(question)] = getResources().getColor(R.color.colorHighlight);
+        //colors[3 - Catalogue.getSolution(question)] = getResources().getColor(R.color.colorHighlight);
         data.setColors(colors);
 
-        barchart.setData(new BarData(labels, data));
+        //barchart.setData(new BarData(labels, data));
         barchart.notifyDataSetChanged();
         barchart.invalidate();
-
-        for (int i = 0; i < txt_answers.length; i++) {
-            txt_answers[i].setText(answers[i]);
-            if (answers[i].length() > 70)
-                txt_answers[i].setTextSize(10);
-            else txt_answers[i].setTextSize(12);
-        }
     }
 
 
     public void fillHistory() {
-        List<String> dates = new ArrayList<>();
-        List<Entry> rates = new ArrayList<>();
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        List<Trial> dates = new ArrayList<>();
+        Map<String, List<Entry>> entries = new HashMap<>();
+        List<String> labels = new ArrayList<>();
 
-        for (int i = 0; i < trials.size(); i++) {
-            Trial trial = trials.get(i);
-            dates.add(formatter.format(trial.getTimestamp()).replace("|", System.lineSeparator()));
-            rates.add(new Entry((float) trial.getSuccessRate() * 100f, i));
+        for (Map.Entry<String,List<Trial>> entry : trials.entrySet()) {
+            dates.addAll(entry.getValue());
+            entries.put(entry.getKey(), new ArrayList<Entry>());
         }
 
-        //Collections.reverse(dates);
-        //Collections.reverse(rates);
+        Collections.sort(dates);
+        Collections.reverse(dates);
 
-        LineDataSet line = new LineDataSet(rates, getString(R.string.statistics_history));
-        line.setDrawCubic(true);
-        line.setDrawFilled(true);
-        line.setFillAlpha(170);
-        line.setCircleSize(5);
-        line.setValueFormatter(new LabelFormatter(dates));
-        line.setColor(getResources().getColor(R.color.colorDefaultText));
-        line.setCircleColor(getResources().getColor(R.color.colorDefaultText));
-        line.setFillColor(getResources().getColor(R.color.colorHighlight));
-        LineData data = new LineData(dates);
-        data.addDataSet(line);
+        for (int i = 0; i < dates.size(); i++) {
+            Trial trial = dates.get(i);
+            entries.get(trial.key).add(new Entry(i, 100f * (float)trial.getSuccessRate()));
+        }
 
+        for (Map.Entry<String,List<Entry>> entry : entries.entrySet()) {
+            LineDataSet line = new LineDataSet(entry.getValue(), entry.getKey().toUpperCase());
+            line.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            line.setDrawFilled(true);
+            line.setFillAlpha(170);
+            line.setCircleRadius(3);
+            line.setCircleColor(getResources().getColor(R.color.colorDefaultText));
+            line.setValueFormatter(new NoneValueFormatter());
+            switch (entry.getKey()) {
+                case "azf":
+                    line.setFillColor(getResources().getColor(R.color.colorStatAZF));
+                    line.setColor(getResources().getColor(R.color.colorStatAZF));
+                    break;
+                case "bzf":
+                    line.setFillColor(getResources().getColor(R.color.colorStatBZF));
+                    line.setColor(getResources().getColor(R.color.colorStatBZF));
+                    break;
+            }
+            dataSets.add(line);
+        }
+
+        LineData data = new LineData(dataSets);
         history.setData(data);
+        history.getXAxis().setValueFormatter(new DateAxisFormatter(dates));
         history.notifyDataSetChanged();
         history.invalidate();
     }
 
-    public class NoneValueFormatter implements ValueFormatter {
+    public class NoneValueFormatter extends ValueFormatter {
         @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+        public String getFormattedValue(float value) {
             return "";
         }
     }
 
-    public class LabelFormatter implements ValueFormatter {
-        private List<String> labels;
+    public class LabelFormatter extends ValueFormatter {
+        @Override
+        public String getFormattedValue(float value) {
+            return String.format(Locale.GERMAN, "%.0f%%", value);
+        }
+    }
 
-        public LabelFormatter(List<String> labels) {
-            this.labels = labels;
+    public class DateAxisFormatter extends ValueFormatter {
+
+
+        private final List<Trial> trials;
+        private final DateFormat formatter;
+
+        DateAxisFormatter(List<Trial> trials) {
+            this.trials = trials;
+            this.formatter = new SimpleDateFormat("dd.MM.", Locale.getDefault());
         }
 
         @Override
-        public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler vph) {
-            return labels.get(entry.getXIndex());
+        public String getAxisLabel(float value, AxisBase axis) {
+            return formatter.format(trials.get((int)value).getTimestamp());
         }
     }
 }

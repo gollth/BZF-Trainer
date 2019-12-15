@@ -260,10 +260,10 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     public void showResultDialog() {
         SharedPreferences.Editor e = settings.edit();
         Trial trial = new Trial(playlist, choices);
-        Set<String> history = new HashSet<>(settings.getStringSet("history", EMPTY_SET));
+        Set<String> history = new HashSet<>(settings.getStringSet(key + "-history", EMPTY_SET));
         history.add(gson.toJson(trial));
-        e.remove("history");
-        e.putStringSet("history", history);
+        e.remove(key + "-history");
+        e.putStringSet(key + "-history", history);
         e.apply();
         boolean success = trial.getSuccessRate() > 0.75;
 
