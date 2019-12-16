@@ -24,16 +24,6 @@ public class TitleActivity extends AppCompatActivity {
         ChangeLog changelog = new ChangeLog(this);
         if (changelog.firstRun()) {
             changelog.getFullLogDialog().show();
-
-            // Remove the catalog progress on a new version, since the questions/answers might have changed
-            PreferenceManager.getDefaultSharedPreferences(this)
-                    .edit()
-                    .remove("SavedState")
-                    .remove("azf-history")
-                    .remove("bzf-history")
-                    .apply();
-
-
         }
     }
 

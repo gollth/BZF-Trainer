@@ -2,6 +2,7 @@ package de.tgoll.projects.bzf;
 
 import android.app.Application;
 import android.os.Looper;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 import com.crashlytics.android.answers.Answers;
@@ -22,6 +23,16 @@ public class BZFTrainerApplication extends Application {
                     Toast.makeText(getApplicationContext(),
                             R.string.crash_msg,
                             Toast.LENGTH_LONG).show();
+
+                    // As a last resort, try to remove the saved state from the application,
+                    // since it might contain outdated information
+                    PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                            .edit()
+                            .remove("azf-state")
+                            .remove("bzf-state")
+                            .remove("azf-history")
+                            .remove("bzf-history")
+                            .apply();
 
                     Looper.loop();
                 }
