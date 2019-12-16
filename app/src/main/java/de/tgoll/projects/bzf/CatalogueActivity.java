@@ -75,12 +75,18 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         enableInput();
 
         gson = new Gson();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
         String s = settings.getString(key + "-state", "");
         if (s.isEmpty()) resetQuestions();
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
-            Log.i("BZF", "Loading State:");
-            Log.i("BZF", s);
+            Log.i("BZF", "Loading State from " + key + "-state");
             playlist = state.playlist;
             choices = state.choices;
 
@@ -91,9 +97,10 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onStop() {
+        super.onStop();
 
+        Log.i("BZF", "Saving Catalogue state in " + key + "-state");
         // Only save, it at least one question has been answered
         for (Integer c : choices)  if (c != -1) {
             settings.edit().putString(key + "-state", gson.toJson(new SavedState(playlist, choices, getProgress()))).apply();
