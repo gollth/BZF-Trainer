@@ -22,7 +22,12 @@ public class SettingsActivity extends PreferenceActivity {
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
-                settings.edit().remove("history").remove("SavedState").apply();
+                settings.edit()
+                        .remove("azf-history")
+                        .remove("bzf-history")
+                        .remove("azf-state")
+                        .remove("bzf-state")
+                        .apply();
                 Toast.makeText(getApplicationContext(), getString(R.string.settings_reset_toast), Toast.LENGTH_SHORT).show();
                 return false;
             }
