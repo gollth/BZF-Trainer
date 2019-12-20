@@ -14,7 +14,6 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -92,6 +91,8 @@ public class StatisticsActivity extends AppCompatActivity {
         history.getLegend().setEnabled(true);
         history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        history.getAxisRight().setAxisMaximum(1.01f);
+        history.getAxisRight().setAxisMinimum(0);
         history.getLegend().setOrientation(Legend.LegendOrientation.VERTICAL);
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
@@ -148,7 +149,6 @@ public class StatisticsActivity extends AppCompatActivity {
         BarDataSet data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new NoneValueFormatter());
         data.setColors(colors);
-        //chart.setVisibleYRange(0, trials.size(), YAxis.AxisDependency.RIGHT);
         chart.getAxisLeft().setAxisMaximum(1);
         chart.getAxisLeft().setAxisMinimum(0);
         chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
