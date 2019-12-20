@@ -242,11 +242,12 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         if (highlightCorrectAnswer()) {
             if (isVibrationGloballyEnabled && isVibrationOnTrueEnabled)
-                vibrator.vibrate(new long[]{0, 100, 100, 200}, -1); // Correct
+                vibrator.vibrate(200);                          // Correct
         }
         else {
             if (isVibrationGloballyEnabled && isVibrationOnFalseEnabled)
-                vibrator.vibrate(200);                          // Wrong
+                vibrator.vibrate(new long[]{0, 100, 100, 200}, -1); // Wrong
+
         }
         new Handler().postDelayed(new Runnable() {
             @Override
