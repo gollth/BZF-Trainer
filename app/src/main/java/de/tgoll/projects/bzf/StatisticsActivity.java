@@ -25,11 +25,14 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
 
+import org.joda.time.DateTime;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -154,22 +157,34 @@ public class StatisticsActivity extends AppCompatActivity {
     }
 
 
+    private boolean isSameDay(DateTime c1, DateTime c2) {
+        return c1.getYear() == c2.getYear()
+                && c1.getDayOfYear() == c2.getDayOfYear();
+    }
+
     public void fillHistory(LineChart history, Map<String, List<Trial>> trials) {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        List<Trial> dates = new ArrayList<>();
+        List<Date> dates = new ArrayList<>();
         Map<String, List<Entry>> entries = new HashMap<>();
 
         for (Map.Entry<String,List<Trial>> entry : trials.entrySet()) {
-            dates.addAll(entry.getValue());
+            for (Trial trial : entry.getValue()) {
+                if (dates.contains(trial.getTimestamp())) continue;
+                dates.add(trial.getTimestamp());
+            }
             entries.put(entry.getKey(), new ArrayList<Entry>());
         }
 
         Collections.sort(dates);
-        Collections.reverse(dates);
 
-        for (int i = 0; i < dates.size(); i++) {
-            Trial trial = dates.get(i);
-            entries.get(trial.key).add(new Entry(i, (float)trial.getSuccessRate()));
+        for (List<Trial> ts : trials.values()) {
+            for (Trial trial : ts) {
+                for (int i = 0; i < dates.size(); i++) {
+                    if (!isSameDay(new DateTime(trial.getTimestamp()), new DateTime(dates.get(i)))) continue;
+                    entries.get(trial.key).add(new Entry(i, (float) trial.getSuccessRate()));
+                }
+            }
+
         }
 
         for (Map.Entry<String,List<Entry>> entry : entries.entrySet()) {
@@ -229,18 +244,18 @@ public class StatisticsActivity extends AppCompatActivity {
     public class DateAxisFormatter extends ValueFormatter {
 
 
-        private final List<Trial> trials;
+        private final List<Date> dates;
         private final DateFormat formatter;
 
-        DateAxisFormatter(List<Trial> trials) {
-            this.trials = trials;
+        DateAxisFormatter(List<Date> dates) {
+            this.dates = dates;
             this.formatter = new SimpleDateFormat("dd.MMM", Locale.getDefault());
         }
 
         @Override
         public String getAxisLabel(float value, AxisBase axis) {
-            if (value < 0 || value >= trials.size()) return "";
-            return formatter.format(trials.get((int)value).getTimestamp());
+            if (value < 0 || value >= dates.size()) return "";
+            return formatter.format(dates.get((int)value));
         }
     }
 }
