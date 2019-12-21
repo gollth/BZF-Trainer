@@ -2,9 +2,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/catalogue">
         <CheckBoxPreference
-            android:key="@string/settings_shuffle"
-            android:title="@string/settings_shuffle"
-            android:summary="@string/settings_shuffle_sum"
+            android:key="@string/settings_shuffle_questions"
+            android:title="@string/settings_shuffle_questions"
+            android:summary="@string/settings_shuffle_questions_sum"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="@string/settings_shuffle_answers"
+            android:title="@string/settings_shuffle_answers"
+            android:summary="@string/settings_shuffle_answers_sum"
             android:defaultValue="false" />
 
         <EditTextPreference

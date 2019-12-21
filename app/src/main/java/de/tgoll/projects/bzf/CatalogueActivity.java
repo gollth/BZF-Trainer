@@ -12,6 +12,7 @@ import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -38,12 +40,14 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     private TextView txt_questions;
     private RadioGroup txt_answers;
+    private RadioButton[] buttons;
     private SeekBar progress;
     private TextView txt_progress;
     private Button btn_next, btn_prev;
 
     private List<Integer> playlist;
     private List<Integer> choices;
+    private SparseArray<Integer[]> answers;
 
     private Vibrator vibrator;
     private SharedPreferences settings;
@@ -69,8 +73,17 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         progress.setOnSeekBarChangeListener(this);
         progress.setMax(cat.size() - 1);
 
+        answers = new SparseArray<>();
+
         vibrator = (Vibrator)  getSystemService(Context.VIBRATOR_SERVICE);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        buttons = new RadioButton[] {
+                findViewById(R.id.A),
+                findViewById(R.id.B),
+                findViewById(R.id.C),
+                findViewById(R.id.D)
+        };
 
         enableInput();
 
@@ -118,13 +131,17 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             playlist.add(i);
             choices.add(-1);    // Not set
         }
-        if (settings.getBoolean(getString(R.string.settings_shuffle), false))
+        if (settings.getBoolean(getString(R.string.settings_shuffle_questions), false))
             Collections.shuffle(playlist);
+
+        answers.clear();
 
         // Send to Crashlytics, that the user started a new trial
         if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
             .putLevelName(key)
-            .putCustomAttribute(getString(R.string.settings_shuffle), ""+settings.getBoolean(getString(R.string.settings_shuffle), false)));
+            .putCustomAttribute(getString(R.string.settings_shuffle_questions), ""+settings.getBoolean(getString(R.string.settings_shuffle_questions), false))
+            .putCustomAttribute(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false))
+        );
 
         loadQuestion(0);
     }
@@ -184,10 +201,6 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         if (!fromUser) return;
         loadQuestion(progress);
-        if (choices.size() > progress) return;
-
-        if (choices.get(progress) != -1)
-            highlightCorrectAnswer();
     }
 
     public int getProgress() {
@@ -208,30 +221,33 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     public void loadQuestion(int i) throws IndexOutOfBoundsException {
         setQuestionProgress(i);
         updateButtons();
+
+        if (settings.getBoolean(getString(R.string.settings_shuffle_answers), false))
+            shuffleAnswerFields(i);
+
         unhighlightAnswers(true);
         txt_questions.setText(cat.getQuestion(playlist.get(i)));
         int choice = choices.get(i);
         if (choice != -1) highlightCorrectAnswer();
         for (int n = 0; n < 4; n++) {
-            RadioButton r = (RadioButton) txt_answers.getChildAt(n);
-            r.setText(cat.getAnswer(playlist.get(i),n));
-            if (n == choice) r.setChecked(true);
+            buttons[n].setText(cat.getAnswer(playlist.get(i), n));
+            if (n == choice) buttons[n].setChecked(true);
         }
     }
 
     public void onCheckboxSelect (View view) {
         for(int i = 0; i < 4; i++)
-            if (txt_answers.getChildAt(i).getId() == view.getId())
-                choices.set(getProgress(),i);
+            if (buttons[i].getId() == view.getId())
+                choices.set(getProgress(), i);
         startHighlightAnimation();
 
     }
 
     public void ignoreInput() {
-        for(int i = 0; i < 4; i++) txt_answers.getChildAt(i).setClickable(false);
+        for(RadioButton button : buttons) button.setClickable(false);
     }
     public void enableInput() {
-        for(int i = 0; i < 4; i++) txt_answers.getChildAt(i).setClickable(true);
+        for(RadioButton button : buttons) button.setClickable(true);
     }
 
     public void startHighlightAnimation() {
@@ -301,10 +317,9 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     }
 
     public void unhighlightAnswers(boolean alsoClearCheck) {
-        for (int i = 0; i < 4; i++) {
-            RadioButton option = (RadioButton) txt_answers.getChildAt(i);
-            option.setTypeface(Typeface.DEFAULT);
-            option.setTextColor(getResources().getColor(R.color.colorDefaultText));
+        for(RadioButton button : buttons) {
+            button.setTypeface(Typeface.DEFAULT);
+            button.setTextColor(getResources().getColor(R.color.colorDefaultText));
         }
         if (alsoClearCheck) txt_answers.clearCheck();
     }
@@ -314,10 +329,22 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
      */
     public boolean highlightCorrectAnswer() {
         unhighlightAnswers(false);
-        RadioButton option = (RadioButton) txt_answers.getChildAt(cat.getSolution(getCurrentQuestion()));
+        RadioButton option = buttons[cat.getSolution(getCurrentQuestion())];
         option.setTypeface(Typeface.DEFAULT_BOLD);
         option.setTextColor(getResources().getColor(R.color.colorHighlight));
         return option.isChecked();
+    }
+
+    public void shuffleAnswerFields(int question) {
+        Integer[] idx = answers.get(question);
+        if (idx == null) {
+            List<Integer> list = Arrays.asList(0, 1, 2, 3);
+            Collections.shuffle(list);
+            answers.put(question, (Integer[]) list.toArray());
+        }
+        txt_answers.removeAllViews();
+        for(int i : answers.get(question))
+            txt_answers.addView(buttons[i]);
     }
 
 

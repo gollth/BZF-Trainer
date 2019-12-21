@@ -38,6 +38,7 @@ class Catalogue {
 
         for (int i = 0; i < questions.length; i++) {
             answers[i] = tmp[i].split(c.getString(R.string.answer_separator));
+            for (int j = 0; j < answers[i].length; j++) answers[i][j] = answers[i][j].trim();
             if (answers[i].length < 4) Log.e("Question " + (i+1), "Missing ;");
             if (answers[i].length > 4) Log.e("Question " + (i+1), "To much ;");
         }
