@@ -25,12 +25,13 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.gson.Gson;
 
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -127,7 +128,7 @@ public class StatisticsActivity extends AppCompatActivity {
         for (Trial trial : trials) {
             if (trial.size() > max) max = trial.size();
         }
-        List<Float> questions = new ArrayList<Float>(Collections.nCopies(max, 0f));
+        List<Float> questions = new ArrayList<>(Collections.nCopies(max, 0f));
 
         // Fill the list with data
         for (Trial trial : trials) {
@@ -156,21 +157,27 @@ public class StatisticsActivity extends AppCompatActivity {
         chart.invalidate();
     }
 
-
-    private boolean isSameDay(DateTime c1, DateTime c2) {
-        return c1.getYear() == c2.getYear()
-                && c1.getDayOfYear() == c2.getDayOfYear();
+    private DateTime createDateOnly(Date stamp) {
+        return new DateTime(stamp).withTime(0,0,0,0);
     }
 
     public void fillHistory(LineChart history, Map<String, List<Trial>> trials) {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-        List<Date> dates = new ArrayList<>();
+        List<DateTime> dates = new ArrayList<>();
         Map<String, List<Entry>> entries = new HashMap<>();
 
         for (Map.Entry<String,List<Trial>> entry : trials.entrySet()) {
+            Collections.sort(entry.getValue(), new Comparator<Trial>() {
+                @Override
+                public int compare(Trial a, Trial b) {
+                    return createDateOnly(a.getTimestamp()).compareTo(createDateOnly(b.getTimestamp()));
+                }
+            });
+
             for (Trial trial : entry.getValue()) {
-                if (dates.contains(trial.getTimestamp())) continue;
-                dates.add(trial.getTimestamp());
+                DateTime stamp = createDateOnly(trial.getTimestamp());
+                if (dates.contains(stamp)) continue;
+                dates.add(stamp);
             }
             entries.put(entry.getKey(), new ArrayList<Entry>());
         }
@@ -180,11 +187,13 @@ public class StatisticsActivity extends AppCompatActivity {
         for (List<Trial> ts : trials.values()) {
             for (Trial trial : ts) {
                 for (int i = 0; i < dates.size(); i++) {
-                    if (!isSameDay(new DateTime(trial.getTimestamp()), new DateTime(dates.get(i)))) continue;
-                    entries.get(trial.key).add(new Entry(i, (float) trial.getSuccessRate()));
+                    DateTime date = createDateOnly(trial.getTimestamp());
+                    if (!date.equals(dates.get(i))) continue;
+                    List<Entry> line = entries.get(trial.key);
+                    if (line == null) continue;
+                    line.add(new Entry(i, (float) trial.getSuccessRate()));
                 }
             }
-
         }
 
         for (Map.Entry<String,List<Entry>> entry : entries.entrySet()) {
@@ -244,18 +253,18 @@ public class StatisticsActivity extends AppCompatActivity {
     public class DateAxisFormatter extends ValueFormatter {
 
 
-        private final List<Date> dates;
-        private final DateFormat formatter;
+        private final List<DateTime> dates;
+        private final DateTimeFormatter formatter;
 
-        DateAxisFormatter(List<Date> dates) {
+        DateAxisFormatter(List<DateTime> dates) {
             this.dates = dates;
-            this.formatter = new SimpleDateFormat("dd.MMM", Locale.getDefault());
+            this.formatter = DateTimeFormat.forPattern("dd.MMM");
         }
 
         @Override
         public String getAxisLabel(float value, AxisBase axis) {
             if (value < 0 || value >= dates.size()) return "";
-            return formatter.format(dates.get((int)value));
+            return formatter.print(dates.get((int)value));
         }
     }
 }
