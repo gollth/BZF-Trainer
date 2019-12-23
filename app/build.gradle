@@ -61,4 +61,5 @@ dependencies {
     api('com.crashlytics.sdk.android:crashlytics:2.10.1@aar') {
         transitive = true
     }
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }

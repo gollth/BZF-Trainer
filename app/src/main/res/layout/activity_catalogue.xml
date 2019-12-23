@@ -1,117 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".CatalogueActivity">
 
     <TextView
         android:id="@+id/txt_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/colorPrimary"
-        android:typeface="sans" />
+        android:textSize="24sp"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_number"
         android:id="@+id/txt_question"
-        android:textColor="@color/colorDefaultText"
-        android:minHeight="80dp" />
-
-
-    <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lyt_ABCD"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/txt_question">
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:minHeight="100dp"
+        android:textColor="@color/colorDefaultText"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_number" />
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/A"
-            android:onClick="onCheckboxSelect"
-            android:textColor="@color/colorDefaultText"
-            android:layout_marginBottom="10dp"
-            android:minHeight="60dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@id/txt_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_question">
 
-        <RadioButton
+        <RadioGroup
+            android:id="@+id/lyt_ABCD"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/B"
-            android:onClick="onCheckboxSelect"
-            android:textColor="@color/colorDefaultText"
-            android:layout_marginBottom="10dp"
-            android:minHeight="60dp" />
+            android:layout_height="0dp"
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/C"
-            android:onClick="onCheckboxSelect"
-            android:textColor="@color/colorDefaultText"
-            android:layout_marginBottom="10dp"
-            android:minHeight="60dp" />
+            android:layout_marginTop="5dp">
 
-        <RadioButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/D"
-            android:onClick="onCheckboxSelect"
-            android:textColor="@color/colorDefaultText"
-            android:minHeight="60dp" />
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="60dp"
+                android:onClick="onCheckboxSelect"
+                android:textColor="@color/colorDefaultText"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="60dp"
+                android:onClick="onCheckboxSelect"
+                android:textColor="@color/colorDefaultText"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/C"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:minHeight="60dp"
+                android:onClick="onCheckboxSelect"
+                android:textColor="@color/colorDefaultText" />
+
+            <RadioButton
+                android:id="@+id/D"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="60dp"
+                android:onClick="onCheckboxSelect"
+                android:textColor="@color/colorDefaultText"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+    </ScrollView>
 
     <SeekBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/progress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:max="100"
-        android:layout_below="@+id/txt_progress"
-        android:layout_toEndOf="@+id/btn_prev"
-        android:layout_toStartOf="@+id/btn_next" />
+        app:layout_constraintTop_toTopOf="@id/btn_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_prev"
+        app:layout_constraintEnd_toStartOf="@id/btn_next"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/txt_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/txt_progress"
-        android:layout_alignTop="@+id/btn_prev"
-        android:layout_centerHorizontal="true" />
+        app:layout_constraintBottom_toTopOf="@id/progress"
+        app:layout_constraintStart_toEndOf="@id/btn_prev"
+        app:layout_constraintEnd_toStartOf="@id/btn_next" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_left"
         android:id="@+id/btn_prev"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:textSize="50sp"
+        android:enabled="false"
         android:onClick="onNextOrPref"
-        android:enabled="false" />
+        android:text="@string/btn_left"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_right"
         android:id="@+id/btn_next"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="true"
-        android:textSize="50sp"
-        android:layout_alignParentEnd="true"
+        android:enabled="false"
         android:onClick="onNextOrPref"
-        android:enabled="false" />
+        android:text="@string/btn_right"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
