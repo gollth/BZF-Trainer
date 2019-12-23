@@ -45,6 +45,8 @@
     <string name="settings_shuffle_questions_sum">Sollen die Fragen zufällig oder nacheinander abgefragt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
     <string name="settings_shuffle_answers">Zufällige Antworten</string>
     <string name="settings_shuffle_answers_sum">Sollen die vier Antwortmöglichkeiten jedesmal durchgemischt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
+    <string name="settings_text_size">Schriftgröße</string>
+    <string name="settings_text_size_sum">Wie groß sollen Fragen und Antworten geschrieben werden?</string>
     <string name="settings_delay">Verzögerung</string>
     <string name="settings_delay_sum">Wie viele Sekunden soll die richtige Lösung angezeigt werden, bis zur nächsten Frage gewechselt wird? </string>
     <string name="settings_vibrate">Vibration</string>

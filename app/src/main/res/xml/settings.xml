@@ -14,6 +14,13 @@
             android:defaultValue="false" />
 
         <EditTextPreference
+            android:key="@string/settings_text_size"
+            android:title="@string/settings_text_size"
+            android:summary="@string/settings_text_size_sum"
+            android:defaultValue="12"
+            android:inputType="numberDecimal" />
+
+        <EditTextPreference
             android:key="@string/settings_delay"
             android:title="@string/settings_delay"
             android:summary="@string/settings_delay_sum"

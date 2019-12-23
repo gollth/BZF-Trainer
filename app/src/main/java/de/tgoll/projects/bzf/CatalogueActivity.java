@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,9 +95,20 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     }
 
+    private void setTextSizes(float sp) {
+        txt_number.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp + 10);
+        txt_questions.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp);
+        for (RadioButton button : buttons) {
+            button.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp);
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+
+        float fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
+        setTextSizes(fontSize);
 
         String s = settings.getString(key + "-state", "");
         if (s.isEmpty()) resetQuestions();
