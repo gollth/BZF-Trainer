@@ -27,8 +27,8 @@ android {
         applicationId "de.tgoll.projects.bzf"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 20
-        versionName "0.4.0"
+        versionCode 21
+        versionName "1.0.0"
     }
     buildTypes {
         debug {
