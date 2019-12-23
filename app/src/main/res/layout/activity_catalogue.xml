@@ -10,11 +10,22 @@
     tools:context=".CatalogueActivity">
 
     <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txt_question"
-            android:textColor="@color/colorDefaultText"
-        android:minHeight="100dp" />
+        android:id="@+id/txt_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimary"
+        android:typeface="sans" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_number"
+        android:id="@+id/txt_question"
+        android:textColor="@color/colorDefaultText"
+        android:minHeight="80dp" />
+
 
     <RadioGroup
         android:layout_width="match_parent"

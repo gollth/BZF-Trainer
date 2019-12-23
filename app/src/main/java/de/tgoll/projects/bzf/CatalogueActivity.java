@@ -27,6 +27,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import com.crashlytics.android.answers.Answers;
@@ -38,6 +39,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
     public static final Set<String> EMPTY_SET = new HashSet<>();
 
+    private TextView txt_number;
     private TextView txt_questions;
     private RadioGroup txt_answers;
     private RadioButton[] buttons;
@@ -64,6 +66,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
 
         cat = new Catalogue(getApplicationContext(), key);
 
+        txt_number = findViewById(R.id.txt_number);
         txt_questions = findViewById(R.id.txt_question);
         txt_answers = findViewById(R.id.lyt_ABCD);
         txt_progress = findViewById(R.id.txt_progress);
@@ -226,7 +229,12 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
             shuffleAnswerFields(i);
 
         unhighlightAnswers(true);
-        txt_questions.setText(cat.getQuestion(playlist.get(i)));
+        int number = playlist.get(i);
+        String question = cat.getQuestion(number);
+        String[] parts =question.split("\\d{1,4}.\\s");
+        String format = key.equals("azf") ? "Question %d" : "Frage %d";
+        txt_number.setText(String.format(Locale.getDefault(), format, number));
+        txt_questions.setText(parts[1]);
         int choice = choices.get(i);
         if (choice != -1) highlightCorrectAnswer();
         for (int n = 0; n < 4; n++) {
