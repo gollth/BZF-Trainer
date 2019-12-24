@@ -34,9 +34,10 @@ import java.util.Set;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
+import com.google.android.material.slider.Slider;
 import com.google.gson.Gson;
 
-public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
+public class CatalogueActivity extends AppCompatActivity implements Slider.OnChangeListener {
 
     public static final Set<String> EMPTY_SET = new HashSet<>();
 
@@ -44,7 +45,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     private TextView txt_questions;
     private RadioGroup txt_answers;
     private RadioButton[] buttons;
-    private SeekBar progress;
+    private Slider progress;
     private TextView txt_progress;
     private Button btn_next, btn_prev;
 
@@ -74,8 +75,8 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         btn_next = findViewById(R.id.btn_next);
         btn_prev = findViewById(R.id.btn_prev);
         progress = findViewById(R.id.progress);
-        progress.setOnSeekBarChangeListener(this);
-        progress.setMax(cat.size() - 1);
+        progress.setOnChangeListener(this);
+        progress.setValueTo(cat.size()-1);
 
         answers = new SparseArray<>();
 
@@ -210,16 +211,13 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         btn_prev.setEnabled(getProgress() != 0);
     }
 
-    @Override public void onStartTrackingTouch(SeekBar s) {}
-    @Override public void onStopTrackingTouch (SeekBar s) {}
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        if (!fromUser) return;
-        loadQuestion(progress);
+    public void onValueChange(Slider slider, float value) {
+        loadQuestion((int)value);
     }
 
     public int getProgress() {
-        return progress.getProgress();
+        return (int)progress.getValue();
     }
 
     public int getCurrentQuestion() { return playlist.get(getProgress()); }
@@ -229,7 +227,9 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
     }
 
     private void setQuestionProgress(int i) {
-        progress.setProgress(i);
+        progress.setOnChangeListener(null);
+        progress.setValue(i);
+        progress.setOnChangeListener(this);
         txt_progress.setText(String.format(getString(R.string.txt_progress), i + 1, cat.size()));
     }
 
@@ -243,7 +243,7 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         unhighlightAnswers(true);
         int number = playlist.get(i);
         String question = cat.getQuestion(number);
-        String[] parts =question.split("\\d{1,4}.\\s");
+        String[] parts = question.split("\\d{1,4}.\\s", 2);
         String format = key.equals("azf") ? "Question %d" : "Frage %d";
         txt_number.setText(String.format(Locale.getDefault(), format, number));
         txt_questions.setText(parts[1]);
@@ -366,7 +366,6 @@ public class CatalogueActivity extends AppCompatActivity implements SeekBar.OnSe
         for(int i : answers.get(question))
             txt_answers.addView(buttons[i]);
     }
-
 
     public class SavedState {
         private final List<Integer> playlist;

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:minHeight="100dp"
+        android:minHeight="80sp"
         android:textColor="@color/colorDefaultText"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
 
             android:layout_marginTop="5dp">
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/A"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 android:textColor="@color/colorDefaultText"
                 android:textSize="14sp" />
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/B"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:textColor="@color/colorDefaultText"
                 android:textSize="14sp" />
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/C"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 android:onClick="onCheckboxSelect"
                 android:textColor="@color/colorDefaultText" />
 
-            <RadioButton
+            <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/D"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,12 +93,14 @@
         </RadioGroup>
     </ScrollView>
 
-    <SeekBar
+    <com.google.android.material.slider.Slider
         android:id="@+id/progress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:max="100"
-        app:layout_constraintTop_toTopOf="@id/btn_next"
+        android:layout_marginBottom="8sp"
+        android:valueFrom="0"
+        android:valueTo="100"
+        android:stepSize="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_prev"
         app:layout_constraintEnd_toStartOf="@id/btn_next"/>
@@ -112,30 +114,36 @@
         app:layout_constraintStart_toEndOf="@id/btn_prev"
         app:layout_constraintEnd_toStartOf="@id/btn_next" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_prev"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="40sp"
+        android:layout_height="0sp"
+        android:layout_marginStart="8dp"
         android:enabled="false"
         android:onClick="onNextOrPref"
-        android:text="@string/btn_left"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:icon="@drawable/baseline_arrow_back_ios_24"
+        app:iconGravity="start"
+        app:iconPadding="0sp"
+        app:strokeWidth="0sp"
+        app:layout_constraintTop_toTopOf="@id/progress"
+        app:layout_constraintBottom_toBottomOf="@id/progress"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_next"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="40sp"
+        android:layout_height="0sp"
+        android:layout_marginEnd="8dp"
         android:enabled="false"
         android:onClick="onNextOrPref"
-        android:text="@string/btn_right"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:icon="@drawable/baseline_arrow_forward_ios_black_24"
+        app:iconGravity="start"
+        app:iconPadding="0dp"
+        app:strokeWidth="0sp"
+        app:layout_constraintTop_toTopOf="@id/progress"
+        app:layout_constraintBottom_toBottomOf="@id/progress"
         app:layout_constraintEnd_toEndOf="parent" />
 
 

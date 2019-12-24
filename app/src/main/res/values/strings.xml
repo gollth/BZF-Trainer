@@ -7,7 +7,7 @@
 
     <string name="btn_info">Info</string>
     <string name="txt_questions">Frage %1$d</string>
-    <string name="txt_progress">Frage %1$d von %2$d</string>
+    <string name="txt_progress">%1$d von %2$d</string>
     <string name="txt_ranking">Ranking</string>
     <string name="txt_notes">Notizen</string>
 
