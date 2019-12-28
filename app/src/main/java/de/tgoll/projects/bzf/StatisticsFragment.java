@@ -4,9 +4,13 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -37,49 +41,44 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
-public class StatisticsActivity extends AppCompatActivity {
+public class StatisticsFragment extends Fragment {
 
-    Random rng;
+    public StatisticsFragment() {}
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_statistics);
-        rng = new Random();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
 
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
         Gson gson = new Gson();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
 
         Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf")) {
-            Set<String> history = settings.getStringSet(key + "-history", CatalogueActivity.EMPTY_SET);
+            Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
             List<Trial> list = new ArrayList<>();
             for (String json : history) list.add(gson.fromJson(json, Trial.class));
             trials.put(key, list);
         }
 
-        LineChart history = findViewById(R.id.st_chart_history);
+        LineChart history = view.findViewById(R.id.st_chart_history);
         setupHistoryChart(history);
         fillHistory(history, trials);
 
-        HorizontalBarChart barazf = findViewById(R.id.st_chart_answers_azf);
-        HorizontalBarChart barbzf = findViewById(R.id.st_chart_answers_bzf);
+        HorizontalBarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
+        HorizontalBarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
         setupBarChart(barazf, XAxis.XAxisPosition.TOP);
         setupBarChart(barbzf, XAxis.XAxisPosition.BOTTOM);
 
         fillBarChart(barazf, trials.get("azf"), R.color.colorStatAZF);
         fillBarChart(barbzf, trials.get("bzf"), R.color.colorStatBZF);
 
+        return view;
     }
 
-    void setupHistoryChart(LineChart history) {
+    private void setupHistoryChart(LineChart history) {
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
         history.setPinchZoom(true);
@@ -98,7 +97,7 @@ public class StatisticsActivity extends AppCompatActivity {
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
     }
-    void setupBarChart(HorizontalBarChart barchart, XAxis.XAxisPosition position) {
+    private void setupBarChart(HorizontalBarChart barchart, XAxis.XAxisPosition position) {
         barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
         barchart.setDrawGridBackground(false);
@@ -112,15 +111,7 @@ public class StatisticsActivity extends AppCompatActivity {
         barchart.getXAxis().setGranularity(1f);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        } else return super.onOptionsItemSelected(item);
-    }
-
-    public void fillBarChart(BarChart chart, List<Trial> trials, int color) {
+    private void fillBarChart(BarChart chart, List<Trial> trials, int color) {
         if (trials == null) return;
 
         // Create a list capable of holding all choices
@@ -161,7 +152,7 @@ public class StatisticsActivity extends AppCompatActivity {
         return new DateTime(stamp).withTime(0,0,0,0);
     }
 
-    public void fillHistory(LineChart history, Map<String, List<Trial>> trials) {
+    private void fillHistory(LineChart history, Map<String, List<Trial>> trials) {
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         List<DateTime> dates = new ArrayList<>();
         Map<String, List<Entry>> entries = new HashMap<>();
@@ -202,7 +193,7 @@ public class StatisticsActivity extends AppCompatActivity {
             line.setDrawFilled(true);
             line.setFillAlpha(170);
             line.setCircleRadius(3);
-            line.setCircleColor(getResources().getColor(R.color.colorDefaultText));
+            line.setCircleColor(getResources().getColor(R.color.black));
             line.setValueFormatter(new NoneValueFormatter());
             switch (entry.getKey()) {
                 case "azf":
@@ -228,18 +219,6 @@ public class StatisticsActivity extends AppCompatActivity {
         @Override
         public String getFormattedValue(float value) {
             return "";
-        }
-    }
-
-    public class IntegerFormatter extends ValueFormatter {
-        private final String format;
-        public IntegerFormatter() {
-            this("%.0f");
-        }
-        public IntegerFormatter(String format) { this.format = format; }
-        @Override
-        public String getFormattedValue(float value) {
-            return String.format(Locale.GERMAN, this.format , value);
         }
     }
 

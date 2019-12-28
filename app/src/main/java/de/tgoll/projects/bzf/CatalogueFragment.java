@@ -3,25 +3,35 @@ package de.tgoll.projects.bzf;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import com.crashlytics.android.answers.Answers;
+import com.crashlytics.android.answers.LevelEndEvent;
+import com.crashlytics.android.answers.LevelStartEvent;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.slider.Slider;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,16 +41,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.LevelEndEvent;
-import com.crashlytics.android.answers.LevelStartEvent;
-import com.google.android.material.slider.Slider;
-import com.google.gson.Gson;
+public class CatalogueFragment extends Fragment implements
+        Slider.OnChangeListener,
+        RadioButton.OnCheckedChangeListener,
+        MaterialButton.OnClickListener {
 
-public class CatalogueActivity extends AppCompatActivity implements Slider.OnChangeListener {
+    static final Set<String> EMPTY_SET = new HashSet<>();
 
-    public static final Set<String> EMPTY_SET = new HashSet<>();
-
+    private View view;
     private TextView txt_number;
     private TextView txt_questions;
     private RadioGroup txt_answers;
@@ -59,41 +67,45 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
     private String key;
     private Catalogue cat;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_catalogue);
-
-        key = getIntent().getStringExtra("key");
-
-        cat = new Catalogue(getApplicationContext(), key);
-
-        txt_number = findViewById(R.id.txt_number);
-        txt_questions = findViewById(R.id.txt_question);
-        txt_answers = findViewById(R.id.lyt_ABCD);
-        txt_progress = findViewById(R.id.txt_progress);
-        btn_next = findViewById(R.id.btn_next);
-        btn_prev = findViewById(R.id.btn_prev);
-        progress = findViewById(R.id.progress);
-        progress.setOnChangeListener(this);
-        progress.setValueTo(cat.size()-1);
-
+    public CatalogueFragment(String key) {
+        this.key = key;
+        gson = new Gson();
         answers = new SparseArray<>();
+    }
 
-        vibrator = (Vibrator)  getSystemService(Context.VIBRATOR_SERVICE);
-        settings = PreferenceManager.getDefaultSharedPreferences(this);
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view =  inflater.inflate(R.layout.fragment_catalogue, container, false);
+
+        cat = new Catalogue(view.getContext(), key);
+
+        txt_number = view.findViewById(R.id.txt_number);
+        txt_questions = view.findViewById(R.id.txt_question);
+        txt_answers = view.findViewById(R.id.lyt_ABCD);
+        txt_progress = view.findViewById(R.id.txt_progress);
+        btn_next = view.findViewById(R.id.btn_next);
+        btn_prev = view.findViewById(R.id.btn_prev);
+        progress = view.findViewById(R.id.progress);
+        progress.setValueTo(cat.size());
+
+        vibrator = (Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+        settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
 
         buttons = new RadioButton[] {
-                findViewById(R.id.A),
-                findViewById(R.id.B),
-                findViewById(R.id.C),
-                findViewById(R.id.D)
+                view.findViewById(R.id.A),
+                view.findViewById(R.id.B),
+                view.findViewById(R.id.C),
+                view.findViewById(R.id.D)
         };
+
+        btn_prev.setOnClickListener(this);
+        btn_next.setOnClickListener(this);
+        setRadioCheckListener(this);
 
         enableInput();
 
-        gson = new Gson();
-
+        return view;
     }
 
     private void setTextSizes(float sp) {
@@ -105,7 +117,7 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
     }
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
 
         float fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
@@ -126,19 +138,24 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
 
         Log.i("BZF", "Saving Catalogue state in " + key + "-state");
         // Only save, it at least one question has been answered
         for (Integer c : choices)  if (c != -1) {
-            settings.edit().putString(key + "-state", gson.toJson(new SavedState(playlist, choices, getProgress()))).apply();
+            settings
+                .edit()
+                .putString(
+                    key + "-state",
+                    gson.toJson(new SavedState(playlist, choices, getProgress())))
+                .apply();
             break;
         }
 
     }
 
-    public void resetQuestions() {
+    private void resetQuestions() {
         settings.edit().remove(key + "-state").apply();
 
         playlist = new ArrayList<>();
@@ -163,77 +180,47 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_settings:
-                startActivity(new Intent(this, SettingsActivity.class));
-                return true;
-
-            case R.id.menu_restart:
-                new AlertDialog.Builder(this)
-                        .setTitle(getString(R.string.restart))
-                        .setMessage(getString(R.string.restart_alert))
-                        .setNegativeButton(getString(R.string.negative), null)
-                        .setPositiveButton(getString(R.string.positive), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                resetQuestions();
-                            }
-                        }).show();
-                return true;
-
-            case R.id.menu_statistics:
-                startActivity(new Intent(this, StatisticsActivity.class));
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    public void onNextOrPref(View view) {
+    public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_next: loadQuestion(); break;
+            case R.id.btn_next: loadQuestion(getProgress()+1); break;
             case R.id.btn_prev: loadQuestion(getProgress()-1); break;
         }
-
     }
 
-    public void updateButtons () {
+    private void updateButtons () {
         btn_next.setEnabled(isNotFinalQuestion());
         btn_prev.setEnabled(getProgress() != 0);
+        boolean enabled = choices.get(getProgress()) == -1;
+        for (RadioButton button : buttons) {
+            button.setEnabled(enabled);
+        }
     }
 
     @Override
     public void onValueChange(Slider slider, float value) {
-        loadQuestion((int)value);
+        loadQuestion(getProgress());
     }
 
-    public int getProgress() {
-        return (int)progress.getValue();
+    private int getProgress() {
+        return (int)progress.getValue()-1;
     }
 
-    public int getCurrentQuestion() { return playlist.get(getProgress()); }
+    private int getCurrentQuestion() { return playlist.get(getProgress()); }
 
-    public void loadQuestion() throws IndexOutOfBoundsException {
-        loadQuestion(getProgress() + 1);
+    private void setRadioCheckListener(RadioButton.OnCheckedChangeListener listener) {
+        for (RadioButton button : buttons) {
+            button.setOnCheckedChangeListener(listener);
+        }
     }
 
     private void setQuestionProgress(int i) {
         progress.setOnChangeListener(null);
-        progress.setValue(i);
+        progress.setValue(i+1);
         progress.setOnChangeListener(this);
-        txt_progress.setText(String.format(getString(R.string.txt_progress), i + 1, cat.size()));
+        txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, cat.size()));
     }
 
-    public void loadQuestion(int i) throws IndexOutOfBoundsException {
+    private void loadQuestion(int i) throws IndexOutOfBoundsException {
         setQuestionProgress(i);
         updateButtons();
 
@@ -245,32 +232,34 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
         String question = cat.getQuestion(number);
         String[] parts = question.split("\\d{1,4}.\\s", 2);
         String format = key.equals("azf") ? "Question %d" : "Frage %d";
-        txt_number.setText(String.format(Locale.getDefault(), format, number));
+        txt_number.setText(String.format(Locale.getDefault(), format, number+1));
         txt_questions.setText(parts[1]);
-        int choice = choices.get(i);
+        int choice = choices.get(number);
         if (choice != -1) highlightCorrectAnswer();
         for (int n = 0; n < 4; n++) {
-            buttons[n].setText(cat.getAnswer(playlist.get(i), n));
+            buttons[n].setText(cat.getAnswer(number, n));
             if (n == choice) buttons[n].setChecked(true);
         }
     }
 
-    public void onCheckboxSelect (View view) {
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if (!isChecked) return;
+        if (choices.get(getProgress()) != -1) return;
         for(int i = 0; i < 4; i++)
-            if (buttons[i].getId() == view.getId())
+            if (buttons[i].getId() == buttonView.getId())
                 choices.set(getProgress(), i);
         startHighlightAnimation();
-
     }
 
-    public void ignoreInput() {
+    private void ignoreInput() {
         for(RadioButton button : buttons) button.setClickable(false);
     }
-    public void enableInput() {
+    private void enableInput() {
         for(RadioButton button : buttons) button.setClickable(true);
     }
 
-    public void startHighlightAnimation() {
+    private void startHighlightAnimation() {
         ignoreInput();
         boolean isVibrationGloballyEnabled = settings.getBoolean(getString(R.string.settings_vibrate), true);
         boolean isVibrationOnFalseEnabled = settings.getBoolean(getString(R.string.settings_vibrate_false), true);
@@ -290,37 +279,48 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
             public void run() {
                 enableInput();
                 if (allQuestionsAnswered()) showResultDialog();
-                else if (isNotFinalQuestion()) loadQuestion();
+                else if (isNotFinalQuestion()) loadQuestion(getProgress()+1);  // load next
 
             }
         }, (long) (Double.parseDouble(settings.getString(getString(R.string.settings_delay), "1")) * 1000));
 
     }
 
-    public boolean allQuestionsAnswered() {
+    private boolean allQuestionsAnswered() {
         for (Integer choice : choices) if (choice == -1) return false;
         return true;
     }
 
-    public void showResultDialog() {
-        SharedPreferences.Editor e = settings.edit();
+    private void showResultDialog() {
         Trial trial = new Trial(key, cat, playlist, choices);
         Set<String> history = new HashSet<>(settings.getStringSet(key + "-history", EMPTY_SET));
         history.add(gson.toJson(trial));
-        e.remove(key + "-history");
-        e.putStringSet(key + "-history", history);
-        e.apply();
+        settings.edit()
+            .remove(key + "-history")
+            .putStringSet(key + "-history", history)
+            .apply();
         boolean success = trial.getSuccessRate() > 0.75;
 
-        new AlertDialog.Builder(CatalogueActivity.this)
+        new AlertDialog.Builder(view.getContext())
                 .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
                 .setMessage(String.format(getString(R.string.msg_finish), Math.round(trial.getSuccessRate() * 100)))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
-                .setPositiveButton(getString(R.string.back_to_title), new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.statistics, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        FragmentManager manager = getFragmentManager();
+                        if (manager == null) return;
+                        manager.beginTransaction()
+                                .replace(R.id.fragment, new StatisticsFragment())
+                                .commit();
+                    }
+                })
+                .setPositiveButton(R.string.restart, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         resetQuestions();
-                        finish();
+                        dialog.dismiss();
                     }
                 }).show();
 
@@ -332,14 +332,14 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
 
     }
 
-    public boolean isNotFinalQuestion() {
+    private boolean isNotFinalQuestion() {
         return getProgress() != cat.size()-1;
     }
 
-    public void unhighlightAnswers(boolean alsoClearCheck) {
+    private void unhighlightAnswers(boolean alsoClearCheck) {
         for(RadioButton button : buttons) {
             button.setTypeface(Typeface.DEFAULT);
-            button.setTextColor(getResources().getColor(R.color.colorDefaultText));
+            button.setTextColor(getResources().getColor(R.color.black));
         }
         if (alsoClearCheck) txt_answers.clearCheck();
     }
@@ -347,7 +347,7 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
     /** Highlights the correct answer of the four possible options
      * @return true if the selected answer was correct, false otherwise
      */
-    public boolean highlightCorrectAnswer() {
+    private boolean highlightCorrectAnswer() {
         unhighlightAnswers(false);
         RadioButton option = buttons[cat.getSolution(getCurrentQuestion())];
         option.setTypeface(Typeface.DEFAULT_BOLD);
@@ -355,7 +355,7 @@ public class CatalogueActivity extends AppCompatActivity implements Slider.OnCha
         return option.isChecked();
     }
 
-    public void shuffleAnswerFields(int question) {
+    private void shuffleAnswerFields(int question) {
         Integer[] idx = answers.get(question);
         if (idx == null) {
             List<Integer> list = Arrays.asList(0, 1, 2, 3);

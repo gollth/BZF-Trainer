@@ -5,7 +5,7 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CatalogueActivity">
+    tools:context=".CatalogueFragment">
 
     <TextView
         android:id="@+id/txt_number"
@@ -14,6 +14,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:textAllCaps="true"
+        android:text="Frage 123"
         android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         android:typeface="sans"
@@ -28,8 +29,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:minHeight="80sp"
-        android:textColor="@color/colorDefaultText"
+        android:textColor="@color/black"
         android:textSize="14sp"
+        android:text="Bei einem QNH von 1013 hPa wo ist das Transition Layer in Bezug auf..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_number" />
@@ -58,8 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="60dp"
-                android:onClick="onCheckboxSelect"
-                android:textColor="@color/colorDefaultText"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
@@ -68,8 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="60dp"
-                android:onClick="onCheckboxSelect"
-                android:textColor="@color/colorDefaultText"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
@@ -78,16 +78,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:minHeight="60dp"
-                android:onClick="onCheckboxSelect"
-                android:textColor="@color/colorDefaultText" />
+                android:textColor="@color/black" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:id="@+id/D"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="60dp"
-                android:onClick="onCheckboxSelect"
-                android:textColor="@color/colorDefaultText"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
         </RadioGroup>
@@ -98,7 +96,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8sp"
-        android:valueFrom="0"
+        android:valueFrom="1"
         android:valueTo="100"
         android:stepSize="1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,8 +119,7 @@
         android:layout_height="0sp"
         android:layout_marginStart="8dp"
         android:enabled="false"
-        android:onClick="onNextOrPref"
-        app:icon="@drawable/baseline_arrow_back_ios_24"
+        app:icon="@drawable/back"
         app:iconGravity="start"
         app:iconPadding="0sp"
         app:strokeWidth="0sp"
@@ -137,8 +134,7 @@
         android:layout_height="0sp"
         android:layout_marginEnd="8dp"
         android:enabled="false"
-        android:onClick="onNextOrPref"
-        app:icon="@drawable/baseline_arrow_forward_ios_black_24"
+        app:icon="@drawable/next"
         app:iconGravity="start"
         app:iconPadding="0dp"
         app:strokeWidth="0sp"

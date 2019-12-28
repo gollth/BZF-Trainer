@@ -26,27 +26,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CatalogueActivity"
+        <activity android:name=".StatisticsFragment"
             android:parentActivityName=".TitleActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.tgoll.projects.bzf.TitleActivity" />
-        </activity>
-        <activity android:name=".StatisticsActivity"
-            android:parentActivityName=".CatalogueActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CatalogueActivity" />
+                android:value=".CatalogueFragment" />
         </activity>
         <activity android:name=".SettingsActivity"
             android:label="@string/settings"
             android:screenOrientation="portrait"
-            android:parentActivityName=".CatalogueActivity">
+            android:parentActivityName=".TitleActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CatalogueActivity" />
+                android:value=".CatalogueFragment" />
         </activity>
         <activity android:name=".SimulatorActivity"
             android:label="@string/simulator"

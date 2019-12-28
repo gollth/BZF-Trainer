@@ -28,7 +28,6 @@
     <string name="msg_finish_sim">%1$d %% richtig gesagt</string>
     <string name="msg_record_explanation">Gedrückt halten zum Senden</string>
 
-    <string name="back_to_title">Zurück zum Hauptmenu</string>
     <string name="restart">Von vorne</string>
     <string name="restart_alert">Bist du sicher, dass du die Fragen von vorne beantworten möchtest?</string>
 

@@ -34,17 +34,17 @@
 
 # Application classes that will be serialized/deserialized over Gson
 #-keep class com.google.gson.examples.android.model.** { *; }
--keep class de.tgoll.projects.bzf.CatalogueActivity.SavedState { *; }
+-keep class de.tgoll.projects.bzf.CatalogueFragment.SavedState { *; }
 -keep class de.tgoll.projects.bzf.Trial { *; }
 
 # Add the gson class
 -keep public class com.google.gson
 
 # Add any classes the interact with gson
--keep class de.tgoll.projects.bzf.CatalogueActivity { *; }
--keep class de.tgoll.projects.bzf.StatisticsActivity { *; }
--keep class de.tgoll.projects.bzf.StatisticsActivity.NoneValueFormatter { *; }
--keep class de.tgoll.projects.bzf.StatisticsActivity.PercentFormatter { *; }
+-keep class de.tgoll.projects.bzf.CatalogueFragment { *; }
+-keep class de.tgoll.projects.bzf.StatisticsFragment { *; }
+-keep class de.tgoll.projects.bzf.StatisticsFragment.NoneValueFormatter { *; }
+-keep class de.tgoll.projects.bzf.StatisticsFragment.PercentFormatter { *; }
 
 -keep class com.crashlytics.** { *; }
 -dontwarn com.crashlytics.**
