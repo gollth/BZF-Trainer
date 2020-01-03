@@ -30,10 +30,6 @@ public class TitleActivity extends AppCompatActivity {
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-
-        // The initially shown fragment in the tab host
-        showFragment(settings.getString("navigation", getString(R.string.statistics)));
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowHomeEnabled(true);
@@ -45,32 +41,40 @@ public class TitleActivity extends AppCompatActivity {
             changelog.getFullLogDialog().show();
         }
 
+        // The initially shown fragment in the tab host
+        String tab = settings.getString("navigation", getString(R.string.statistics));
+        showFragment(tab, true);
         BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setSelectedItemId(getNavigationID(tab));
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return showFragment(item.getItemId());
+                return showFragment(item.getTitle().toString());
             }
         });
     }
 
-    private boolean showFragment(String id) {
-        if (id.equals(getString(R.string.azf))) return showFragment(R.id.nav_azf);
-        if (id.equals(getString(R.string.bzf)) )return showFragment(R.id.nav_bzf);
-        if (id.equals(getString(R.string.settings))) return showFragment(R.id.nav_settings);
-        if (id.equals(getString(R.string.simulator))) return showFragment(R.id.nav_sim);
-        if (id.equals(getString(R.string.statistics))) return showFragment(R.id.nav_stats);
-        throw new InvalidParameterException("Fragement ID " + id + " unknown");
+    private int getNavigationID(String id) {
+        if (id.equals(getString(R.string.azf))) return R.id.nav_azf;
+        if (id.equals(getString(R.string.bzf)) ) return R.id.nav_bzf;
+        if (id.equals(getString(R.string.settings))) return R.id.nav_settings;
+        if (id.equals(getString(R.string.simulator))) return R.id.nav_sim;
+        if (id.equals(getString(R.string.statistics))) return R.id.nav_stats;
+        throw new InvalidParameterException("Fragment ID " + id + " unknown");
     }
-    private boolean showFragment(int id) {
-        int current = settings.getInt("navigation", -1);
-        if (current == id) return false;
+    private boolean showFragment(String id) {
+        return showFragment(id, false);
+    }
+    private boolean showFragment(String id, boolean forceLoad) {
+        String current = settings.getString("navigation", getString(R.string.statistics));
+        if (current.equals(id) && !forceLoad) return false;
 
-        settings.edit().putInt("navigation", id).apply();
+        settings.edit().putString("navigation", id).apply();
 
-        switch(id) {
+        switch(getNavigationID(id)) {
             case R.id.nav_azf:   return load(new CatalogueFragment("azf"));
             case R.id.nav_bzf:   return load(new CatalogueFragment("bzf"));
+            case R.id.nav_sim:   return load(new SimulatorFragment());
             case R.id.nav_stats: return load(new StatisticsFragment());
             default: return false;
         }
@@ -85,10 +89,6 @@ public class TitleActivity extends AppCompatActivity {
         return true;
     }
 
-
-    public void onSimulatorClick(View v) {
-        startActivity(new Intent(this, SimulatorActivity.class));
-    }
     public void onSettingsClick(View v) {
         startActivity(new Intent(this, SettingsActivity.class));
     }

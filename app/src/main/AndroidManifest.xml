@@ -41,7 +41,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogueFragment" />
         </activity>
-        <activity android:name=".SimulatorActivity"
+        <activity android:name=".SimulatorFragment"
             android:label="@string/simulator"
             android:parentActivityName=".TitleActivity"
             android:screenOrientation="portrait">

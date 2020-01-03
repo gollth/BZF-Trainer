@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
         <item android:state_enabled="false"
-            android:drawable="@drawable/record_disabled" />
+              android:color="@color/grey"
+        />
         <item android:state_pressed="true"
-            android:drawable="@drawable/record_press" />
-        <item android:drawable="@drawable/record_normal" />
+              android:color="#880000"
+        />
+        <item android:color="#FF0000" />
 </selector>

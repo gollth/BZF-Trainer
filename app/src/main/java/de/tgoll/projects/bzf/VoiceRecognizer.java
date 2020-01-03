@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class VoiceRecognizer implements RecognitionListener {
 
-    private SimulatorActivity simulator;
+    private SimulatorFragment simulator;
 
-    VoiceRecognizer(SimulatorActivity simulator) {
+    VoiceRecognizer(SimulatorFragment simulator) {
         this.simulator = simulator;
     }
 
@@ -62,7 +62,7 @@ public class VoiceRecognizer implements RecognitionListener {
                 message = "Das habe ich leider nicht verstanden #&8230";
                 break;
         }
-        Snackbar.make(simulator.findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(simulator.getView().findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
