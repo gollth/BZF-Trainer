@@ -33,7 +33,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogueFragment" />
         </activity>
-        <activity android:name=".SettingsActivity"
+        <activity android:name=".SettingsFragment"
             android:label="@string/settings"
             android:screenOrientation="portrait"
             android:parentActivityName=".TitleActivity">

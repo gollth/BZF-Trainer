@@ -76,6 +76,7 @@ public class TitleActivity extends AppCompatActivity {
             case R.id.nav_bzf:   return load(new CatalogueFragment("bzf"));
             case R.id.nav_sim:   return load(new SimulatorFragment());
             case R.id.nav_stats: return load(new StatisticsFragment());
+            case R.id.nav_settings: return load(new SettingsFragment());
             default: return false;
         }
     }
@@ -87,16 +88,5 @@ public class TitleActivity extends AppCompatActivity {
                 .replace(R.id.fragment, fragment)
                 .commit();
         return true;
-    }
-
-    public void onSettingsClick(View v) {
-        startActivity(new Intent(this, SettingsActivity.class));
-    }
-    public void onFeedbackClick(View v) {
-        Intent feedback = new Intent(
-                Intent.ACTION_SENDTO,
-                Uri.fromParts("mailto", "thoregoll@googlemail.com", null)
-        ).putExtra(Intent.EXTRA_SUBJECT, "[BZF-Trainer] Feedback");
-        startActivity(Intent.createChooser(feedback, "Mail"));
     }
 }
