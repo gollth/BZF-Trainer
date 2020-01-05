@@ -1,6 +1,5 @@
 package de.tgoll.projects.bzf;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -30,6 +29,7 @@ import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
 import com.google.gson.Gson;
 
@@ -119,7 +119,7 @@ public class CatalogueFragment extends Fragment implements
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() != R.id.menu_restart) return false;
-        new AlertDialog.Builder(view.getContext())
+        new MaterialAlertDialogBuilder(view.getContext())
                 .setTitle(R.string.restart)
                 .setMessage(R.string.restart_alert)
                 .setNegativeButton(R.string.negative, null)
@@ -326,7 +326,7 @@ public class CatalogueFragment extends Fragment implements
             .apply();
         boolean success = trial.getSuccessRate() > 0.75;
 
-        new AlertDialog.Builder(view.getContext())
+        new MaterialAlertDialogBuilder(view.getContext())
                 .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
                 .setMessage(String.format(getString(R.string.msg_finish), Math.round(trial.getSuccessRate() * 100)))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
@@ -334,8 +334,7 @@ public class CatalogueFragment extends Fragment implements
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        activity.showFragment(getString(R.string.statistics));
-
+                        activity.showFragment(getString(R.string.statistics), true);
                     }
                 })
                 .setPositiveButton(R.string.restart, new DialogInterface.OnClickListener() {

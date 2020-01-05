@@ -1,8 +1,6 @@
 package de.tgoll.projects.bzf;
 
 import android.Manifest;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -52,6 +50,7 @@ import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 
@@ -237,7 +236,7 @@ public class SimulatorFragment extends Fragment
                 .putStringSet(key + "-history", history)
                 .apply();
 
-        return new AlertDialog.Builder(getContext())
+        return new MaterialAlertDialogBuilder(activity)
                 .setCancelable(false)
                 .setView(dialog)
                 .setNegativeButton(R.string.statistics, new DialogInterface.OnClickListener() {
@@ -266,7 +265,7 @@ public class SimulatorFragment extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         View view = inflater.inflate(R.layout.fragment_simulator, container, false);
 
@@ -315,8 +314,6 @@ public class SimulatorFragment extends Fragment
         cbx_arrival.setOnItemSelectedListener(this);
         cbx_departure.setOnItemSelectedListener(this);
 
-        final Activity activity = getActivity();
-
         try {
             int dep = english ? R.raw.sim_dep_en : R.raw.sim_dep_de;
             int arr = english ? R.raw.sim_arr_en : R.raw.sim_arr_de;
@@ -331,7 +328,7 @@ public class SimulatorFragment extends Fragment
                     "Upps, da ging leider etwas schief...",
                     Toast.LENGTH_LONG
             ).show();
-            if (activity != null) activity.finish();
+            activity.finish();
         }
 
         updateComboBoxes();
@@ -352,7 +349,7 @@ public class SimulatorFragment extends Fragment
         txt_you.setText(phrases.get(0).toString());
         highlightHelp(false, true);
 
-        if (activity != null && ContextCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
+        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     activity,
@@ -361,8 +358,7 @@ public class SimulatorFragment extends Fragment
             );
         }
 
-        final WifiManager wifi = activity == null ? null
-                : (WifiManager) activity
+        final WifiManager wifi = (WifiManager) activity
                     .getApplicationContext()
                     .getSystemService(Context.WIFI_SERVICE);
 
@@ -371,7 +367,7 @@ public class SimulatorFragment extends Fragment
         recorder.setRecognitionListener(new VoiceRecognizer(this, view));
         recordIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
                 .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH)
-                .putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, (activity == null) ? "" : activity.getPackageName())
+                .putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, activity.getPackageName())
                 .putExtra(RecognizerIntent.EXTRA_MAX_RESULTS,1)
                 .putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 10000)
                 .putExtra(RecognizerIntent.EXTRA_LANGUAGE, english ? "en-US" : "de-DE");
@@ -397,7 +393,6 @@ public class SimulatorFragment extends Fragment
                         }
 
                         private void enableButton() {
-                            if (activity == null) return;
                             activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -410,10 +405,18 @@ public class SimulatorFragment extends Fragment
 
                     if (wifi != null && wifi.isWifiEnabled()) return;
 
-                    AlertDialog dialog = new AlertDialog.Builder(getContext())
+                    new MaterialAlertDialogBuilder(activity)
                             .setMessage(getString(R.string.sim_init))
                             .setNegativeButton(getString(R.string.negative), null)
-                            .setNeutralButton(getString(R.string.btn_info), null)
+                            .setNeutralButton(getString(R.string.btn_info), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(final DialogInterface dialog, int which) {
+                                    new MaterialAlertDialogBuilder(activity)
+                                            .setMessage(getString(R.string.sim_info))
+                                            .setPositiveButton("Roger", null)
+                                            .show();
+                                }
+                            })
                             .setPositiveButton(getString(R.string.positive), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which){
@@ -421,15 +424,6 @@ public class SimulatorFragment extends Fragment
                                     dialog.dismiss();
                                 }
                             }).show();
-                    dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            new AlertDialog.Builder(getContext())
-                                    .setMessage(getString(R.string.sim_info))
-                                    .setPositiveButton("Roger", null)
-                                    .show();
-                        }
-                    });
                 }
             }
         });
@@ -600,7 +594,7 @@ public class SimulatorFragment extends Fragment
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() != R.id.menu_restart) return false;
-        new AlertDialog.Builder(activity)
+        new MaterialAlertDialogBuilder(activity)
                 .setTitle(R.string.restart)
                 .setMessage(R.string.restart_alert)
                 .setNegativeButton(R.string.negative, null)
