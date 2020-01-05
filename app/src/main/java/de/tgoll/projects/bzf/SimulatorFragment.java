@@ -334,8 +334,6 @@ public class SimulatorFragment extends Fragment
             if (activity != null) activity.finish();
         }
 
-        txt_you.setText(phrases.get(0).toString());
-        highlightHelp(false, true);
         updateComboBoxes();
 
         // Update the Callsign from preferences
@@ -348,6 +346,11 @@ public class SimulatorFragment extends Fragment
                 getString(R.string.settings_sim_aircraft),
                 getString(R.string.sim_default_aircraft)
         ));
+
+        // After all texts have been setup correctly, we parse the values to new phrase params
+        generateNewParameters();
+        txt_you.setText(phrases.get(0).toString());
+        highlightHelp(false, true);
 
         if (activity != null && ContextCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
