@@ -35,6 +35,7 @@ public class BZFTrainerApplication extends Application {
                             .remove("bzf-state")
                             .remove("azf-history")
                             .remove("bzf-history")
+                            .remove("sim-history")
                             .apply();
 
                     Looper.loop();

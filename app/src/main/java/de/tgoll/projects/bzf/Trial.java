@@ -2,6 +2,7 @@ package de.tgoll.projects.bzf;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
@@ -18,6 +19,10 @@ public class Trial implements Comparable<Trial> {
     final String key;
     private float success;
 
+    public Trial(String key, float success) {
+        this(key, null, new ArrayList<Integer>(), new ArrayList<Integer>());
+        this.success = success;
+    }
     public Trial(String key, Catalogue cat, List<Integer> playlist, List<Integer> choices) {
         this.key = key;
         this.timestamp = new Date();

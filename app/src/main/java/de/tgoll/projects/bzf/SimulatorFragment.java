@@ -13,12 +13,10 @@ import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.media.AudioManager;
-import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.speech.tts.TextToSpeech;
@@ -54,23 +52,29 @@ import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static de.tgoll.projects.bzf.CatalogueFragment.EMPTY_SET;
 
 public class SimulatorFragment extends Fragment
                                 implements View.OnTouchListener,
                                 AdapterView.OnItemSelectedListener {
 
     private static final int PERMISSION_RECORD_AUDIO = 19;
+    private static final String key = "sim";
 
     private static final int EASY = -1;
     private static final int MEDIOCRE = 0;
@@ -101,12 +105,16 @@ public class SimulatorFragment extends Fragment
     private int answeredFromYou = 0;
 
     // Misc
+    private Gson gson;
     private Activity activity;
     private LayoutInflater inflater;
     private Random rng = new Random();
     private SharedPreferences settings;
     private boolean loggedLevelStart = false;
 
+    public SimulatorFragment() {
+        gson = new Gson();
+    }
 
     private String getDifficultyName () {
         switch (getDifficulty()) {
@@ -219,6 +227,15 @@ public class SimulatorFragment extends Fragment
                 .putLevelName(getString(R.string.simulator))
                 .putScore(correct)
                 .putSuccess(correct > 50));
+
+        // Add the trial to the statistics
+        Trial trial = new Trial(key, correct * .01f);
+        Set<String> history = new HashSet<>(settings.getStringSet(key + "-history", EMPTY_SET));
+        history.add(gson.toJson(trial));
+        settings.edit()
+                .remove(key + "-history")
+                .putStringSet(key + "-history", history)
+                .apply();
 
         return new AlertDialog.Builder(getContext())
                 .setCancelable(false)

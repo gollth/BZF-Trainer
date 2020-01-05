@@ -56,7 +56,7 @@ public class StatisticsFragment extends Fragment {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
 
         Map<String, List<Trial>> trials = new HashMap<>();
-        for (String key : Arrays.asList("bzf", "azf")) {
+        for (String key : Arrays.asList("bzf", "azf", "sim")) {
             Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
             List<Trial> list = new ArrayList<>();
             for (String json : history) list.add(gson.fromJson(json, Trial.class));
@@ -91,8 +91,7 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setEnabled(true);
         history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
-        history.getAxisRight().setAxisMaximum(1.01f);
-        history.getAxisRight().setAxisMinimum(0);
+        history.getAxisRight().setGranularity(0.2f);
         history.getLegend().setOrientation(Legend.LegendOrientation.VERTICAL);
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
@@ -203,6 +202,10 @@ public class StatisticsFragment extends Fragment {
                 case "bzf":
                     line.setFillColor(getResources().getColor(R.color.colorStatBZF));
                     line.setColor(getResources().getColor(R.color.colorStatBZF));
+                    break;
+                case "sim":
+                    line.setFillColor(getResources().getColor(R.color.colorAccent));
+                    line.setColor(getResources().getColor(R.color.colorAccent));
                     break;
             }
             dataSets.add(line);
