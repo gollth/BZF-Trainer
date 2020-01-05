@@ -1,8 +1,6 @@
 package de.tgoll.projects.bzf;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,6 +19,7 @@ public class TitleActivity extends AppCompatActivity {
 
 
     SharedPreferences settings;
+    private BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +40,9 @@ public class TitleActivity extends AppCompatActivity {
         }
 
         // The initially shown fragment in the tab host
+        navigation = findViewById(R.id.navigation);
         String tab = settings.getString("navigation", getString(R.string.statistics));
         showFragment(tab, true);
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setSelectedItemId(getNavigationID(tab));
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -62,19 +59,21 @@ public class TitleActivity extends AppCompatActivity {
         if (id.equals(getString(R.string.statistics))) return R.id.nav_stats;
         throw new InvalidParameterException("Fragment ID " + id + " unknown");
     }
-    private boolean showFragment(String id) {
+    boolean showFragment(String id) {
         return showFragment(id, false);
     }
-    private boolean showFragment(String id, boolean forceLoad) {
+    boolean showFragment(String id, boolean forceLoad) {
         String current = settings.getString("navigation", getString(R.string.statistics));
         if (current.equals(id) && !forceLoad) return false;
 
         settings.edit().putString("navigation", id).apply();
 
-        switch(getNavigationID(id)) {
-            case R.id.nav_azf:   return load(new CatalogueFragment("azf"));
-            case R.id.nav_bzf:   return load(new CatalogueFragment("bzf"));
-            case R.id.nav_sim:   return load(new SimulatorFragment());
+        int tab = getNavigationID(id);
+        if (forceLoad) navigation.setSelectedItemId(tab);
+        switch(tab) {
+            case R.id.nav_azf:   return load(new CatalogueFragment(this, "azf"));
+            case R.id.nav_bzf:   return load(new CatalogueFragment(this, "bzf"));
+            case R.id.nav_sim:   return load(new SimulatorFragment(this));
             case R.id.nav_stats: return load(new StatisticsFragment());
             case R.id.nav_settings: return load(new SettingsFragment());
             default: return false;

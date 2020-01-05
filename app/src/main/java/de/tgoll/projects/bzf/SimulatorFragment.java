@@ -106,13 +106,14 @@ public class SimulatorFragment extends Fragment
 
     // Misc
     private Gson gson;
-    private Activity activity;
+    private final TitleActivity activity;
     private LayoutInflater inflater;
     private Random rng = new Random();
     private SharedPreferences settings;
     private boolean loggedLevelStart = false;
 
-    public SimulatorFragment() {
+    SimulatorFragment(@NonNull TitleActivity activity) {
+        this.activity = activity;
         gson = new Gson();
     }
 
@@ -201,11 +202,9 @@ public class SimulatorFragment extends Fragment
     }
     private Dialog createResultDialog() {
         Point size = new Point();
-        Activity activity = getActivity();
-        if (activity != null)  activity.getWindowManager().getDefaultDisplay().getSize(size);
+        activity.getWindowManager().getDefaultDisplay().getSize(size);
 
-        ViewGroup root = null;
-        if (activity != null) root = activity.findViewById(R.id.fragment);
+        ViewGroup root = activity.findViewById(R.id.fragment);
         View dialog = inflater.inflate(R.layout.dialog_sim_results, root, false);
         ScrollView scroller = dialog.findViewById(R.id.scroll_sim_diag);
         scroller.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (int) (size.y * 0.8f)));
@@ -244,11 +243,7 @@ public class SimulatorFragment extends Fragment
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        FragmentManager manager = getFragmentManager();
-                        if (manager == null) return;
-                        manager.beginTransaction()
-                            .replace(R.id.fragment, new StatisticsFragment())
-                            .commit();
+                        activity.showFragment(getString(R.string.statistics), true);
                     }
                 })
                 .setPositiveButton(getString(R.string.restart), new DialogInterface.OnClickListener() {
@@ -265,12 +260,6 @@ public class SimulatorFragment extends Fragment
                 })
                 .setTitle(getString(R.string.msg_finish_sim, correct))
                 .setIcon(correct >= 50 ? R.drawable.like : R.drawable.dislike).create();
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        this.activity = (Activity) context;
     }
 
     @Nullable

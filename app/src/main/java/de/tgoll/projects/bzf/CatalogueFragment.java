@@ -24,7 +24,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
@@ -61,13 +60,15 @@ public class CatalogueFragment extends Fragment implements
     private List<Integer> choices;
     private SparseArray<Integer[]> answers;
 
+    private final TitleActivity activity;
     private Vibrator vibrator;
     private SharedPreferences settings;
     private Gson gson;
     private String key;
     private Catalogue cat;
 
-    public CatalogueFragment(String key) {
+    public CatalogueFragment(@NonNull TitleActivity activity, String key) {
+        this.activity = activity;
         this.key = key;
         gson = new Gson();
         answers = new SparseArray<>();
@@ -309,11 +310,8 @@ public class CatalogueFragment extends Fragment implements
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        FragmentManager manager = getFragmentManager();
-                        if (manager == null) return;
-                        manager.beginTransaction()
-                                .replace(R.id.fragment, new StatisticsFragment())
-                                .commit();
+                        activity.showFragment(getString(R.string.statistics));
+
                     }
                 })
                 .setPositiveButton(R.string.restart, new DialogInterface.OnClickListener() {
