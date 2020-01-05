@@ -13,6 +13,7 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -74,6 +75,12 @@ public class CatalogueFragment extends Fragment implements
         answers = new SparseArray<>();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -107,6 +114,23 @@ public class CatalogueFragment extends Fragment implements
         enableInput();
 
         return view;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() != R.id.menu_restart) return false;
+        new AlertDialog.Builder(view.getContext())
+                .setTitle(R.string.restart)
+                .setMessage(R.string.restart_alert)
+                .setNegativeButton(R.string.negative, null)
+                .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        resetQuestions();
+                        dialog.dismiss();
+                    }
+                }).show();
+        return true;
     }
 
     private void setTextSizes(float sp) {
@@ -235,7 +259,7 @@ public class CatalogueFragment extends Fragment implements
         String format = key.equals("azf") ? "Question %d" : "Frage %d";
         txt_number.setText(String.format(Locale.getDefault(), format, number+1));
         txt_questions.setText(parts[1]);
-        int choice = choices.get(number);
+        int choice = choices.get(i);
         if (choice != -1) highlightCorrectAnswer();
         for (int n = 0; n < 4; n++) {
             buttons[n].setText(cat.getAnswer(number, n));

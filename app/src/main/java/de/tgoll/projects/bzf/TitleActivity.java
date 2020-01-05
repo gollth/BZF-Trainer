@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -51,6 +52,10 @@ public class TitleActivity extends AppCompatActivity {
         });
     }
 
+    int getActiveFragment() {
+        return navigation.getSelectedItemId();
+    }
+
     private int getNavigationID(String id) {
         if (id.equals(getString(R.string.azf))) return R.id.nav_azf;
         if (id.equals(getString(R.string.bzf)) ) return R.id.nav_bzf;
@@ -87,5 +92,26 @@ public class TitleActivity extends AppCompatActivity {
                 .replace(R.id.fragment, fragment)
                 .commit();
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        switch (getActiveFragment()) {
+            case R.id.nav_azf:
+            case R.id.nav_bzf:
+            case R.id.nav_sim:
+                getMenuInflater().inflate(R.menu.main, menu);
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        // let the fragment handle the reset case
+        if (item.getItemId() == R.id.menu_restart) return false;
+
+        return super.onOptionsItemSelected(item);
     }
 }

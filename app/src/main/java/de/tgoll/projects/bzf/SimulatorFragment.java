@@ -26,6 +26,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -250,16 +251,17 @@ public class SimulatorFragment extends Fragment
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        FragmentManager manager = getFragmentManager();
-                        if (manager == null) return;
-                        manager.beginTransaction()
-                            .detach(SimulatorFragment.this)
-                            .attach(SimulatorFragment.this)
-                            .commit();
+                        restart();
                     }
                 })
                 .setTitle(getString(R.string.msg_finish_sim, correct))
                 .setIcon(correct >= 50 ? R.drawable.like : R.drawable.dislike).create();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Nullable
@@ -267,6 +269,7 @@ public class SimulatorFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         View view = inflater.inflate(R.layout.fragment_simulator, container, false);
+
 
         settings = PreferenceManager.getDefaultSharedPreferences(activity);
         english = settings.getBoolean(getString(R.string.language), true);
@@ -431,6 +434,15 @@ public class SimulatorFragment extends Fragment
         return view;
     }
 
+    private void restart() {
+        FragmentManager manager = getFragmentManager();
+        if (manager == null) return;
+        manager.beginTransaction()
+                .detach(SimulatorFragment.this)
+                .attach(SimulatorFragment.this)
+                .commit();
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -581,4 +593,22 @@ public class SimulatorFragment extends Fragment
         params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "Simulator");
         atc.speak(phrase.makePronounceable(), TextToSpeech.QUEUE_ADD, params);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() != R.id.menu_restart) return false;
+        new AlertDialog.Builder(activity)
+                .setTitle(R.string.restart)
+                .setMessage(R.string.restart_alert)
+                .setNegativeButton(R.string.negative, null)
+                .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        restart();
+                        dialog.dismiss();
+                    }
+                }).show();
+        return true;
+    }
+
 }

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/menu_restart"
-          android:title="@string/restart"/>
+    <item
+        android:id="@+id/menu_restart"
+        android:icon="@drawable/replay"
+        android:title="@string/restart"
+        app:showAsAction="always" />
 
-    <item android:id="@+id/menu_statistics"
-          android:title="@string/statistics" />
-
-    <item android:id="@+id/menu_settings"
-          android:title="@string/settings"/>
 </menu>
