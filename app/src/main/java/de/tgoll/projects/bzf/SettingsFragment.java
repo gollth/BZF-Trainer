@@ -5,15 +5,23 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.snackbar.Snackbar;
+
 public class SettingsFragment extends PreferenceFragmentCompat {
 
     private SharedPreferences settings;
+    private final View container;
+
+    SettingsFragment(View container) {
+        this.container = container;
+    }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -35,7 +43,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         .remove("azf-state")
                         .remove("bzf-state")
                         .apply();
-                Toast.makeText(context.getApplicationContext(), getString(R.string.settings_reset_toast), Toast.LENGTH_SHORT).show();
+
+                Snackbar.make(container, getString(R.string.settings_reset_toast), Snackbar.LENGTH_SHORT).show();
                 return false;
             }
         });

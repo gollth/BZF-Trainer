@@ -5,15 +5,18 @@ import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
 import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class VoiceRecognizer implements RecognitionListener {
 
-    private SimulatorFragment simulator;
+    private final SimulatorFragment simulator;
+    private final View container;
 
-    VoiceRecognizer(SimulatorFragment simulator) {
+    VoiceRecognizer(SimulatorFragment simulator, View container) {
         this.simulator = simulator;
+        this.container = container;
     }
 
 
@@ -62,7 +65,7 @@ public class VoiceRecognizer implements RecognitionListener {
                 message = "Das habe ich leider nicht verstanden #&8230";
                 break;
         }
-        Snackbar.make(simulator.getView().findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(container.findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

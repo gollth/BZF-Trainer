@@ -365,7 +365,7 @@ public class SimulatorFragment extends Fragment
 
         recorder = SpeechRecognizer.createSpeechRecognizer(getContext());
         recorder.destroy(); // old one
-        recorder.setRecognitionListener(new VoiceRecognizer(this));
+        recorder.setRecognitionListener(new VoiceRecognizer(this, view));
         recordIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
                 .putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH)
                 .putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, (activity == null) ? "" : activity.getPackageName())
