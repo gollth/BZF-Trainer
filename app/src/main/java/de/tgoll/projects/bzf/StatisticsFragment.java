@@ -1,5 +1,6 @@
 package de.tgoll.projects.bzf;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -45,7 +46,11 @@ import java.util.Set;
 
 public class StatisticsFragment extends Fragment {
 
-    public StatisticsFragment() {}
+    private final Activity activity;
+
+    public StatisticsFragment(@NonNull Activity activity) {
+        this.activity = activity;
+    }
 
     @Nullable
     @Override
@@ -69,8 +74,8 @@ public class StatisticsFragment extends Fragment {
 
         HorizontalBarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
         HorizontalBarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
-        setupBarChart(barazf, XAxis.XAxisPosition.TOP);
-        setupBarChart(barbzf, XAxis.XAxisPosition.BOTTOM);
+        setupBarChart(barazf, "azf", XAxis.XAxisPosition.TOP);
+        setupBarChart(barbzf, "bzf", XAxis.XAxisPosition.BOTTOM);
 
         fillBarChart(barazf, trials.get("azf"), R.color.colorStatAZF);
         fillBarChart(barbzf, trials.get("bzf"), R.color.colorStatBZF);
@@ -96,7 +101,7 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
     }
-    private void setupBarChart(HorizontalBarChart barchart, XAxis.XAxisPosition position) {
+    private void setupBarChart(HorizontalBarChart barchart, String key, XAxis.XAxisPosition position) {
         barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
         barchart.setDrawGridBackground(false);
@@ -108,6 +113,10 @@ public class StatisticsFragment extends Fragment {
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);
+        barchart.setHighlightFullBarEnabled(true);
+        barchart.setOnChartValueSelectedListener(
+                new QuestionTooltipOnChartValueSelectedListener(activity, barchart, activity, key)
+        );
     }
 
     private void fillBarChart(BarChart chart, List<Trial> trials, int color) {
