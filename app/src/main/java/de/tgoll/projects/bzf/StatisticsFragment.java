@@ -199,7 +199,6 @@ public class StatisticsFragment extends Fragment {
             LineDataSet line = new LineDataSet(entry.getValue(), entry.getKey().toUpperCase());
             line.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             line.setDrawFilled(true);
-            line.setFillAlpha(170);
             line.setCircleRadius(3);
             line.setCircleColor(getResources().getColor(R.color.black));
             line.setValueFormatter(new NoneValueFormatter());
@@ -207,14 +206,17 @@ public class StatisticsFragment extends Fragment {
                 case "azf":
                     line.setFillColor(getResources().getColor(R.color.colorStatAZF));
                     line.setColor(getResources().getColor(R.color.colorStatAZF));
+                    line.setFillAlpha(100);
                     break;
                 case "bzf":
                     line.setFillColor(getResources().getColor(R.color.colorStatBZF));
                     line.setColor(getResources().getColor(R.color.colorStatBZF));
+                    line.setFillAlpha(100);
                     break;
                 case "sim":
                     line.setFillColor(getResources().getColor(R.color.colorAccent));
                     line.setColor(getResources().getColor(R.color.colorAccent));
+                    line.setFillAlpha(100);
                     break;
             }
             dataSets.add(line);

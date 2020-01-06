@@ -55,6 +55,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@id/lyt_info"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lyt_info"
         app:layout_constraintTop_toTopOf="@id/lyt_info">
         <!-- Departure -->
         <ImageView
@@ -124,7 +125,7 @@
             <TextView
                 android:id="@+id/sim_txt_atc"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_column="1"
                 android:gravity="center_vertical|start"
                 android:visibility="visible" />
@@ -181,8 +182,8 @@
         android:id="@+id/btn_record"
         android:layout_width="100sp"
         android:layout_height="100sp"
-        android:layout_marginStart="30sp"
-        android:layout_marginBottom="30sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/record"
         android:backgroundTint="@color/record_button"
         android:clickable="true"
