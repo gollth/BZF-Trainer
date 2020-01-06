@@ -69,6 +69,7 @@ public class CatalogueFragment extends Fragment implements
     private Gson gson;
     private String key;
     private Catalogue cat;
+    private int sliderLastQuestion;
 
     public CatalogueFragment(@NonNull TitleActivity activity, String key) {
         this.activity = activity;
@@ -228,8 +229,18 @@ public class CatalogueFragment extends Fragment implements
 
     @Override
     public void onValueChange(Slider slider, float value) {
-        loadQuestion(getProgress());
+        // Check if the value changed, if not, slider probably at a bound
+        if ((int)value - 1 == sliderLastQuestion) return;
+
+        int question = getProgress();
+        if (hasAnsweredOutlierEdgeBetween(sliderLastQuestion, question)) {
+            vibrateTick();
+            Log.i("BZF", "Question " + question + " is Edge (checked between " +sliderLastQuestion+ " .. " +question+ "!!!");
+        }
+        sliderLastQuestion = question;
+        loadQuestion(question);
     }
+
     private void vibrateTick() {
         if (Build.VERSION.SDK_INT < 29) vibrator.vibrate(50);
         else vibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK));
@@ -331,6 +342,23 @@ public class CatalogueFragment extends Fragment implements
     private boolean allQuestionsAnswered() {
         for (Integer choice : choices) if (choice == -1) return false;
         return true;
+    }
+
+    private boolean hasAnsweredOutlierEdgeBetween(int a, int b) {
+        for (int i = Math.min(a,b); i < Math.max(a,b); i++) {
+            try {
+                boolean answered = choices.get(i) >= 0;
+                boolean previousAnswered = choices.get(i - 1) >= 0;
+                if (previousAnswered ^ answered) return true;
+
+            } catch (IndexOutOfBoundsException ignore) {
+                // This only happens, when the `lower` limit zero
+                // that usually happens on the first time the slider is touched
+                // because sliderLastQuestion is not setup properly yet.
+                // In this rare case, we just skip this loop iteration and check the next one
+            }
+        }
+        return false;
     }
 
     private void showResultDialog() {
