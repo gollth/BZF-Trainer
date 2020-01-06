@@ -1,5 +1,8 @@
 package de.tgoll.projects.bzf;
 
+import androidx.annotation.NonNull;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TreeMap;
@@ -11,30 +14,40 @@ public class Trial implements Comparable<Trial> {
     }
 
     private final Date timestamp;
-        private Integer[] choices;
+    private Integer[] choices;
+    private Boolean[] corrects;
+    final String key;
+    private float success;
 
-    public Trial(List<Integer> playlist, List<Integer> choices) {
+    public Trial(String key, float success) {
+        this(key, null, new ArrayList<Integer>(), new ArrayList<Integer>());
+        this.success = success;
+    }
+    public Trial(String key, Catalogue cat, List<Integer> playlist, List<Integer> choices) {
+        this.key = key;
         this.timestamp = new Date();
         this.choices = new Integer[playlist.size()];
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for(int i = 0; i < playlist.size(); i++) map.put(playlist.get(i), choices.get(i));
         map.values().toArray(this.choices);
+        corrects = new Boolean[this.choices.length];
+        success = 0;
+        for(int i = 0; i < choices.size(); i++) {
+            boolean correct = cat.isCorrect(i, getChoice(i));
+            corrects[i] = correct;
+            if (correct) success += 1;
+        }
+        success /= choices.size();
     }
-    int getChoice(int i) { return this.choices[i];}
-
-    boolean wasQuestionCorrect (int i) {
-        return Catalogue.isCorrect(i,choices[i]);
-    }
+    int size() { return this.choices.length; }
+    int getChoice(int i) { return this.choices[i]; }
+    boolean isCorrect(int i) { return this.corrects[i]; }
 
     double getSuccessRate() {
-        double rate = 0;
-        for(int i = 0; i < choices.length; i++)
-            if (wasQuestionCorrect(i))
-                rate += 1;
-        rate /= choices.length;
-        return rate;
+        return success;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Trial-" + timestamp.toString();

@@ -1,10 +1,5 @@
 package de.tgoll.projects.bzf;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,7 +11,12 @@ import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.webkit.WebView;
 
-public class ChangeLog {
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+class ChangeLog {
 
     private final Context context;
     private String lastVersion, thisVersion;
@@ -58,21 +58,20 @@ public class ChangeLog {
      * @return an AlertDialog with a full change log displayed
      */
     AlertDialog getFullLogDialog() {
-        return this.getDialog(true);
+        return this.getDialog();
     }
 
-    private AlertDialog getDialog(boolean full) {
+    private AlertDialog getDialog() {
         WebView wv = new WebView(this.context);
 
         wv.setBackgroundColor(Color.parseColor(context.getResources().getString(
                 R.string.background_color)));
-        wv.loadDataWithBaseURL(null, this.getLog(full), "text/html", "UTF-8", null);
+        wv.loadDataWithBaseURL(null, this.getLog(), "text/html", "UTF-8", null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this.context,
                 android.R.style.Theme_Dialog));
         builder.setTitle(
-                context.getResources().getString(
-                        full ? R.string.changelog_full_title : R.string.changelog_title))
+                context.getResources().getString(R.string.changelog_full_title))
                 .setView(wv)
                 .setCancelable(false)
                 // OK button
@@ -82,17 +81,6 @@ public class ChangeLog {
                                 updateVersionInPreferences();
                             }
                         });
-
-        if (!full) {
-            // "more ..." button
-            builder.setNegativeButton(R.string.changelog_show_full,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            getFullLogDialog().show();
-                        }
-                    });
-        }
-
         return builder.create();
     }
 
@@ -117,9 +105,8 @@ public class ChangeLog {
 
     private Listmode listMode = Listmode.NONE;
     private StringBuffer sb = null;
-    private static final String EOCL = "END_OF_CHANGE_LOG";
 
-    private String getLog(boolean full) {
+    private String getLog() {
         // read changelog.txt file
         sb = new StringBuffer();
         try {
@@ -136,14 +123,6 @@ public class ChangeLog {
                     // begin of a version section
                     this.closeList();
                     String version = line.substring(1).trim();
-                    // stop output?
-                    if (!full) {
-                        if (this.lastVersion.equals(version)) {
-                            advanceToEOVS = true;
-                        } else if (version.equals(EOCL)) {
-                            advanceToEOVS = false;
-                        }
-                    }
                 } else if (!advanceToEOVS) {
                     switch (marker) {
                     case '%':

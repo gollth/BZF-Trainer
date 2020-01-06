@@ -3,17 +3,20 @@ package de.tgoll.projects.bzf;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
 import android.speech.SpeechRecognizer;
-import android.support.design.widget.Snackbar;
+import com.google.android.material.snackbar.Snackbar;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class VoiceRecognizer implements RecognitionListener {
 
-    private SimulatorActivity simulator;
+    private final SimulatorFragment simulator;
+    private final View container;
 
-    VoiceRecognizer(SimulatorActivity simulator) {
+    VoiceRecognizer(SimulatorFragment simulator, View container) {
         this.simulator = simulator;
+        this.container = container;
     }
 
 
@@ -62,7 +65,7 @@ public class VoiceRecognizer implements RecognitionListener {
                 message = "Das habe ich leider nicht verstanden #&8230";
                 break;
         }
-        Snackbar.make(simulator.findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(container.findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

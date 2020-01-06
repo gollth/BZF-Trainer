@@ -21,6 +21,8 @@
 # removes such information by default, so configure it to keep all of it.
 -keepattributes Signature
 
+-dontobfuscate
+
 # For using GSON @Expose annotation
 -keepattributes *Annotation*
 

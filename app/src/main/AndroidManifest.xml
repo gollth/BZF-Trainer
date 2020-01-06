@@ -10,43 +10,38 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:name=".BZFTrainerApplication"
+        android:allowBackup="true"
         android:description="@string/app_description"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@drawable/bzf"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:process=":bzf"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TitleActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CatalogueActivity"
+        <activity android:name=".StatisticsFragment"
             android:parentActivityName=".TitleActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="de.tgoll.projects.bzf.TitleActivity" />
+                android:value=".CatalogueFragment" />
         </activity>
-        <activity android:name=".StatisticsActivity"
-            android:parentActivityName=".CatalogueActivity"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CatalogueActivity" />
-        </activity>
-        <activity android:name=".SettingsActivity"
+        <activity android:name=".SettingsFragment"
             android:label="@string/settings"
             android:screenOrientation="portrait"
-            android:parentActivityName=".CatalogueActivity">
+            android:parentActivityName=".TitleActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".CatalogueActivity" />
+                android:value=".CatalogueFragment" />
         </activity>
-        <activity android:name=".SimulatorActivity"
+        <activity android:name=".SimulatorFragment"
             android:label="@string/simulator"
             android:parentActivityName=".TitleActivity"
             android:screenOrientation="portrait">

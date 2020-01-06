@@ -6,6 +6,8 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +37,7 @@ public class Phrase {
 
 
     // Static methods
-    public static void initialize(Context context, boolean english) {
+    static void initialize(Context context, boolean english) {
         dict = new HashMap<>(26);
         dict.put('A', "ALPHA");
         dict.put('B', "BRAVO");
@@ -81,7 +83,6 @@ public class Phrase {
 
 
     // private class members
-    private final String original;
     private final String[] numbers;
     private final String phrase;
     private final String sender;
@@ -94,8 +95,7 @@ public class Phrase {
 
     // Construction
     Phrase(String i, boolean english) {
-        original = i;
-        String[] ps = original.split(": ");
+        String[] ps = i.split(": ");
         sender = ps[0];
         phrase = ps[1];
         groups = phrase.split(", ");
@@ -123,7 +123,8 @@ public class Phrase {
         StringBuilder answer = new StringBuilder();
         for(int i = 0; i < abc.length(); i++) {
             if (i > 0) answer.append(" ");
-            answer.append(dict.get(abc.toUpperCase().charAt(i)).toLowerCase());
+            String s = dict.get(abc.toUpperCase().charAt(i));
+            if (s != null) answer.append(s.toLowerCase());
         }
         return answer.toString();
     }
@@ -151,11 +152,12 @@ public class Phrase {
         else return airport_names[i];
     }
 
-    // Publics
+    @NonNull
     @Override
     public String toString() {
         return resolveParams(phrase).replaceAll("\\(","").replaceAll("\\)","");
     }
+
     float getSuccessRate() { return (float)corrects / groups.length;}
     String getSender() {
         switch (sender) {

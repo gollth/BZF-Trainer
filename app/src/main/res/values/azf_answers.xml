@@ -1,1165 +1,1159 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string-array formatted="false" name="azf_answers">
-
-        <item>A) The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to navigation aids, from which it is intended, that an instrument approach will be commenced;
-B) In any case that time at which the aircraft will arrive over the aerodrome;
-C) The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to visual aids, from which it is intended, that an approach will be commenced;
-D) The time at which the aircraft will actually arrive over that designated point defined by reference to navigation aids, from which it is intended, that a visual approach will be commenced</item>
-        <item>A) A station in the aeronautical telecommunication service located on land or on board of an aircraft to exchange radiotelephony communications;
-B) A land station in the aeronautical mobile service. In certain instances, an aeronautical station may be located, for example, on board ship or on a platform at sea;
-C) Any station established to exchange radiotelephony communications;
-D) A station forming part of the aeronautical telecommunication network</item>
-        <item>A) A transmission where no reply is required from the receiving station;
-B) A transmission of messages relating to enroute weather information which may affect the safety of aircraft operations that is not addressed to a specific station or stations;
-C) A transmission of information relating to air navigation that is not addressed to a specific station or stations;
-D) A transmission of a message to a receiving station in cases where two-way radio communication cannot be established but on the assumption that the called station is able to receive the message</item>
-        <item>A) A transmission containing meteorological and operational information to aircraft engaged in flights over remote and oceanic areas out of range of VHF ground stations;
-B) A transmission where no reply is required from the receiving station;
-C) A transmission of aeronautical information which is not intended for one or more specific stations;
-D) A radiotelephony communication from a ground station to aircraft in flight</item>
-        <item>A) One-way communication from aircraft to stations or locations on the surface of the earth;
-B) Two-way communication between aircraft and stations or locations on the surface of the earth;
-C) Any communication from aircraft to ground stations requiring handling by the Aeronautical Fixed Telecommunication Network (AFTN);
-D) One-way communication from stations or locations on the surface of the earth</item>
-        <item>A) The time at which an arriving aircraft expects to arrive over the appropriate designated navigation aid serving the destination aerodrome;
-B) The holding time over the radio facility from which the instrument approach procedure for a landing will be initiated;
-C) The time at which ATC expects that an arriving aircraft, following a delay, will leave the holding point to complete its approach for a landing;
-D) The time at which an arriving aircraft, upon reaching the radio aid serving the destination aerodrome, will commence the instrument approach procedure for a landing</item>
-        <item>A) An approach executed by a VFR flight unable to maintain VMC;
-B) A visual manoeuvre executed by an IFR flight when the weather conditions at the aerodrome of destination are equal to or better than required VMC minima;
-C) An approach by an IFR flight when either part or all of an instrument approach procedure is not completed and the approach is executed in visual reference to terrain;
-D) An extension of an instrument approach procedure to bring an aircraft into position for landing on a runway which is not suitable located for straight-in approach</item>
-        <item>A) The point to which an aircraft is granted by an air traffic control clearance;
-B) The time after which an air traffic control clearance will be automatically cancelled if the flight has not been commenced;
-C) The time of expiry of an air traffic control clearance;
-D) The time at which an aircraft is given an air traffic control clearance</item>
-        <item>A) A service established to provide information concerning enroute weather phenomena which may effect the safety of aircraft operation;
-B) A service which provides aircraft with weather reports relating to a specific number of aerodromes located within a flight information region (FIR);
-C) The provision of current, routine information to arriving and departing aircraft throughout 24 hours or a specified portion thereof;
-D) A service by which aircraft operating within a flight information region (FIR) are provided with current meteorological and operational information essential for the safety of air navigation</item>
-        <item>A) A specified geographical position used to define an area navigation route or the flight path of an aircraft employing area navigation;
-B) A general term meaning the taxiway- and the runway-system of an international airport;
-C) A signal indicating the direction of the runway-in-use;
-D) A defined position on an aerodrome used for the calibration of the inertial navigation system</item>
-        <item>A) Inertial navigation system;
-B) International NOTAM service;
-C) International navigation service;
-D) Instrument navigation system</item>
-        <item>A) Terminal Control and Advisory System;
-B) Tower Cabin Alarm Stop;
-C) Traffic Alert and Collision Avoidance System;
-D) Track Confirmation by Automatic Sources</item>
-        <item>A) A system which permits the selective calling of individual aircraft over radiotelephony channels linking a ground station with the aircraft;
-B) A system in which radiotelephony communication can be established between aircraft only;
-C) A system in which radiotelephony communication between two stations can take place in both directions simultaneously;
-D) A system provided for direct exchange of information between air traffic services (ATS) units</item>
-        <item>A) Secondary Surveillance Radar;
-B) Standard Snow Report;
-C) Search and Surveillance Radar;
-D) Surface Strength of Runway</item>
-        <item>A) Radio navigation;
-B) Route navigation;
-C) Area navigation;
-D) Radar aided navigation</item>
-        <item>A) Recleared Via Route  …;
-B) Radar Vectors Requested;
-C) Runway Visual Range;
-D) Runway Visibility Report</item>
-        <item>A) Continuous day and night service;
-B) Sunset to sunrise;
-C) No specific working hours;
-D) Sunrise to sunset</item>
-        <item>A) The atmospheric pressure at aerodrome elevation (or at runway threshold);
-B) The altimeter sub-scale setting to obtain elevation when on the ground;
-C) The atmospheric pressure referred to the highest fixed obstacle located on the surface of an aerodrome;
-D) The atmospheric pressure referred to a point on the surface of the Earth</item>
-        <item>A) The atmospheric pressure at aerodrome elevation (or at runway threshold);
-B) The altimeter sub-scale setting to obtain aerodrome elevation when on the ground;
-C) The atmospheric pressure referred to the highest obstacle located on the surface of an aerodrome;
-D) The atmospheric pressure measured at the aerodrome reference point (ARP)</item>
-        <item>A) QBI;
-B) QDM;
-C) QNH;
-D) QFE</item>
-        <item>A) QFE;
-B) QNJ;
-C) QFF;
-D) QNH</item>
-        <item>A) True heading to the station (zero wind);
-B) Magnetic bearing from the station;
-C) True bearing from the station;
-D) Magnetic heading to the station</item>
-        <item>A) QDM;
-B) QTE;
-C) QNE;
-D) QDR</item>
-        <item>A) Magnetic heading to the station;
-B) True bearing from the station;
-C) True heading to the station (no wind);
-D) Magnetic bearing from the station</item>
-        <item>A) QFE;
-B) QDM;
-C) QTE;
-D) QDR</item>
-        <item>A) Magnetic bearing from the station;
-B) True heading to the station;
-C) Magnetic heading to the station (zero wind);
-D) True bearing from the station</item>
-        <item>A) QTE;
-B) QDR;
-C) QFE;
-D) QDM</item>
-        <item>A) an Unauthorized Message in the aeronautical mobile service;
-B) a Flight Safety Message;
-C) a Flight Regularity Message;
-D) an Urgency Message</item>
-        <item>A) Urgency Messages;
-B) Flight Safety Messages;
-C) Unauthorized Messages in the aeronautical mobile service;
-D) Flight Regularity Messages</item>
-        <item>A) a Flight Regularity Messages;
-B) a Flight Safety Message;
-C) a Flight Security Message;
-D) an Urgency Message</item>
-        <item>A) messages concerning non-routine landings;
-B) messages relating to direction finding;
-C) messages concerning the safety of an aircraft, a vessel, any other vehicle or a person;
-D) air traffic control messages</item>
-        <item>A) Class B Message;
-B) Urgency Message;
-C) Distress Message;
-D) Flight Safety Message</item>
-        <item>A) Messages of Airline Operators;
-B) Messages Relating to Direction Finding;
-C) Aeronautical Administrative Messages;
-D) Aeronautical Security Messages</item>
-        <item>A) Flight Safety Messages;
-B) Meteorological Messages;
-C) Radio Teletype Messages;
-D) Urgency Messages</item>
-        <item>A) lower than \"CLEARED TO LAND\";
-B) higher than \"TRANSMIT FOR QDM\";
-C) higher than \"CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G\";
-D) same as \"LINE UP RUNWAY 07 AND WAIT\"</item>
-        <item>A) an Urgency Message;
-B) a Meteorological Message;
-C) a Message Relating to Direction Finding;
-D) a Flight Safety Message</item>
-        <item>A) Class B Messages;
-B) Service Message;
-C) Flight Regularity Message;
-D) Flight Safety Messages</item>
-        <item>A) an Unauthorized Message in the aeronautical mobile service;
-B) Flight Regularity Messages;
-C) a Flight Safety Message;
-D) an Urgency Message</item>
-        <item>A) Distress message, Flight Safety Message, Urgency Message;
-B) Message Relating to Direction Finding, Distress Message, Urgency Message;
-C) Distress Message, Urgency Message, Message Relating to Direction Finding;
-D) Meteorological message, Message Relating to Direction Finding, Flight Regularity Message</item>
-        <item>A) Flight Safety Message, Meteorological Message, Flight Regularity Message;
-B) Meteorological Message, Message Relating to Direction Finding, Flight Safety Message;
-C) Flight Regularity Message, Distress Message, Meteorological Message;
-D) Flight Safety Message, Message Relating to Direction Finding, Urgency Message</item>
-        <item>A) same as \"LATEST QNH 1018\";
-B) higher than \"REQUEST CLIMB FLIGHT LEVEL …\";
-C) lower than \"DECEND FLIGHT LEVEL …\";
-D) higher than \"TURN LEFT HEADING …\"</item>
-        <item>A) Hotel Bravo Juliett Yankee Charlie;
-B) Hotel Bravo India Yankee Charlie;
-C) Hotel Bravo India Victor Charlie;
-D) Hotel Bravo Juliett India Kilo</item>
-        <item>A) Fox Romeo Yankee - VOR;
-B) Foxtrot Romeo India - VOR;
-C) Fox Romeo India - VOR;
-D) Foxtrot Romeo Juliett - VOR</item>
-        <item>A) Three thousand five hundred;
-B) Three five zero zero;
-C) Three five double \"O\";
-D) Three five hundred</item>
-        <item>A) QNH one double zero one;
-B) QNH one double \"O\" one;
-C) QNH one zero zero one;
-D) QNH one thousand and one</item>
-        <item>A) One one eight decimal zero one zero;
-B) One one eight point zero one zero;
-C) One eighteen decimal zero one;
-D) One one eight decimal zero one</item>
-        <item>A) One three thousand five hundred;
-B) One three five zero zero;
-C) One three five hundred;
-D) Thirteen thousand five hundred</item>
-        <item>A) Local time (LT) a.m. and p.m.;
-B) No specific system, as only the minutes are normally required;
-C) Coordinated Universal Time (UTC);
-D) Local time (LT) 24-hour clock</item>
-        <item>A) One six one five;
-B) Four fifteen in the afternoon;
-C) Four fifteen p.m.;
-D) Sixteen fifteen</item>
-        <item>A) Twenty;
-B) Two zero this hour;
-C) Two zero;
-D) Nine twenty a.m.</item>
-        <item>A) CONTROL;
-B) APPROACH;
-C) DEPARTURE;
-D) DELIVERY</item>
-        <item>A) CONTROL;
-B) MONITOR;
-C) DELIVERY;
-D) RADAR</item>
-        <item>A) APRON;
-B) CONTROL;
-C) TOWER;
-D) AERODROME</item>
-        <item>A) INFO;
-B) FLIGHT INFORMATION CENTRE;
-C) INFORMATION;
-D) FLIGHT CENTRE</item>
-        <item>A) APPROACH;
-B) GROUND;
-C) CONTROL;
-D) TOWER</item>
-        <item>A) ARRIVAL;
-B) CONTROL;
-C) RADAR;
-D) APPROACH</item>
-        <item>A) APPROACH;
-B) CENTRE;
-C) RADAR;
-D) CONTROL</item>
-        <item>A) APPROACH;
-B) RADAR;
-C) DEPARTURE;
-D) CONTROL</item>
-        <item>A) RADAR;
-B) ARRIVAL;
-C) DIRECTOR;
-D) APPROACH</item>
-        <item>A) XBC or XABC;
-B) XYBC;
-C) BC;
-D) ABC</item>
-        <item>A) Cherokee XABC;
-B) Cherokee BC or Cherokee ABC;
-C) Cherokee XBC;
-D) Cherokee XYBC</item>
-        <item>A) In dense traffic;
-B) Only after satisfactory communication has been established;
-C) Provided no confusion is likely to result;
-D) If it has already been used by the aeronautical station</item>
-        <item>A) Fastair 345 heavy;
-B) Fastair 345;
-C) Fastair 345 widebody;
-D) Heavy Fastair 345</item>
-        <item>A) In all calls to the aerodrome control tower and the approach control unit;
-B) Never;
-C) In the initial call to the aerodrome control tower and the approach control unit;
-D) When establishing radio contact with ATC and after every frequency change</item>
-        <item>A) When changing the destination airport during flight by the aircraft operator;
-B) To facilitate subsequent radiotelephony communications by an aeronautical station;
-C) In case of diversion to the alternate aerodrome by the pilot-in-command;
-D) On the instruction of an ATC unit in the interests of safety</item>
-        <item>A) Never;
-B) Only after the aeronautical station has used the abbreviated call sign;
-C) In dense traffic during the rush hours;
-D) After the establishment of radio communication if confusion is excluded</item>
-        <item>A) A new flight plan has to be filed;
-B) Expect a new clearance shortly;
-C) Consider that transmission as not sent;
-D) Cancel the previously transmitted clearance</item>
-        <item>A) My transmission is ended and I expect a response from you;
-B) Repeat all or the following part of your last transmission;
-C) Let me know that you have received and understood this message;
-D) I have received all of your last transmission</item>
-        <item>A) A direct answer in the affirmative;
-B) I have received all of your last transmission;
-C) A direct answer in the negative;
-D) Cleared for take-off or cleared to land</item>
-        <item>A) Continue on present heading and listen out;
-B) Select STANDBY on the SSR transponder;
-C) Permission granted for action proposed;
-D) Wait and I will call you</item>
-        <item>A) Repeat all, or the specified part, of this message back to me exactly as received;
-B) Did you correctly receive this message?;
-C) Let me know that you have received and understood this message;
-D) Check and confirm with originator</item>
-        <item>A) Consider that transmission as not sent;
-B) Examine a system or procedure;
-C) Repeat your last transmission;
-D) Did you correctly receive this message?</item>
-        <item>A) REQUEST;
-B) REPORT;
-C) CONFIRM;
-D) ACKNOWLEDGE</item>
-        <item>A) REPORT;
-B) REQUEST;
-C) SAY AGAIN;
-D) CHECK</item>
-        <item>A) AFFIRM;
-B) THAT IS RIGHT;
-C) THAT IS AFFIRMATIVE;
-D) CORRECT</item>
-        <item>A) QNH 1017, NEGATIVE I SAY AGAIN 1016;
-B) QNH 1017, CORRECTION QNH 1016;
-C) QNH 1017, NEGATIVE QNH 1016;
-D) QNH 1017, NEGATIVE 1016</item>
-        <item>A) REPEAT YOUR MESSAGE;
-B) WHAT WAS YOUR MESSAGE;
-C) SAY AGAIN;
-D) REPEAT YOUR LAST TRANSMISSION</item>
-        <item>A) FORGET IT;
-B) DISREGARD;
-C) CANCEL MY LAST MESSAGE;
-D) MY LAST TRANSMISSION IS CANCELLED</item>
-        <item>A) WILL COMPLY WITH YOUR INSTRUCTION;
-B) ROGER;
-C) WILCO;
-D) OK, WILL DO IT</item>
-        <item>A) AFFIRM;
-B) ROGER;
-C) YES;
-D) AFFIRMATIVE</item>
-        <item>A) Listen out on (frequency/channel);
-B) Establish radio contact with …;
-C) Examine a system or procedure;
-D) Wait and I will call you</item>
-        <item>A) Fastair 345 may be requested on frequency 118.900 on which aerodrome data are being broadcast;
-B) Fastair 345 shall standby on the current frequency;
-C) Fastair 345 shall contact TOWER on 118.900;
-D) Fastair 345 may be requested on frequency 118.900 when its intended that the Tower unit will initiate communications soon</item>
-        <item>A) Changing over Fastair 345;
-B) Stephenville ARRIVAL Fastair 345;
-C) Fastair 345 contact 118.0;
-D) Changing to ARRIVAL Fastair 345</item>
-        <item>A) DISREGARD;
-B) UNABLE (reason);
-C) NEGATIVE INSTRUCTION;
-D) IMPOSSIBLE TO MAKE IT</item>
-        <item>A) MISSED APPROACH;
-B) PULLING UP;
-C) OVERSHOOTING;
-D) GOING AROUND</item>
-        <item>A) MAINTAIN FL 80;
-B) LEVEL OFF AT FL 80;
-C) STOP CLIMB AT FL 80;
-D) CLEARED FL 80</item>
-        <item>A) SQUAWK ALPHA AND CHARLIE ON 0410;
-B) SQUAWK MODE ALPHA CODE 0410 AND MODE CHARLIE;
-C) SQUAWK 0410;
-D) SQUAWK ALPHA 0410 AND CHARLIE</item>
-        <item>A) The pilot continues VFR and closes his flight plan;
-B) The pilot indicates that his landing is assured and he will not submit the landing time;
-C) The pilot closes his flight plan;
-D) The pilot changes from IFR to VFR</item>
-        <item>A) CANCEL POSITION REPORT OVER  … (fix);
-B) NO POSITION REPORT OVER  … (fix);
-C) DO NOT REPORT OVER  … (fix);
-D) OMIT POSITION REPORT OVER  … (fix)</item>
-        <item>A) RUNWAY … TAXI VIA  …;
-B) CLEARED TO RUNWAY  … VIA  …;
-C) TAXI TO HOLDING POINT RUNWAY … VIA  …;
-D) TAXI VIA … TO RUNWAY  …</item>
-        <item>A) WHEN READY CLIMB/DESCEND FL  …;
-B) CLIMB/DESCEND FL … AT ANY TIME;
-C) CLIMB/DESCEND FL … AT YOUR CONVENIENCE;
-D) CLIMB/DESCEND FL  …</item>
-        <item>A) CLEARED FL …;
-B) LEAVE FL … FOR FL  …;
-C) MAINTAIN FL …;
-D) DESCEND FL  …</item>
-        <item>A) TAXI TO TAKE-OFF POSITION;
-B) LINE UP RUNWAY  …;
-C) CONTINUE TO TAKE-OFF POSITION AND HOLD;
-D) CLEARED INTO POSITION AND HOLD</item>
-        <item>A) RUNWAY VACATED;
-B) I HAVE LEFT THE RUNWAY;
-C) I AM CLEAR OF RUNWAY;
-D) I AM BEYOND THE RUNWAY</item>
-        <item>A) SQUAWK IDENT;
-B) TRANSMIT FOR DF;
-C) TRANSMIT FOR BEARING;
-D) REPORT BEARING</item>
-        <item>A) SQUAWK AGAIN ALPHA 6620;
-B) SWITCH ON ALPHA 6620;
-C) RESET SQUAWK 6620;
-D) CONFIRM SQUAWKING ALPHA 6620</item>
-        <item>A) REQUEST TAXI;
-B) REQUEST TAXI CLEARANCE;
-C) REQUEST PERMISSION TO TAXI;
-D) WHAT IS MY TAXI CLEARENCE</item>
-        <item>A) CLEARED FL  …;
-B) LEAVE FL  … FOR FL  …;
-C) CLIMB FL  …;
-D) MAINTAIN FL  …</item>
-        <item>A) REQUEST TO CANCEL IFR;
-B) WILL CONTINTUE VFR;
-C) WILL CONTINUE VMC;
-D) REQUEST TO CLOSE MY FLIGHT PLAN</item>
-        <item>A) SQUAWK PRESSURE ALTITUDE;
-B) TRANSMIT ON MODE CHARLIE;
-C) SQUAWK CHARLIE;
-D) SQUAWK ALTIMETER</item>
-        <item>A) three miles ahead;
-B) on the right side;
-C) separated by three miles;
-D) on the left side</item>
-        <item>A) Contact ATC and request to close the flight plan;
-B) Contact ATC and request clearance to proceed in accordance with the visual flight rules;
-C) Contact ATC and cancel IFR;
-D) A change from IFR to VFR is not possible</item>
-        <item>A) The pilot shall start engines not later than 1025;
-B) The clearance is void if the aircraft is not airborne until or at 1025;
-C) The pilot shall stand by and ask for clearance again at 1025;
-D) The clearance is void if the aircraft departs before 1025</item>
-        <item>A) Never, it is used only by the control tower;
-B) To inform TOWER when ready for departure;
-C) To acknowledge take-off clearance;
-D) Only when the aircraft has already moved onto the active runway</item>
-        <item>A) READY FOR TAKE-OFF;
-B) READY TO GO;
-C) READY FOR DEPARTURE or READY;
-D) READY TO LINE-UP</item>
-        <item>A) ABANDONING TAKE-OFF;
-B) ABORTING TAKE-OFF;
-C) CANCELLING TAKE-OFF;
-D) STOPPING</item>
-        <item>A) WILL MAKE ANOTHER APPROACH;
-B) GOING AROUND;
-C) PULLING UP;
-D) OVERSHOOTING</item>
-        <item>A) Make a 360Â° turn;
-B) Overtake the aircraft ahead;
-C) Proceed with your message;
-D) Carry out a missed approach</item>
-        <item>A) Make 360Â° turns to the right;
-B) Leave the runway to the right;
-C) Right-hand circuits are in use;
-D) Turn right to avoid other traffic</item>
-        <item>A) Hold position on the left side of the runway;
-B) Clear the runway immediately;
-C) Give way to aircraft from the left;
-D) Turn left to leave the runway</item>
-        <item>A) WE HAVE THE ATIS GOLF;
-B) WE HAVE THE INFORMATION;
-C) INFORMATION GOLF;
-D) WEATHER GOLF RECEIVED</item>
-        <item>A) One two zero decimal three seven five;
-B) One two zero three seven;
-C) One twenty decimal three seven;
-D) One two zero decimal three seven</item>
-        <item>A) Clearances, wind direction/speed, heading instructions, QNH, frequency in the case of frequency changes;
-B) Instructions concerning heading, flight level, speed, altimeter setting, flight visibility, wind direction, take-off clearance and frequency in the case of frequency changes;
-C) Clearances, taxi instructions, runway-in-use, QNH, SSR codes, level instructions, heading and speed instructions, frequency in the case of frequency change;
-D) Runway in use, ground visibility, dew point, take-off clearance, frequency in the case of frequency changes</item>
-        <item>A) No, if the communication channel is overloaded;
-B) No, if the ATC route clearance is transmitted in a published form (e.g. Standard Instrument Departure Route/SID);
-C) No, if the content of the ATC clearance is clear and no confusion is likely to arise;
-D) Yes, unless authorized otherwise by the ATS authority concerned</item>
-        <item>A) ROGER;
-B) HOLDING SHORT;
-C) WILL STOP BEFORE;
-D) WILCO</item>
-        <item>A) STRAIGHT AHEAD 2500 FEET RIGHT TURN, WIND WEST 6 KNOTS, CLEARED FOR TAKE-OFF, XBC;
-B) XBC CLIMB STRAIGHT AHEAD ALTITUDE 2500 FEET, THEN TURN RIGHT, RUNWAY 22, CLEARED FOR TAKE-OFF;
-C) WILCO, CLEARED FOR TAKE-OFF, XBC;
-D) RIGHT TURN AFTER 2500, ROGER, XBC</item>
-        <item>A) Make a test transmission on 123.4 MHz;
-B) Give a short count for DF (direction finder);
-C) Standby on frequency 123.4 MHz;
-D) Switch transponder to Mode/Code 1234</item>
-        <item>A) XBC should perform an identification turn;
-B) Radar identification has been achieved;
-C) XBC should operate the IDENT-button;
-D) XBC is not visible on the radar screen</item>
-        <item>A) X-BC shall reselect his assigned mode and code;
-B) Radar identification has been achieved by correlating an observed radar blip with aircraft XY-ABC;
-C) XBC shall operate the IDENT-button (operation of the SPI feature);
-D) X-BC should perform an identification turn of at least 20 degrees</item>
-        <item>A) XBC is requested to standby on the frequency;
-B) XBC is requested to standby for radar vectors;
-C) XBC is requested to select the standby feature on the transponder;
-D) XBC is requested to standby as the radar controller is busy</item>
-        <item>A) XBC has been identified by SSR code 1015;
-B) XBC has been identified at 10:15 (UTC);
-C) XBC is requested to set new code 1015;
-D) XBC is requested to reselect SSR code 1015</item>
-        <item>A) Call sign and estimated time over the next compulsory reporting point;
-B) Call sign and present level;
-C) Call sign, present and cleared level;
-D) Call sign only</item>
-        <item>A) MÃœNCHEN GROUND DIBEL GO AHEAD;
-B) MÃœNCHEN GROUND DIBEL;
-C) DIBEL, MÃœNCHEN GROUND OVER;
-D) MÃœNCHEN GROUND THIS IS DIBEL</item>
-        <item>A) URGENCY CALL;
-B) GENERAL CALL;
-C) MULTIPLE CALL;
-D) SIMULTANEOUS CALL</item>
-        <item>A) the type of instrument approach;
-B) passing the transition level;
-C) the designation of the runway being approached;
-D) cleared altitude/flight level</item>
-        <item>A) Aircraft call sign and present position;
-B) Aircraft call sign and flight level or altitude;
-C) Radio call sign of the aircraft only;
-D) Aircraft call sign and cleared altitude/flight level</item>
-        <item>A) Stephenville TOWER XBC;
-B) Stephenville TOWER XYABC;
-C) TOWER XYABC;
-D) Stephenville XYABC</item>
-        <item>A) WILL CHANGE TO TOWER XBC;
-B) XBC 118.7;
-C) Stephenville TOWER XBC;
-D) XBC CHANGING OVER</item>
-        <item>A) WILL CONTACT 123.250 XBC;
-B) XBC CHECKING 123.250;
-C) CHANGING TO 123.250 XBC;
-D) XBC MONITORING 123.250</item>
-        <item>A) Stephenville TOWER XYABC PRE-FLIGHT CHECK;
-B) Stephenville TOWER XYABC FREQUENCY CHECK;
-C) Stephenville TOWER XYABC SIGNAL CHECK;
-D) Stephenville TOWER XYABC HOW DO READ</item>
-        <item>A) Readable but with difficulty;
-B) Unreadable;
-C) No problem to understand;
-D) Loud and clear</item>
-        <item>A) Unreadable;
-B) Perfectly readable;
-C) Readable but with difficulty;
-D) Problem to understand</item>
-        <item>A) in IMC only;
-B) on request of ATC;
-C) in any case;
-D) in VMC only</item>
-        <item>A) in IMC;
-B) in any case;
-C) on request of ATC;
-D) in VMC</item>
-        <item>A) Radio call sign, position, time over, level;
-B) Radio call sign, position, level;
-C) Radio call sign, position, next position;
-D) Radio call sign, position, time over</item>
-        <item>A) Climbing two eight zero;
-B) Climbing to two eighty;
-C) Climbing flight level two eight zero;
-D) Climbing to flight level two eight zero</item>
-        <item>A) Up two thousand five hundred;
-B) Climbing altitude two thousand five hundred feet;
-C) Climbing to two point five;
-D) Climbing to altitude two thousand five hundred feet</item>
-        <item>A) Fastair 345 leaving 100 to 80;
-B) Descending to 80, Fastair 345;
-C) Down to flight level 80, Fastair 345;
-D) Fastair 345 leaving flight level 100 descending flight level 80</item>
-        <item>A) less than 1000 m;
-B) less than 1500 m;
-C) 1500 ft or less;
-D) 1000 ft or less</item>
-        <item>A) upon initial contact;
-B) if deemed necessary;
-C) if the control zone is IMC;
-D) on request only</item>
-        <item>A) 8 oktas;
-B) 5 to 7 oktas;
-C) NO SIGNIFICANT CLOUDS;
-D) 3 to 4 oktas</item>
-        <item>A) NO SIGNIFICANT CLOUDS;
-B) 8 oktas;
-C) 1 to 4 oktas;
-D) 5 to 7 oktas</item>
-        <item>A) 5 to 7 oktas;
-B) 1 to 2 oktas;
-C) 8 oktas;
-D) 3 to 4 oktas</item>
-        <item>A) Visibility 10 km or more, no cloud below 1500 ft AGL;
-B) Visibility 10 km or more, no cloud below 5000 ft AGL;
-C) Visibility more than 5000 m, no cloud below 1500 m AGL;
-D) Visibility more than 8 km, no cloud below 3000 ft AGL</item>
-        <item>A) Up to 1500 m in metres, above in kilometres;
-B) In nautical miles only;
-C) In feet and nautical miles;
-D) Up to 5000 m in metres, above in kilometres</item>
-        <item>A) Visibility 1200 metres;
-B) Visibility 1.2 kilometres;
-C) Visibility 1200 feet;
-D) Visibility 1.2 nautical miles</item>
-        <item>A) THE VALUES OF THE TRANSMISSION ARE:  … METRES AND … METRES;
-B) RVR AT THE BEGINNING OF RUNWAY 16 IS … METRES;
-C) RVR RUNWAY 16, TOUCHDOWN ZONE, METRES, MID POINT, METRES, STOP END, METRES;
-D) RVR RUNWAY 16, METRES DIAGONAL, METRES DIAGONAL METRES</item>
-        <item>A) Braking action medium;
-B) Braking action poor;
-C) Braking action good;
-D) Braking action not measurable</item>
-        <item>A) Braking action good;
-B) Braking action unreliable;
-C) Braking action poor;
-D) Braking action medium</item>
-        <item>A) Runway conditions normal;
-B) Runway covered with dry snow;
-C) Runway covered with wet snow and slush;
-D) Runway covered with ice</item>
-        <item>A) Indicate weather conditions as wind, visibility, temperature;
-B) Indicate whether you are flying in IMC or in VMC;
-C) Indicate whether you are flying IFR or VFR;
-D) Indicate if visibility is sufficient for landing</item>
-        <item>A) is a broadcasting service for the transmission of aerodrome meteorological reports for airports;
-B) executes air traffic control service to enroute aircraft;
-C) is an aeronautical station operated by an airport company;
-D) can be called by an aircraft in flight to obtain flight information service</item>
-        <item>A) no cloud below 5000 ft AGL;
-B) thunderstorm;
-C) less than 5/8 clouds below 5000 ft;
-D) light precipitation</item>
-        <item>A) NDB frequencies;
-B) VHF frequencies;
-C) DME voice channel;
-D) Voice channel of an ILS</item>
-        <item>A) ATIS;
-B) AFIS;
-C) VOLMET;
-D) SIGMET</item>
-        <item>A) SPECI and TAF;
-B) Routine aerodrome meteorological reports (METAR) for airports;
-C) Runway reports;
-D) SIGMET</item>
-        <item>A) a condition concerning the attitude of an aircraft when intercepting the localizer during an ILS-approach;
-B) a condition concerning the safety of an aircraft or of a person on board, but which does not require immediate assistance;
-C) a condition of being threatened by grave and imminent danger and of requiring immediate assistance;
-D) a condition concerning the safety of a person on board or within sight and requiring immediate assistance</item>
-        <item>A) The aircraft has a message to transmit concerning adverse weather conditions along its route of flight;
-B) The aircraft has a very urgent message to transmit concerning the safety of a ship, aircraft or vehicle;
-C) The aircraft is forced to perform a fuel dumping procedure;
-D) Imminent danger threatens the aircraft and immediate assistance is required</item>
-        <item>A) PAN PAN, emitted three times;
-B) DETRESFA, emitted three times;
-C) MAYDAY, emitted preferably three times;
-D) URGENCY, emitted three times</item>
-        <item>A) the regional guard frequency;
-B) the emergency frequency in any case;
-C) the FIS frequency designated for the airspace concerned;
-D) the frequency used or on the emergency frequency</item>
-        <item>A) the frequency currently in use or on the emergency frequency;
-B) any frequency at pilotâ€˜s discretion;
-C) the distress frequency 121.500 MHz;
-D) any other international emergency frequency</item>
-        <item>A) Aircraft call sign, nature of distress, intentions of the pilot, kind of assistance required, data concerning position, course and level;
-B) Aircraft call sign, route of flight, destination airport;
-C) Aircraft call sign, present position, assistance required;
-D) Aircraft call sign, aerodrome of departure, position and level</item>
-        <item>A) 6500 KHz;
-B) 121.050 MHz;
-C) 122.500 MHz;
-D) 121.500 MHz</item>
-        <item>A) a regional guard frequency;
-B) a frequency for air-to-air communication;
-C) an international emergency frequency;
-D) a regional VHF emergency frequency</item>
-        <item>A) A 7500;
-B) A 6700;
-C) A 7700;
-D) A 7600</item>
-        <item>A) the aircraft is in distress;
-B) the aircraftâ€˜s transceiver is unserviceable;
-C) the aircraft is being hijacked;
-D) there is a very sick passenger on board</item>
-        <item>A) When following a SID;
-B) When flying within controlled airspace;
-C) In distress;
-D) When passing the transition level</item>
-        <item>A) he has a sick person on board;
-B) his aircraft is in distress;
-C) his aircraft is in an emergency situation;
-D) he has radio communication failure</item>
-        <item>A) a condition concerning the attitude of an aircraft when intercepting the localizer during an ILS-approach;
-B) a condition concerning the safety of a person on board or within sight and requiring immediate assistance;
-C) a condition of being threatened by serious and/or imminent danger and of requiring immediate assistance;
-D) a condition concerning the safety of an aircraft or of a person on board, but which does not require immediate assistance</item>
-        <item>A) The aircraft is diverting from the route cleared because of a thunderstorm and asks for immediate reclearance;
-B) Imminent danger threatens the aircraft and immediate assistance is required;
-C) An aircraft on final approach is starting the missed approach procedure;
-D) The aircraft has a very urgent message to transmit concerning the safety of a ship, aircraft or other vehicle</item>
-        <item>A) ALERFA, emitted three times;
-B) PAN PAN, preferable emitted three times;
-C) MAYDAY, emitted three times;
-D) URGENCY, emitted three times</item>
-        <item>A) Any frequency at pilotâ€˜s discretion;
-B) The regional guard frequency;
-C) On the frequency in use;
-D) The international emergency frequency</item>
-        <item>A) acknowledge the message immediately;
-B) change the frequency, because radio silence will be imposed on the frequency in use;
-C) monitor the frequency to ensure assistance if required;
-D) impose radio silence on the frequency in use</item>
-        <item>A) 7600;
-B) 7700;
-C) 7500;
-D) 6700</item>
-        <item>A) lt is about to make a forced landing;
-B) lt is unable to establish communication due to radio equipment failure;
-C) lt is requesting immediate level change;
-D) It is diverting to the alternate aerodrome</item>
-        <item>A) Land at the nearest airport without an ATC unit;
-B) Try to establish radio contact on another frequency of the aeronautical station;
-C) Return to the airport of departure;
-D) Continue the flight to the destination airport without any communication</item>
-        <item>A) Land at the nearest aerodrome appropriate to the route of flight;
-B) Divert to the alternate airport;
-C) Try to establish radio contact with other aircraft or aeronautical stations;
-D) Squawk mode A code 7500</item>
-        <item>A) on the frequency presently in use;
-B) on the international emergency frequency;
-C) on the regional guard frequency;
-D) to all available aeronautical stations</item>
-        <item>A) \"READ YOU ONE, READ YOU ONE\";
-B) \"TRANSMITTING BLIND\";
-C) \"PAN PAN, PAN PAN, PAN PAN\";
-D) \"HOW DO YOU READ?\"</item>
-        <item>A) only once on the designated frequency;
-B) during VFR flights only;
-C) on the emergency frequency only;
-D) twice on the designated frequency</item>
-        <item>A) return to the airport of departure;
-B) enter immediately base leg when approaching the airfield for landing;
-C) land at the nearest airfield/airport;
-D) advise the time of its next intended transmission</item>
-        <item>A) In case of radio communication failure;
-B) When flying over desert areas;
-C) When approaching a prohibited area;
-D) When entering bad weather areas</item>
-        <item>A) Aircraft forming part of the aerodrome traffic at a controlled aerodrome;
-B) IFR flights when entering a CTR;
-C) VFR flights above clouds;
-D) Aircraft entering the traffic pattern of an uncontrolled airport</item>
-        <item>A) leave controlled airspace and continue the flight within uncontrolled airspace;
-B) set the transponder to code 7600 and maintain the last assigned speed and level for a period of 7 minutes;
-C) squawk IDENT and proceed to the alternate aerodrome;
-D) continue the flight to destination aerodrome</item>
-        <item>A) At the beginning of radio communication failure;
-B) At the time the last assigned level or minimum IFR cruising level is reached or at the time the transponder is set to code 7600, whichever is later;
-C) At the last contact with ATC;
-D) After noticing radio communication failure</item>
-        <item>A) Proceed to an area from where the flight can be continued according to the visual flight rules;
-B) Execute a VMC approach at the nearest suitable aerodrome;
-C) Adjust level and speed in accordance with the filed flight plan;
-D) Divert to the most suitable aerodrome according to the route of flight</item>
-        <item>A) Continue immediately in accordance with the filed flight plan;
-B) Hold over present position for 7 minutes than continue in accordance with the filed flight plan;
-C) In any case maintain last assigned flight level;
-D) The pilot shall climb to the minimum IFR cruising level</item>
-        <item>A) After holding for 5 minutes in the holding pattern;
-B) Without any delay;
-C) Commence descend over the IAF at or as close as possible to the estimated time of arrival according to the current flight plan;
-D) After 3 minutes, if an expected approach time is not acknowledged</item>
-        <item>A) 30 minutes after noticing the radio failure;
-B) 15 minutes after vacating the transition layer;
-C) 30 minutes after the estimated time of arrival or the last confirmed approach time, whichever is later;
-D) 20 minutes after leaving the last assigned and acknowledged level</item>
-        <item>A) climb or descend to the cruising level indicated in the flight plan;
-B) land at the nearest suitable aerodrome;
-C) conduct his flight in accordance with the rules for encountering radio communication failure in IMC;
-D) maintain the altitude last assigned by ATC for a period of 7 minutes, before proceeding to the nearest suitable aerodrome for landing</item>
-        <item>A) squawk 7600 and maintain present heading for the next 7 minutes and then return to the flight path in accordance with the current flight plan;
-B) squawk 7600, maintain present heading for 1 minute and thereafter return to the route indicated in the current flight plan on the shortest way;
-C) squawk 7600 and proceed in the most direct manner possible to rejoin the current flight plan route not later than the next significant point, taking into consideration the applicable minimum flight altitude;
-D) squawk 7600 and maintain the heading last assigned by ATC for a period of 3 minutes and then return to the flight path in accordance with the current flight plan</item>
-        <item>A) land at the nearest suitable aerodrome for repair;
-B) squawk 7600;
-C) inform the competent ATC unit immediately;
-D) continue the flight in VMC</item>
-        <item>A) insert under item 18 of the flight plan \"TRANSPONDER UNSERVICEABLE\";
-B) inform FIS for relay to AlS;
-C) inform ATC after departure;
-D) obtain prior permission by ATC to conduct the flight</item>
-        <item>A) Enter the holding pattern and request further clearance;
-B) Proceed to the initial approach fix according to his current flight plan;
-C) Continue VFR to destination or alternate aerodrome;
-D) Proceed to the initial approach fix on the shortest way</item>
-        <item>A) 15 minutes;
-B) 30 minutes;
-C) 10 minutes;
-D) 20 minutes</item>
-        <item>A) Expected approach time;
-B) Estimated time of arrival;
-C) Estimated overhead time;
-D) Holding time</item>
-        <item>A) estimated time of arrival;
-B) expected approach time, if the expected delay is more than 20 minutes;
-C) exact arrival time;
-D) estimated elapsed time</item>
-        <item>A) 11650 -13200 kHz;
-B) 108.000 - 117.975 MHz;
-C) 1810 - 2850 kHz;
-D) 117.975 - 137.000 MHz</item>
-        <item>A) Very low frequency;
-B) Very high frequency;
-C) Low frequency;
-D) Medium frequency</item>
-        <item>A) 100 kHz;
-B) 100 kHz + 8.33 kHz;
-C) 50 MHz;
-D) 25 kHz + 8.33 kHz</item>
-        <item>A) Practically straight-line similar to light waves;
-B) The waves travel along the surface of the earth and penetrate into valleys in a way that topographical obstacles have not influence;
-C) Similar to short waves with practically no atmospheric disturbance;
-D) The waves are reflected at the ionosphere at the height of about 100 km and reach the earth surface in the form of sky-waves</item>
-        <item>A) Atmospherics occurring particularly during thunderstorms;
-B) onosphere;
-C) Level of aircraft and topographical features;
-D) Day-night effect</item>
-        <item>A) Aircraft at low level, in the vicinity of the ground station, in the radio shadow zone;
-B) Aircraft at low level, far away from the ground station, in the radio shadow zone of a hill;
-C) Aircraft at high level in the vicinity of the ground station;
-D) Aircraft at low level but far away from the ground station</item>
-        <item>A) 121.500 MHz only;
-B) 119.200 MHz;
-C) 121.500, 243.000 or 406.000 MHz;
-D) 243.000 MHz only</item>
-        <item>A) Approx.300 NM;
-B) Approx.30 NM;
-C) Approx.12 NM;
-D) Approx.120 NM</item>
-        <item>A) air traffic communication service;
-B) aeronautical telecommunication service;
-C) air traffic information service;
-D) air traffic control service</item>
-        <item>A) all VFR flights above 5000 ft MSL;
-B) IFR flights and aerodrome traffic at controlled aerodromes;
-C) VFR flights at night within airspace G;
-D) VFR flights in the identification zone</item>
-        <item>A) TWR, FIC, APP;
-B) TWR, APP, ACC;
-C) AlS, FIC, TWR;
-D) APP, ACC, SAR</item>
-        <item>A) NfL I;
-B) NOTAM;
-C) AIP supplement;
-D) AIC</item>
-        <item>A) radio;
-B) a teletype message;
-C) an official gazette;
-D) no means, since it is of no interest to pilots</item>
-        <item>A) NfL;
-B) Flight plan;
-C) Pre-flight Information Bulletin;
-D) Circular Information</item>
-        <item>A) active NOTAMs;
-B) international regulations;
-C) military activities within the next 24 hours;
-D) national regulations</item>
-        <item>A) AIC;
-B) NfL II;
-C) AIP Supplements or AIP Amendments;
-D) alerting messages (ALR)</item>
-        <item>A) all flights;
-B) flights for which a flight plan has to be filed;
-C) IFR flights only;
-D) all flights operating during night</item>
-        <item>A) Degrees magnetic and miles;
-B) Degrees true and kilometres;
-C) Degrees magnetic and kilometres;
-D) Degrees true and knots</item>
-        <item>A) Degrees magnetic and knots;
-B) Degrees true and kilometres;
-C) Degrees magnetic and miles;
-D) Degrees true and knots</item>
-        <item>A) ATS route A65;
-B) Danger area number six five;
-C) Altitude 6500 ft;
-D) Low Flying area six five</item>
-        <item>A) 15% or more;
-B) 10% or more;
-C) 20% or more;
-D) 5% or more</item>
-        <item>A) two functioning transceivers with 8.33 kHz channel spacing;
-B) one transceiver with 720 channels;
-C) one transceiver with 25 KHz and one with at least 50 KHz channel spacing;
-D) one transceiver with 25 KHz channel spacing</item>
-        <item>A) below FL 100, but not to or from international airports;
-B) to and from international airports with RADAR control;
-C) only with a special permission;
-D) if the aircraft is equipped with VOR and ADF</item>
-        <item>A) during ILS approach;
-B) during SRE approach;
-C) during NDB/DME approach;
-D) in any case</item>
-        <item>A) 3 hours;
-B) 1 hour;
-C) 2 hours;
-D) 0.5 hour</item>
-        <item>A) G1 ABC VFR;
-B) VFR ABC G1;
-C) N0120 VFR ABC G1;
-D) G1 N0120/ABC VFR</item>
-        <item>A) VFR XYZ IFR;
-B) 0120/XYZFO8O IFR;
-C) XYZ/N0120F080 IFR;
-D) F080 XYZ IFR</item>
-        <item>A) . … A101 N0250/F150 LEG G98 …;
-B)  … A101 LEG/N0250F150 G98 …;
-C)  … A101 LEG/F150 G98 …;
-D)  … A101 F150/N0250 LEG G98 …</item>
-        <item>A) Z;
-B) V;
-C) I;
-D) Y</item>
-        <item>A) 30 minutes;
-B) 120 minutes;
-C) 90 minutes;
-D) 60 minutes</item>
-        <item>A) IX;
-B) VG;
-C) VN;
-D) IN</item>
-        <item>A) A level in the atmosphere for vertical separation which is determined by setting the altimeter to local QNH;
-B) A pressure level based on regional QNH;
-C) A level in the atmosphere for vertical separation which is determined by setting the altimeter to 1013.2 hPa;
-D) A level in the atmosphere for vertical separation which is determined by setting the altimeter to local QFE</item>
-        <item>A) 1000 ft above the highest obstacle located within 8 km of the aircraftâ€™s position;
-B) 1500 ft above the highest obstacle located within 8 km of the aircraftâ€˜s position;
-C) 1000 ft above the highest obstacle located within 5 km of the aircraftâ€˜s position;
-D) 500 ft above the highest obstacle located within 8 km of the aircraftâ€˜s position</item>
-        <item>A) Altitude and/or flight level;
-B) Height;
-C) Elevation;
-D) Flight level only</item>
-        <item>A) 30 NM;
-B) 15 NM;
-C) 20 NM;
-D) 25 NM</item>
-        <item>A) minimum safe height for IFR flights;
-B) minimum IFR cruising altitude;
-C) minimum reception altitude for radio navigational aids;
-D) lower limit of the controlled airspace</item>
-        <item>A) 500 ft;
-B) 1000 ft up to FL 410 thereafter 2000 ft;
-C) 2000 m;
-D) 1000 ft</item>
-        <item>A) 1000 ft;
-B) 2000 ft;
-C) 1000 m;
-D) 500 ft</item>
-        <item>A) To the minimum safe height for IFR flights;
-B) The initial altitude is on pilotâ€˜s discretion;
-C) Climb so, as to leave airspace E as soon as possible;
-D) To the initial altitude stated in the SID</item>
-        <item>A) transition height and QFE;
-B) transition altitude and QFE;
-C) transition altitude and QNH;
-D) transition height and QNH</item>
-        <item>A) 1000 ft;
-B) 1500 ft;
-C) 500 ft;
-D) 2000 ft</item>
-        <item>A) FL 60;
-B) FL 50;
-C) FL 70;
-D) FL 80</item>
-        <item>A) FL 70;
-B) FL 60;
-C) FL 80;
-D) FL 50</item>
-        <item>A) FL 60;
-B) FL 50;
-C) FL 70;
-D) FL 80</item>
-        <item>A) leaving FL 100;
-B) passing FL 50;
-C) passing FL 70;
-D) passing FL 60</item>
-        <item>A) when passing the transition altitude;
-B) after having passed the transition layer;
-C) when passing the transition level;
-D) when commencing descent</item>
-        <item>A) passing transition;
-B) leaving the transition layer;
-C) passing transition altitude;
-D) reaching transition level</item>
-        <item>A) No speed limitation;
-B) 250 kt lAS below FL 100;
-C) Maximum 250 kt TAS;
-D) Maximum 250 kt IAS</item>
-        <item>A) FL 245 - unlimited;
-B) GND - FL 245;
-C) FL 245 â€“ FL 460;
-D) GND - unlimited</item>
-        <item>A) VFR from IFR;
-B) IFR from VFR;
-C) IFR from IFR;
-D) All aircraft</item>
-        <item>A) IFR outside of RMZ;
-B) Glider flights;
-C) Military exercise flights;
-D) VFR</item>
-        <item>A) 300 kt;
-B) 200 kt;
-C) 150 kt;
-D) 250 kt except aircraft, which have to be operated at a higher airspeed because of their specific performance characteristics</item>
-        <item>A) Flight visibility at least 8 km, horizontal distance from clouds 1500 m;
-B) Flight visibility at least 3 km, distance from cloud 1000 ft vertically, 1500 m horizontally;
-C) Flight visibility at least 5 km, distance from cloud 1000 ft vertically, 1500 m horizontally;
-D) Flight visibility at least 8 km, clear of cloud</item>
-        <item>A) 1.5 km flight visibility, distance from cloud 1500 m horizontally, 1000 ft vertically;
-B) 3 km flight visibility, distance from cloud 1500 m horizontally, 1000 ft vertically;
-C) 1.5 km flight visibility, clear of cloud;
-D) 5 km flight visibility, distance from cloud 1500 m horizontally, 1000 ft vertically</item>
-        <item>A) 5 km;
-B) 8 km;
-C) 1.5 km;
-D) 3 km</item>
-        <item>A) in airspace E the pilot has a flight visibility of at least 8 km and the aircraft maintains a horizontal distance from clouds of at least 1500 m and a vertical distance of at least 1000 ft;
-B) in airspace E the pilot, has a flight visibility of at least 5 km and the aircraft maintains a horizontal distance from clouds of at least 1500 m and a vertical distance of at least 1000 ft;
-C) in airspace E the pilot has a flight visibility of at least 8 km and the aircraft remains clear of cloud;
-D) in airspace E the pilot has a flight visibility of at least 5 km, the aircraft remains clear of cloud and visual contact to the ground is granted</item>
-        <item>A) within 5 minutes;
-B) within 20 minutes;
-C) within 10 minutes;
-D) immediately</item>
-        <item>A) for the safety of traffic on the runways;
-B) to ensure a fluent traffic on the apron;
-C) for the safety of taxiing aircraft;
-D) for the safety of traffic on taxiways and on runways</item>
-        <item>A) is permitted only, when no aircraft is in sight;
-B) is not permitted;
-C) is permitted as soon as a taxi instruction is received from the aircraftâ€˜s owner;
-D) is permitted only for IFR departures</item>
-        <item>A) inform the TWR that the light signals are not switched off and hold position until the stop bar is switched off;
-B) be very careful during line-up and take-off, however follow the TWR instruction without delay;
-C) follow the TWR instruction without arguing, because instructions via radiotelephony overrule light signals;
-D) disregard the TWR instruction, hold position and wait for weather improvement, because neither take-off nor landing is permitted, as long as the stop bar is switched on</item>
-        <item>A) switching the transponder to STBY;
-B) pressing the IDENT button;
-C) heading changes;
-D) transmitting for DF</item>
-        <item>A) squawking mode A/B;
-B) squawking LOW-HIGH-LOW;
-C) transmitting for DF;
-D) squawking mode A/C or S</item>
-        <item>A) the transponder is immediately available, if required;
-B) the sensibility of the receiver is reduced;
-C) the transponder is switched off completely;
-D) the selected code is transmitting altitude information only</item>
-        <item>A) alert the search and rescue service;
-B) transmit an emergency message;
-C) wait for 5 minutes before taking further action;
-D) assume that the aircraft is diverting to the alternate aerodrome</item>
-        <item>A) declare the uncertainty phase;
-B) wait another 30 minutes before taking action;
-C) take no special action;
-D) transmit an urgency message</item>
-        <item>A) Distress phase;
-B) Uncertainty phase;
-C) Emergency phase;
-D) Alert phase</item>
-        <item>A) estimated time of arrival (ETA);
-B) estimated elapsed time (EET);
-C) expected approach time (EAT);
-D) estimated time enroute (ETE)</item>
-        <item>A) Hold downwind outbound, turn inbound holding fix;
-B) Downwind, base leg, final;
-C) Inbound downwind, base outbound, long final;
-D) Fix, abeam fix, outbound, holding side, inbound</item>
-        <item>A) over or abeam the fix, whichever is later;
-B) after having completed the turn over the fix;
-C) 10 seconds before reaching the fix;
-D) at the convenience of the pilot</item>
-        <item>A) 265 kt;
-B) 220 kt;
-C) 240 kt;
-D) 230 kt</item>
-        <item>A) 265 kt;
-B) 320 kt;
-C) 230 kt;
-D) 300 kt</item>
-        <item>A) 2 minutes;
-B) 30 seconds;
-C) 1 minute and 30 seconds;
-D) 1 minute</item>
-        <item>A) 2 minutes and 30 seconds;
-B) 2 minutes;
-C) 1 minute and 30 seconds;
-D) 1 minute</item>
-        <item>A) The TO/FROM indication can be disregarded;
-B) The airborne equipment indicates direction and IAS;
-C) The airborne equipment indicates direction and altitude/flight level;
-D) The airborne equipment indicates distance and direction in respect to the position of the VORTAC</item>
-        <item>A) height;
-B) weather;
-C) distance;
-D) azimuth</item>
-        <item>A) Continuous wave;
-B) Dots and dashes;
-C) Dots;
-D) Dashes</item>
-        <item>A) a purple (blue) light;
-B) an amber (yellow) light;
-C) a red light;
-D) a white light</item>
-        <item>A) 75 MHz;
-B) 100 MHz;
-C) 25 kHz;
-D) 50 kHz</item>
-        <item>A) a 360Â°-needle-swing of the ADF indicator;
-B) a white light and an aural signal of 3000 Hz;
-C) an amber (yellow) light;
-D) a purple (blue) light and an aural signal of 400 Hz</item>
-        <item>A) the change of the TO/FROM indicator;
-B) a 180Â°-needle-swing of the ADF indicator;
-C) the flashing of a red light and an aural signal;
-D) the flashing of a purple light</item>
-        <item>A) Final approach and missed approach;
-B) Initial approach and final approach;
-C) Intermediate approach, final approach and missed approach;
-D) Arrival route, initial approach, intermediate approach, final approach, missed approach</item>
-        <item>A) Speed at threshold based on 1.3 times stall-speed in the landing configuration at maximum certificated landing mass;
-B) Maximum speeds for missed approach;
-C) Range of speeds for initial approach;
-D) Range of final approach speeds</item>
-        <item>A) ILS back-beam approach;
-B) VOR approach;
-C) ILS approach;
-D) DME approach</item>
-        <item>A) LLZ approach;
-B) NDB approach;
-C) ILS approach;
-D) VOR approach</item>
-        <item>A) A VOR approach has a vertical guidance;
-B) A precision approach has a vertical guidance;
-C) A LLZ approach has a vertical guidance;
-D) A precision approach has no vertical guidance</item>
-        <item>A) Glide path;
-B) Localizer;
-C) Marker beacon;
-D) Approach lighting system</item>
-        <item>A) The STAR;
-B) The initial approach segment;
-C) The final approach segment;
-D) The intermediate approach segment</item>
-        <item>A) Only altitudes and distance information;
-B) Course corrections in regard to runway centre line, distance information and altitude information;
-C) Radar vectors only;
-D) Only headings and altitude information</item>
-        <item>A) QFE;
-B) MSL;
-C) Threshold;
-D) Field elevation</item>
-        <item>A) The registration number of the aircraft;
-B) Call sign according to field 7 of the flight plan;
-C) The name of the aircraft operating agency;
-D) Flight number according to the airline time table</item>
-        <item>A) An overlay to radar vector pattern procedure;
-B) Standard IFR-approach;
-C) A non-precision approach;
-D) A SRE approach</item>
-        <item>A) Database;
-B) ADF;
-C) VOR/DME;
-D) ILS</item>
-
+    <string-array name="azf_answers" formatted="false"><item>The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to visual aids, from which it is intended, that an approach will be commenced;
+The time at which the aircraft will actually arrive over that designated point defined by reference to navigation aids, from which it is intended, that a visual approach will be commenced;
+In any case that time at which the aircraft will arrive over the aerodrome;
+The time at which it is estimated that the aircraft will arrive over that designated point defined by reference to navigation aids, from which it is intended, that an instrument approach will be commenced</item>
+        <item>Any station established to exchange radiotelephony communications;
+A station in the aeronautical telecommunication service located on land or on board of an aircraft to exchange radiotelephony communications;
+A land station in the aeronautical mobile service. In certain instances, an aeronautical station may be located, for example, on board ship or on a platform at sea;
+A station forming part of the aeronautical telecommunication network</item>
+        <item>A transmission of information relating to air navigation that is not addressed to a specific station or stations;
+A transmission of messages relating to enroute weather information which may affect the safety of aircraft operations that is not addressed to a specific station or stations;
+A transmission where no reply is required from the receiving station;
+A transmission of a message to a receiving station in cases where two-way radio communication cannot be established but on the assumption that the called station is able to receive the message</item>
+        <item>A radiotelephony communication from a ground station to aircraft in flight;
+A transmission containing meteorological and operational information to aircraft engaged in flights over remote and oceanic areas out of range of VHF ground stations;
+A transmission of aeronautical information which is not intended for one or more specific stations;
+A transmission where no reply is required from the receiving station</item>
+        <item>One-way communication from stations or locations on the surface of the earth;
+Any communication from aircraft to ground stations requiring handling by the Aeronautical Fixed Telecommunication Network (AFTN);
+One-way communication from aircraft to stations or locations on the surface of the earth;
+Two-way communication between aircraft and stations or locations on the surface of the earth</item>
+        <item>The time at which an arriving aircraft, upon reaching the radio aid serving the destination aerodrome, will commence the instrument approach procedure for a landing;
+The time at which an arriving aircraft expects to arrive over the appropriate designated navigation aid serving the destination aerodrome;
+The holding time over the radio facility from which the instrument approach procedure for a landing will be initiated;
+The time at which ATC expects that an arriving aircraft, following a delay, will leave the holding point to complete its approach for a landing</item>
+        <item>An extension of an instrument approach procedure to bring an aircraft into position for landing on a runway which is not suitable located for straight-in approach;
+An approach executed by a VFR flight unable to maintain VMC;
+An approach by an IFR flight when either part or all of an instrument approach procedure is not completed and the approach is executed in visual reference to terrain;
+A visual manoeuvre executed by an IFR flight when the weather conditions at the aerodrome of destination are equal to or better than required VMC minima</item>
+        <item>The time of expiry of an air traffic control clearance;
+The time at which an aircraft is given an air traffic control clearance;
+The point to which an aircraft is granted by an air traffic control clearance;
+The time after which an air traffic control clearance will be automatically cancelled if the flight has not been commenced</item>
+        <item>The provision of current, routine information to arriving and departing aircraft throughout 24 hours or a specified portion thereof;
+A service which provides aircraft with weather reports relating to a specific number of aerodromes located within a flight information region (FIR);
+A service established to provide information concerning enroute weather phenomena which may effect the safety of aircraft operation;
+A service by which aircraft operating within a flight information region (FIR) are provided with current meteorological and operational information essential for the safety of air navigation</item>
+        <item>A general term meaning the taxiway- and the runway-system of an international airport;
+A signal indicating the direction of the runway-in-use;
+A specified geographical position used to define an area navigation route or the flight path of an aircraft employing area navigation;
+A defined position on an aerodrome used for the calibration of the inertial navigation system</item>
+        <item>International navigation service;
+International NOTAM service;
+Instrument navigation system;
+Inertial navigation system</item>
+        <item>Terminal Control and Advisory System;
+Track Confirmation by Automatic Sources;
+Tower Cabin Alarm Stop;
+Traffic Alert and Collision Avoidance System</item>
+        <item>A system provided for direct exchange of information between air traffic services (ATS) units;
+A system in which radiotelephony communication can be established between aircraft only;
+A system which permits the selective calling of individual aircraft over radiotelephony channels linking a ground station with the aircraft;
+A system in which radiotelephony communication between two stations can take place in both directions simultaneously</item>
+        <item>Surface Strength of Runway;
+Standard Snow Report;
+Search and Surveillance Radar;
+Secondary Surveillance Radar</item>
+        <item>Area navigation;
+Route navigation;
+Radar aided navigation;
+Radio navigation</item>
+        <item>Radar Vectors Requested;
+Runway Visual Range;
+Recleared Via Route …;
+Runway Visibility Report</item>
+        <item>No specific working hours;
+Sunset to sunrise;
+Continuous day and night service;
+Sunrise to sunset</item>
+        <item>The atmospheric pressure referred to the highest fixed obstacle located on the surface of an aerodrome;
+The atmospheric pressure referred to a point on the surface of the Earth;
+The atmospheric pressure at aerodrome elevation (or at runway threshold);
+The altimeter sub-scale setting to obtain elevation when on the ground</item>
+        <item>The atmospheric pressure referred to the highest obstacle located on the surface of an aerodrome;
+The atmospheric pressure measured at the aerodrome reference point (ARP);
+The atmospheric pressure at aerodrome elevation (or at runway threshold);
+The altimeter sub-scale setting to obtain aerodrome elevation when on the ground</item>
+        <item>QFE;
+QNH;
+QDM;
+QBI</item>
+        <item>QNH;
+QNJ;
+QFE;
+QFF</item>
+        <item>Magnetic heading (zero wind);
+Magnetic bearing;
+True bearing from the station;
+True heading to the station (zero wind)</item>
+        <item>QNE;
+QDR;
+QTE;
+QDM</item>
+        <item>True heading to the station (no wind);
+Magnetic heading to the station;
+True bearing from the station;
+Magnetic bearing from the station</item>
+        <item>QFE;
+QTE;
+QDR;
+QDM</item>
+        <item>Magnetic heading (zero wind);
+True bearing from the station;
+Magnetic bearing;
+True heading to the station</item>
+        <item>QTE;
+QFE;
+QDM;
+QDR</item>
+        <item>a Flight Regularity Message;
+a Flight Safety Message;
+an Unauthorized Message in the aeronautical mobile service;
+an Urgency Message</item>
+        <item>Urgency Messages;
+Flight Safety Messages;
+Flight Regularity Messages;
+Unauthorized Messages in the aeronautical mobile service</item>
+        <item>a Flight Regularity Messages;
+an Urgency Message;
+a Flight Security Message;
+a Flight Safety Message</item>
+        <item>messages relating to direction finding;
+air traffic control messages;
+messages concerning the safety of an aircraft, a vessel, any other vehicle or a person;
+messages concerning non-routine landings</item>
+        <item>Distress Message;
+Class B Message;
+Urgency Message;
+Flight Safety Message</item>
+        <item>Messages Relating to Direction Finding;
+Aeronautical Security Messages;
+Aeronautical Administrative Messages;
+Messages of Airline Operators</item>
+        <item>Urgency Messages;
+Meteorological Messages;
+Radio Teletype Messages;
+Flight Safety Messages</item>
+        <item>higher than "TRANSMIT FOR QDM";
+lower than "CLEARED TO LAND";
+same as "LINE UP RUNWAY 07 AND WAIT";
+higher than "CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G"</item>
+        <item>a Meteorological Message;
+a Message Relating to Direction Finding;
+an Urgency Message;
+a Flight Safety Message</item>
+        <item>Class B Messages;
+Flight Safety Messages;
+Service Message;
+Flight Regularity Message</item>
+        <item>a Flight Safety Message;
+an Unauthorized Message in the aeronautical mobile service;
+an Urgency Message;
+Flight Regularity Messages</item>
+        <item>Message Relating to Direction Finding, Distress Message, Urgency Message;
+Distress Message, Urgency Message, Message Relating to Direction Finding;
+Meteorological message, Message Relating to Direction Finding, Flight Regularity Message;
+Distress message, Flight Safety Message, Urgency Message</item>
+        <item>Flight Regularity Message, Distress Message, Meteorological Message;
+Meteorological Message, Message Relating to Direction Finding, Flight Safety Message;
+Flight Safety Message, Message Relating to Direction Finding, Urgency Message;
+Flight Safety Message, Meteorological Message, Flight Regularity Message</item>
+        <item>lower than "REQUEST CLIMB FLIGHT LEVEL …";
+same as "LATEST QNH 1018";
+higher than "TURN LEFT HEADING …";
+lower than "DESCEND FLIGHT LEVEL …"</item>
+        <item>Hotel Bravo India Yankee Charlie;
+Hotel Bravo Juliett India Kilo;
+Hotel Bravo Juliett Yankee Charlie;
+Hotel Bravo India Victor Charlie</item>
+        <item>Fox Romeo India – VOR;
+Foxtrot Romeo Juliett – VOR;
+Fox Romeo Yankee – VOR;
+Foxtrot Romeo India – VOR</item>
+        <item>Three five hundred;
+Three thousand five hundred;
+Three five double "O";
+Three five zero zero</item>
+        <item>QNH one double zero one;
+QNH one zero zero one;
+QNH one double "O" one;
+QNH one thousand and one</item>
+        <item>One one eight point zero one zero;
+One one eight decimal zero one zero;
+One one eight decimal zero one;
+One eighteen decimal zero one</item>
+        <item>One three five hundred;
+One three five zero zero;
+Thirteen thousand five hundred;
+One three thousand five hundred</item>
+        <item>Local time (LT) 24-hour clock;
+No specific system, as only the minutes are normally required;
+Coordinated Universal Time (UTC);
+Local time (LT) a.m. and p.m.</item>
+        <item>Sixteen fifteen;
+One six one five;
+Four fifteen p.m.;
+Four fifteen in the afternoon</item>
+        <item>Two zero this hour;
+Nine twenty a.m.;
+Twenty;
+Two zero</item>
+        <item>DELIVERY;
+CONTROL;
+APPROACH;
+DEPARTURE</item>
+        <item>CONTROL;
+MONITOR;
+DELIVERY;
+RADAR</item>
+        <item>TOWER;
+AERODROME;
+APRON;
+CONTROL</item>
+        <item>INFORMATION;
+INFO;
+FLIGHT CENTRE;
+FLIGHT INFORMATION CENTRE</item>
+        <item>APPROACH;
+GROUND;
+CONTROL;
+TOWER</item>
+        <item>APPROACH;
+RADAR;
+CONTROL;
+ARRIVAL</item>
+        <item>CONTROL;
+RADAR;
+CENTRE;
+APPROACH</item>
+        <item>CONTROL;
+RADAR;
+APPROACH;
+DEPARTURE</item>
+        <item>DIRECTOR;
+APPROACH;
+RADAR;
+ARRIVAL</item>
+        <item>ABC;
+XBC or XABC;
+BC;
+XYBC</item>
+        <item>Cherokee XYBC;
+Cherokee XBC;
+Cherokee XABC;
+Cherokee BC or Cherokee ABC</item>
+        <item>In dense traffic;
+Provided no confusion is likely to result;
+If it has already been used by the aeronautical station;
+Only after satisfactory communication has been established</item>
+        <item>Fastair 345 widebody;
+Fastair 345;
+Fastair 345 heavy;
+Heavy Fastair 345</item>
+        <item>When establishing radio contact with ATC and after every frequency change;
+Never;
+In the initial call to the aerodrome control tower and the approach control unit;
+In all calls to the aerodrome control tower and the approach control unit</item>
+        <item>In case of diversion to the alternate aerodrome by the pilot-in-command;
+On the instruction of an ATC unit in the interests of safety;
+When changing the destination airport during flight by the aircraft operator;
+To facilitate subsequent radiotelephony communications by an aeronautical station</item>
+        <item>In dense traffic during the rush hours;
+Never;
+After the establishment of voice communication if confusion is excluded;
+Only after the aeronautical station has used the abbreviated call sign</item>
+        <item>Consider that transmission as not sent;
+A new flight plan has to be filed;
+Cancel the previously transmitted clearance;
+Expect a new clearance shortly</item>
+        <item>My transmission is ended and I expect a response from you;
+I have received all of your last transmission;
+Repeat all or the following part of your last transmission;
+Let me know that you have received and understood this message</item>
+        <item>I have received all of your last transmission;
+A direct answer in the negative;
+A direct answer in the affirmative;
+Cleared for take-off or cleared to land</item>
+        <item>Continue on present heading and listen out;
+Wait and I will call you;
+Permission granted for action proposed;
+Select STANDBY on the SSR transponder</item>
+        <item>Check and confirm with originator;
+Let me know that you have received and understood this message;
+Did you correctly receive this message?;
+Repeat all, or the specified part, of this message back to me exactly as received</item>
+        <item>Repeat your last transmission;
+Did you correctly receive this message?;
+Examine a system or procedure;
+Consider that transmission as not sent</item>
+        <item>CONFIRM;
+REPORT;
+REQUEST;
+ACKNOWLEDGE</item>
+        <item>CHECK;
+REPORT;
+REQUEST;
+SAY AGAIN</item>
+        <item>AFFIRM;
+CORRECT;
+THAT IS RIGHT;
+THAT IS AFFIRMATIVE</item>
+        <item>QNH 1017, NEGATIVE I SAY AGAIN 1016;
+QNH 1017, NEGATIVE QNH 1016;
+QNH 1017, NEGATIVE 1016;
+QNH 1017, CORRECTION QNH 1016</item>
+        <item>REPEAT YOUR MESSAGE;
+REPEAT YOUR LAST TRANSMISSION;
+WHAT WAS YOUR MESSAGE;
+SAY AGAIN</item>
+        <item>CANCEL MY LAST MESSAGE;
+FORGET IT;
+MY LAST TRANSMISSION IS CANCELLED;
+DISREGARD</item>
+        <item>WILCO;
+OK, WILL DO IT;
+ROGER;
+WILL COMPLY WITH YOUR INSTRUCTION</item>
+        <item>AFFIRMATIVE;
+AFFIRM;
+ROGER;
+YES</item>
+        <item>Examine a system or procedure;
+Listen out on (frequency/channel);
+Establish radio contact with…;
+Wait and I will call you</item>
+        <item>Fastair 345 may be requested on frequency 118.900 when its intended that the Tower unit will initiate communications soon;
+Fastair 345 may be requested on frequency 118.900 on which aerodrome data are being broadcast;
+Fastair 345 shall contact TOWER on 118.900;
+Fastair 345 shall standby on the current frequency</item>
+        <item>Fastair 345 contact 118.0;
+Stephenville ARRIVAL Fastair 345;
+Changing over Fastair 345;
+Changing to ARRIVAL Fastair 345</item>
+        <item>IMPOSSIBLE TO MAKE IT;
+DISREGARD;
+UNABLE (reason);
+NEGATIVE INSTRUCTION</item>
+        <item>PULLING UP;
+OVERSHOOTING;
+GOING AROUND;
+MISSED APPROACH</item>
+        <item>MAINTAIN FL80;
+LEVEL OFF AT FL80;
+STOP CLIMB AT FL80;
+CLEARED FL80</item>
+        <item>SQUAWK ALPHA 0410 AND CHARLIE;
+SQUAWK 0410;
+SQUAWK MODE ALPHA CODE 0410 AND MODE CHARLIE;
+SQUAWK ALPHA AND CHARLIE ON 0410</item>
+        <item>The pilot indicates that his landing is assured and he will not submit the landing time;
+The pilot continues VFR and closes his flight plan;
+The pilot closes his flight plan;
+The pilot changes from IFR to VFR</item>
+        <item>NO POSITION REPORT OVER … (fix);
+DO NOT REPORT OVER … (fix);
+OMIT POSITION REPORT OVER … (fix);
+CANCEL POSITION REPORT OVER … (fix)</item>
+        <item>TAXI VIA … TO RUNWAY …;
+TAXI TO HOLDING POINT RUNWAY … VIA …;
+CLEARED TO RUNWAY … VIA …;
+RUNWAY … TAXI VIA …</item>
+        <item>CLIMB/DESCEND FL …;
+WHEN READY CLIMB/DESCEND FL …;
+CLIMB/DESCEND FL … AT ANY TIME;
+CLIMB/DESCEND FL … AT YOUR CONVENIENCE</item>
+        <item>MAINTAIN FL …;
+CLEARED FL …;
+LEAVE FL … FOR FL …;
+DESCEND FL …</item>
+        <item>CLEARED INTO POSITION AND HOLD;
+TAXI TO TAKE-OFF POSITION;
+LINE UP RUNWAY …;
+CONTINUE TO TAKE-OFF POSITION AND HOLD</item>
+        <item>RUNWAY VACATED;
+I AM BEYOND THE RUNWAY;
+I HAVE LEFT THE RUNWAY;
+I AM CLEAR OF RUNWAY</item>
+        <item>TRANSMIT FOR DIRECTION FINDING;
+TRANSMIT FOR BEARING;
+REPORT BEARING;
+SQUAWK IDENT</item>
+        <item>CONFIRM SQUAWKING ALPHA 6620;
+RESET SQUAWK 6620;
+SQUAWK AGAIN ALPHA 6620;
+SWITCH ON ALPHA 6620</item>
+        <item>WHAT IS MY TAXI CLEARENCE;
+REQUEST PERMISSION TO TAXI;
+REQUEST TAXI CLEARANCE;
+REQUEST TAXI</item>
+        <item>MAINTAIN FL …;
+CLEARED FL …;
+LEAVE FL … FOR FL …;
+CLIMB FL …</item>
+        <item>WILL CONTINUE VMC;
+REQUEST TO CANCEL IFR;
+REQUEST TO CLOSE MY FLIGHT PLAN;
+WILL CONTINTUE VFR</item>
+        <item>SQUAWK PRESSURE ALTITUDE;
+SQUAWK ALTIMETER;
+TRANSMIT ON MODE CHARLIE;
+SQUAWK CHARLIE</item>
+        <item>three miles ahead;
+on the left side;
+on the right side;
+separated by three miles</item>
+        <item>A change from IFR to VFR is not possible;
+Contact ATC and cancel IFR;
+Contact ATC and request to close the flight plan;
+Contact ATC and request clearance to proceed in accordance with the visual flight rules</item>
+        <item>The clearance is void if the aircraft departs before 1025;
+The clearance is void if the aircraft is not airborne until or at 1025;
+The pilot shall stand by and ask for clearance again at 1025;
+The pilot shall start engines not later than 1025</item>
+        <item>Only when the aircraft has already moved onto the active runway;
+To acknowledge take-off clearance;
+To inform TOWER when ready for departure;
+Never, it is used only by the control tower</item>
+        <item>READY FOR TAKE-OFF;
+READY TO GO;
+READY TO LINE-UP;
+READY FOR DEPARTURE or READY</item>
+        <item>CANCELLING TAKE-OFF;
+STOPPING;
+ABANDONING TAKE-OFF;
+ABORTING TAKE-OFF</item>
+        <item>WILL MAKE ANOTHER APPROACH;
+OVERSHOOTING;
+GOING AROUND;
+PULLING UP</item>
+        <item>Proceed with your message;
+Carry out a missed approach;
+Make a 360° turn;
+Overtake the aircraft ahead</item>
+        <item>Leave the runway to the right;
+Turn right to avoid other traffic;
+Right-hand circuits are in use;
+Make 360° turns to the right</item>
+        <item>Give way to aircraft from the left;
+Turn left to leave the runway;
+Clear the runway immediately;
+Hold position on the left side of the runway</item>
+        <item>WEATHER GOLF RECEIVED;
+WE HAVE THE INFORMATION;
+INFORMATION GOLF;
+WE HAVE THE ATIS GOLF</item>
+        <item>One two zero decimal three seven five;
+One twenty decimal three seven;
+One two zero three seven;
+One two zero decimal three seven</item>
+        <item>Runway in use, ground visibility, dew point, take-off clearance, frequency in the case of frequency changes;
+Clearances, taxi instructions, runway-in-use, QNH, SSR codes, level instructions, heading and speed instructions, frequency in the case of frequency change;
+Clearances, wind direction/speed, heading instructions, QNH, frequency in the case of frequency changes;
+Instructions concerning heading, flight level, speed, altimeter setting, flight visibility, wind direction, take-off clearance and frequency in the case of frequency changes</item>
+        <item>No, if the ATC route clearance is transmitted in a published form (e.g. Standard Instrument Departure Route/SID);
+No, if the communication channel is overloaded;
+No, if the content of the ATC clearance is clear and no confusion is likely to arise;
+Yes</item>
+        <item>WILL STOP BEFORE;
+WILCO;
+ROGER;
+HOLDING SHORT</item>
+        <item>WILCO, CLEARED FOR TAKE-OFF, XBC;
+STRAIGHT AHEAD 2500 FEET RIGHT TURN, WIND WEST 6 KNOTS, CLEARED FOR TAKE-OFF, XBC;
+XBC CLIMB STRAIGHT AHEAD ALTITUDE 2500 FEET, THEN TURN RIGHT, RUNWAY 22, CLEARED FOR TAKE-OFF;
+RIGHT TURN AFTER 2500, ROGER, XBC</item>
+        <item>Make a test transmission on 123.4 MHz;
+Switch transponder to Mode/Code 1234;
+Give a short count for DF (direction finder);
+Standby on frequency 123.4 MHz</item>
+        <item>XBC is not visible on the radar screen;
+XBC should perform an identification turn;
+Radar identification has been achieved;
+XBC should operate the IDENT-button</item>
+        <item>X-BC shall reselect his assigned mode and code;
+X-BC should perform an identification turn of at least 20 degrees;
+Radar identification has been achieved by correlating an observed radar blip with aircraft XY-ABC;
+XBC shall operate the IDENT-button (operation of the SPI feature)</item>
+        <item>XBC is requested to standby on the frequency;
+XBC is requested to standby as the radar controller is busy;
+XBC is requested to select the standby feature on the transponder;
+XBC is requested to standby for radar vectors</item>
+        <item>XBC has been identified by SSR code 1015;
+XBC is requested to reselect SSR code 1015;
+XBC has been identified at 10:15 (UTC);
+XBC is requested to set new code 1015</item>
+        <item>Call sign, present and cleared level;
+Call sign only;
+Call sign and estimated time over the next compulsory reporting point;
+Call sign and present level</item>
+        <item>DIBEL, MÜNCHEN GROUND OVER;
+MÜNCHEN GROUND DIBEL;
+MÜNCHEN GROUND DIBEL GO AHEAD;
+MÜNCHEN GROUND THIS IS DIBEL</item>
+        <item>GENERAL CALL;
+URGENCY CALL;
+MULTIPLE CALL;
+SIMULTANEOUS CALL</item>
+        <item>cleared altitude/flight level;
+passing the transition level;
+the designation of the runway being approached;
+the type of instrument approach</item>
+        <item>Aircraft call sign and present position;
+Aircraft call sign and flight level or altitude;
+Radio call sign of the aircraft only;
+Aircraft call sign and cleared altitude/flight level</item>
+        <item>TOWER XYABC;
+Stephenville TOWER XYABC;
+Stephenville TOWER XBC;
+Stephenville XYABC</item>
+        <item>Stephenville TOWER XBC;
+XBC CHANGING OVER;
+XBC 118.7;
+WILL CHANGE TO TOWER XBC</item>
+        <item>XBC MONITORING 123.250;
+XBC CHECKING 123.250;
+WILL CONTACT 123.250 XBC;
+CHANGING TO 123.250 XBC</item>
+        <item>Stephenville TOWER XYABC SIGNAL CHECK;
+Stephenville TOWER XYABC FREQUENCY CHECK;
+Stephenville TOWER XYABC PRE-FLIGHT CHECK;
+Stephenville TOWER XYABC HOW DO READ</item>
+        <item>Readable but with difficulty;
+No problem to understand;
+Unreadable;
+Loud and clear</item>
+        <item>Readable but with difficulty;
+Unreadable;
+Problem to understand;
+Perfectly readable</item>
+        <item>in any case;
+in VMC only;
+in IMC only;
+on request of ATC</item>
+        <item>in IMC;
+in VMC;
+in any case;
+on request of ATC</item>
+        <item>Radio call sign, position, time over;
+Radio call sign, position, time over, level;
+Radio call sign, position, next position;
+Radio call sign, position, level</item>
+        <item>Climbing to flight level two eight zero;
+Climbing flight level two eight zero;
+Climbing to two eighty;
+Climbing two eight zero</item>
+        <item>Up two thousand five hundred;
+Climbing altitude two thousand five hundred feet;
+Climbing to altitude two thousand five hundred feet;
+Climbing to two point five</item>
+        <item>Down to flight level 80, Fastair 345;
+Fastair 345 leaving 100 to 80;
+Fastair 345 leaving flight level 100 descending flight level 80;
+Descending to 80, Fastair 345</item>
+        <item>1000 ft or less;
+1500 ft or less;
+less than 1000 m;
+less than 1500 m</item>
+        <item>on request only;
+upon initial contact;
+if deemed necessary;
+if the control zone is IMC</item>
+        <item>3 to 4 oktas;
+5 to 7 oktas;
+8 oktas;
+NO SIGNIFICANT CLOUDS</item>
+        <item>8 oktas;
+1 to 4 oktas;
+NO SIGNIFICANT CLOUDS;
+5 to 7 oktas</item>
+        <item>8 oktas;
+5 to 7 oktas;
+1 to 2 oktas;
+3 to 4 oktas</item>
+        <item>Visibility 10 km or more, no cloud below 5000 ft AGL;
+Visibility 10 km or more, no cloud below 1500 ft AGL;
+Visibility more than 8 km, no cloud below 3000 ft AGL;
+Visibility more than 5000 m, no cloud below 1500 m AGL</item>
+        <item>In nautical miles only;
+Up to 1500 m in metres, above in kilometres;
+Up to 5000 m in metres, above in kilometres;
+In feet and nautical miles</item>
+        <item>Visibility 1200 feet;
+Visibility 1200 metres;
+Visibility 1.2 kilometres;
+Visibility 1.2 nautical miles</item>
+        <item>RVR RUNWAY 16, METRES DIAGONAL, METRES DIAGONAL METRES;
+RVR RUNWAY 16, TOUCHDOWN ZONE, METRES, MID POINT, METRES, STOP END, METRES;
+THE VALUES OF THE TRANSMISSION ARE: … METRES AND … METRES;
+RVR AT THE BEGINNING OF RUNWAY 16 IS … METRES</item>
+        <item>Braking action not measurable;
+Braking action good;
+Braking action medium;
+Braking action poor</item>
+        <item>Braking action poor;
+Braking action medium;
+Braking action unreliable;
+Braking action good</item>
+        <item>Runway covered with wet snow and slush;
+Runway conditions normal;
+Runway covered with dry snow;
+Runway covered with ice</item>
+        <item>Indicate whether you are flying in IMC or in VMC;
+Indicate weather conditions as wind, visibility, temperature;
+Indicate whether you are flying IFR or VFR;
+Indicate if visibility is sufficient for landing</item>
+        <item>executes air traffic control service to enroute aircraft;
+is a broadcasting service for the transmission of aerodrome meteorological reports for airports;
+is an aeronautical station operated by an airport company;
+can be called by an aircraft in flight to obtain flight information service</item>
+        <item>no cloud below 5000 ft AGL;
+less than 5/8 clouds below 5000 ft;
+light precipitation;
+thunderstorm</item>
+        <item>DME voice channel;
+NDB frequencies;
+Voice channel of an ILS;
+VHF frequencies</item>
+        <item>AFIS;
+SIGMET;
+VOLMET;
+ATIS</item>
+        <item>SPECI and TAF;
+Runway reports;
+SIGMET;
+Routine aerodrome meteorological reports for airports</item>
+        <item>a condition concerning the safety of an aircraft or other vehicle, or of some person on board or within sight, but which does not require immediate assistance;
+a condition of being threatened by serious and/or imminent danger and of requiring immediate assistance;
+a condition concerning the safety of some person on board or within sight and requiring immediate assistance;
+a condition concerning the attitude of an aircraft when intercepting the localizer during an ILS-approach</item>
+        <item>The aircraft is forced to perform a fuel dumping procedure;
+The aircraft is threatened by serious and/or imminent danger and of requiring immediate assistance;
+The aircraft has a very urgent message to transmit concerning the safety of an aircraft or other vehicle;
+The aircraft has a message to transmit concerning adverse weather conditions along its route of flight</item>
+        <item>MAYDAY, emitted preferably three times;
+PAN PAN, emitted three times;
+DETRESFA, emitted three times;
+URGENCY, emitted three times</item>
+        <item>the emergency frequency in any case;
+the FIS frequency designated for the airspace concerned;
+the frequency used or on the emergency frequency;
+the regional guard frequency</item>
+        <item>any frequency at pilot‘s discretion;
+the distress frequency 121.500 MHz;
+any other international emergency frequency;
+the frequency currently in use or on the emergency frequency</item>
+        <item>Aircraft call sign, nature of distress, intention of the pilot, kind of assistance required, data concerning position, course and level;
+Aircraft call sign, present position, assistance required;
+Aircraft call sign, aerodrome of departure, position and level;
+Aircraft call sign, route of flight, destination airport</item>
+        <item>122.500 MHz;
+121.050 MHz;
+6500 KHz;
+121.500 MHz</item>
+        <item>a regional guard frequency;
+a frequency for air-to-air communication;
+a regional VHF emergency frequency;
+an international emergency frequency</item>
+        <item>A 7700;
+A 7600;
+A 7500;
+A 6700</item>
+        <item>the aircraft is in distress;
+the aircraft‘s transceiver is unserviceable;
+there is a very sick passenger on board;
+the aircraft is being hijacked</item>
+        <item>When passing the transition level;
+When following a SID;
+In distress;
+When flying within controlled airspace</item>
+        <item>he has a sick person on board;
+his aircraft is in distress;
+he has radio communication failure;
+his aircraft is in an emergency situation</item>
+        <item>a condition concerning the safety of an aircraft or other vehicle, or of some person on board or within sight, but which does not require immediate assistance;
+a condition concerning the safety of some person on board or within sight and requiring immediate assistance;
+a condition of being threatened by serious and/or imminent danger and of requiring immediate assistance;
+a condition concerning the attitude of an aircraft when intercepting the localizer during an ILS-approach</item>
+        <item>The aircraft has a very urgent message to transmit concerning the safety of an aircraft or other vehicle and does not requiring immediate assistance;
+The aircraft on final approach is starting the missed approach procedure;
+The aircraft is threatened by serious and/or imminent danger and of requiring immediate assistance;
+The aircraft is diverting from the route cleared because of a thunderstorm and asks for immediate reclearance</item>
+        <item>URGENCY, emitted three times;
+MAYDAY, emitted three times;
+ALERFA, emitted three times;
+PAN PAN, preferable emitted three times</item>
+        <item>On the frequency in use;
+Any frequency at pilot‘s discretion;
+The international emergency frequency;
+The regional guard frequency</item>
+        <item>Aircraft call sign, present position, level and heading, assistance required;
+Aircraft call sign, nature of the urgency condition, intention of the pilot-in-command, present position, level and heading, and any other useful information;
+Aircraft call sign, aerodrome of departure, present position, level and heading;
+Aircraft call sign, nature of the urgency condition, assistance required</item>
+        <item>7500;
+7700;
+7600;
+6700</item>
+        <item>It is diverting to the alternate aerodrome;
+lt is unable to establish communication due to radio equipment failure;
+lt is about to make a forced landing;
+lt is requesting immediate level change</item>
+        <item>Land at the nearest airport without an ATC unit;
+Continue the flight to the destination airport without any communication;
+Try to establish radio contact on another frequency published for the route of flight;
+Return to the airport of departure</item>
+        <item>Try to establish radio contact with other aircraft or aeronautical stations;
+Land at the nearest aerodrome appropriate to the route of flight;
+Divert to the alternate airport;
+Squawk mode A code 7500</item>
+        <item>on the regional guard frequency;
+to all available aeronautical stations;
+on the frequency presently in use;
+on the international emergency frequency</item>
+        <item>"PAN PAN, PAN PAN, PAN PAN";
+"TRANSMITTING BLIND";
+"READ YOU ONE, READ YOU ONE";
+"HOW DO YOU READ?"</item>
+        <item>during VFR flights only;
+twice on the designated frequency;
+only once on the designated frequency;
+on the emergency frequency only</item>
+        <item>advise the time of its next intended transmission;
+return to the airport of departure;
+enter immediately base leg when approaching the airfield for landing;
+land at the nearest airfield/airport</item>
+        <item>When approaching a prohibited area;
+In case of radio communication failure;
+When flying over desert areas;
+When entering bad weather areas</item>
+        <item>Aircraft entering the traffic pattern of an uncontrolled airport;
+VFR flights above clouds;
+Aircraft forming part of the aerodrome traffic at a controlled aerodrome;
+IFR flights when entering a CTR</item>
+        <item>continue the flight to destination aerodrome;
+set the transponder to Mode A 7600 and maintain the last assigned speed and level or the minimum IFR cruising level for a period of 7 minutes;
+leave controlled airspace and continue the flight within uncontrolled airspace;
+squawk IDENT and proceed to the alternate aerodrome</item>
+        <item>At the time the last assigned level or minimum IFR cruising level is reached or when the transponder code is set to Mode A 7600, whichever is later;
+After noticing radio communication failure;
+At the beginning of radio communication failure;
+At the last contact with ATC</item>
+        <item>Execute a VMC approach at the nearest suitable aerodrome;
+Adjust level and speed in accordance with the filed flight plan;
+Divert to the most suitable aerodrome according to the route of flight;
+Proceed to an area from where the flight can be continued according to the visual flight rules</item>
+        <item>Hold over present position for 7 minutes than continue in accordance with the filed flight plan;
+Continue immediately in accordance with the filed flight plan;
+In any case maintain last assigned flight level;
+The pilot shall climb to the minimum IFR cruising level</item>
+        <item>After 3 minutes, if an expected approach time is not acknowledged;
+After holding for 5 minutes in the holding pattern;
+Without any delay;
+Commence descend over the IAF at or as close as possible to the estimated time of arrival according to the current flight plan</item>
+        <item>15 minutes after vacating the transition layer;
+30 minutes after the estimated time of arrival or the last confirmed approach time, whichever is later;
+20 minutes after leaving the last assigned and acknowledged level;
+30 minutes after noticing the radio failure</item>
+        <item>land at the nearest suitable aerodrome;
+climb or descend to the cruising level indicated in the flight plan;
+maintain the altitude last assigned by ATC for a period of 7 minutes, before proceeding to the nearest suitable aerodrome for landing;
+conduct his flight in accordance with the rules for encountering radio communication failure in IMC</item>
+        <item>squawk 7600 and maintain present heading for the next 7 minutes and then return to the flight path in accordance with the current flight plan;
+squawk 7600 and maintain the heading last assigned by ATC for a period of 3 minutes and then return to the flight path in accordance with the current flight plan;
+squawk 7600 and proceed in the most direct manner possible to rejoin the current flight plan route not later than the next significant point, taking into consideration the applicable minimum flight altitude;
+squawk 7600, maintain present heading for 1 minute and thereafter return to the route indicated in the current flight plan on the shortest way</item>
+        <item>inform the competent ATC unit immediately;
+continue the flight in VMC;
+land at the nearest suitable aerodrome for repair;
+squawk 7600</item>
+        <item>obtain prior permission by ATC to conduct the flight;
+insert under item 18 of the flight plan "TRANSPONDER UNSERVICEABLE";
+inform FIS for relay to AlS;
+inform ATC after departure</item>
+        <item>Continue VFR to destination or alternate aerodrome;
+Proceed to the initial approach fix on the shortest way;
+Proceed to the initial approach fix according to his current flight plan;
+Enter the holding pattern and request further clearance</item>
+        <item>15 minutes;
+10 minutes;
+30 minutes;
+20 minutes</item>
+        <item>Estimated overhead time;
+Expected approach time;
+Estimated time of arrival;
+Holding time</item>
+        <item>exact arrival time;
+estimated time of arrival;
+estimated elapsed time;
+expected approach time, if the expected delay is more than 20 minutes</item>
+        <item>108.000 – 117.975 MHz;
+1810 – 2850 kHz;
+11650 -13200 kHz;
+117.975 – 137.000 MHz</item>
+        <item>Medium frequency;
+Very low frequency;
+Very high frequency;
+Low frequency</item>
+        <item>100 kHz + 8.33 kHz;
+50 MHz;
+100 kHz;
+25 kHz + 8.33 kHz</item>
+        <item>Practically straight-line similar to light waves;
+The waves are reflected at the ionosphere at the height of about 100 km and reach the earth surface in the form of sky-waves;
+Similar to short waves with practically no atmospheric disturbance;
+The waves travel along the surface of the earth and penetrate into valleys in a way that topographical obstacles have not influence</item>
+        <item>Day-night effect;
+Atmospherics occurring particularly during thunderstorms;
+Level of aircraft and topographical features;
+Ionosphere</item>
+        <item>Aircraft at low level, in the vicinity of the ground station, in the radio shadow zone;
+Aircraft at high level in the vicinity of the ground station;
+Aircraft at low level, far away from the ground station, in the radio shadow zone of a hill;
+Aircraft at low level but far away from the ground station</item>
+        <item>121.500 MHz only;
+119.200 MHz;
+243.000 MHz only;
+121.500, 243.000 or 406.000 MHz</item>
+        <item>Approx.300 NM;
+Approx.120 NM;
+Approx.12 NM;
+Approx.30 NM</item>
+        <item>aeronautical telecommunication service;
+air traffic communication service;
+air traffic information service;
+air traffic control service</item>
+        <item>VFR flights in the identification zone;
+all VFR flights above 5000 ft MSL;
+VFR flights at night within airspace G;
+IFR flights and aerodrome traffic at controlled aerodromes</item>
+        <item>AlS, FIC, TWR;
+TWR, FIC, APP;
+APP, ACC, SAR;
+TWR, APP, ACC</item>
+        <item>NOTAM;
+AIP supplement;
+NfL I;
+AIC</item>
+        <item>radio;
+an official gazette;
+a teletype message;
+no means, since it is of no interest to pilots</item>
+        <item>Circular Information;
+Flight plan;
+NfL;
+Pre-flight Information Bulletin</item>
+        <item>national regulations;
+military activities within the next 24 hours;
+international regulations;
+active NOTAMs</item>
+        <item>NfL II;
+AIP Supplements or AIP Amendments;
+AIC;
+alerting messages (ALR)</item>
+        <item>all flights operating during night;
+all flights;
+flights for which a flight plan has to be filed;
+IFR flights only</item>
+        <item>Degrees true and knots;
+Degrees magnetic and miles;
+Degrees magnetic and kilometres;
+Degrees true and kilometres</item>
+        <item>Degrees true and kilometres;
+Degrees magnetic and knots;
+Degrees magnetic and miles;
+Degrees true and knots</item>
+        <item>Danger area number six five;
+Low Flying area six five;
+Altitude 6500 ft;
+ATS route A65</item>
+        <item>5% or more;
+20% or more;
+10% or more;
+15% or more</item>
+        <item>one transceiver with 25 KHz and one with at least 50 KHz channel spacing;
+one transceiver with 25 KHz channel spacing;
+two functioning transceivers with 8.33 kHz channel spacing;
+one transceiver with 720 channels</item>
+        <item>to and from international airports with RADAR control;
+if the aircraft is equipped with VOR and ADF;
+only with a special permission;
+below FL100, but not to or from international airports</item>
+        <item>during ILS approach;
+during NDB/DME approach;
+in any case;
+during SRE approach</item>
+        <item>1 hour;
+2 hours;
+3 hours;
+0.5 hour</item>
+        <item>VFR ABC G1;
+N0120 VFR ABC G1;
+G1 N0120/ABC VFR;
+G1 ABC VFR</item>
+        <item>0120/XYZFO8O IFR;
+VFR XYZ IFR;
+F080 XYZ IFR;
+XYZ/N0120F080 IFR</item>
+        <item>… A101 N0250/F150 LEG G98 …;
+… A101 LEG/N0250F150 G98 …;
+… A101 F150/N0250 LEG G98 …;
+… A101 LEG/F150 G98 …</item>
+        <item>Y;
+Z;
+I;
+V</item>
+        <item>30 minutes;
+120 minutes;
+60 minutes;
+90 minutes</item>
+        <item>VG;
+IN;
+IX;
+VN</item>
+        <item>A level in the atmosphere for vertical separation which is determined by setting the altimeter to 1013.2 hPa;
+A level in the atmosphere for vertical separation which is determined by setting the altimeter to local QFE;
+A level in the atmosphere for vertical separation which is determined by setting the altimeter to local QNH;
+A pressure level based on regional QNH</item>
+        <item>1000 ft above the highest obstacle located within 8 km of the estimated position of the aircraft;
+500 ft above the highest obstacle located within 8 km of the estimated position of the aircraft;
+1500 ft above the highest obstacle located within 8 km of the estimated position of the aircraft;
+1000 ft above the highest obstacle located within 5 km of the estimated position of the aircraft</item>
+        <item>Altitude and/or flight level;
+Flight level only;
+Elevation;
+Height</item>
+        <item>25 NM;
+30 NM;
+15 NM;
+20 NM</item>
+        <item>minimum IFR cruising altitude;
+minimum reception altitude for radio navigational aids;
+minimum safe height for IFR flights;
+lower limit of the controlled airspace</item>
+        <item>500 ft;
+1000 ft;
+1000 ft up to FL410 thereafter 2000 ft;
+2000 m</item>
+        <item>2000 ft;
+500 ft;
+1000 ft;
+1000 m</item>
+        <item>The initial altitude is on pilot‘s discretion;
+To the minimum safe height for IFR flights;
+To the initial altitude stated in the SID;
+Climb so, as to leave airspace E as soon as possible</item>
+        <item>transition altitude and QNH;
+transition altitude and QFE;
+transition height and QNH;
+transition height and QFE</item>
+        <item>2000 ft;
+1500 ft;
+500 ft;
+1000 ft</item>
+        <item>FL80;
+FL70;
+FL60;
+FL50</item>
+        <item>FL50;
+FL80;
+FL60;
+FL70</item>
+        <item>FL50;
+FL60;
+FL80;
+FL70</item>
+        <item>leaving FL100;
+passing FL60;
+passing FL50;
+passing FL70</item>
+        <item>when passing the transition altitude;
+after having passed the transition layer;
+when passing the transition level;
+when commencing descent</item>
+        <item>passing transition altitude;
+reaching transition level;
+passing transition;
+leaving the transition layer</item>
+        <item>Maximum 250 kt TAS;
+No speed limitation;
+Maximum 250 kt IAS;
+250 kt lAS below FL100</item>
+        <item>GND – FL245;
+GND – unlimited;
+FL245 – FL460;
+FL245 – unlimited</item>
+        <item>All aircraft;
+IFR from VFR;
+VFR from IFR;
+IFR from IFR</item>
+        <item>Glider flights;
+Military exercise flights;
+IFR outside of RMZ;
+VFR</item>
+        <item>300 kt;
+200 kt;
+250 kt except aircraft, which have to be operated at a higher airspeed because of their specific performance characteristics;
+150 kt</item>
+        <item>Flight visibility at least 3 km, distance from cloud 1000 ft vertically, 1500 m horizontally;
+Flight visibility at least 8 km, horizontal distance from clouds 1500 m;
+Flight visibility at least 8 km, clear of cloud;
+Flight visibility at least 5 km, distance from cloud 1000 ft vertically, 1500 m horizontally</item>
+        <item>3 km flight visibility, distance from cloud 1500 m horizontally, 1000 ft vertically;
+5 km flight visibility, distance from cloud 1500 m horizontally, 1000 ft vertically;
+1.5 km flight visibility, distance from cloud 1500 m horizontally, 1000 ft vertically;
+1.5 km flight visibility, clear of cloud</item>
+        <item>5 km;
+1.5 km;
+8 km;
+3 km</item>
+        <item>in airspace E the pilot, has a flight visibility of at least 5 km and the aircraft maintains a horizontal distance from clouds of at least 1500 m and a vertical distance of at least 1000 ft;
+in airspace E the pilot has a flight visibility of at least 8 km and the aircraft maintains a horizontal distance from clouds of at least 1500 m and a vertical distance of at least 1000 ft;
+in airspace E the pilot has a flight visibility of at least 5 km, the aircraft remains clear of cloud and visual contact to the ground is granted;
+in airspace E the pilot has a flight visibility of at least 8 km and the aircraft remains clear of cloud</item>
+        <item>within 10 minutes;
+within 5 minutes;
+within 20 minutes;
+immediately</item>
+        <item>for the safety of traffic on the runways;
+to ensure a fluent traffic on the apron;
+for the safety of taxiing aircraft;
+for the safety of traffic on taxiways and on runways</item>
+        <item>is permitted only, when no aircraft is in sight;
+is not permitted;
+is permitted only for IFR departures;
+is permitted as soon as a taxi instruction is received from the aircraft‘s owner</item>
+        <item>disregard the TWR instruction, hold position and wait for weather improvement, because neither take-off nor landing is permitted, as long as the stop bar is switched on;
+follow the TWR instruction without arguing, because instructions via radiotelephony overrule light signals;
+inform the TWR that the light signals are not switched off and hold position until the stop bar is switched off;
+be very careful during line-up and take-off, however follow the TWR instruction without delay</item>
+        <item>transmitting for DF;
+switching the transponder to STBY;
+heading changes;
+pressing the IDENT button</item>
+        <item>squawking mode A/C or S;
+squawking LOW-HIGH-LOW;
+squawking mode A/B;
+transmitting for DF</item>
+        <item>the selected code is transmitting altitude information only;
+the sensibility of the receiver is reduced;
+the transponder is immediately available, if required;
+the transponder is switched off completely</item>
+        <item>alert the search and rescue service;
+transmit an emergency message;
+assume that the aircraft is diverting to the alternate aerodrome;
+wait for 5 minutes before taking further action</item>
+        <item>take no special action;
+transmit an urgency message;
+declare the uncertainty phase;
+wait another 30 minutes before taking action</item>
+        <item>Distress phase;
+Uncertainty phase;
+Alert phase;
+Emergency phase</item>
+        <item>estimated time of arrival (ETA);
+estimated time enroute (ETE);
+expected approach time (EAT);
+estimated elapsed time (EET)</item>
+        <item>Inbound downwind, base outbound, long final;
+Fix, abeam fix, outbound, holding side, inbound;
+Hold downwind outbound, turn inbound holding fix;
+Downwind, base leg, final</item>
+        <item>10 seconds before reaching the fix;
+at the convenience of the pilot;
+after having completed the turn over the fix;
+over or abeam the fix, whichever is later</item>
+        <item>230 kt;
+240 kt;
+220 kt;
+265 kt</item>
+        <item>230 kt;
+300 kt;
+265 kt;
+320 kt</item>
+        <item>1 minute;
+2 minutes;
+30 seconds;
+1 minute and 30 seconds</item>
+        <item>1 minute and 30 seconds;
+2 minutes;
+1 minute;
+2 minutes and 30 seconds</item>
+        <item>The airborne equipment indicates direction and altitude/flight level;
+The airborne equipment indicates direction and IAS;
+The airborne equipment indicates distance and direction in respect to the position of the VORTAC;
+The TO/FROM indication can be disregarded</item>
+        <item>distance;
+azimuth;
+weather;
+height</item>
+        <item>Dashes;
+Dots;
+Dots and dashes;
+Continuous wave</item>
+        <item>a white light;
+an amber (yellow) light;
+a purple (blue) light;
+a red light</item>
+        <item>100 MHz;
+75 MHz;
+25 kHz;
+50 kHz</item>
+        <item>a purple (blue) light and an aural signal of 400 Hz;
+a 360°-needle-swing of the ADF indicator;
+a white light and an aural signal of 3000 Hz;
+an amber (yellow) light</item>
+        <item>the flashing of a purple light;
+the change of the TO/FROM indicator;
+a 180°-needle-swing of the ADF indicator;
+the flashing of a red light and an aural signal</item>
+        <item>Final approach and missed approach;
+Initial approach and final approach;
+Arrival route, initial approach, intermediate approach, final approach, missed approach;
+Intermediate approach, final approach and missed approach</item>
+        <item>Speed at threshold based on 1.3 times stall-speed in the landing configuration at maximum certificated landing mass;
+Range of final approach speeds;
+Range of speeds for initial approach;
+Maximum speeds for missed approach</item>
+        <item>VOR approach;
+ILS approach;
+DME approach;
+ILS back-beam approach</item>
+        <item>ILS approach;
+VOR approach;
+LLZ approach;
+NDB approach</item>
+        <item>A precision approach has a vertical guidance;
+A LLZ approach has a vertical guidance;
+A precision approach has no vertical guidance;
+A VOR approach has a vertical guidance</item>
+        <item>Approach lighting system;
+Glide path;
+Marker beacon;
+Localizer</item>
+        <item>The initial approach segment;
+The STAR;
+The final approach segment;
+The intermediate approach segment</item>
+        <item>Only altitudes and distance information;
+Radar vectors only;
+Only headings and altitude information;
+Course corrections in regard to runway centre line, distance information and altitude information</item>
+        <item>Field elevation;
+MSL;
+Threshold;
+QFE</item>
+        <item>Call sign according to field 7 of the flight plan;
+Flight number according to the airline time table;
+The name of the aircraft operating agency;
+The registration number of the aircraft</item>
+        <item>An overlay to radar vector pattern procedure;
+A non-precision approach;
+Standard IFR-approach;
+A SRE approach</item>
+        <item>ADF;
+ILS;
+VOR/DME;
+Database</item>
     </string-array>
-
 </resources>

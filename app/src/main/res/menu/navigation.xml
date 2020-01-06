@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_stats"
+        android:title="@string/statistics"
+        android:icon="@drawable/stats"
+        />
+
+    <item
+        android:id="@+id/nav_bzf"
+        android:title="@string/bzf"
+        android:icon="@drawable/bullets"
+        />
+
+    <item
+        android:id="@+id/nav_azf"
+        android:title="@string/azf"
+        android:icon="@drawable/bullets"
+        />
+
+    <item
+        android:id="@+id/nav_sim"
+        android:title="@string/simulator"
+        android:icon="@drawable/mic"
+        />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:title="@string/settings"
+        android:icon="@drawable/gear"
+        />
+
+
+</menu>

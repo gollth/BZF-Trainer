@@ -1,26 +1,22 @@
 <resources>
     <string name="app_name">BZF-Trainer</string>
-    <string name="app_description">Wenn du genauso wie ich dich theoretisch und praktisch auf die BZF-Flugfunkprüfung nur eher schlecht als recht vorbereitest fühlst, ist der BZF-Simulator vielleicht genau das richtige für dich.  Diese App beinhaltet:\n\n&#8226;&#8195;ca. 250 Fragen mit jeweils vier Antwortmöglichkeiten im Wer-wird-Millionär-Stil\n\n&#8226;&#8195;einen Simulator, mit welchem ein Ab- und Anflug zu einem kontrollierten Platz durchgespielt werden kann.\n\nDie App befindet sich momentan noch im Beta-Stadium, deswegen kann es eventuell zu Abstürzen kommen. Ich bitte das zu entschuldigen und versuche, auftretende Probleme ASAP zu beheben.\n\nBitte beachte noch folgendes:  Ich bin kein erfahrender Android-Entwickler, sondern habe mit dieser App angefangen, um mich für die Prüfung vorzubereiten. Daher möchte ich Leuten denen es ähnlich geht, diese App zur freien Verfügung stellen. Ich garantiere jedoch in keinster Art und Weise, dass die Fragen im Katalog oder die Redewendungen im Simulator aktuell sind oder dass sie in dieser Form in der Prüfung abgefragt werden. Diese App dient nur als <i>Vorbereitung</i> und ersetzt <b>nicht</b> ein richtiges BZF-Training.\n\nAnsonsten viel Spaß mit dem BZF-Simulator und viel Erfolg in der Prüfung ;)</string>
+    <string name="app_description">Wenn du genauso wie ich dich theoretisch und praktisch auf die BZF- oder AZF-Flugfunkprüfung nur eher schlecht als recht vorbereitest fühlst, ist der BZF-Trainer vielleicht genau das richtige für dich.  Diese App beinhaltet:\n\n&#8226;&#8195;260+289 Fragen mit jeweils vier Antwortmöglichkeiten im Wer-wird-Millionär-Stil\n\n&#8226;&#8195;einen Simulator, mit welchem ein Ab- und Anflug zu einem kontrollierten Platz durchgespielt werden kann.\n\nBitte beachte noch folgendes:  Ich bin kein erfahrender Android-Entwickler, sondern habe mit dieser App angefangen, um mich für die Prüfung vorzubereiten. Daher möchte ich Leuten denen es ähnlich geht, diese App zur freien Verfügung stellen. Ich garantiere jedoch in keinster Art und Weise, dass die Fragen im Katalog oder die Redewendungen im Simulator aktuell sind oder dass sie in dieser Form in der Prüfung abgefragt werden. Diese App dient nur als <i>Vorbereitung</i> und ersetzt <b>nicht</b> ein richtiges BZF- oder AZF-Training.\n\nAnsonsten viel Spaß mit dem BZF-Trainer und viel Erfolg in der Prüfung ;)</string>
     <string name="positive">Ja</string>
     <string name="negative">Nein</string>
     <string name="language">Sprache</string>
 
     <string name="btn_info">Info</string>
-    <string name="txt_questions">Frage %1$d</string>
-    <string name="txt_progress">Frage %1$d von %2$d</string>
-    <string name="txt_ranking">Ranking</string>
+    <string name="txt_progress">%1$d von %2$d</string>
     <string name="txt_notes">Notizen</string>
 
     <string name="crash_msg">Entschuldigung, da ging leider etwas schief. Ein Fehlerbericht wurde automatisch versendet, damit das Problem so schnell wie möglich behoben werden kann.</string>
 
     <string name="catalogue">Fragen-Katalog</string>
+    <string name="catalogue_version">Stand: Feb. 2020</string>
     <string name="azf">AZF</string>
     <string name="bzf">BZF</string>
     <string name="simulator">Simulator</string>
     <string name="feedback">Feedback</string>
-
-    <string name="btn_right">▷</string>
-    <string name="btn_left">◁</string>
 
     <string name="msg_finish_pass">Glückwunsch, du hast bestanden</string>
     <string name="msg_finish_fail">Schade, leider hast du nicht bestanden&#8230;</string>
@@ -28,25 +24,29 @@
     <string name="msg_finish_sim">%1$d %% richtig gesagt</string>
     <string name="msg_record_explanation">Gedrückt halten zum Senden</string>
 
-    <string name="back_to_title">Zurück zum Hauptmenu</string>
     <string name="restart">Von vorne</string>
     <string name="restart_alert">Bist du sicher, dass du die Fragen von vorne beantworten möchtest?</string>
 
-    <string name="statistics">Ergebnisse</string>
+    <string name="statistics">Statistik</string>
     <string name="statistics_history">Erfolgsrate</string>
+    <string name="statistics_azf">AZF Antworten</string>
+    <string name="statistics_bzf">BZF Antworten</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
-    <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Ergebnisse wieder auf null</string>
+    <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
 
-    <string name="settings">Einstellungen</string>
-    <string name="settings_shuffle">Zufällige Fragen</string>
-    <string name="settings_shuffle_sum">Sollen die Fragen zufällig oder nacheinander abgefragt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
+    <string name="settings">Einstellung</string>
+    <string name="settings_shuffle_questions">Zufällige Fragen</string>
+    <string name="settings_shuffle_questions_sum">Sollen die Fragen zufällig oder nacheinander abgefragt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
+    <string name="settings_shuffle_answers">Zufällige Antworten</string>
+    <string name="settings_shuffle_answers_sum">Sollen die vier Antwortmöglichkeiten jedesmal durchgemischt werden?</string>
+    <string name="settings_text_size">Schriftgröße</string>
+    <string name="settings_text_size_sum">Wie groß sollen Fragen und Antworten geschrieben werden?</string>
     <string name="settings_delay">Verzögerung</string>
     <string name="settings_delay_sum">Wie viele Sekunden soll die richtige Lösung angezeigt werden, bis zur nächsten Frage gewechselt wird? </string>
     <string name="settings_vibrate">Vibration</string>
     <string name="settings_vibrate_correct">&#8230;bei richtigen Antworten</string>
     <string name="settings_vibrate_false">&#8230;bei falschen Antworten</string>
-    <string name="title_activity_settings_new">Settings</string>
     <string name="settings_pen">Schreiben mit Stift</string>
     <string name="settings_pen_sum">Wenn du mit einem Stift schreibst, kannst du mit dem Finger radieren. Ansonsten mit einem Finger schreiben und mit zwei radieren.</string>
     <string name="settings_sim_language_sum">Willst du in Englisch funken?</string>
@@ -61,9 +61,9 @@
     <string name="settings_sim_recorder">Spracherkennung überbrücken</string>
     <string name="settings_sim_recorder_sum">Bewirkt, dass deine Sprache nicht mehr aufgenommen wird, sondern die nächste Meldung von ATC direkt abgespielt wird (falls Probleme mit der Spracherkennung auftreten)</string>
     <string name="settings_open_speech_api">Öffne Spracheinstellungen</string>
-    <string name="settings_open_speech_api_sum">Wenn du Fehler beim Senden im Simulator hast, probiere die Sprach-Engine auf \"Google\&quot; to stellen</string>
+    <string name="settings_open_speech_api_sum">Wenn du Fehler beim Senden im Simulator hast, probiere die Sprach-Engine auf \"Google\&quot; zu stellen</string>
     <string name="settings_open_tts_api">Öffne Text-zu-Sprach-Einstellungen</string>
-    <string name="settings_open_tts_api_sum">Wenn ATC im Simulator schlecht klingt, probiere die TTS-Engine zurück auf \&quot;Google\&quot; zo stellen</string>
+    <string name="settings_open_tts_api_sum">Wenn ATC im Simulator schlecht klingt, probiere die TTS-Engine zurück auf \&quot;Google\&quot; zu stellen</string>
 
     <string-array name="settings_sim_levels">
         <item>leicht</item>
@@ -82,17 +82,17 @@
 
     <string name="please_wait">Bitte warten</string>
     <string name="sim_init">Die Spracherkennung arbeitet am besten mit bestehender Internetverbindung. Soll das WLAN aktiviert werden?</string>
-    <string name="sim_info">Die Spracherkennung von Google hat es mit den Eigenarten der Funkjargons nicht leicht. Deswegen werden viele Ausdrücke falsch oder nicht verstanden.\n\nVersuche alles langsam und, so gut es geht, \"amerikanisch\" auszusprechen.\nAußerdem sorgt eine Internetverbindung für bessere Ergebnisse.</string>
+    <string name="sim_info">Die Spracherkennung von Google hat es mit den Eigenarten des Funkjargons nicht leicht. Deswegen werden viele Ausdrücke falsch oder nicht verstanden.\n\nVersuche alles langsam und, so gut es geht, \"amerikanisch\" auszusprechen.\n\nAußerdem sorgt eine Internetverbindung für bessere Ergebnisse.</string>
     <string name="sim_info_mic">Dieser Teil der App benötigt die Berechtigung deine Stimme aufzuzeichen. Möchtest du zu den App-Einstellungen wechseln um sie zu aktivieren?</string>
     <string name="sim_info_wifi_deny">OK, falls du es dir überlegst, starte den Simulator neu</string>
     <string name="sim_info_volume">Denk daran, die Lautstärke zu erhöhen um ATC zu hören</string>
     <string name="sim_default_callsign">DEABC</string>
     <string name="sim_default_aircraft">Cessna 172</string>
     <string name="sim_txt_atis">ATIS: %1$s</string>
+    <string name="sim_lbl_you">Du:</string>
     <string name="sim_msg_departure_select">Wo soll gestartet werden?</string>
     <string name="sim_msg_arrival_select">Wo soll gelandet werden?</string>
-    <string name="sim_msg_departure_complete">Abflug abgeschlossen, jetzt beim Anflugturm melden</string>
-    <string name="sim_msg_arrival_complete">Anflug abgeschlossen. Die Simulation ist beendet.</string>
+    <string name="sim_msg_departure_complete">Jetzt bei %1$s melden</string>
 
     <string-array name="airports">
         <item>EDDB</item>
@@ -138,5 +138,7 @@
     <string name="changelog_ok_button">OK</string>
     <string name="changelog_show_full">more&#8230;</string>
     <string name="background_color">black</string>
+
+    <string name="answer_separator">;</string>
 
 </resources>
