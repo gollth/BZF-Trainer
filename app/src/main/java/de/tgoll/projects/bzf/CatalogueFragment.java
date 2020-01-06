@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -228,6 +230,18 @@ public class CatalogueFragment extends Fragment implements
     public void onValueChange(Slider slider, float value) {
         loadQuestion(getProgress());
     }
+    private void vibrateTick() {
+        if (Build.VERSION.SDK_INT < 29) vibrator.vibrate(50);
+        else vibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK));
+    }
+    private void vibrateClick() {
+        if (Build.VERSION.SDK_INT < 29) vibrator.vibrate(100);
+        else vibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK));
+    }
+    private void vibrateDoubleClick() {
+        if (Build.VERSION.SDK_INT < 29) vibrator.vibrate(new long[]{0, 100, 100, 200}, -1);
+        else vibrator.vibrate(VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK));
+    }
 
     private int getProgress() {
         return (int)progress.getValue()-1;
@@ -295,11 +309,11 @@ public class CatalogueFragment extends Fragment implements
 
         if (highlightCorrectAnswer()) {
             if (isVibrationGloballyEnabled && isVibrationOnTrueEnabled)
-                vibrator.vibrate(200);                          // Correct
+                vibrateClick();       // Correct
         }
         else {
             if (isVibrationGloballyEnabled && isVibrationOnFalseEnabled)
-                vibrator.vibrate(new long[]{0, 100, 100, 200}, -1); // Wrong
+                vibrateDoubleClick(); // Wrong
 
         }
         new Handler().postDelayed(new Runnable() {
