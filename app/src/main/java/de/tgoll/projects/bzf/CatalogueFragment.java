@@ -160,6 +160,9 @@ public class CatalogueFragment extends Fragment implements
             if (playlist == null || playlist.size() != cat.size()) resetQuestions();
             else loadQuestion(state.progress);
         }
+
+        // Set the label formatter after the choices have been intialized
+        progress.setLabelFormatter(new CompletedFormatter(choices));
     }
 
     @Override
@@ -403,6 +406,21 @@ public class CatalogueFragment extends Fragment implements
             this.playlist = playlist;
             this.choices = choices;
             this.progress = progress;
+        }
+    }
+
+    public static final class CompletedFormatter implements Slider.LabelFormatter {
+
+        private final List<Integer> choices;
+
+        CompletedFormatter(List<Integer> choices) {
+            this.choices = choices;
+        }
+
+        @NonNull
+        @Override
+        public String getFormattedValue(float value) {
+            return (choices.get((int) value-1) >= 0) ? "☑" : "☐";
         }
     }
 }
