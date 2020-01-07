@@ -515,33 +515,45 @@ public class SimulatorFragment extends Fragment
         cbx_arrival.setEnabled(!isDepartureFinished());
     }
 
+    private boolean shallRepeat(String msg) {
+        String m = msg.toLowerCase();
+        return m.contains("say again") || m.contains("wiederholen");
+    }
+
     void onHeard(String msg) {
         // On heard can only be called, if button if active, if arrival is not yet complete...
 
         if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) < .1)
             Snackbar.make(btn_record, R.string.sim_info_volume, Snackbar.LENGTH_LONG).show();
 
-        Phrase phrase = phrases.get(progress);
-        progress++;
-        updateComboBoxes();
-
-        // Compare the next phrase with the said message
-        Spanned comparison = phrase.compareWith(msg, Color.GREEN);
-        totalSuccessRates += phrase.getSuccessRate();
-        answeredFromYou++;
-        answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));
-
-        // If you said the last departure phrase, show message
-        if (isDepartureFinished() && !showedDepartureFinishMessage) {
-            generateNewParameters();
-            Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
-            showedDepartureFinishMessage = true;
+        // Check if the user has understood the last message, if not we do nothing
+        // and let ATC repeat its last message, if there is a last one
+        if (shallRepeat(msg) && progress > 0) {
+            progress--;
         }
-        // If you said the last arrival phrase, show result dialog and don't continue
-        if (isArrivalFinished()) {
-            btn_record.setEnabled(false);
-            createResultDialog().show();
-            return;
+        else {
+            Phrase phrase = phrases.get(progress);
+            progress++;
+            updateComboBoxes();
+
+            // Compare the next phrase with the said message
+            Spanned comparison = phrase.compareWith(msg, Color.GREEN);
+            totalSuccessRates += phrase.getSuccessRate();
+            answeredFromYou++;
+            answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));
+
+            // If you said the last departure phrase, show message
+            if (isDepartureFinished() && !showedDepartureFinishMessage) {
+                generateNewParameters();
+                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                showedDepartureFinishMessage = true;
+            }
+            // If you said the last arrival phrase, show result dialog and don't continue
+            if (isArrivalFinished()) {
+                btn_record.setEnabled(false);
+                createResultDialog().show();
+                return;
+            }
         }
 
         // If not yet finished, only continue when the next phrase is from ATC
