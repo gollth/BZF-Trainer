@@ -82,8 +82,8 @@ public class TitleActivity extends AppCompatActivity {
         switch(tab) {
             case R.id.nav_azf:      return load(CatalogueFragment.newInstance("azf"));
             case R.id.nav_bzf:      return load(CatalogueFragment.newInstance("bzf"));
-            case R.id.nav_sim:   return load(new SimulatorFragment(this));
-            case R.id.nav_stats: return load(new StatisticsFragment(this));
+            case R.id.nav_sim:      return load(new SimulatorFragment());
+            case R.id.nav_stats:    return load(new StatisticsFragment());
             case R.id.nav_settings: return load(new SettingsFragment(findViewById(R.id.fragment)));
             default: return false;
         }

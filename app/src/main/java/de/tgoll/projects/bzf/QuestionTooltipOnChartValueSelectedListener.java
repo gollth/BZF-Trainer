@@ -1,9 +1,9 @@
 package de.tgoll.projects.bzf;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -31,12 +31,12 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
     private final TextView txt_question;
     private final RadioButton[] buttons;
 
-    QuestionTooltipOnChartValueSelectedListener(@NonNull Activity activity, @NonNull BarChart chart, @NonNull Context context, String key) {
-        this.context = activity;
+    QuestionTooltipOnChartValueSelectedListener(@NonNull Context context, @NonNull LayoutInflater inflater, @NonNull BarChart chart, String key) {
+        this.context = context;
         this.chart = chart;
         this.catalogue = new Catalogue(context, key);
         this.key = key;
-        View view = activity.getLayoutInflater().inflate(R.layout.dialog_catalogue, null);
+        View view = inflater.inflate(R.layout.dialog_catalogue, null);
         this.txt_number = view.findViewById(R.id.txt_number);
         this.txt_question = view.findViewById(R.id.txt_question);
         this.buttons = new RadioButton[]{

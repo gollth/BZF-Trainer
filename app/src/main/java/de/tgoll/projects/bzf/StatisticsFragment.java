@@ -1,6 +1,5 @@
 package de.tgoll.projects.bzf;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -45,12 +44,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class StatisticsFragment extends Fragment {
-
-    private final Activity activity;
-
-    public StatisticsFragment(@NonNull Activity activity) {
-        this.activity = activity;
-    }
 
     @Nullable
     @Override
@@ -115,7 +108,12 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setGranularity(1f);
         barchart.setHighlightFullBarEnabled(true);
         barchart.setOnChartValueSelectedListener(
-                new QuestionTooltipOnChartValueSelectedListener(activity, barchart, activity, key)
+            new QuestionTooltipOnChartValueSelectedListener(
+                requireContext(),
+                getLayoutInflater(),
+                barchart,
+                key
+            )
         );
     }
 

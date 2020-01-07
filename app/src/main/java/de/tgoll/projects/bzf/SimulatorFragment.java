@@ -1,6 +1,7 @@
 package de.tgoll.projects.bzf;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -106,16 +107,10 @@ public class SimulatorFragment extends Fragment
 
     // Misc
     private Gson gson;
-    private final TitleActivity activity;
     private LayoutInflater inflater;
     private Random rng = new Random();
     private SharedPreferences settings;
     private boolean loggedLevelStart = false;
-
-    SimulatorFragment(@NonNull TitleActivity activity) {
-        this.activity = activity;
-        gson = new Gson();
-    }
 
     private String getDifficultyName () {
         switch (getDifficulty()) {
@@ -202,9 +197,9 @@ public class SimulatorFragment extends Fragment
     }
     private Dialog createResultDialog() {
         Point size = new Point();
-        activity.getWindowManager().getDefaultDisplay().getSize(size);
+        requireActivity().getWindowManager().getDefaultDisplay().getSize(size);
 
-        ViewGroup root = activity.findViewById(R.id.fragment);
+        ViewGroup root = requireActivity().findViewById(R.id.fragment);
         View dialog = inflater.inflate(R.layout.dialog_sim_results, root, false);
         ScrollView scroller = dialog.findViewById(R.id.scroll_sim_diag);
         scroller.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (int) (size.y * 0.8f)));
@@ -236,14 +231,22 @@ public class SimulatorFragment extends Fragment
                 .putStringSet(key + "-history", history)
                 .apply();
 
-        return new MaterialAlertDialogBuilder(activity)
+        return new MaterialAlertDialogBuilder(requireContext())
                 .setCancelable(false)
                 .setView(dialog)
                 .setNegativeButton(R.string.statistics, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        activity.showFragment(getString(R.string.statistics), true);
+                        try {
+                            TitleActivity activity = (TitleActivity) getActivity();
+                            if (activity == null) return;
+                            activity.showFragment(getString(R.string.statistics), true);
+                        } catch (ClassCastException cce){
+                            String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
+                            Log.e("BZF", error);
+                            Crashlytics.log(error);
+                        }
                     }
                 })
                 .setPositiveButton(getString(R.string.restart), new DialogInterface.OnClickListener() {
@@ -269,6 +272,8 @@ public class SimulatorFragment extends Fragment
         this.inflater = inflater;
         View view = inflater.inflate(R.layout.fragment_simulator, container, false);
 
+        gson = new Gson();
+        Activity activity = requireActivity();
 
         settings = PreferenceManager.getDefaultSharedPreferences(activity);
         english = settings.getBoolean(getString(R.string.language), true);
@@ -393,7 +398,9 @@ public class SimulatorFragment extends Fragment
                         }
 
                         private void enableButton() {
-                            activity.runOnUiThread(new Runnable() {
+                            Activity act = getActivity();
+                            if (act == null) return;
+                            act.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     btn_record.setEnabled(true);
@@ -405,13 +412,17 @@ public class SimulatorFragment extends Fragment
 
                     if (wifi != null && wifi.isWifiEnabled()) return;
 
-                    new MaterialAlertDialogBuilder(activity)
+                    Activity act = getActivity();
+                    if (act == null) return;
+                    new MaterialAlertDialogBuilder(act)
                             .setMessage(getString(R.string.sim_init))
                             .setNegativeButton(getString(R.string.negative), null)
                             .setNeutralButton(getString(R.string.btn_info), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(final DialogInterface dialog, int which) {
-                                    new MaterialAlertDialogBuilder(activity)
+                                    Activity act = getActivity();
+                                    if (act == null) return;
+                                    new MaterialAlertDialogBuilder(act)
                                             .setMessage(getString(R.string.sim_info))
                                             .setPositiveButton("Roger", null)
                                             .show();
@@ -594,6 +605,8 @@ public class SimulatorFragment extends Fragment
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() != R.id.menu_restart) return false;
+        Activity activity = getActivity();
+        if (activity == null) return false;
         new MaterialAlertDialogBuilder(activity)
                 .setTitle(R.string.restart)
                 .setMessage(R.string.restart_alert)
