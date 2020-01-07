@@ -27,6 +27,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.answers.Answers;
 import com.crashlytics.android.answers.LevelEndEvent;
 import com.crashlytics.android.answers.LevelStartEvent;
@@ -35,6 +36,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
 import com.google.gson.Gson;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -63,7 +65,6 @@ public class CatalogueFragment extends Fragment implements
     private List<Integer> choices;
     private SparseArray<Integer[]> answers;
 
-    private final TitleActivity activity;
     private Vibrator vibrator;
     private SharedPreferences settings;
     private Gson gson;
@@ -71,23 +72,32 @@ public class CatalogueFragment extends Fragment implements
     private Catalogue cat;
     private int sliderLastQuestion;
 
-    public CatalogueFragment(@NonNull TitleActivity activity, String key) {
-        this.activity = activity;
-        this.key = key;
-        gson = new Gson();
-        answers = new SparseArray<>();
+    static CatalogueFragment newInstance(String key) {
+        Bundle args = new Bundle();
+        args.putString("key", key);
+        CatalogueFragment fragment = new CatalogueFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        Bundle args = getArguments();
+        if (args == null) {
+            throw new InvalidParameterException("CatalogueFragment is missing the required \"key\" parameter");
+        }
+        this.key = args.getString("key");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_catalogue, container, false);
+
+        gson = new Gson();
+        answers = new SparseArray<>();
 
         cat = new Catalogue(view.getContext(), key);
 
@@ -378,7 +388,15 @@ public class CatalogueFragment extends Fragment implements
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        activity.showFragment(getString(R.string.statistics), true);
+                        try {
+                            TitleActivity activity = (TitleActivity) getActivity();
+                            if (activity == null) return;
+                            activity.showFragment(getString(R.string.statistics), true);
+                        } catch (ClassCastException cce){
+                            String error = "CatalogueFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
+                            Log.e("BZF", error);
+                            Crashlytics.log(error);
+                        }
                     }
                 })
                 .setPositiveButton(R.string.restart, new DialogInterface.OnClickListener() {

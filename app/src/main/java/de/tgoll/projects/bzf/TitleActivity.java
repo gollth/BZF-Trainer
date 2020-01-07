@@ -80,8 +80,8 @@ public class TitleActivity extends AppCompatActivity {
         int tab = getNavigationID(id);
         if (forceLoad) setNavigation(tab);
         switch(tab) {
-            case R.id.nav_azf:   return load(new CatalogueFragment(this, "azf"));
-            case R.id.nav_bzf:   return load(new CatalogueFragment(this, "bzf"));
+            case R.id.nav_azf:      return load(CatalogueFragment.newInstance("azf"));
+            case R.id.nav_bzf:      return load(CatalogueFragment.newInstance("bzf"));
             case R.id.nav_sim:   return load(new SimulatorFragment(this));
             case R.id.nav_stats: return load(new StatisticsFragment(this));
             case R.id.nav_settings: return load(new SettingsFragment(findViewById(R.id.fragment)));
