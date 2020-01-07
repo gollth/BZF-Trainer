@@ -235,7 +235,6 @@ public class CatalogueFragment extends Fragment implements
         int question = getProgress();
         if (hasAnsweredOutlierEdgeBetween(sliderLastQuestion, question)) {
             vibrateTick();
-            Log.i("BZF", "Question " + question + " is Edge (checked between " +sliderLastQuestion+ " .. " +question+ "!!!");
         }
         sliderLastQuestion = question;
         loadQuestion(question);
