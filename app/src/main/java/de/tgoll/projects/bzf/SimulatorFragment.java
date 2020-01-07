@@ -1,6 +1,8 @@
 package de.tgoll.projects.bzf;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -58,7 +60,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -106,16 +107,10 @@ public class SimulatorFragment extends Fragment
 
     // Misc
     private Gson gson;
-    private final TitleActivity activity;
     private LayoutInflater inflater;
     private Random rng = new Random();
     private SharedPreferences settings;
     private boolean loggedLevelStart = false;
-
-    SimulatorFragment(@NonNull TitleActivity activity) {
-        this.activity = activity;
-        gson = new Gson();
-    }
 
     private String getDifficultyName () {
         switch (getDifficulty()) {
@@ -202,9 +197,9 @@ public class SimulatorFragment extends Fragment
     }
     private Dialog createResultDialog() {
         Point size = new Point();
-        activity.getWindowManager().getDefaultDisplay().getSize(size);
+        requireActivity().getWindowManager().getDefaultDisplay().getSize(size);
 
-        ViewGroup root = activity.findViewById(R.id.fragment);
+        ViewGroup root = requireActivity().findViewById(R.id.fragment);
         View dialog = inflater.inflate(R.layout.dialog_sim_results, root, false);
         ScrollView scroller = dialog.findViewById(R.id.scroll_sim_diag);
         scroller.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (int) (size.y * 0.8f)));
@@ -236,14 +231,22 @@ public class SimulatorFragment extends Fragment
                 .putStringSet(key + "-history", history)
                 .apply();
 
-        return new MaterialAlertDialogBuilder(activity)
+        return new MaterialAlertDialogBuilder(requireContext())
                 .setCancelable(false)
                 .setView(dialog)
                 .setNegativeButton(R.string.statistics, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        activity.showFragment(getString(R.string.statistics), true);
+                        try {
+                            TitleActivity activity = (TitleActivity) getActivity();
+                            if (activity == null) return;
+                            activity.showFragment(getString(R.string.statistics), true);
+                        } catch (ClassCastException cce){
+                            String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
+                            Log.e("BZF", error);
+                            Crashlytics.log(error);
+                        }
                     }
                 })
                 .setPositiveButton(getString(R.string.restart), new DialogInterface.OnClickListener() {
@@ -265,10 +268,13 @@ public class SimulatorFragment extends Fragment
 
     @Nullable
     @Override
+    @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         View view = inflater.inflate(R.layout.fragment_simulator, container, false);
 
+        gson = new Gson();
+        Activity activity = requireActivity();
 
         settings = PreferenceManager.getDefaultSharedPreferences(activity);
         english = settings.getBoolean(getString(R.string.language), true);
@@ -393,7 +399,9 @@ public class SimulatorFragment extends Fragment
                         }
 
                         private void enableButton() {
-                            activity.runOnUiThread(new Runnable() {
+                            Activity act = getActivity();
+                            if (act == null) return;
+                            act.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     btn_record.setEnabled(true);
@@ -405,13 +413,17 @@ public class SimulatorFragment extends Fragment
 
                     if (wifi != null && wifi.isWifiEnabled()) return;
 
-                    new MaterialAlertDialogBuilder(activity)
+                    Activity act = getActivity();
+                    if (act == null) return;
+                    new MaterialAlertDialogBuilder(act)
                             .setMessage(getString(R.string.sim_init))
                             .setNegativeButton(getString(R.string.negative), null)
                             .setNeutralButton(getString(R.string.btn_info), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(final DialogInterface dialog, int which) {
-                                    new MaterialAlertDialogBuilder(activity)
+                                    Activity act = getActivity();
+                                    if (act == null) return;
+                                    new MaterialAlertDialogBuilder(act)
                                             .setMessage(getString(R.string.sim_info))
                                             .setPositiveButton("Roger", null)
                                             .show();
@@ -504,33 +516,45 @@ public class SimulatorFragment extends Fragment
         cbx_arrival.setEnabled(!isDepartureFinished());
     }
 
+    private boolean shallRepeat(String msg) {
+        String m = msg.toLowerCase();
+        return m.contains("say again") || m.contains("wiederholen");
+    }
+
     void onHeard(String msg) {
         // On heard can only be called, if button if active, if arrival is not yet complete...
 
         if (audio.getStreamVolume(AudioManager.STREAM_MUSIC) < .1)
             Snackbar.make(btn_record, R.string.sim_info_volume, Snackbar.LENGTH_LONG).show();
 
-        Phrase phrase = phrases.get(progress);
-        progress++;
-        updateComboBoxes();
-
-        // Compare the next phrase with the said message
-        Spanned comparison = phrase.compareWith(msg, Color.GREEN);
-        totalSuccessRates += phrase.getSuccessRate();
-        answeredFromYou++;
-        answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));
-
-        // If you said the last departure phrase, show message
-        if (isDepartureFinished() && !showedDepartureFinishMessage) {
-            generateNewParameters();
-            Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
-            showedDepartureFinishMessage = true;
+        // Check if the user has understood the last message, if not we do nothing
+        // and let ATC repeat its last message, if there is a last one
+        if (shallRepeat(msg) && progress > 0) {
+            progress--;
         }
-        // If you said the last arrival phrase, show result dialog and don't continue
-        if (isArrivalFinished()) {
-            btn_record.setEnabled(false);
-            createResultDialog().show();
-            return;
+        else {
+            Phrase phrase = phrases.get(progress);
+            progress++;
+            updateComboBoxes();
+
+            // Compare the next phrase with the said message
+            Spanned comparison = phrase.compareWith(msg, Color.GREEN);
+            totalSuccessRates += phrase.getSuccessRate();
+            answeredFromYou++;
+            answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));
+
+            // If you said the last departure phrase, show message
+            if (isDepartureFinished() && !showedDepartureFinishMessage) {
+                generateNewParameters();
+                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                showedDepartureFinishMessage = true;
+            }
+            // If you said the last arrival phrase, show result dialog and don't continue
+            if (isArrivalFinished()) {
+                btn_record.setEnabled(false);
+                createResultDialog().show();
+                return;
+            }
         }
 
         // If not yet finished, only continue when the next phrase is from ATC
@@ -586,14 +610,14 @@ public class SimulatorFragment extends Fragment
     private void speak(Phrase phrase) {
         Log.i("Simulator", "ATC: " + phrase.toString());
         answers.add(Html.fromHtml("<i>ATC:</i> " + phrase));
-        HashMap<String, String> params = new HashMap<>();
-        params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "Simulator");
-        atc.speak(phrase.makePronounceable(), TextToSpeech.QUEUE_ADD, params);
+        atc.speak(phrase.makePronounceable(), TextToSpeech.QUEUE_ADD, null, "Simulator");
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() != R.id.menu_restart) return false;
+        Activity activity = getActivity();
+        if (activity == null) return false;
         new MaterialAlertDialogBuilder(activity)
                 .setTitle(R.string.restart)
                 .setMessage(R.string.restart_alert)
