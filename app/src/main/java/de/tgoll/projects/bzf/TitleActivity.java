@@ -84,7 +84,8 @@ public class TitleActivity extends AppCompatActivity {
             case R.id.nav_bzf:      return load(CatalogueFragment.newInstance("bzf"));
             case R.id.nav_sim:      return load(new SimulatorFragment());
             case R.id.nav_stats:    return load(new StatisticsFragment());
-            case R.id.nav_settings: return load(new SettingsFragment(findViewById(R.id.fragment)));
+            case R.id.nav_settings: return load(new SettingsFragment());
+
             default: return false;
         }
     }

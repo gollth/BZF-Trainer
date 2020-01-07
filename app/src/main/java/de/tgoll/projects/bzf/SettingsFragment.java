@@ -1,12 +1,11 @@
 package de.tgoll.projects.bzf;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -17,21 +16,13 @@ import com.google.android.material.snackbar.Snackbar;
 public class SettingsFragment extends PreferenceFragmentCompat {
 
     private SharedPreferences settings;
-    private final View container;
-
-    SettingsFragment(View container) {
-        this.container = container;
-    }
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
-        final Context context = getContext();
-        if (context == null) return;
-
         setPreferencesFromResource(R.xml.settings, rootKey);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(context);
+        settings = PreferenceManager.getDefaultSharedPreferences(requireContext());
         Preference button = findPreference(getString(R.string.settings_reset));
         button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -43,6 +34,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         .remove("azf-state")
                         .remove("bzf-state")
                         .apply();
+
+                Activity context = getActivity();
+                if (context == null) return false;
+                View container = context.findViewById(R.id.fragment);
 
                 Snackbar.make(container, getString(R.string.settings_reset_toast), Snackbar.LENGTH_SHORT).show();
                 return false;
