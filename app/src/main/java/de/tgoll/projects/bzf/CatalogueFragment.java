@@ -282,7 +282,10 @@ public class CatalogueFragment extends Fragment implements
         txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, cat.size()));
     }
 
-    private void loadQuestion(int i) throws IndexOutOfBoundsException {
+    private void loadQuestion(int i) {
+        if (i < 0) i = 0;
+        if (i >= cat.size()) i = cat.size()-1;
+
         setQuestionProgress(i);
         updateButtons();
 
