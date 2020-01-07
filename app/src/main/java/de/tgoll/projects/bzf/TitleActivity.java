@@ -64,6 +64,10 @@ public class TitleActivity extends AppCompatActivity {
         if (id.equals(getString(R.string.statistics))) return R.id.nav_stats;
         throw new InvalidParameterException("Fragment ID " + id + " unknown");
     }
+    private void setNavigation(int id) {
+        MenuItem item = navigation.getMenu().findItem(id);
+        if (item != null) item.setChecked(true);
+    }
     boolean showFragment(String id) {
         return showFragment(id, false);
     }
@@ -74,7 +78,7 @@ public class TitleActivity extends AppCompatActivity {
         settings.edit().putString("navigation", id).apply();
 
         int tab = getNavigationID(id);
-        if (forceLoad) navigation.setSelectedItemId(tab);
+        if (forceLoad) setNavigation(tab);
         switch(tab) {
             case R.id.nav_azf:   return load(new CatalogueFragment(this, "azf"));
             case R.id.nav_bzf:   return load(new CatalogueFragment(this, "bzf"));
