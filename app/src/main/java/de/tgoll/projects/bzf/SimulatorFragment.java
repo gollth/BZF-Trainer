@@ -1,6 +1,7 @@
 package de.tgoll.projects.bzf;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -59,7 +60,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -268,6 +268,7 @@ public class SimulatorFragment extends Fragment
 
     @Nullable
     @Override
+    @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.inflater = inflater;
         View view = inflater.inflate(R.layout.fragment_simulator, container, false);
@@ -609,9 +610,7 @@ public class SimulatorFragment extends Fragment
     private void speak(Phrase phrase) {
         Log.i("Simulator", "ATC: " + phrase.toString());
         answers.add(Html.fromHtml("<i>ATC:</i> " + phrase));
-        HashMap<String, String> params = new HashMap<>();
-        params.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "Simulator");
-        atc.speak(phrase.makePronounceable(), TextToSpeech.QUEUE_ADD, params);
+        atc.speak(phrase.makePronounceable(), TextToSpeech.QUEUE_ADD, null, "Simulator");
     }
 
     @Override
