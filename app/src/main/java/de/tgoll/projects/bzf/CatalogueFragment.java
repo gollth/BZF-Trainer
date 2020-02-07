@@ -140,6 +140,8 @@ public class CatalogueFragment extends Fragment implements
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         resetQuestions();
+                        // Also reset the label formatter here since choices are empty again
+                        progress.setLabelFormatter(new CompletedFormatter(choices));
                         dialog.dismiss();
                     }
                 }).show();
