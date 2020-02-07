@@ -174,7 +174,7 @@ public class CatalogueFragment extends Fragment implements
             else loadQuestion(state.progress);
         }
 
-        // Set the label formatter after the choices have been intialized
+        // Set the label formatter after the choices have been initialized
         progress.setLabelFormatter(new CompletedFormatter(choices));
     }
 
