@@ -6,7 +6,7 @@
     <color name="colorHighlight">#006699</color>
     <color name="black">#111111</color>
     <color name="white">#EEEEEE</color>
-    <color name="grey">#999999</color>
+    <color name="grey">#CCCCCC</color>
     <color name="colorStatAZF">#006699</color>
     <color name="colorStatBZF">#66ccff</color>
 </resources>

@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -65,10 +64,10 @@ public class StatisticsFragment extends Fragment {
         setupHistoryChart(history);
         fillHistory(history, trials);
 
-        HorizontalBarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
-        HorizontalBarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
-        setupBarChart(barazf, "azf", XAxis.XAxisPosition.TOP);
-        setupBarChart(barbzf, "bzf", XAxis.XAxisPosition.BOTTOM);
+        BarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
+        BarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
+        setupBarChart(barazf, "azf");
+        setupBarChart(barbzf, "bzf");
 
         fillBarChart(barazf, trials.get("azf"), R.color.colorStatAZF);
         fillBarChart(barbzf, trials.get("bzf"), R.color.colorStatBZF);
@@ -94,7 +93,7 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
     }
-    private void setupBarChart(HorizontalBarChart barchart, String key, XAxis.XAxisPosition position) {
+    private void setupBarChart(BarChart barchart, String key) {
         barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
         barchart.setDrawGridBackground(false);
@@ -102,7 +101,7 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
-        barchart.getXAxis().setPosition(position);
+        barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);
