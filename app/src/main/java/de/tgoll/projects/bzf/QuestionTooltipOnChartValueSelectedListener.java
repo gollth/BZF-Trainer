@@ -67,6 +67,7 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
         int solution = catalogue.getSolution(number);
         for (int n = 0; n < 4; n++) {
             boolean correct = n == solution;
+            buttons[n].setEnabled(false);
             buttons[n].setText(catalogue.getAnswer(number, n));
             buttons[n].setTypeface(correct ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
             buttons[n].setTextColor(correct
