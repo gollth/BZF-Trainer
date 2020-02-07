@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+    $ 1.1.0
+      % Version 1.1.0
+      _ 2020-02-10
+      * Statistik-Fragen sind nun nach Häufigkeit sortiert
+      * Tippfehler in Frage 114 behoben
+      * kleiner Fix im Fortschrittsbalken des Kataloges
     $ 1.0.1
       % Version 1.0.1
       _ 2020-01-07
