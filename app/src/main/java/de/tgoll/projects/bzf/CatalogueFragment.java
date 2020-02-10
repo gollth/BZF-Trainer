@@ -140,8 +140,6 @@ public class CatalogueFragment extends Fragment implements
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         resetQuestions();
-                        // Also reset the label formatter here since choices are empty again
-                        progress.setLabelFormatter(new CompletedFormatter(choices));
                         dialog.dismiss();
                     }
                 }).show();
@@ -211,6 +209,8 @@ public class CatalogueFragment extends Fragment implements
             Collections.shuffle(playlist);
 
         answers.clear();
+
+        progress.setLabelFormatter(new CompletedFormatter(choices));
 
         // Send to Crashlytics, that the user started a new trial
         if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
