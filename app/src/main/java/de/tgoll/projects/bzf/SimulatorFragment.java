@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -234,27 +233,21 @@ public class SimulatorFragment extends Fragment
         return new MaterialAlertDialogBuilder(requireContext())
                 .setCancelable(false)
                 .setView(dialog)
-                .setNegativeButton(R.string.statistics, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        try {
-                            TitleActivity activity = (TitleActivity) getActivity();
-                            if (activity == null) return;
-                            activity.showFragment(getString(R.string.statistics), true);
-                        } catch (ClassCastException cce){
-                            String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
-                            Log.e("BZF", error);
-                            Crashlytics.log(error);
-                        }
+                .setNegativeButton(R.string.statistics, (d, which) -> {
+                    d.dismiss();
+                    try {
+                        TitleActivity activity = (TitleActivity) getActivity();
+                        if (activity == null) return;
+                        activity.showFragment(getString(R.string.statistics), true);
+                    } catch (ClassCastException cce){
+                        String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
+                        Log.e("BZF", error);
+                        Crashlytics.log(error);
                     }
                 })
-                .setPositiveButton(getString(R.string.restart), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        restart();
-                    }
+                .setPositiveButton(getString(R.string.restart), (d, which) -> {
+                    d.dismiss();
+                    restart();
                 })
                 .setTitle(getString(R.string.msg_finish_sim, correct))
                 .setIcon(correct >= 50 ? R.drawable.like : R.drawable.dislike).create();
@@ -378,66 +371,55 @@ public class SimulatorFragment extends Fragment
                 .putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 10000)
                 .putExtra(RecognizerIntent.EXTRA_LANGUAGE, english ? "en-US" : "de-DE");
 
-        atc = new TextToSpeech(getContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if(status == TextToSpeech.SUCCESS) {
-                    // Configure ATC
-                    atc.setLanguage(english ? Locale.US : Locale.GERMANY);
-                    atc.setOnUtteranceProgressListener(new UtteranceProgressListener() {
-                        @Override
-                        public void onStart(String utteranceId) {}
+        atc = new TextToSpeech(getContext(), status -> {
+            if(status != TextToSpeech.SUCCESS) return;
+            // Configure ATC
+            atc.setLanguage(english ? Locale.US : Locale.GERMANY);
+            atc.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+                @Override
+                public void onStart(String utteranceId) {}
 
-                        @Override
-                        public void onDone(String utteranceId) {
-                            enableButton();
-                        }
+                @Override
+                public void onDone(String utteranceId) {
+                    enableButton();
+                }
 
-                        @Override
-                        public void onError(String utteranceId) {
-                            enableButton();
-                        }
+                @Override
+                public void onError(String utteranceId) {
+                    enableButton();
+                }
 
-                        private void enableButton() {
-                            Activity act = getActivity();
-                            if (act == null) return;
-                            act.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn_record.setEnabled(true);
-                                    highlightHelp(false, true);
-                                }
-                            });
-                        }
-                    });
-
-                    if (wifi != null && wifi.isWifiEnabled()) return;
-
+                private void enableButton() {
                     Activity act = getActivity();
                     if (act == null) return;
-                    new MaterialAlertDialogBuilder(act)
-                            .setMessage(getString(R.string.sim_init))
-                            .setNegativeButton(getString(R.string.negative), null)
-                            .setNeutralButton(getString(R.string.btn_info), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(final DialogInterface dialog, int which) {
-                                    Activity act = getActivity();
-                                    if (act == null) return;
-                                    new MaterialAlertDialogBuilder(act)
-                                            .setMessage(getString(R.string.sim_info))
-                                            .setPositiveButton("Roger", null)
-                                            .show();
-                                }
-                            })
-                            .setPositiveButton(getString(R.string.positive), new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which){
-                                    if (wifi != null) wifi.setWifiEnabled(true);
-                                    dialog.dismiss();
-                                }
-                            }).show();
+                    act.runOnUiThread(() -> {
+                        btn_record.setEnabled(true);
+                        highlightHelp(false, true);
+                    });
                 }
-            }
+            });
+
+            if (wifi != null && wifi.isWifiEnabled()) return;
+
+            Activity act = getActivity();
+            if (act == null) return;
+            new MaterialAlertDialogBuilder(act)
+                .setMessage(getString(R.string.sim_init))
+                .setNegativeButton(getString(R.string.negative), null)
+                .setNeutralButton(getString(R.string.btn_info), (dialog, which) -> {
+                    Activity a = getActivity();
+                    if (a == null) return;
+                    new MaterialAlertDialogBuilder(act)
+                            .setMessage(getString(R.string.sim_info))
+                            .setPositiveButton("Roger", null)
+                            .show();
+                })
+                .setPositiveButton(getString(R.string.positive), (dialog, which) -> {
+                    if (wifi != null) wifi.setWifiEnabled(true);
+                    dialog.dismiss();
+
+                })
+                .show();
         });
 
         return view;
@@ -573,37 +555,34 @@ public class SimulatorFragment extends Fragment
         btn_record.setEnabled(false);
 
         // Do the talking delayed
-        new Handler().postDelayed(new Runnable() {
-           @Override
-           public void run() {
-               // Let ATC talk the next Phrase
-               speak(next);
-               progress++;
+        new Handler().postDelayed(() -> {
+           // Let ATC talk the next Phrase
+           speak(next);
+           progress++;
 
-               // Update the help, what is being said by ATC
-               String help = Phrase.Params.AIRPORT + " " + next.getSender() + ": ";
-               lbl_atc.setText(help);
-               txt_atc.setText(next.toString());
-               highlightHelp(true, false);
+           // Update the help, what is being said by ATC
+           String help = Phrase.Params.AIRPORT + " " + next.getSender() + ": ";
+           lbl_atc.setText(help);
+           txt_atc.setText(next.toString());
+           highlightHelp(true, false);
 
 
-               // If ATC said the last departure  message, show the message
-               if (isDepartureFinished() && !showedDepartureFinishMessage) {
-                    generateNewParameters();
-                    Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
-                    showedDepartureFinishMessage = true;
-               }
-               // If ATC said the last arrival message, show resulting dialog
-               if (isArrivalFinished()) {
-                   btn_record.setEnabled(false);
-                   createResultDialog().show();
-                   return;
-               }
-
-               // Update the help "next phrase from pilot" text view
-               txt_you.setText(phrases.get(progress).toString());
-
+           // If ATC said the last departure  message, show the message
+           if (isDepartureFinished() && !showedDepartureFinishMessage) {
+                generateNewParameters();
+                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                showedDepartureFinishMessage = true;
            }
+           // If ATC said the last arrival message, show resulting dialog
+           if (isArrivalFinished()) {
+               btn_record.setEnabled(false);
+               createResultDialog().show();
+               return;
+           }
+
+           // Update the help "next phrase from pilot" text view
+           txt_you.setText(phrases.get(progress).toString());
+
        }, 1000);
 
     }
@@ -619,16 +598,14 @@ public class SimulatorFragment extends Fragment
         Activity activity = getActivity();
         if (activity == null) return false;
         new MaterialAlertDialogBuilder(activity)
-                .setTitle(R.string.restart)
-                .setMessage(R.string.restart_alert)
-                .setNegativeButton(R.string.negative, null)
-                .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        restart();
-                        dialog.dismiss();
-                    }
-                }).show();
+            .setTitle(R.string.restart)
+            .setMessage(R.string.restart_alert)
+            .setNegativeButton(R.string.negative, null)
+            .setPositiveButton(R.string.positive, (dialog, which) -> {
+                restart();
+                dialog.dismiss();
+            })
+            .show();
         return true;
     }
 

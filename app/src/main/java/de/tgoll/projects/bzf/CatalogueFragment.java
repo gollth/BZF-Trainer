@@ -1,7 +1,6 @@
 package de.tgoll.projects.bzf;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -136,12 +135,9 @@ public class CatalogueFragment extends Fragment implements
                 .setTitle(R.string.restart)
                 .setMessage(R.string.restart_alert)
                 .setNegativeButton(R.string.negative, null)
-                .setPositiveButton(R.string.positive, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        resetQuestions();
-                        dialog.dismiss();
-                    }
+                .setPositiveButton(R.string.positive, (dialog, which) -> {
+                    resetQuestions();
+                    dialog.dismiss();
                 }).show();
         return true;
     }
@@ -341,14 +337,11 @@ public class CatalogueFragment extends Fragment implements
                 vibrateDoubleClick(); // Wrong
 
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                enableInput();
-                if (allQuestionsAnswered()) showResultDialog();
-                else if (isNotFinalQuestion()) loadQuestion(getProgress()+1);  // load next
+        new Handler().postDelayed(() -> {
+            enableInput();
+            if (allQuestionsAnswered()) showResultDialog();
+            else if (isNotFinalQuestion()) loadQuestion(getProgress()+1);  // load next
 
-            }
         }, (long) (Double.parseDouble(settings.getString(getString(R.string.settings_delay), "1")) * 1000));
 
     }
@@ -389,27 +382,21 @@ public class CatalogueFragment extends Fragment implements
                 .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
                 .setMessage(String.format(getString(R.string.msg_finish), Math.round(trial.getSuccessRate() * 100)))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
-                .setNegativeButton(R.string.statistics, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        try {
-                            TitleActivity activity = (TitleActivity) getActivity();
-                            if (activity == null) return;
-                            activity.showFragment(getString(R.string.statistics), true);
-                        } catch (ClassCastException cce){
-                            String error = "CatalogueFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
-                            Log.e("BZF", error);
-                            Crashlytics.log(error);
-                        }
+                .setNegativeButton(R.string.statistics, (dialog, which) -> {
+                    dialog.dismiss();
+                    try {
+                        TitleActivity activity = (TitleActivity) getActivity();
+                        if (activity == null) return;
+                        activity.showFragment(getString(R.string.statistics), true);
+                    } catch (ClassCastException cce){
+                        String error = "CatalogueFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
+                        Log.e("BZF", error);
+                        Crashlytics.log(error);
                     }
                 })
-                .setPositiveButton(R.string.restart, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        resetQuestions();
-                        dialog.dismiss();
-                    }
+                .setPositiveButton(R.string.restart, (dialog, which) -> {
+                    resetQuestions();
+                    dialog.dismiss();
                 }).show();
 
         // Send to Crashlytics, that the user has successfully finished the catalogue

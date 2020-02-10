@@ -35,7 +35,6 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -134,12 +133,7 @@ public class StatisticsFragment extends Fragment {
             values.add(new Pair<>(i+1, questions.get(i) / trials.size()));
         }
 
-        Collections.sort(values, new Comparator<Pair<Integer, Float>>() {
-            @Override
-            public int compare(Pair<Integer, Float> p1, Pair<Integer, Float> p2) {
-                return Float.compare(p1.second, p2.second);
-            }
-        });
+        Collections.sort(values, (a, b) -> Float.compare(a.second, b.second));
 
         List<Integer> keys = new ArrayList<>();
         List<BarEntry> entries = new ArrayList<>();
@@ -182,19 +176,17 @@ public class StatisticsFragment extends Fragment {
         Map<String, List<Entry>> entries = new HashMap<>();
 
         for (Map.Entry<String,List<Trial>> entry : trials.entrySet()) {
-            Collections.sort(entry.getValue(), new Comparator<Trial>() {
-                @Override
-                public int compare(Trial a, Trial b) {
-                    return createDateOnly(a.getTimestamp()).compareTo(createDateOnly(b.getTimestamp()));
-                }
-            });
+            Collections.sort(
+                entry.getValue(),
+                (a, b) -> createDateOnly(a.getTimestamp()).compareTo(createDateOnly(b.getTimestamp()))
+            );
 
             for (Trial trial : entry.getValue()) {
                 DateTime stamp = createDateOnly(trial.getTimestamp());
                 if (dates.contains(stamp)) continue;
                 dates.add(stamp);
             }
-            entries.put(entry.getKey(), new ArrayList<Entry>());
+            entries.put(entry.getKey(), new ArrayList<>());
         }
 
         Collections.sort(dates);

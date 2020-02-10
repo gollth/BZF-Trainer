@@ -44,12 +44,7 @@ public class TitleActivity extends AppCompatActivity {
         navigation = findViewById(R.id.navigation);
         String tab = settings.getString("navigation", getString(R.string.statistics));
         showFragment(tab, true);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return showFragment(item.getTitle().toString());
-            }
-        });
+        navigation.setOnNavigationItemSelectedListener(item -> showFragment(item.getTitle().toString()));
     }
 
     int getActiveFragment() {

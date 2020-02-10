@@ -20,7 +20,7 @@ public class Trial implements Comparable<Trial> {
     private float success;
 
     public Trial(String key, float success) {
-        this(key, null, new ArrayList<Integer>(), new ArrayList<Integer>());
+        this(key, null, new ArrayList<>(), new ArrayList<>());
         this.success = success;
     }
     public Trial(String key, Catalogue cat, List<Integer> playlist, List<Integer> choices) {
@@ -40,7 +40,7 @@ public class Trial implements Comparable<Trial> {
         success /= choices.size();
     }
     int size() { return this.choices.length; }
-    int getChoice(int i) { return this.choices[i]; }
+    private int getChoice(int i) { return this.choices[i]; }
     boolean isCorrect(int i) { return this.corrects[i]; }
 
     double getSuccessRate() {

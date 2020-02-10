@@ -2,7 +2,6 @@ package de.tgoll.projects.bzf;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
@@ -75,12 +74,7 @@ class ChangeLog {
                 .setView(wv)
                 .setCancelable(false)
                 // OK button
-                .setPositiveButton(context.getResources().getString(R.string.changelog_ok_button),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                updateVersionInPreferences();
-                            }
-                        });
+                .setPositiveButton(context.getResources().getString(R.string.changelog_ok_button), (dialog, which) -> updateVersionInPreferences());
         return builder.create();
     }
 
