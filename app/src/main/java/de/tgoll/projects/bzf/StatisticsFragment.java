@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,11 +67,11 @@ public class StatisticsFragment extends Fragment {
 
         BarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
         BarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
-        setupBarChart(barazf, "azf");
-        setupBarChart(barbzf, "bzf");
+        setupBarChart(barazf);
+        setupBarChart(barbzf);
 
-        fillBarChart(barazf, trials.get("azf"), R.color.colorStatAZF);
-        fillBarChart(barbzf, trials.get("bzf"), R.color.colorStatBZF);
+        fillBarChart(barazf, trials.get("azf"), "azf", R.color.colorStatAZF);
+        fillBarChart(barbzf, trials.get("bzf"), "bzf", R.color.colorStatBZF);
 
         return view;
     }
@@ -93,7 +94,7 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
     }
-    private void setupBarChart(BarChart barchart, String key) {
+    private void setupBarChart(BarChart barchart) {
         barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
         barchart.setDrawGridBackground(false);
@@ -106,17 +107,9 @@ public class StatisticsFragment extends Fragment {
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);
         barchart.setHighlightFullBarEnabled(true);
-        barchart.setOnChartValueSelectedListener(
-            new QuestionTooltipOnChartValueSelectedListener(
-                requireContext(),
-                getLayoutInflater(),
-                barchart,
-                key
-            )
-        );
     }
 
-    private void fillBarChart(BarChart chart, List<Trial> trials, int color) {
+    private void fillBarChart(BarChart chart, List<Trial> trials, String key, int color) {
         if (trials == null) return;
 
         // Create a list capable of holding all choices
@@ -135,20 +128,46 @@ public class StatisticsFragment extends Fragment {
         }
 
         // Convert the data to BarChart entries
-        List<BarEntry> entries = new ArrayList<>();
+        List<Pair<Integer, Float>> values = new ArrayList<>();
+
         for (int i = 0; i < questions.size(); i ++) {
-            float correct = questions.get(i) / trials.size();
-            entries.add(new BarEntry(i+1, new float[] { correct, 1f-correct }));
+            values.add(new Pair<>(i+1, questions.get(i) / trials.size()));
+        }
+
+        Collections.sort(values, new Comparator<Pair<Integer, Float>>() {
+            @Override
+            public int compare(Pair<Integer, Float> p1, Pair<Integer, Float> p2) {
+                return Float.compare(p1.second, p2.second);
+            }
+        });
+
+        List<Integer> keys = new ArrayList<>();
+        List<BarEntry> entries = new ArrayList<>();
+
+        for (int i = 0; i < values.size(); i++) {
+            Pair<Integer, Float> pair = values.get(i);
+            keys.add(pair.first);
+            entries.add(new BarEntry(i, new float[]{ pair.second, 1f-pair.second }));
         }
 
         int[] colors = new int[]{ getResources().getColor(color), Color.LTGRAY};
 
         BarDataSet data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new NoneValueFormatter());
+        chart.getXAxis().setValueFormatter(new ObjectValueFormatter<>(keys));
         data.setColors(colors);
         chart.getAxisLeft().setAxisMaximum(1);
         chart.getAxisLeft().setAxisMinimum(0);
         chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
+        chart.setOnChartValueSelectedListener(
+                new QuestionTooltipOnChartValueSelectedListener(
+                        requireContext(),
+                        getLayoutInflater(),
+                        chart,
+                        key,
+                        keys
+                )
+        );
         chart.notifyDataSetChanged();
         chart.invalidate();
     }
@@ -237,6 +256,21 @@ public class StatisticsFragment extends Fragment {
         @Override
         public String getFormattedValue(float value) {
             return String.format(Locale.GERMAN, "%.0f%%", value * 100);
+        }
+    }
+
+    public class ObjectValueFormatter<T> extends ValueFormatter {
+
+        private final List<T> values;
+
+        ObjectValueFormatter(List<T> values) {
+            this.values = values;
+        }
+
+        @Override
+        public String getFormattedValue(float value) {
+            if (value < 0 || value >= values.size()) return "";
+            return values.get((int)value).toString();
         }
     }
 

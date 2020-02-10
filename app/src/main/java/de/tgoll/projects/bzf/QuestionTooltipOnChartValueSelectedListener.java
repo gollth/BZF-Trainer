@@ -17,11 +17,13 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.util.List;
 import java.util.Locale;
 
 class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelectedListener,
         DialogInterface.OnDismissListener {
 
+    private final List<Integer> questions;
     private final Context context;
     private final BarChart chart;
     private final Catalogue catalogue;
@@ -31,11 +33,12 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
     private final TextView txt_question;
     private final RadioButton[] buttons;
 
-    QuestionTooltipOnChartValueSelectedListener(@NonNull Context context, @NonNull LayoutInflater inflater, @NonNull BarChart chart, String key) {
+    QuestionTooltipOnChartValueSelectedListener(@NonNull Context context, @NonNull LayoutInflater inflater, @NonNull BarChart chart, String key, List<Integer> questions) {
         this.context = context;
         this.chart = chart;
         this.catalogue = new Catalogue(context, key);
         this.key = key;
+        this.questions = questions;
         View view = inflater.inflate(R.layout.dialog_catalogue, null);
         this.txt_number = view.findViewById(R.id.txt_number);
         this.txt_question = view.findViewById(R.id.txt_question);
@@ -54,21 +57,20 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-        int number = (int) e.getX() - 1;
+        int number = questions.get((int) e.getX());
 
-
-        String question = catalogue.getQuestion(number);
+        String question = catalogue.getQuestion(number-1);
         String[] parts = question.split("\\d{1,4}.\\s", 2);
         String format = key.equals("azf") ? "Question %d" : "Frage %d";
 
-        txt_number.setText(String.format(Locale.getDefault(), format, number + 1));
+        txt_number.setText(String.format(Locale.getDefault(), format, number));
         txt_question.setText(parts[1]);
 
-        int solution = catalogue.getSolution(number);
+        int solution = catalogue.getSolution(number-1);
         for (int n = 0; n < 4; n++) {
             boolean correct = n == solution;
             buttons[n].setEnabled(false);
-            buttons[n].setText(catalogue.getAnswer(number, n));
+            buttons[n].setText(catalogue.getAnswer(number-1, n));
             buttons[n].setTypeface(correct ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
             buttons[n].setTextColor(correct
                     ? context.getResources().getColor(R.color.colorHighlight)
