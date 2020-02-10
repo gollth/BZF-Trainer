@@ -144,7 +144,7 @@ public class StatisticsFragment extends Fragment {
             entries.add(new BarEntry(i, new float[]{ pair.second, 1f-pair.second }));
         }
 
-        int[] colors = new int[]{ getResources().getColor(color), Color.LTGRAY};
+        int[] colors = new int[]{ getResources().getColor(color), getResources().getColor(R.color.grey)};
 
         BarDataSet data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new NoneValueFormatter());
