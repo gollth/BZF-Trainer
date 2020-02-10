@@ -18,28 +18,25 @@ public class BZFTrainerApplication extends Application {
     private Thread.UncaughtExceptionHandler handler = new Thread.UncaughtExceptionHandler() {
         @Override
         public void uncaughtException(@NonNull Thread thread, @NonNull Throwable ex) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Looper.prepare();
-                    Toast.makeText(getApplicationContext(),
-                            R.string.crash_msg,
-                            Toast.LENGTH_LONG).show();
+            new Thread(() -> {
+                Looper.prepare();
+                Toast.makeText(getApplicationContext(),
+                        R.string.crash_msg,
+                        Toast.LENGTH_LONG).show();
 
-                    // As a last resort, try to remove the saved state from the application,
-                    // since it might contain outdated information
-                    PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
-                            .edit()
-                            .remove("navigation")
-                            .remove("azf-state")
-                            .remove("bzf-state")
-                            .remove("azf-history")
-                            .remove("bzf-history")
-                            .remove("sim-history")
-                            .apply();
+                // As a last resort, try to remove the saved state from the application,
+                // since it might contain outdated information
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
+                        .edit()
+                        .remove("navigation")
+                        .remove("azf-state")
+                        .remove("bzf-state")
+                        .remove("azf-history")
+                        .remove("bzf-history")
+                        .remove("sim-history")
+                        .apply();
 
-                    Looper.loop();
-                }
+                Looper.loop();
             }).start();
 
             // Now shutdown VM gracefully

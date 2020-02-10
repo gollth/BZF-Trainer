@@ -7,7 +7,6 @@ import android.util.Log;
 import com.crashlytics.android.Crashlytics;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +24,7 @@ class Catalogue {
         return id;
     }
 
-    public Catalogue(Context c, String key) {
+    Catalogue(Context c, String key) {
         questions = c.getResources().getStringArray(idStringArray(c,key + "_questions"));
         answers = new String[questions.length][];
         solutions = c.getResources().getIntArray(idStringArray(c,key + "_solutions"));
@@ -95,11 +94,7 @@ class Catalogue {
 
     <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
         List<Map.Entry<K, V>> list = new LinkedList<>( map.entrySet() );
-        Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
-            public int compare(Map.Entry<K, V> o1, Map.Entry<K, V> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
-            }
-        });
+        Collections.sort(list, (a, b) -> a.getValue().compareTo(b.getValue()));
 
         Map<K, V> result = new LinkedHashMap<>();
         for (Map.Entry<K, V> entry : list) {

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -35,7 +35,6 @@ import org.joda.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -65,13 +64,13 @@ public class StatisticsFragment extends Fragment {
         setupHistoryChart(history);
         fillHistory(history, trials);
 
-        HorizontalBarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
-        HorizontalBarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
-        setupBarChart(barazf, "azf", XAxis.XAxisPosition.TOP);
-        setupBarChart(barbzf, "bzf", XAxis.XAxisPosition.BOTTOM);
+        BarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
+        BarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
+        setupBarChart(barazf);
+        setupBarChart(barbzf);
 
-        fillBarChart(barazf, trials.get("azf"), R.color.colorStatAZF);
-        fillBarChart(barbzf, trials.get("bzf"), R.color.colorStatBZF);
+        fillBarChart(barazf, trials.get("azf"), "azf", R.color.colorStatAZF);
+        fillBarChart(barbzf, trials.get("bzf"), "bzf", R.color.colorStatBZF);
 
         return view;
     }
@@ -94,7 +93,7 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
     }
-    private void setupBarChart(HorizontalBarChart barchart, String key, XAxis.XAxisPosition position) {
+    private void setupBarChart(BarChart barchart) {
         barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
         barchart.setDrawGridBackground(false);
@@ -102,22 +101,14 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
-        barchart.getXAxis().setPosition(position);
+        barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);
         barchart.setHighlightFullBarEnabled(true);
-        barchart.setOnChartValueSelectedListener(
-            new QuestionTooltipOnChartValueSelectedListener(
-                requireContext(),
-                getLayoutInflater(),
-                barchart,
-                key
-            )
-        );
     }
 
-    private void fillBarChart(BarChart chart, List<Trial> trials, int color) {
+    private void fillBarChart(BarChart chart, List<Trial> trials, String key, int color) {
         if (trials == null) return;
 
         // Create a list capable of holding all choices
@@ -136,20 +127,41 @@ public class StatisticsFragment extends Fragment {
         }
 
         // Convert the data to BarChart entries
-        List<BarEntry> entries = new ArrayList<>();
+        List<Pair<Integer, Float>> values = new ArrayList<>();
+
         for (int i = 0; i < questions.size(); i ++) {
-            float correct = questions.get(i) / trials.size();
-            entries.add(new BarEntry(i+1, new float[] { correct, 1f-correct }));
+            values.add(new Pair<>(i+1, questions.get(i) / trials.size()));
         }
 
-        int[] colors = new int[]{ getResources().getColor(color), Color.LTGRAY};
+        Collections.sort(values, (a, b) -> Float.compare(a.second, b.second));
+
+        List<Integer> keys = new ArrayList<>();
+        List<BarEntry> entries = new ArrayList<>();
+
+        for (int i = 0; i < values.size(); i++) {
+            Pair<Integer, Float> pair = values.get(i);
+            keys.add(pair.first);
+            entries.add(new BarEntry(i, new float[]{ pair.second, 1f-pair.second }));
+        }
+
+        int[] colors = new int[]{ getResources().getColor(color), getResources().getColor(R.color.grey)};
 
         BarDataSet data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new NoneValueFormatter());
+        chart.getXAxis().setValueFormatter(new ObjectValueFormatter<>(keys));
         data.setColors(colors);
         chart.getAxisLeft().setAxisMaximum(1);
         chart.getAxisLeft().setAxisMinimum(0);
         chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
+        chart.setOnChartValueSelectedListener(
+                new QuestionTooltipOnChartValueSelectedListener(
+                        requireContext(),
+                        getLayoutInflater(),
+                        chart,
+                        key,
+                        keys
+                )
+        );
         chart.notifyDataSetChanged();
         chart.invalidate();
     }
@@ -164,19 +176,17 @@ public class StatisticsFragment extends Fragment {
         Map<String, List<Entry>> entries = new HashMap<>();
 
         for (Map.Entry<String,List<Trial>> entry : trials.entrySet()) {
-            Collections.sort(entry.getValue(), new Comparator<Trial>() {
-                @Override
-                public int compare(Trial a, Trial b) {
-                    return createDateOnly(a.getTimestamp()).compareTo(createDateOnly(b.getTimestamp()));
-                }
-            });
+            Collections.sort(
+                entry.getValue(),
+                (a, b) -> createDateOnly(a.getTimestamp()).compareTo(createDateOnly(b.getTimestamp()))
+            );
 
             for (Trial trial : entry.getValue()) {
                 DateTime stamp = createDateOnly(trial.getTimestamp());
                 if (dates.contains(stamp)) continue;
                 dates.add(stamp);
             }
-            entries.put(entry.getKey(), new ArrayList<Entry>());
+            entries.put(entry.getKey(), new ArrayList<>());
         }
 
         Collections.sort(dates);
@@ -238,6 +248,21 @@ public class StatisticsFragment extends Fragment {
         @Override
         public String getFormattedValue(float value) {
             return String.format(Locale.GERMAN, "%.0f%%", value * 100);
+        }
+    }
+
+    public class ObjectValueFormatter<T> extends ValueFormatter {
+
+        private final List<T> values;
+
+        ObjectValueFormatter(List<T> values) {
+            this.values = values;
+        }
+
+        @Override
+        public String getFormattedValue(float value) {
+            if (value < 0 || value >= values.size()) return "";
+            return values.get((int)value).toString();
         }
     }
 

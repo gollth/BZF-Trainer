@@ -28,7 +28,7 @@
     <string name="restart_alert">Bist du sicher, dass du die Fragen von vorne beantworten möchtest?</string>
 
     <string name="statistics">Statistik</string>
-    <string name="statistics_history">Erfolgsrate</string>
+    <string name="statistics_history">Verlauf</string>
     <string name="statistics_azf">AZF Antworten</string>
     <string name="statistics_bzf">BZF Antworten</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
