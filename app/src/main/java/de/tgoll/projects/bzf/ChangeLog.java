@@ -1,14 +1,14 @@
 package de.tgoll.projects.bzf;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.webkit.WebView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -56,26 +56,24 @@ class ChangeLog {
     /**
      * @return an AlertDialog with a full change log displayed
      */
-    AlertDialog getFullLogDialog() {
+    Dialog getFullLogDialog() {
         return this.getDialog();
     }
 
-    private AlertDialog getDialog() {
+    private Dialog getDialog() {
         WebView wv = new WebView(this.context);
 
-        wv.setBackgroundColor(Color.parseColor(context.getResources().getString(
-                R.string.background_color)));
+
+        //wv.setBackgroundColor(context.getResources().getColor(R.color.white));
         wv.loadDataWithBaseURL(null, this.getLog(), "text/html", "UTF-8", null);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(this.context,
-                android.R.style.Theme_Dialog));
-        builder.setTitle(
-                context.getResources().getString(R.string.changelog_full_title))
-                .setView(wv)
-                .setCancelable(false)
-                // OK button
-                .setPositiveButton(context.getResources().getString(R.string.changelog_ok_button), (dialog, which) -> updateVersionInPreferences());
-        return builder.create();
+        return new MaterialAlertDialogBuilder(context)
+        //new ContextThemeWrapper(this.context, android.R.style.Theme_Dialog)
+            .setTitle(context.getResources().getString(R.string.changelog_full_title))
+            .setView(wv)
+            .setCancelable(false)
+            .setPositiveButton(context.getResources().getString(R.string.changelog_ok_button), (dialog, which) -> updateVersionInPreferences())
+            .create();
     }
 
     private void updateVersionInPreferences() {
