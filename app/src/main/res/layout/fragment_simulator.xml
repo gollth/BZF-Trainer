@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/sim_msg_departure_select"
-            android:src="@drawable/departure_icon" />
+            android:src="@drawable/departure_light" />
 
         <Spinner
             android:id="@+id/sim_cbx_dep"
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/sim_msg_departure_select"
-            android:src="@drawable/arrival" />
+            android:src="@drawable/arrival_light" />
     </LinearLayout>
 
     <TableLayout
