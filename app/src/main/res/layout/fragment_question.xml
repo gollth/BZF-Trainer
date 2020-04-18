@@ -44,6 +44,7 @@
         android:layout_marginBottom="8dp"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="14sp"
+        android:textStyle="italic"
         android:text="Bei einem QNH von 1013 hPa wo ist das Transition Layer in Bezug auf..."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
