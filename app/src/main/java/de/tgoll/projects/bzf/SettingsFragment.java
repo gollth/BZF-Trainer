@@ -71,5 +71,11 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             );
             return false;
         });
+
+        Preference darkMode = findPreference(getString(R.string.settings_theme));
+        darkMode.setOnPreferenceChangeListener((preference, dark) -> {
+            TitleActivity.restart(requireContext());
+            return true;
+        });
     }
 }

@@ -139,6 +139,11 @@
     <string name="changelog_show_full">more&#8230;</string>
     <string name="background_color">black</string>
 
+    <string name="settings_theme">Dark Mode</string>
+    <string name="settings_theme_summary">Sollen die Farben der App abgedunkelt werden um Batterie sparen?</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
+
     <string name="answer_separator">;</string>
 
 </resources>
