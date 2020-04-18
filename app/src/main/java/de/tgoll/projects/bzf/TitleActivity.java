@@ -1,6 +1,8 @@
 package de.tgoll.projects.bzf;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import androidx.annotation.AttrRes;
@@ -24,6 +26,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.security.InvalidParameterException;
 
 public class TitleActivity extends AppCompatActivity {
+
+    public static void restart(Context context) {
+        Intent intent = new Intent(context, TitleActivity.class);
+        context.startActivity(intent);
+        if (context instanceof Activity) ((Activity)context).finishAffinity();
+    }
 
     public static @ColorInt int lookupColor(@NonNull Context context, @AttrRes int id) {
         TypedValue typedValue = new TypedValue();
