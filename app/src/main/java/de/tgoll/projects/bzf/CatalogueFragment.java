@@ -443,7 +443,7 @@ public class CatalogueFragment extends Fragment implements
             txt_answers.addView(buttons[i]);
     }
 
-    public class SavedState {
+    public static class SavedState {
         private final List<Integer> playlist;
         private final List<Integer> choices;
         private final int progress;
