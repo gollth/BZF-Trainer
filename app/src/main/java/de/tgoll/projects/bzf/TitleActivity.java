@@ -20,6 +20,8 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -77,11 +79,13 @@ public class TitleActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        int background = lookupColor(this, R.attr.colorPrimarySurface);
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(background);
-        window.setNavigationBarColor(background);
+        if (isDarkMode(this)) {
+            int background = lookupColor(this, R.attr.colorPrimarySurface);
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(background);
+            window.setNavigationBarColor(background);
+        }
     }
 
     @Override
