@@ -31,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
@@ -283,6 +284,13 @@ public class SimulatorFragment extends Fragment
         txt_atc = view.findViewById(R.id.sim_txt_atc);
         txt_you = view.findViewById(R.id.sim_txt_you);
         lbl_atc = view.findViewById(R.id.sim_txt_atc_lbl);
+        if (TitleActivity.isDarkMode(requireContext())) {
+            // Dark Mode
+            ImageView arrival = view.findViewById(R.id.icon_arrival);
+            ImageView departure = view.findViewById(R.id.icon_departure);
+            arrival.setImageDrawable(activity.getDrawable(R.drawable.arrival_dark));
+            departure.setImageDrawable(activity.getDrawable(R.drawable.departure_dark));
+        }
 
         btn_record = view.findViewById(R.id.btn_record);
         btn_record.setOnTouchListener(this);
