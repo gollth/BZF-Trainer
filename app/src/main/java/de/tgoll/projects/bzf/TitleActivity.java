@@ -70,6 +70,32 @@ public class TitleActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(item -> showFragment(item.getTitle().toString()));
     }
 
+    public static boolean isDarkMode(@NonNull Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.settings_theme), false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int background = lookupColor(this, R.attr.colorPrimarySurface);
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(background);
+        window.setNavigationBarColor(background);
+    }
+
+    @Override
+    public Resources.Theme getTheme() {
+        Resources.Theme theme = super.getTheme();
+        if (isDarkMode(this)) {
+            theme.applyStyle(R.style.AppThemeDark, true);
+        }
+        else {
+            theme.applyStyle(R.style.AppThemeLight, true);
+        }
+        return theme;
+    }
+
     int getActiveFragment() {
         return navigation.getSelectedItemId();
     }
