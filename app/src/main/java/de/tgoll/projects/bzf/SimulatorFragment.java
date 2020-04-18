@@ -485,10 +485,12 @@ public class SimulatorFragment extends Fragment
     public void onNothingSelected(AdapterView<?> parent) {}
 
     private void highlightHelp(boolean atc, boolean you) {
+        int highlight = TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight);
+        int normal = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
         txt_atc.setTypeface(null, atc ? Typeface.BOLD : Typeface.NORMAL);
         txt_you.setTypeface(null, you ? Typeface.BOLD : Typeface.NORMAL);
-        txt_atc.setTextColor(getResources().getColor(atc ? R.color.colorPrimaryDark : R.color.black));
-        txt_you.setTextColor(getResources().getColor(you ? R.color.colorPrimaryDark : R.color.black));
+        txt_atc.setTextColor(atc ? highlight : normal);
+        txt_you.setTextColor(you ? highlight : normal);
     }
     private boolean isDepartureFinished() { return progress >= departurePhraseSize;}
     private boolean isArrivalFinished() {return progress >= phrases.size();}

@@ -67,14 +67,17 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
         txt_question.setText(parts[1]);
 
         int solution = catalogue.getSolution(number-1);
+        int normal = TitleActivity.lookupColor(context, R.attr.colorOnBackground);
+        int highlight = TitleActivity.lookupColor(context, R.attr.colorControlHighlight);
+
         for (int n = 0; n < 4; n++) {
             boolean correct = n == solution;
             buttons[n].setEnabled(false);
             buttons[n].setText(catalogue.getAnswer(number-1, n));
             buttons[n].setTypeface(correct ? Typeface.DEFAULT_BOLD : Typeface.DEFAULT);
             buttons[n].setTextColor(correct
-                    ? context.getResources().getColor(R.color.colorHighlight)
-                    : context.getResources().getColor(R.color.black)
+                    ? highlight
+                    : normal
             );
             if (correct) buttons[n].setChecked(true);
         }

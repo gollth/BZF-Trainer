@@ -40,7 +40,7 @@ public class PaintView extends View {
         settings = PreferenceManager.getDefaultSharedPreferences(context);
         touch = new PointF(-1,-1);
         paint = new Paint();
-        paint.setColor(Color.BLACK);
+        paint.setColor(TitleActivity.lookupColor(context, R.attr.colorOnBackground));
         paint.setAntiAlias(true);
         paint.setStrokeWidth(2);
         paint.setStrokeJoin(Paint.Join.ROUND);

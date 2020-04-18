@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:minHeight="60dp"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="14sp" />
 
     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:minHeight="60dp"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="14sp" />
 
     <com.google.android.material.radiobutton.MaterialRadioButton
@@ -32,14 +32,14 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:minHeight="60dp"
-        android:textColor="@color/black" />
+        android:textColor="?attr/colorOnBackground" />
 
     <com.google.android.material.radiobutton.MaterialRadioButton
         android:id="@+id/D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="60dp"
-        android:textColor="@color/black"
+        android:textColor="?attr/colorOnBackground"
         android:textSize="14sp" />
 
 </RadioGroup>

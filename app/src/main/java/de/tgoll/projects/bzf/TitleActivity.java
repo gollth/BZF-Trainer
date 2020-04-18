@@ -1,14 +1,21 @@
 package de.tgoll.projects.bzf;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,6 +25,12 @@ import java.security.InvalidParameterException;
 
 public class TitleActivity extends AppCompatActivity {
 
+    public static @ColorInt int lookupColor(@NonNull Context context, @AttrRes int id) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(id, typedValue, true);
+        return typedValue.data;
+    }
 
     SharedPreferences settings;
     private BottomNavigationView navigation;
@@ -31,8 +44,10 @@ public class TitleActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            int background = lookupColor(this, R.attr.colorPrimarySurface);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setIcon(R.drawable.bzf);
+            actionBar.setBackgroundDrawable(new ColorDrawable(background));
         }
 
         ChangeLog changelog = new ChangeLog(this);

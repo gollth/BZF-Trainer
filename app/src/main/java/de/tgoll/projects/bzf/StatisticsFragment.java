@@ -69,23 +69,27 @@ public class StatisticsFragment extends Fragment {
         setupBarChart(barazf);
         setupBarChart(barbzf);
 
-        fillBarChart(barazf, trials.get("azf"), "azf", R.color.colorStatAZF);
-        fillBarChart(barbzf, trials.get("bzf"), "bzf", R.color.colorStatBZF);
+        fillBarChart(barazf, trials.get("azf"), "azf", TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
+        fillBarChart(barbzf, trials.get("bzf"), "bzf", TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary));
 
         return view;
     }
 
     private void setupHistoryChart(LineChart history) {
+        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
         history.setPinchZoom(true);
         history.getAxisRight().setEnabled(true);
+        history.getAxisRight().setTextColor(color);
         history.getAxisRight().setValueFormatter(new PercentFormatter());
         history.getAxisLeft().setEnabled(false);
         history.getXAxis().setEnabled(true);
+        history.getXAxis().setTextColor(color);
         history.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         history.getXAxis().setGranularity(1f);
         history.getLegend().setEnabled(true);
+        history.getLegend().setTextColor(color);
         history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         history.getAxisRight().setGranularity(0.2f);
@@ -101,6 +105,7 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
+        barchart.getXAxis().setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
@@ -144,7 +149,8 @@ public class StatisticsFragment extends Fragment {
             entries.add(new BarEntry(i, new float[]{ pair.second, 1f-pair.second }));
         }
 
-        int[] colors = new int[]{ getResources().getColor(color), getResources().getColor(R.color.grey)};
+        int background = Color.TRANSPARENT;
+        int[] colors = new int[]{ color, background };
 
         BarDataSet data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new NoneValueFormatter());
@@ -208,17 +214,20 @@ public class StatisticsFragment extends Fragment {
             line.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             line.setDrawFilled(true);
             line.setCircleRadius(3);
-            line.setCircleColor(getResources().getColor(R.color.black));
+            line.setCircleColor(Color.BLACK);
             line.setValueFormatter(new NoneValueFormatter());
+            int color;
             switch (entry.getKey()) {
                 case "azf":
-                    line.setFillColor(getResources().getColor(R.color.colorStatAZF));
-                    line.setColor(getResources().getColor(R.color.colorStatAZF));
+                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant);
+                    line.setFillColor(color);
+                    line.setColor(color);
                     line.setFillAlpha(100);
                     break;
                 case "bzf":
-                    line.setFillColor(getResources().getColor(R.color.colorStatBZF));
-                    line.setColor(getResources().getColor(R.color.colorStatBZF));
+                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary);
+                    line.setFillColor(color);
+                    line.setColor(color);
                     line.setFillAlpha(100);
                     break;
                 case "sim":

@@ -18,8 +18,10 @@
         android:label="@string/app_name"
         android:process=":bzf"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".TitleActivity" android:screenOrientation="portrait">
+        android:theme="@style/AppThemeLight">
+        <activity
+            android:name=".TitleActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
