@@ -72,8 +72,18 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             return false;
         });
 
+        Activity activity = requireActivity();
+        Shop shop = new Shop(activity, getLayoutInflater());
+
         Preference darkMode = findPreference(getString(R.string.settings_theme));
         darkMode.setOnPreferenceChangeListener((preference, dark) -> {
+            if (!shop.isPurchased(Shop.SKU_DARK_MODE)) {
+                // If the Dark Mode was not yet purchased, show the user the dialog
+                // but don't switch dark mode on
+                shop.show(false);
+                return false;
+            }
+
             TitleActivity.restart(requireContext());
             return true;
         });
