@@ -16,13 +16,11 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.security.InvalidParameterException;
@@ -60,16 +58,20 @@ public class TitleActivity extends AppCompatActivity {
             actionBar.setBackgroundDrawable(new ColorDrawable(background));
         }
 
-        ChangeLog changelog = new ChangeLog(this);
-        if (changelog.firstRun()) {
-            changelog.getFullLogDialog().show();
-        }
-
         // The initially shown fragment in the tab host
         navigation = findViewById(R.id.navigation);
         String tab = settings.getString("navigation", getString(R.string.statistics));
         showFragment(tab, true);
         navigation.setOnNavigationItemSelectedListener(item -> showFragment(item.getTitle().toString()));
+
+        // Show Pop ups if necessary
+        ChangeLog changelog = new ChangeLog(this);
+        if (changelog.firstRun()) {
+            changelog.getFullLogDialog().show();
+            return;
+        }
+        Shop shop = new Shop(this, getLayoutInflater());
+        if (shop.isTimeToShowAgain()) shop.show(true);
     }
 
     public static boolean isDarkMode(@NonNull Context context) {
