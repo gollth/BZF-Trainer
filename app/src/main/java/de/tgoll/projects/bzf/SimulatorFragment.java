@@ -178,7 +178,7 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.AIRCRAFT = txt_aircraft.getText().toString();
         Phrase.Params.AIRPORT = showedDepartureFinishMessage ? cbx_departure.getSelectedItem().toString()
                                                : cbx_arrival.getSelectedItem().toString();
-        Phrase.Params.CALLSIGN = txt_callsign.getText().toString();
+        Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase();
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
         Phrase.Params.SQUAWK = String.format(Locale.GERMAN, "%04d", rng.nextInt(10000));
@@ -343,7 +343,8 @@ public class SimulatorFragment extends Fragment
         // Update the Callsign from preferences
         txt_callsign.setText(settings.getString(
                 getString(R.string.settings_sim_callsign),
-                getString(R.string.sim_default_callsign)));
+                getString(R.string.sim_default_callsign)
+        ).toUpperCase());
 
         // Update the Aircraft Type from preferences
         txt_aircraft.setText(settings.getString(
