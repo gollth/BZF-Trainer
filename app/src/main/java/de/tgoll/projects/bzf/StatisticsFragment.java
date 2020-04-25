@@ -162,7 +162,6 @@ public class StatisticsFragment extends Fragment {
         chart.setOnChartValueSelectedListener(
                 new QuestionTooltipOnChartValueSelectedListener(
                         requireContext(),
-                        getLayoutInflater(),
                         chart,
                         key,
                         keys
@@ -246,21 +245,21 @@ public class StatisticsFragment extends Fragment {
         history.invalidate();
     }
 
-    public class NoneValueFormatter extends ValueFormatter {
+    public static class NoneValueFormatter extends ValueFormatter {
         @Override
         public String getFormattedValue(float value) {
             return "";
         }
     }
 
-    public class PercentFormatter extends ValueFormatter {
+    public static class PercentFormatter extends ValueFormatter {
         @Override
         public String getFormattedValue(float value) {
             return String.format(Locale.GERMAN, "%.0f%%", value * 100);
         }
     }
 
-    public class ObjectValueFormatter<T> extends ValueFormatter {
+    public static class ObjectValueFormatter<T> extends ValueFormatter {
 
         private final List<T> values;
 
@@ -275,7 +274,7 @@ public class StatisticsFragment extends Fragment {
         }
     }
 
-    public class DateAxisFormatter extends ValueFormatter {
+    public static class DateAxisFormatter extends ValueFormatter {
 
 
         private final List<DateTime> dates;

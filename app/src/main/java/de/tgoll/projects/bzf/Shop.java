@@ -1,5 +1,6 @@
 package de.tgoll.projects.bzf;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.SharedPreferences;
@@ -49,12 +50,13 @@ public class Shop implements PurchasesUpdatedListener {
     private View view;
     private View container;
 
-    Shop(@NonNull Activity context, @NonNull LayoutInflater inflater) {
+    @SuppressLint({"InflateWarnings", "InflateParams"})
+    Shop(@NonNull Activity context) {
         this.context = context;
         container = context.findViewById(R.id.navigation);
         settings = PreferenceManager.getDefaultSharedPreferences(context);
         format = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        view = inflater.inflate(R.layout.dialog_shop, null);
+        view = LayoutInflater.from(context).inflate(R.layout.dialog_shop, null);
         billing = BillingClient.newBuilder(context).enablePendingPurchases().setListener(this).build();
         dialog = new MaterialAlertDialogBuilder(context)
             .setTitle(context.getResources().getString(R.string.shop_title))
@@ -147,6 +149,7 @@ public class Shop implements PurchasesUpdatedListener {
         return true;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean isPurchased(String sku) {
         return settings.contains(sku);
     }

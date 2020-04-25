@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -131,6 +130,7 @@ public class SimulatorFragment extends Fragment
     }
 
     // Creation functions
+    @SuppressWarnings("RegExpRedundantEscape")
     private List<Phrase> parseConversation (int id, boolean english) throws IOException {
         InputStream stream = getResources().openRawResource(id);
         byte[] data = new byte[stream.available()];
@@ -531,7 +531,7 @@ public class SimulatorFragment extends Fragment
             updateComboBoxes();
 
             // Compare the next phrase with the said message
-            Spanned comparison = phrase.compareWith(msg, Color.GREEN);
+            Spanned comparison = phrase.compareWith(msg);
             totalSuccessRates += phrase.getSuccessRate();
             answeredFromYou++;
             answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));

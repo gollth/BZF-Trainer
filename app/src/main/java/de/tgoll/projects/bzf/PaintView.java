@@ -1,5 +1,6 @@
 package de.tgoll.projects.bzf;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -70,6 +71,7 @@ public class PaintView extends View {
         cache = new Canvas(bmp);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent (MotionEvent event) {
         boolean usesPen = settings.getBoolean(getContext().getString(R.string.settings_pen), true);

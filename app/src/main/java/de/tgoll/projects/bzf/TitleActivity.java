@@ -27,10 +27,10 @@ import java.security.InvalidParameterException;
 
 public class TitleActivity extends AppCompatActivity {
 
-    public static void restart(Context context) {
-        Intent intent = new Intent(context, TitleActivity.class);
-        context.startActivity(intent);
-        if (context instanceof Activity) ((Activity)context).finishAffinity();
+    public static void restart(Activity activity) {
+        Intent intent = new Intent(activity, TitleActivity.class);
+        activity.startActivity(intent);
+        activity.finishAffinity();
     }
 
     public static @ColorInt int lookupColor(@NonNull Context context, @AttrRes int id) {
@@ -70,7 +70,7 @@ public class TitleActivity extends AppCompatActivity {
             changelog.getFullLogDialog().show();
             return;
         }
-        Shop shop = new Shop(this, getLayoutInflater());
+        Shop shop = new Shop(this);
         if (shop.isTimeToShowAgain()) shop.show(true);
     }
 

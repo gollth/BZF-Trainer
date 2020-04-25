@@ -167,8 +167,9 @@ public class Phrase {
             default: return "Unknown";
         }
     }
-    Spanned compareWith (String msg, int color) {
-        String hexColor = String.format("#%06X", (0xFFFFFF & color));
+    @SuppressWarnings("ConstantConditions")
+    Spanned compareWith(String msg) {
+        String hexColor = String.format("#%06X", (0xFFFFFF & android.graphics.Color.GREEN));
 
         msg = msg.toLowerCase();
 

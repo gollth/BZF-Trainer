@@ -83,6 +83,7 @@ class Catalogue {
             return "Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen";
         }
     }
+    @SuppressWarnings("unused")
     String[] getAnswers(int question) {
         try {
             return answers[question];
@@ -92,6 +93,7 @@ class Catalogue {
         }
     }
 
+    @SuppressWarnings("unused")
     <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map ) {
         List<Map.Entry<K, V>> list = new LinkedList<>( map.entrySet() );
         Collections.sort(list, (a, b) -> a.getValue().compareTo(b.getValue()));

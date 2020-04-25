@@ -98,8 +98,6 @@ class ChangeLog {
             BufferedReader br = new BufferedReader(new InputStreamReader(ins));
 
             String line;
-            boolean advanceToEOVS = false; // if true: ignore further version
-                                           // sections
 
             String textColor = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorOnBackground)));
             String h1Color = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorPrimary)));
@@ -111,8 +109,7 @@ class ChangeLog {
                 if (marker == '$') {
                     // begin of a version section
                     this.closeList();
-                    String version = line.substring(1).trim();
-                } else if (!advanceToEOVS) {
+                } else {
                     switch (marker) {
                     case '%':
                         // line contains version title

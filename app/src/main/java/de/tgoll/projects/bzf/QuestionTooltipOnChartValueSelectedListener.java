@@ -1,5 +1,6 @@
 package de.tgoll.projects.bzf;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
@@ -33,13 +34,14 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
     private final TextView txt_question;
     private final RadioButton[] buttons;
 
-    QuestionTooltipOnChartValueSelectedListener(@NonNull Context context, @NonNull LayoutInflater inflater, @NonNull BarChart chart, String key, List<Integer> questions) {
+    @SuppressLint("InflateParams")
+    QuestionTooltipOnChartValueSelectedListener(@NonNull Context context, @NonNull BarChart chart, String key, List<Integer> questions) {
         this.context = context;
         this.chart = chart;
         this.catalogue = new Catalogue(context, key);
         this.key = key;
         this.questions = questions;
-        View view = inflater.inflate(R.layout.dialog_catalogue, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_catalogue, null);
         this.txt_number = view.findViewById(R.id.txt_number);
         this.txt_question = view.findViewById(R.id.txt_question);
         this.buttons = new RadioButton[]{
