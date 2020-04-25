@@ -36,6 +36,7 @@
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
 
     <string name="settings">Einstellung</string>
+    <string name="settings_general">Allgemein</string>
     <string name="settings_shuffle_questions">Zufällige Fragen</string>
     <string name="settings_shuffle_questions_sum">Sollen die Fragen zufällig oder nacheinander abgefragt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
     <string name="settings_shuffle_answers">Zufällige Antworten</string>

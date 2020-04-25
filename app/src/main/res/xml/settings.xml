@@ -2,6 +2,33 @@
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <PreferenceCategory android:title="@string/settings_general" app:iconSpaceReserved="false">
+
+        <SwitchPreference
+            android:key="@string/settings_theme"
+            android:title="@string/settings_theme"
+            android:summary="@string/settings_theme_summary"
+            android:defaultValue="false"
+            android:switchTextOff="@string/settings_theme_light"
+            android:switchTextOn="@string/settings_theme_dark"
+            android:icon="@drawable/palette"
+            />
+
+        <Preference
+            android:key="@string/feedback"
+            android:summary="@string/feedback_text"
+            android:title="@string/feedback"
+            android:icon="@drawable/mail"
+            />
+
+        <Preference
+            android:key="@string/settings_reset"
+            android:title="@string/settings_reset"
+            android:summary="@string/settings_reset_sum"
+            android:icon="@drawable/trash" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/catalogue" app:iconSpaceReserved="false">
         <CheckBoxPreference
             android:key="@string/settings_shuffle_questions"
@@ -135,32 +162,6 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/app_name" app:iconSpaceReserved="false">
-
-        <SwitchPreference
-            android:key="@string/settings_theme"
-            android:title="@string/settings_theme"
-            android:summary="@string/settings_theme_summary"
-            android:defaultValue="false"
-            android:switchTextOff="@string/settings_theme_light"
-            android:switchTextOn="@string/settings_theme_dark"
-            android:icon="@drawable/palette"
-            app:iconSpaceReserved="false"
-            />
-
-        <Preference
-            android:key="@string/feedback"
-            android:summary="@string/feedback_text"
-            android:title="@string/feedback"
-            android:icon="@drawable/mail"
-            />
-
-        <Preference
-            android:key="@string/settings_reset"
-            android:title="@string/settings_reset"
-            android:summary="@string/settings_reset_sum"
-            android:icon="@drawable/trash" />
-    </PreferenceCategory>
 
 
 </androidx.preference.PreferenceScreen>
