@@ -12,7 +12,7 @@
     <string name="crash_msg">Entschuldigung, da ging leider etwas schief. Ein Fehlerbericht wurde automatisch versendet, damit das Problem so schnell wie möglich behoben werden kann.</string>
 
     <string name="catalogue">Fragen-Katalog</string>
-    <string name="catalogue_version">Stand: Feb. 2020</string>
+    <string name="catalogue_version">Stand: April 2020</string>
     <string name="azf">AZF</string>
     <string name="bzf">BZF</string>
     <string name="simulator">Simulator</string>
@@ -31,11 +31,15 @@
     <string name="statistics_history">Verlauf</string>
     <string name="statistics_azf">AZF Antworten</string>
     <string name="statistics_bzf">BZF Antworten</string>
+    <string name="statistics_empty_welcome">Willkommen beim BZF-Trainer</string>
+    <string name="statistics_empty_message">Mit dieser App kannst du die offiziellen Fragen der Bundesnetzagentur für die BZF- und AZF-Prüfung üben. Und das von unterwegs!\n\nSobald du einen Fragenkatalog abschließt, wird hier eine Statistik deiner Erfolge angezeigt. Um zu starten, wähle einfach einen der beiden Fragenkataloge aus:</string>
+    <string name="statistics_empty_good_luck">Viel Erfolg bei der Prüfung!</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
     <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
 
     <string name="settings">Einstellung</string>
+    <string name="settings_general">Allgemein</string>
     <string name="settings_shuffle_questions">Zufällige Fragen</string>
     <string name="settings_shuffle_questions_sum">Sollen die Fragen zufällig oder nacheinander abgefragt werden? (Wirkt sich erst auf den nächsten Test aus)</string>
     <string name="settings_shuffle_answers">Zufällige Antworten</string>
@@ -138,6 +142,24 @@
     <string name="changelog_ok_button">OK</string>
     <string name="changelog_show_full">more&#8230;</string>
     <string name="background_color">black</string>
+
+    <string name="settings_theme">Dark-Mode</string>
+    <string name="settings_theme_summary">Sollen die Farben der App abgedunkelt werden um Batterie sparen?</string>
+    <string name="settings_theme_light">Hell</string>
+    <string name="settings_theme_dark">Dunkel</string>
+
+    <string name="shop_title">Gefällt dir der BZF-Trainer?</string>
+    <string name="shop_summary">Dann denke doch über eine Spende nach. Somit unterstützt du mich als Entwickler, damit du und andere immer die neusten Fragen bekommen.\n\nDie App wird immer kostenlos bleiben! Wenn du mich jedoch unterstützt, gibt\'s auch eine kleine kosmetische Belohnung.</string>
+    <string name="shop_btn_ok">Nein Danke</string>
+    <string name="shop_btn_dark_mode">2.99 €</string>
+    <string name="shop_lbl_dark_mode">\&quot;Dark-Mode\&quot; freischalten</string>
+    <string name="shop_warn_service_unavailable">Verbinde dich bitte mit dem Internet</string>
+    <string name="shop_warn_item_already_owned">Du scheinst das schon zu besitzen (%1$d)</string>
+    <string name="shop_warn_billing_unavailable">Kann den Google Play Store nicht erreichen (%1$d). Bist du mit dem Internet verbunden?</string>
+    <string name="shop_warn_feature_not_supported">In-App-Käufe werden von diesem Gerät leider nicht unterstützt (%1$d):\n\n%2$s</string>
+    <string name="shop_warn_feature_unavailable">Google Play hat die Art von In-App-Produkt abgelehnt (%1$d). %2$s</string>
+    <string name="shop_warn_general_error">Es tut mir Leid, da ging etwas schief (%1$d): %2$s</string>
+
 
     <string name="answer_separator">;</string>
 

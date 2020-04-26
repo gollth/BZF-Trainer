@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.media.AudioManager;
@@ -31,6 +30,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
@@ -130,6 +130,7 @@ public class SimulatorFragment extends Fragment
     }
 
     // Creation functions
+    @SuppressWarnings("RegExpRedundantEscape")
     private List<Phrase> parseConversation (int id, boolean english) throws IOException {
         InputStream stream = getResources().openRawResource(id);
         byte[] data = new byte[stream.available()];
@@ -177,7 +178,7 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.AIRCRAFT = txt_aircraft.getText().toString();
         Phrase.Params.AIRPORT = showedDepartureFinishMessage ? cbx_departure.getSelectedItem().toString()
                                                : cbx_arrival.getSelectedItem().toString();
-        Phrase.Params.CALLSIGN = txt_callsign.getText().toString();
+        Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase();
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
         Phrase.Params.SQUAWK = String.format(Locale.GERMAN, "%04d", rng.nextInt(10000));
@@ -283,6 +284,13 @@ public class SimulatorFragment extends Fragment
         txt_atc = view.findViewById(R.id.sim_txt_atc);
         txt_you = view.findViewById(R.id.sim_txt_you);
         lbl_atc = view.findViewById(R.id.sim_txt_atc_lbl);
+        if (TitleActivity.isDarkMode(requireContext())) {
+            // Dark Mode
+            ImageView arrival = view.findViewById(R.id.icon_arrival);
+            ImageView departure = view.findViewById(R.id.icon_departure);
+            arrival.setImageDrawable(activity.getDrawable(R.drawable.arrival_dark));
+            departure.setImageDrawable(activity.getDrawable(R.drawable.departure_dark));
+        }
 
         btn_record = view.findViewById(R.id.btn_record);
         btn_record.setOnTouchListener(this);
@@ -335,7 +343,8 @@ public class SimulatorFragment extends Fragment
         // Update the Callsign from preferences
         txt_callsign.setText(settings.getString(
                 getString(R.string.settings_sim_callsign),
-                getString(R.string.sim_default_callsign)));
+                getString(R.string.sim_default_callsign)
+        ).toUpperCase());
 
         // Update the Aircraft Type from preferences
         txt_aircraft.setText(settings.getString(
@@ -485,10 +494,12 @@ public class SimulatorFragment extends Fragment
     public void onNothingSelected(AdapterView<?> parent) {}
 
     private void highlightHelp(boolean atc, boolean you) {
+        int highlight = TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight);
+        int normal = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
         txt_atc.setTypeface(null, atc ? Typeface.BOLD : Typeface.NORMAL);
         txt_you.setTypeface(null, you ? Typeface.BOLD : Typeface.NORMAL);
-        txt_atc.setTextColor(getResources().getColor(atc ? R.color.colorPrimaryDark : R.color.black));
-        txt_you.setTextColor(getResources().getColor(you ? R.color.colorPrimaryDark : R.color.black));
+        txt_atc.setTextColor(atc ? highlight : normal);
+        txt_you.setTextColor(you ? highlight : normal);
     }
     private boolean isDepartureFinished() { return progress >= departurePhraseSize;}
     private boolean isArrivalFinished() {return progress >= phrases.size();}
@@ -520,7 +531,7 @@ public class SimulatorFragment extends Fragment
             updateComboBoxes();
 
             // Compare the next phrase with the said message
-            Spanned comparison = phrase.compareWith(msg, Color.GREEN);
+            Spanned comparison = phrase.compareWith(msg);
             totalSuccessRates += phrase.getSuccessRate();
             answeredFromYou++;
             answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));

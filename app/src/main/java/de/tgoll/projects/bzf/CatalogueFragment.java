@@ -412,9 +412,10 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void unhighlightAnswers(boolean alsoClearCheck) {
+        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
         for(RadioButton button : buttons) {
             button.setTypeface(Typeface.DEFAULT);
-            button.setTextColor(getResources().getColor(R.color.black));
+            button.setTextColor(color);
         }
         if (alsoClearCheck) txt_answers.clearCheck();
     }
@@ -426,7 +427,7 @@ public class CatalogueFragment extends Fragment implements
         unhighlightAnswers(false);
         RadioButton option = buttons[cat.getSolution(getCurrentQuestion())];
         option.setTypeface(Typeface.DEFAULT_BOLD);
-        option.setTextColor(getResources().getColor(R.color.colorHighlight));
+        option.setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight));
         return option.isChecked();
     }
 
@@ -442,7 +443,7 @@ public class CatalogueFragment extends Fragment implements
             txt_answers.addView(buttons[i]);
     }
 
-    public class SavedState {
+    public static class SavedState {
         private final List<Integer> playlist;
         private final List<Integer> choices;
         private final int progress;

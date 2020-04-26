@@ -27,6 +27,6 @@ public class LineView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setStrokeWidth(getHeight());
-        canvas.drawLine(0,getHeight()/2, getWidth(), getHeight()/2, paint);
+        canvas.drawLine(0,getHeight() * 0.5f, getWidth(), getHeight() * 0.5f, paint);
     }
 }

@@ -1,13 +1,19 @@
 package de.tgoll.projects.bzf;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Layout;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,18 +53,26 @@ public class StatisticsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         Gson gson = new Gson();
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
 
+        boolean noTrialsYet = true;
         Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf", "sim")) {
             Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
             List<Trial> list = new ArrayList<>();
+            noTrialsYet &= history.isEmpty();
+
             for (String json : history) list.add(gson.fromJson(json, Trial.class));
             trials.put(key, list);
         }
+
+        if (noTrialsYet) {
+           return createWelcomeView(inflater, container);
+        }
+
+        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         LineChart history = view.findViewById(R.id.st_chart_history);
         setupHistoryChart(history);
@@ -69,26 +83,53 @@ public class StatisticsFragment extends Fragment {
         setupBarChart(barazf);
         setupBarChart(barbzf);
 
-        fillBarChart(barazf, trials.get("azf"), "azf", R.color.colorStatAZF);
-        fillBarChart(barbzf, trials.get("bzf"), "bzf", R.color.colorStatBZF);
+        fillBarChart(barazf, trials.get("azf"), "azf", TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
+        fillBarChart(barbzf, trials.get("bzf"), "bzf", TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary));
 
         return view;
     }
 
+    @SuppressLint("InflateParams")
+    private View createWelcomeView(LayoutInflater inflater, @Nullable ViewGroup container) {
+        TitleActivity title = (TitleActivity) requireActivity();
+        View view = inflater.inflate(R.layout.fragment_statistics_empty, container, false);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            TextView txt = view.findViewById(R.id.statistics_welcome_message);
+            txt.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+            txt.setGravity(Gravity.START);
+        }
+
+        Button bzf = view.findViewById(R.id.statistics_btn_start_bzf);
+        bzf.setOnClickListener(v -> title.showFragment(getString(R.string.bzf), true));
+
+        Button azf = view.findViewById(R.id.statistics_btn_start_azf);
+        azf.setOnClickListener(v -> title.showFragment(getString(R.string.azf), true));
+        return view;
+    }
+
     private void setupHistoryChart(LineChart history) {
+        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
         history.setPinchZoom(true);
         history.getAxisRight().setEnabled(true);
+        history.getAxisRight().setTextColor(color);
         history.getAxisRight().setValueFormatter(new PercentFormatter());
         history.getAxisLeft().setEnabled(false);
+        history.getAxisLeft().setAxisMinimum(0);
+        history.getAxisLeft().setAxisMaximum(1.0001f);  // to include 100% still in the label
         history.getXAxis().setEnabled(true);
+        history.getXAxis().setTextColor(color);
         history.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         history.getXAxis().setGranularity(1f);
         history.getLegend().setEnabled(true);
+        history.getLegend().setTextColor(color);
         history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         history.getAxisRight().setGranularity(0.2f);
+        history.getAxisRight().setAxisMinimum(0);
+        history.getAxisRight().setAxisMaximum(1.0001f);
         history.getLegend().setOrientation(Legend.LegendOrientation.VERTICAL);
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
@@ -101,6 +142,7 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
+        barchart.getXAxis().setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
@@ -144,7 +186,8 @@ public class StatisticsFragment extends Fragment {
             entries.add(new BarEntry(i, new float[]{ pair.second, 1f-pair.second }));
         }
 
-        int[] colors = new int[]{ getResources().getColor(color), getResources().getColor(R.color.grey)};
+        int background = Color.TRANSPARENT;
+        int[] colors = new int[]{ color, background };
 
         BarDataSet data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new NoneValueFormatter());
@@ -156,7 +199,6 @@ public class StatisticsFragment extends Fragment {
         chart.setOnChartValueSelectedListener(
                 new QuestionTooltipOnChartValueSelectedListener(
                         requireContext(),
-                        getLayoutInflater(),
                         chart,
                         key,
                         keys
@@ -208,17 +250,20 @@ public class StatisticsFragment extends Fragment {
             line.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             line.setDrawFilled(true);
             line.setCircleRadius(3);
-            line.setCircleColor(getResources().getColor(R.color.black));
+            line.setCircleColor(Color.BLACK);
             line.setValueFormatter(new NoneValueFormatter());
+            int color;
             switch (entry.getKey()) {
                 case "azf":
-                    line.setFillColor(getResources().getColor(R.color.colorStatAZF));
-                    line.setColor(getResources().getColor(R.color.colorStatAZF));
+                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant);
+                    line.setFillColor(color);
+                    line.setColor(color);
                     line.setFillAlpha(100);
                     break;
                 case "bzf":
-                    line.setFillColor(getResources().getColor(R.color.colorStatBZF));
-                    line.setColor(getResources().getColor(R.color.colorStatBZF));
+                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary);
+                    line.setFillColor(color);
+                    line.setColor(color);
                     line.setFillAlpha(100);
                     break;
                 case "sim":
@@ -237,21 +282,21 @@ public class StatisticsFragment extends Fragment {
         history.invalidate();
     }
 
-    public class NoneValueFormatter extends ValueFormatter {
+    public static class NoneValueFormatter extends ValueFormatter {
         @Override
         public String getFormattedValue(float value) {
             return "";
         }
     }
 
-    public class PercentFormatter extends ValueFormatter {
+    public static class PercentFormatter extends ValueFormatter {
         @Override
         public String getFormattedValue(float value) {
             return String.format(Locale.GERMAN, "%.0f%%", value * 100);
         }
     }
 
-    public class ObjectValueFormatter<T> extends ValueFormatter {
+    public static class ObjectValueFormatter<T> extends ValueFormatter {
 
         private final List<T> values;
 
@@ -266,7 +311,7 @@ public class StatisticsFragment extends Fragment {
         }
     }
 
-    public class DateAxisFormatter extends ValueFormatter {
+    public static class DateAxisFormatter extends ValueFormatter {
 
 
         private final List<DateTime> dates;

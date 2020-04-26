@@ -19,6 +19,12 @@
     </style>
   </head>
   <body>
+    $ 1.2.0
+      % Version 1.2.0
+      _ 2020-04-26
+      * Neuer "Dark Mode" um Akku zu schonen
+      * Frage 32 von BNetzA gefixt
+      * Willkommenstext bei leeren Statistiken
     $ 1.1.0
       % Version 1.1.0
       _ 2020-02-10

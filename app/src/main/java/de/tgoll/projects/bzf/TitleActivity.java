@@ -1,24 +1,46 @@
 package de.tgoll.projects.bzf;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
+import androidx.annotation.AttrRes;
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
-
+import android.view.Window;
+import android.view.WindowManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.security.InvalidParameterException;
 
 public class TitleActivity extends AppCompatActivity {
 
+    public static void restart(Activity activity) {
+        Intent intent = new Intent(activity, TitleActivity.class);
+        activity.startActivity(intent);
+        activity.finishAffinity();
+    }
 
+    public static @ColorInt int lookupColor(@NonNull Context context, @AttrRes int id) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(id, typedValue, true);
+        return typedValue.data;
+    }
+
+    Shop shop;
     SharedPreferences settings;
     private BottomNavigationView navigation;
 
@@ -31,13 +53,10 @@ public class TitleActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
+            int background = lookupColor(this, R.attr.colorPrimarySurface);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setIcon(R.drawable.bzf);
-        }
-
-        ChangeLog changelog = new ChangeLog(this);
-        if (changelog.firstRun()) {
-            changelog.getFullLogDialog().show();
+            actionBar.setBackgroundDrawable(new ColorDrawable(background));
         }
 
         // The initially shown fragment in the tab host
@@ -45,6 +64,44 @@ public class TitleActivity extends AppCompatActivity {
         String tab = settings.getString("navigation", getString(R.string.statistics));
         showFragment(tab, true);
         navigation.setOnNavigationItemSelectedListener(item -> showFragment(item.getTitle().toString()));
+
+        // Show Pop ups if necessary
+        ChangeLog changelog = new ChangeLog(this);
+        if (changelog.firstRun()) {
+            changelog.getFullLogDialog().show();
+            return;
+        }
+        shop = new Shop(this);
+        if (shop.isTimeToShowAgain()) shop.show(true);
+    }
+
+    public static boolean isDarkMode(@NonNull Context context) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        return settings.getBoolean(context.getString(R.string.settings_theme), false) && Shop.isPurchased(settings, Shop.SKU_DARK_MODE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isDarkMode(this)) {
+            int background = lookupColor(this, R.attr.colorPrimarySurface);
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(background);
+            window.setNavigationBarColor(background);
+        }
+    }
+
+    @Override
+    public Resources.Theme getTheme() {
+        Resources.Theme theme = super.getTheme();
+        if (isDarkMode(this)) {
+            theme.applyStyle(R.style.AppThemeDark, true);
+        }
+        else {
+            theme.applyStyle(R.style.AppThemeLight, true);
+        }
+        return theme;
     }
 
     int getActiveFragment() {

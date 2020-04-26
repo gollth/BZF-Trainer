@@ -63,12 +63,10 @@ class ChangeLog {
     private Dialog getDialog() {
         WebView wv = new WebView(this.context);
 
-
-        //wv.setBackgroundColor(context.getResources().getColor(R.color.white));
+        wv.setBackgroundColor(TitleActivity.lookupColor(context, R.attr.backgroundColor));
         wv.loadDataWithBaseURL(null, this.getLog(), "text/html", "UTF-8", null);
 
         return new MaterialAlertDialogBuilder(context)
-        //new ContextThemeWrapper(this.context, android.R.style.Theme_Dialog)
             .setTitle(context.getResources().getString(R.string.changelog_full_title))
             .setView(wv)
             .setCancelable(false)
@@ -81,12 +79,6 @@ class ChangeLog {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.putString(VERSION_KEY, thisVersion);
-        // // on SDK-Versions > 9 you should use this:
-        // if(Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-        // editor.commit();
-        // } else {
-        // editor.apply();
-        // }
         editor.apply();
     }
 
@@ -106,41 +98,43 @@ class ChangeLog {
             BufferedReader br = new BufferedReader(new InputStreamReader(ins));
 
             String line;
-            boolean advanceToEOVS = false; // if true: ignore further version
-                                           // sections
+
+            String textColor = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorOnBackground)));
+            String h1Color = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorPrimary)));
+            String h2Color = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorSecondaryVariant)));
+
             while ((line = br.readLine()) != null) {
                 line = line.trim();
                 char marker = line.length() > 0 ? line.charAt(0) : 0;
                 if (marker == '$') {
                     // begin of a version section
                     this.closeList();
-                    String version = line.substring(1).trim();
-                } else if (!advanceToEOVS) {
+                } else {
                     switch (marker) {
                     case '%':
                         // line contains version title
                         this.closeList();
-                        sb.append("<div class='title'>").append(line.substring(1).trim()).append("</div>\n");
+                        sb.append("<div class='title' style='color: ").append(h1Color).append(";'>").append(line.substring(1).trim()).append("</div>\n");
                         break;
                     case '_':
                         // line contains version title
                         this.closeList();
-                        sb.append("<div class='subtitle'>").append(line.substring(1).trim()).append("</div>\n");
+                        sb.append("<div class='subtitle' style='color: ").append(h2Color).append(";'>").append(line.substring(1).trim()).append("</div>\n");
                         break;
                     case '!':
                         // line contains free text
                         this.closeList();
-                        sb.append("<div class='freetext'>").append(line.substring(1).trim()).append("</div>\n");
+                        sb.append("<div class='freetext' style='color: ").append(textColor).append(";'>").append(line.substring(1).trim()).append("</div>\n");
                         break;
                     case '#':
                         // line contains numbered list item
                         this.openList(Listmode.ORDERED);
-                        sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
+                        sb.append("<li style='color: ").append(textColor).append(";'>").append(line.substring(1).trim()).append("</li>\n");
                         break;
                     case '*':
                         // line contains bullet list item
                         this.openList(Listmode.UNORDERED);
-                        sb.append("<li>").append(line.substring(1).trim()).append("</li>\n");
+                        sb.append("<li style='color: ").append(textColor).append(";'>").append(line.substring(1).trim()).append("</li>\n");
                         break;
                     default:
                         // no special character: just use line as is
