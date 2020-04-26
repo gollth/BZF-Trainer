@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/statistics_welcome"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/statistics_empty_welcome"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/statistics_welcome_message"
+        android:text="@string/statistics_empty_message"
+        android:textStyle="italic"
+        android:gravity="left"
+        android:justificationMode="inter_word"
+        app:layout_constraintTop_toBottomOf="@id/statistics_welcome"
+        android:paddingBottom="40dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/statistics_empty_lyt_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/statistics_welcome_message">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/statistics_btn_start_bzf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bzf"
+            android:layout_marginStart="16dp" />
+
+        <ImageView
+            android:id="@+id/statistics_app_icon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            app:srcCompat="@drawable/bzf"
+            tools:ignore="ContentDescription" />
+
+        <Button
+            android:id="@+id/statistics_btn_start_azf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/azf"
+            android:layout_marginEnd="16dp"
+            />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/statistics_empty_lyt_buttons"
+        android:layout_marginTop="32dp"
+        android:text="@string/statistics_empty_good_luck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

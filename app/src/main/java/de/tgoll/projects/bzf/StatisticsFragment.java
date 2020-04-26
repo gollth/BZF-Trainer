@@ -1,13 +1,19 @@
 package de.tgoll.projects.bzf;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Layout;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,18 +53,26 @@ public class StatisticsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         Gson gson = new Gson();
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
 
+        boolean noTrialsYet = true;
         Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf", "sim")) {
             Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
             List<Trial> list = new ArrayList<>();
+            noTrialsYet &= history.isEmpty();
+
             for (String json : history) list.add(gson.fromJson(json, Trial.class));
             trials.put(key, list);
         }
+
+        if (noTrialsYet) {
+           return createWelcomeView(inflater, container);
+        }
+
+        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         LineChart history = view.findViewById(R.id.st_chart_history);
         setupHistoryChart(history);
@@ -75,6 +89,25 @@ public class StatisticsFragment extends Fragment {
         return view;
     }
 
+    @SuppressLint("InflateParams")
+    private View createWelcomeView(LayoutInflater inflater, @Nullable ViewGroup container) {
+        TitleActivity title = (TitleActivity) requireActivity();
+        View view = inflater.inflate(R.layout.fragment_statistics_empty, container, false);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            TextView txt = view.findViewById(R.id.statistics_welcome_message);
+            txt.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+            txt.setGravity(Gravity.START);
+        }
+
+        Button bzf = view.findViewById(R.id.statistics_btn_start_bzf);
+        bzf.setOnClickListener(v -> title.showFragment(getString(R.string.bzf), true));
+
+        Button azf = view.findViewById(R.id.statistics_btn_start_azf);
+        azf.setOnClickListener(v -> title.showFragment(getString(R.string.azf), true));
+        return view;
+    }
+
     private void setupHistoryChart(LineChart history) {
         int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
         history.setTouchEnabled(true);
@@ -84,6 +117,8 @@ public class StatisticsFragment extends Fragment {
         history.getAxisRight().setTextColor(color);
         history.getAxisRight().setValueFormatter(new PercentFormatter());
         history.getAxisLeft().setEnabled(false);
+        history.getAxisLeft().setAxisMinimum(0);
+        history.getAxisLeft().setAxisMaximum(1.0001f);  // to include 100% still in the label
         history.getXAxis().setEnabled(true);
         history.getXAxis().setTextColor(color);
         history.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -93,6 +128,8 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
         history.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         history.getAxisRight().setGranularity(0.2f);
+        history.getAxisRight().setAxisMinimum(0);
+        history.getAxisRight().setAxisMaximum(1.0001f);
         history.getLegend().setOrientation(Legend.LegendOrientation.VERTICAL);
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);

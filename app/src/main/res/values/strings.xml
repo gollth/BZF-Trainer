@@ -31,6 +31,9 @@
     <string name="statistics_history">Verlauf</string>
     <string name="statistics_azf">AZF Antworten</string>
     <string name="statistics_bzf">BZF Antworten</string>
+    <string name="statistics_empty_welcome">Willkommen beim BZF-Trainer</string>
+    <string name="statistics_empty_message">Mit dieser App kannst du die offiziellen Fragen der Bundesnetzagentur für die BZF- und AZF-Prüfung üben. Und das von unterwegs!\n\nSobald du einen Fragenkatalog abschließt, wird hier eine Statistik deiner Erfolge angezeigt. Um zu starten, wähle einfach einen der beiden Fragenkataloge aus:</string>
+    <string name="statistics_empty_good_luck">Viel Erfolg bei der Prüfung!</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
     <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
