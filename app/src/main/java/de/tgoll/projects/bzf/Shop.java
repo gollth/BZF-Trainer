@@ -151,6 +151,10 @@ public class Shop implements PurchasesUpdatedListener {
 
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     boolean isPurchased(String sku) {
+        return isPurchased(settings, sku);
+    }
+
+    static boolean isPurchased(SharedPreferences settings, String sku) {
         return settings.contains(sku);
     }
 

@@ -40,6 +40,7 @@ public class TitleActivity extends AppCompatActivity {
         return typedValue.data;
     }
 
+    Shop shop;
     SharedPreferences settings;
     private BottomNavigationView navigation;
 
@@ -70,12 +71,13 @@ public class TitleActivity extends AppCompatActivity {
             changelog.getFullLogDialog().show();
             return;
         }
-        Shop shop = new Shop(this);
+        shop = new Shop(this);
         if (shop.isTimeToShowAgain()) shop.show(true);
     }
 
     public static boolean isDarkMode(@NonNull Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getBoolean(context.getString(R.string.settings_theme), false);
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        return settings.getBoolean(context.getString(R.string.settings_theme), false) && Shop.isPurchased(settings, Shop.SKU_DARK_MODE);
     }
 
     @Override
