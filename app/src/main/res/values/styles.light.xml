@@ -1,0 +1,57 @@
+<resources>
+
+    <!-- General Colors for "Light Mode" -->
+    <style name="AppThemeLight" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+        <!-- Accent Colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimaryDark</item>
+
+        <!-- Foreground Colors -->
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorOnSecondary">@color/grey</item>
+        <item name="android:textColorSecondary">@color/grey</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+
+        <!-- Other Component Styles -->
+        <item name="alertDialogTheme">@style/AppThemeLight.Dialog</item>
+
+    </style>
+
+
+    <!-- Style for all Dialogs -->
+    <style name="AppThemeLight.Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+
+        <!-- Accent Colors -->
+        <item name="buttonBarStyle">@style/Widget.AppCompat.ButtonBar</item>
+        <item name="buttonBarButtonStyle">@style/AppThemeLight.Dialog.Button</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+
+        <!-- Foreground Colors -->
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorOnSecondary">@color/grey</item>
+        <item name="android:textColorSecondary">@color/grey</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+
+
+        <!-- Background Colors -->
+        <!-- defaults -->
+
+    </style>
+
+    <!-- Style for all Buttons in all Dialogs -->
+    <style name="AppThemeLight.Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="rippleColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+
+</resources>

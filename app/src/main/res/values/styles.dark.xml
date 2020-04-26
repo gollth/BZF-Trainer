@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General Colors for "Dark Mode" -->
+    <style name="AppThemeDark" parent="Theme.MaterialComponents.Light.DarkActionBar">
+
+        <!-- Accent Colors -->
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorSecondary">@color/colorPrimaryLight</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+        <item name="colorSurface">@color/colorBackground</item>
+
+        <!-- Foreground Colors -->
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorOnSecondary">@color/light_white</item>
+        <item name="android:textColorSecondary">@color/light_white</item>
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorPrimarySurface">@color/colorBackgroundDark</item>
+        <item name="colorPrimaryVariant">@color/grey</item>
+
+        <!-- Other Component Styles -->
+        <item name="alertDialogTheme">@style/AppThemeDark.Dialog</item>
+
+    </style>
+
+    <!-- Style for all Dialogs -->
+    <style name="AppThemeDark.Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+
+        <!-- Accent Colors -->
+        <item name="buttonBarStyle">@style/Widget.AppCompat.ButtonBar</item>
+        <item name="buttonBarButtonStyle">@style/AppThemeDark.Dialog.Button</item>
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorSecondary">@color/colorPrimaryLight</item>
+        <item name="colorAccent">@color/colorPrimaryLight</item>
+
+        <!-- Foreground Colors -->
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnBackground">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorOnSecondary">@color/light_white</item>
+        <item name="android:textColorSecondary">@color/light_white</item>
+        <item name="colorControlHighlight">@color/colorPrimaryLight</item>
+        <item name="textColorAlertDialogListItem">@color/white</item>
+
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorPrimarySurface">@color/colorBackgroundDark</item>
+        <item name="colorPrimaryVariant">@color/grey</item>
+
+
+    </style>
+
+    <!-- Style for all Buttons in all Dialogs -->
+    <style name="AppThemeDark.Dialog.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/transparent</item>
+        <item name="rippleColor">@color/colorPrimaryLight</item>
+        <item name="android:textColor">@color/colorPrimaryLight</item>
+    </style>
+
+</resources>

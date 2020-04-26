@@ -50,6 +50,7 @@
             android:summary="@string/settings_text_size_sum"
             android:defaultValue="12"
             android:inputType="numberDecimal"
+            android:dialogLayout="@layout/edit_text_preference"
             android:icon="@drawable/font"/>
 
         <EditTextPreference
@@ -58,6 +59,7 @@
             android:summary="@string/settings_delay_sum"
             android:defaultValue="1"
             android:inputType="numberDecimal"
+            android:dialogLayout="@layout/edit_text_preference"
             android:icon="@drawable/delay"/>
         <CheckBoxPreference
             android:key="@string/settings_vibrate"
@@ -95,6 +97,7 @@
             android:title="@string/settings_sim_aircraft"
             android:summary="@string/settings_sim_aricraft_sum"
             android:defaultValue="@string/sim_default_aircraft"
+            android:dialogLayout="@layout/edit_text_preference"
             android:icon="@drawable/airplane"/>
         <EditTextPreference
             android:key="@string/settings_sim_callsign"
@@ -103,6 +106,7 @@
             android:defaultValue="@string/sim_default_callsign"
             android:inputType="textCapCharacters"
             android:maxLength="5"
+            android:dialogLayout="@layout/edit_text_preference"
             android:icon="@drawable/ear"/>
 
         <ListPreference
