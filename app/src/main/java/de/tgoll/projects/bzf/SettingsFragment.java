@@ -10,6 +10,7 @@ import android.view.View;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+import androidx.preference.SwitchPreference;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -79,7 +80,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Activity activity = requireActivity();
         Shop shop = new Shop(activity);
 
-        Preference darkMode = findPreference(getString(R.string.settings_theme));
+        SwitchPreference darkMode = findPreference(getString(R.string.settings_theme));
         assert darkMode != null;
         darkMode.setOnPreferenceChangeListener((preference, dark) -> {
             if (!shop.isPurchased(Shop.SKU_DARK_MODE)) {
@@ -92,5 +93,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             TitleActivity.restart(requireActivity());
             return true;
         });
+        if (!shop.isPurchased(Shop.SKU_DARK_MODE)) {
+            darkMode.setChecked(false);
+        }
     }
 }
