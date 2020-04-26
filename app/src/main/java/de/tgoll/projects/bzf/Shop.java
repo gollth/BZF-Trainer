@@ -36,8 +36,8 @@ import java.util.List;
 import java.util.Locale;
 public class Shop implements PurchasesUpdatedListener {
 
-    private static final String TIMESTAMP = "Shop-Last-Shown";
-    static final String SKU_DARK_MODE = "dark_mode";
+    private static final String TIMESTAMP = "SHOP_LAST_SHOWN";
+    static final String SKU_DARK_MODE = "sku_dark_mode";
     private static final List<String> SKUs = Collections.singletonList(SKU_DARK_MODE);
 
     private Activity context;
