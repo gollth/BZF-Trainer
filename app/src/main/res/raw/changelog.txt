@@ -19,26 +19,31 @@
     </style>
   </head>
   <body>
+    $ 1.2.1
+      % Version 1.2.1
+      _ 16. Mai 2020
+      * App nun im Querformat verwendbar
+      * Rufzeichen-Bugfix (danke an Felix)
     $ 1.2.0
       % Version 1.2.0
-      _ 2020-04-26
+      _ 26. April 2020
       * Neuer "Dark Mode" um Akku zu schonen
       * Frage 32 von BNetzA gefixt
       * Willkommenstext bei leeren Statistiken
     $ 1.1.0
       % Version 1.1.0
-      _ 2020-02-10
+      _ 10. Februar 2020
       * Statistik-Fragen sind nun nach Häufigkeit sortiert
       * Tippfehler in Frage 114 behoben
       * kleiner Fix im Fortschrittsbalken des Kataloges
     $ 1.0.1
       % Version 1.0.1
-      _ 2020-01-07
+      _ 7. Januar 2020
       * ATC reagiert auf "say again" und "wiederholen" (wenn man deutlich spricht)
       * Bugfixes
     $ 1.0.0
       % Version 1.0.0
-      _ 2020-01-06
+      _ 6. Januar 2020
       * Neues Design & Layout
       * Fragenkatalog für Feb. 2020
       * Schönere Statistik
@@ -46,108 +51,108 @@
       * Antworten nun auch zufällig mischbar
     $ 0.4.0
       % Version 0.4.0
-      _ 2019-05-12
+      _ 5. Dezember 2019
       * NEU: AZF-Fragenkatalog nun auch verfügbar (Danke an Fabian)!
       * Intuitivere Berechtigungsanfrage für's Mikrophon
       * Kleinere Bugfixes & Rechtschreibfehler
     $ 0.3.4
       % Version 0.3.4
-      _ 2019-03-20
+      _ 20. März 2019
       * Frage 110 + 169 gefixt
       * sorry, dass es so lange gedauert hat =P
     $ 0.3.3
       % Version 0.3.3
-      _ 2019-01-27
+      _ 27. Januar 2019
       * kleinere Rechtschreibfehler entfernt
       * Pflichtmeldepunkte wieder in den Fragen
       * Problem mit zufälligen Antworten beim Fortsetzen des Katalogs behoben
     $ 0.3.2
       % Version 0.3.2
-      _ 2019-01-19
+      _ 19. Januar 2019
       * Bugfix
       * Rechtschreibfehler entfernt
       * Feedback jetzt als Mail
     $ 0.3.1
       % Version 0.3.1
-      _ 2019-01-17
+      _ 17. Januar 2019
        * Fixt Abstürze vom letzten Update
        * Vibration wieder korrekt in den Einstellungen einstellbar
        * Antworten bleiben gesperrt, solange die richtige Lösung angezeigt wird
     $ 0.3.0
       % Version 0.3.0
-      _ 2019-01-16
+      _ 16. Januar 2019
        * Upgrade to Android Pie (9)
        * Neuer Fragenkatalog von 2019 der BNetzA
        * Zeitgemäßeres Icon
        * Vielen Dank an Christian, Alfred und Monika für den Hinweis mit den neuen Fragen!
     $ 0.2.7
       % Version 0.2.7
-      _ 2019-01-13
+      _ 13. Januar 2019
        * (213) FIRs München wieder hinzugefügt
        * Simulator: Zurücklesen vom Wind nicht mehr nötig
        * Vielen Dank an Frederic für diese Hinweise!
     $ 0.2.6
       % Version 0.2.6
-      _ 2018-10-25
+      _ 25. Oktober 2018
        * Rechtschreibfehler in einigen Fragen und Antworten berichtigt
        * Nummerierung gefixt
        * Vielen Dank an Christian für seine Hilfe!
     $ 0.2.5
       % Version 0.2.5
-      _ 2018-09-20
+      _ 20. September 2018
        * Vorsorglicher Absturzverhinderung beim Laden von Fragen und Antworten.
        * Update des Codes auf Android Oreo
        * Frage 204: Sichten in E unter FL100 5 statt 8 km (danke an Christian für diesen Hinweis)
     $ 0.2.4
       % Version 0.2.4
-      _ 2018-03-18
+      _ 18. März 2018
        * Absturz bei Frage 131 gefixt (Antwort A fehlte)
        * Vielen Dank an Manne für diesen Fehlerbericht!
     $ 0.2.3
       % Version 0.2.3
-      _ 2018-02-22
+      _ 22. Februar 2018
        * Frage 3 und 21 angepasst
        * Antworten der Fragen 51, 62, 67, 71, 97, 98, 131, 133, 142, 166, 187 und 216 angepasst.
        * Vielen Dank an Julian für die Updates!
        * Memory Leak behoben mit neuster Android Version
     $ 0.2.2
       % Version 0.2.2
-      _ 2017-02-26
+      _ 26. Februar 2017
        * Upgrade auf Android Nougat
        * Beheben von kleineren Rechtschreibfehlern in Fragen und Antworten
     $ 0.2.1dev
       % Version 0.2.1 Development
-      _ 2016-11-24
+      _ 24. November 2016
       * Entwicklungsversion zur Behebung von Crash beim Simulator auf einigen Geräten
       * Mikrofon Berechtigung wird dynamisch angefragt (nur in Android 6.0)
       * Kleinere Bugs gefixt
     $ 0.2.0
       % Version 0.2.0
-      _ 2016-04-01
+      _ 1. April 2016
       * Im Simulator kann nun auch auf Deutsch gefunkt werden
       * Endlich sind alle drei Schwierigkeitsstufen verfügbar (vorher hat ein Bug die Auswahl immer auf Mittel gesetzt)
       * Potenzieller Fehler beim Installieren der App behoben.
     $ 0.1.5
       % Version 0.1.5
-      _ 2016-03-21
+      _ 21. März 2016
       * Absturz beim Anzeigen der Ergebnisse des Fragen-Katlogs auf einigen Geräten behoben.
     $ 0.1.4
       % Version 0.1.4
-      _ 2016-03-11
+      _ 11. März 2016
       * Absturz beim Laden eines angefangenen Fragen-Katalog-Versuchs behoben.
     $ 0.1.3
       % Version 0.1.3
-      _ 2016-03-04
+      _ 04. März 2016
       * Feedback Funktion hinzugefügt.
     $ 0.1.2
       % Version 0.1.2
-      _ 2016-03-02
+      _ 2.März 2016
       * Potenzieller Absturz beim Fragen-Katalog entdeckt und behoben
     $ 0.1.1
       % Version 0.1.1
-      _ 2016-02-28
+      _ 28. Februar 2016
       * Willkommen zur BETA-Version des BZF-Trainers.
-      ! Viel Spaß und wenig Bugs =)
+      * Viel Spaß und wenig Bugs =)
     $ END_OF_CHANGE_LOG
   </body>
 </html>
