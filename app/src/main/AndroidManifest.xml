@@ -31,7 +31,7 @@
         </activity>
         <activity android:name=".StatisticsFragment"
             android:parentActivityName=".TitleActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogueFragment" />
