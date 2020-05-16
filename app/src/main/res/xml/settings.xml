@@ -104,7 +104,6 @@
             android:title="@string/settings_sim_callsign"
             android:summary="@string/settings_sim_callsign_sum"
             android:defaultValue="@string/sim_default_callsign"
-            android:inputType="textCapCharacters"
             android:maxLength="5"
             android:dialogLayout="@layout/edit_text_preference"
             android:icon="@drawable/ear"/>
