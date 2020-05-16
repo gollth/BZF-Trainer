@@ -22,7 +22,7 @@
         android:theme="@style/AppThemeLight">
         <activity
             android:name=".TitleActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -31,14 +31,14 @@
         </activity>
         <activity android:name=".StatisticsFragment"
             android:parentActivityName=".TitleActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogueFragment" />
         </activity>
         <activity android:name=".SettingsFragment"
             android:label="@string/settings"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:parentActivityName=".TitleActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -47,7 +47,7 @@
         <activity android:name=".SimulatorFragment"
             android:label="@string/simulator"
             android:parentActivityName=".TitleActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="de.tgoll.projects.bzf.TitleActivity" />

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,16 +13,16 @@
 
     <LinearLayout
         android:id="@+id/st_lyt_history"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/st_lbl_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:rotation="270"
+            android:rotation="0"
             android:layout_gravity="center"
             android:text="@string/statistics_history" />
 
@@ -31,27 +31,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="5dp"
-            />
+        />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/st_lyt_bzf"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/st_lbl_answers_bzf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:rotation="270"
+            android:rotation="0"
             android:text="@string/bzf"
             android:textAlignment="center"
             tools:layout_editor_absoluteX="5dp" />
 
-        <com.github.mikephil.charting.charts.BarChart
+        <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/st_chart_answers_bzf"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -60,23 +60,23 @@
 
     <LinearLayout
         android:id="@+id/st_lyt_azf"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        >
+        android:orientation="vertical"
+       >
 
         <TextView
             android:id="@+id/st_lbl_answers_azf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:rotation="270"
+            android:rotation="0"
             android:text="@string/azf"
             android:textAlignment="center"
             tools:layout_editor_absoluteY="5dp" />
 
-        <com.github.mikephil.charting.charts.BarChart
+        <com.github.mikephil.charting.charts.HorizontalBarChart
             android:id="@+id/st_chart_answers_azf"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    tools:context=".SimulatorFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <LinearLayout
+        android:id="@+id/lyt_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Callsign -->
+        <TextView
+            android:id="@+id/sim_txt_callsign"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/sim_default_callsign" />
+
+        <!-- Aircraft -->
+        <TextView
+            android:id="@+id/sim_txt_aircraft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/sim_default_aircraft" />
+
+        <!-- ATIS -->
+        <TextView
+            android:id="@+id/sim_txt_atis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/sim_txt_atis" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyt_airport_departure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lyt_info">
+        <!-- Departure -->
+        <ImageView
+            android:id="@+id/icon_departure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/sim_msg_departure_select"
+            android:src="@drawable/departure_light" />
+
+        <Spinner
+            android:id="@+id/sim_cbx_dep"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/airports"
+            android:gravity="center"
+            android:prompt="@string/sim_msg_departure_select"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+
+    <!-- Arrival -->
+    <LinearLayout
+        android:id="@+id/lyt_airport_arrival"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/lyt_airport_departure">
+        <ImageView
+            android:id="@+id/icon_arrival"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/sim_msg_departure_select"
+            android:src="@drawable/arrival_light" />
+        <Spinner
+            android:id="@+id/sim_cbx_arr"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/airports"
+            android:gravity="center"
+            android:prompt="@string/sim_msg_arrival_select"
+            android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/sim_lyt_table_help"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_gravity="top"
+        android:shrinkColumns="1"
+        android:visibility="visible"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintVertical_bias="0"
+
+        app:layout_constraintBottom_toTopOf="@id/btn_record"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lyt_airport_arrival">
+
+        <de.tgoll.projects.bzf.LineView
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <TableRow
+            android:id="@+id/sim_atc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/sim_txt_atc_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:id="@+id/sim_txt_atc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:gravity="center_vertical|start"
+                android:visibility="visible" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/sim_you"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/sim_txt_you_lbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="@string/sim_lbl_you" />
+
+            <TextView
+                android:id="@+id/sim_txt_you"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|start"
+                android:visibility="visible" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/txt_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/canvas"
+        android:layout_margin="8dp"
+        android:text="@string/txt_notes"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.tgoll.projects.bzf.PaintView
+        android:id="@+id/canvas"
+        android:layout_width="0dp"
+        android:layout_height="0sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8sp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_record"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/record"
+        android:backgroundTint="@color/record_button"
+        android:clickable="true"
+        android:contentDescription="@string/msg_record_explanation"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

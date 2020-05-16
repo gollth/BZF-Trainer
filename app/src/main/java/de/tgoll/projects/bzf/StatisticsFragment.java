@@ -2,6 +2,7 @@ package de.tgoll.projects.bzf;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,10 +79,11 @@ public class StatisticsFragment extends Fragment {
         setupHistoryChart(history);
         fillHistory(history, trials);
 
+        boolean landscape = requireContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         BarChart barazf = view.findViewById(R.id.st_chart_answers_azf);
         BarChart barbzf = view.findViewById(R.id.st_chart_answers_bzf);
-        setupBarChart(barazf);
-        setupBarChart(barbzf);
+        setupBarChart(barazf, landscape);
+        setupBarChart(barbzf, landscape);
 
         fillBarChart(barazf, trials.get("azf"), "azf", TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
         fillBarChart(barbzf, trials.get("bzf"), "bzf", TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary));
@@ -134,7 +136,7 @@ public class StatisticsFragment extends Fragment {
         history.getLegend().setDrawInside(true);
         history.getDescription().setEnabled(false);
     }
-    private void setupBarChart(BarChart barchart) {
+    private void setupBarChart(BarChart barchart, boolean landscape) {
         barchart.getDescription().setEnabled(false);
         barchart.getLegend().setEnabled(false);
         barchart.setDrawGridBackground(false);
@@ -143,7 +145,7 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
         barchart.getXAxis().setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground));
-        barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        barchart.getXAxis().setPosition(landscape ? XAxis.XAxisPosition.TOP : XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);

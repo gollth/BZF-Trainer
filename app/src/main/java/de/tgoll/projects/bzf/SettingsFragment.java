@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 
+import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -56,6 +58,16 @@ public class SettingsFragment extends PreferenceFragmentCompat {
             startActivity(new Intent().setAction("com.android.settings.TTS_SETTINGS").setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             return false;
         });
+
+        EditTextPreference callsign = findPreference(getString(R.string.settings_sim_callsign));
+        assert callsign != null;
+        callsign.setOnBindEditTextListener(txt -> txt.setInputType(
+            InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS | InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS
+        ));
+
+        EditTextPreference aircraft = findPreference(getString(R.string.settings_sim_aircraft));
+        assert aircraft != null;
+        aircraft.setOnBindEditTextListener(txt -> txt.setInputType(InputType.TYPE_CLASS_TEXT));
 
         Preference feedback = findPreference(getString(R.string.feedback));
         assert feedback != null;
