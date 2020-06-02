@@ -161,9 +161,9 @@
     <string name="shop_warn_general_error">Es tut mir Leid, da ging etwas schief (%1$d): %2$s</string>
 
     <string name="questionfilter_tooltip">Nur bestimmte Fragen&#8230;</string>
-    <string name="questionfilter_lbl_slider">Baue einen Katalog aus den Fragen die du mindestens %1$d mal falsch beantwortet hast</string>
-    <string name="questionfilter_lbl_summary">Länge des Katalogs: %1$d Fragen</string>
-    <string name="questionfilter_btn_ok">OK</string>
+    <string name="questionfilter_lbl_slider">Baue einen Katalog aus den Fragen, die du mindestens %1$d mal falsch beantwortet hast</string>
+    <string name="questionfilter_lbl_summary">ergibt einen Katalog mit %1$d Fragen</string>
+    <string name="questionfilter_btn_ok">Los geht\'s</string>
 
 
     <string name="answer_separator">;</string>
