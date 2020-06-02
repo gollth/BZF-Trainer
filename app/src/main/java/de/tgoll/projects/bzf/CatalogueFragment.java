@@ -130,16 +130,25 @@ public class CatalogueFragment extends Fragment implements
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() != R.id.menu_restart) return false;
-        new MaterialAlertDialogBuilder(view.getContext())
-                .setTitle(R.string.restart)
-                .setMessage(R.string.restart_alert)
-                .setNegativeButton(R.string.negative, null)
-                .setPositiveButton(R.string.positive, (dialog, which) -> {
-                    resetQuestions();
-                    dialog.dismiss();
-                }).show();
-        return true;
+        switch (item.getItemId()) {
+            case R.id.menu_restart:
+                new MaterialAlertDialogBuilder(view.getContext())
+                        .setTitle(R.string.restart)
+                        .setMessage(R.string.restart_alert)
+                        .setNegativeButton(R.string.negative, null)
+                        .setPositiveButton(R.string.positive, (dialog, which) -> {
+                            resetQuestions();
+                            dialog.dismiss();
+                        }).show();
+                return true;
+
+            case R.id.menu_filter:
+                new QuestionFilter(requireContext(), cat);
+                return true;
+
+            default:
+                return false;
+        }
     }
 
     private void setTextSizes(float sp) {
