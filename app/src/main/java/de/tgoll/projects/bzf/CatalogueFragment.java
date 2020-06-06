@@ -421,7 +421,7 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void unhighlightAnswers(boolean alsoClearCheck) {
-        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
+        int color = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
         for(RadioButton button : buttons) {
             button.setTypeface(Typeface.DEFAULT);
             button.setTextColor(color);
@@ -436,7 +436,7 @@ public class CatalogueFragment extends Fragment implements
         unhighlightAnswers(false);
         RadioButton option = buttons[cat.getSolution(getCurrentQuestion())];
         option.setTypeface(Typeface.DEFAULT_BOLD);
-        option.setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight));
+        option.setTextColor(Util.lookupColor(requireContext(), R.attr.colorControlHighlight));
         return option.isChecked();
     }
 

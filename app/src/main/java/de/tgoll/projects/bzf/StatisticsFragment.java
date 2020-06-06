@@ -85,8 +85,8 @@ public class StatisticsFragment extends Fragment {
         setupBarChart(barazf, landscape);
         setupBarChart(barbzf, landscape);
 
-        fillBarChart(barazf, trials.get("azf"), "azf", TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
-        fillBarChart(barbzf, trials.get("bzf"), "bzf", TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary));
+        fillBarChart(barazf, trials.get("azf"), "azf", Util.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
+        fillBarChart(barbzf, trials.get("bzf"), "bzf", Util.lookupColor(requireContext(), R.attr.colorPrimary));
 
         return view;
     }
@@ -111,7 +111,7 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void setupHistoryChart(LineChart history) {
-        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
+        int color = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
         history.setPinchZoom(true);
@@ -144,7 +144,7 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
-        barchart.getXAxis().setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground));
+        barchart.getXAxis().setTextColor(Util.lookupColor(requireContext(), R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(landscape ? XAxis.XAxisPosition.TOP : XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
@@ -257,13 +257,13 @@ public class StatisticsFragment extends Fragment {
             int color;
             switch (entry.getKey()) {
                 case "azf":
-                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant);
+                    color = Util.lookupColor(requireContext(), R.attr.colorSecondaryVariant);
                     line.setFillColor(color);
                     line.setColor(color);
                     line.setFillAlpha(100);
                     break;
                 case "bzf":
-                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary);
+                    color = Util.lookupColor(requireContext(), R.attr.colorPrimary);
                     line.setFillColor(color);
                     line.setColor(color);
                     line.setFillAlpha(100);

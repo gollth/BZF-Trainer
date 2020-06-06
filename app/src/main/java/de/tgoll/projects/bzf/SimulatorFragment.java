@@ -494,8 +494,8 @@ public class SimulatorFragment extends Fragment
     public void onNothingSelected(AdapterView<?> parent) {}
 
     private void highlightHelp(boolean atc, boolean you) {
-        int highlight = TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight);
-        int normal = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
+        int highlight = Util.lookupColor(requireContext(), R.attr.colorControlHighlight);
+        int normal = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
         txt_atc.setTypeface(null, atc ? Typeface.BOLD : Typeface.NORMAL);
         txt_you.setTypeface(null, you ? Typeface.BOLD : Typeface.NORMAL);
         txt_atc.setTextColor(atc ? highlight : normal);

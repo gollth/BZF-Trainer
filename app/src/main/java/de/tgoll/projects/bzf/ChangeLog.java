@@ -63,7 +63,7 @@ class ChangeLog {
     private Dialog getDialog() {
         WebView wv = new WebView(this.context);
 
-        wv.setBackgroundColor(TitleActivity.lookupColor(context, R.attr.backgroundColor));
+        wv.setBackgroundColor(Util.lookupColor(context, R.attr.backgroundColor));
         wv.loadDataWithBaseURL(null, this.getLog(), "text/html", "UTF-8", null);
 
         return new MaterialAlertDialogBuilder(context)
@@ -99,9 +99,9 @@ class ChangeLog {
 
             String line;
 
-            String textColor = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorOnBackground)));
-            String h1Color = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorPrimary)));
-            String h2Color = String.format("#%06X", (0xFFFFFF & TitleActivity.lookupColor(context, R.attr.colorSecondaryVariant)));
+            String textColor = String.format("#%06X", (0xFFFFFF & Util.lookupColor(context, R.attr.colorOnBackground)));
+            String h1Color = String.format("#%06X", (0xFFFFFF & Util.lookupColor(context, R.attr.colorPrimary)));
+            String h2Color = String.format("#%06X", (0xFFFFFF & Util.lookupColor(context, R.attr.colorSecondaryVariant)));
 
             while ((line = br.readLine()) != null) {
                 line = line.trim();

@@ -64,7 +64,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         for (String json : history) list.add(gson.fromJson(json, Trial.class));
 
         setupBarChart(chart);
-        color = TitleActivity.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
+        color = Util.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
         fillBarChart(chart, list, key);
 
 
@@ -94,7 +94,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
-        barchart.getXAxis().setTextColor(TitleActivity.lookupColor(context, R.attr.colorOnBackground));
+        barchart.getXAxis().setTextColor(Util.lookupColor(context, R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(true);
         barchart.getAxisLeft().setDrawGridLines(false);
@@ -168,14 +168,14 @@ public class QuestionFilter implements Slider.OnChangeListener {
             setLabel(context.getResources().getString(R.string.questionfilter_limit_line, n));
             setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
             setTextSize(10);
-            setTextColor(TitleActivity.lookupColor(context, R.attr.colorOnSurface));
+            setTextColor(Util.lookupColor(context, R.attr.colorOnSurface));
             setLineColor(color);
         }});
     }
 
     private void updateBarColors(int n) {
         List<Integer> colors = new ArrayList<>();
-        @ColorInt int ignoredColor = TitleActivity.lookupColor(context, R.attr.colorOnSecondary);
+        @ColorInt int ignoredColor = Util.lookupColor(context, R.attr.colorOnSecondary);
         for (int i = 0; i < data.getEntryCount(); i++) {
             boolean selected = Math.round(data.getEntryForIndex(i).getSumBelow(0) * (slider.getValueTo()+1)) >= n;
             colors.add(selected ? color : ignoredColor);

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
-import androidx.annotation.AttrRes;
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +14,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -33,13 +30,6 @@ public class TitleActivity extends AppCompatActivity {
         activity.finishAffinity();
     }
 
-    public static @ColorInt int lookupColor(@NonNull Context context, @AttrRes int id) {
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(id, typedValue, true);
-        return typedValue.data;
-    }
-
     Shop shop;
     SharedPreferences settings;
     private BottomNavigationView navigation;
@@ -53,7 +43,7 @@ public class TitleActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
-            int background = lookupColor(this, R.attr.colorPrimarySurface);
+            int background = Util.lookupColor(this, R.attr.colorPrimarySurface);
             actionBar.setDisplayShowHomeEnabled(true);
             actionBar.setIcon(R.drawable.bzf);
             actionBar.setBackgroundDrawable(new ColorDrawable(background));
@@ -84,7 +74,7 @@ public class TitleActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (isDarkMode(this)) {
-            int background = lookupColor(this, R.attr.colorPrimarySurface);
+            int background = Util.lookupColor(this, R.attr.colorPrimarySurface);
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(background);
