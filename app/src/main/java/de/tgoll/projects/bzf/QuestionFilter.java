@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
@@ -37,6 +38,8 @@ public class QuestionFilter implements Slider.OnChangeListener {
     private final Context context;
     private final Slider slider;
     private final BarChart chart;
+    private final @ColorInt int color;
+    private BarDataSet data;
 
     @SuppressLint("InflateParams")
     QuestionFilter(@NonNull Context context, String key, Catalogue cat) {
@@ -56,23 +59,20 @@ public class QuestionFilter implements Slider.OnChangeListener {
 
         Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
         List<Trial> list = new ArrayList<>();
-        //noTrialsYet &= history.isEmpty();
 
+        //noTrialsYet &= history.isEmpty();
         for (String json : history) list.add(gson.fromJson(json, Trial.class));
 
         setupBarChart(chart);
-        // TODO disable dialog_question on click on chart items...
-        // TODO use primary/secondary color depending on key
-        fillBarChart(chart, list, key, TitleActivity.lookupColor(context, R.attr.colorPrimary));
+        color = TitleActivity.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
+        fillBarChart(chart, list, key);
 
 
         // TODO max size to amount of corrects...
-        slider.setValueTo(list.size());
+        int maximumCorrectAnswer = list.size();
+        slider.setValueTo(maximumCorrectAnswer - 1);  // use one less, such that you cannot select "no questions"
         slider.setOnChangeListener(this);
-
-
-        // Update text once initially
-        onValueChange(slider, list.size());
+        slider.setValue(1); // Set "minimum 1 time incorrect" as default
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(context)
             .setTitle(context.getResources().getString(R.string.questionfilter_tooltip))
@@ -106,7 +106,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         barchart.setHighlightFullBarEnabled(true);
     }
 
-    private void fillBarChart(BarChart chart, List<Trial> trials, String key, int color) {
+    private void fillBarChart(BarChart chart, List<Trial> trials, String key) {
         // TODO Extract this and StatisticsFragement into separate Class
         if (trials == null) return;
 
@@ -146,7 +146,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         int background = Color.TRANSPARENT;
         int[] colors = new int[]{ color, background };
 
-        BarDataSet data = new BarDataSet(entries, "Antworten");
+        data = new BarDataSet(entries, "Antworten");
         data.setValueFormatter(new StatisticsFragment.NoneValueFormatter());
         chart.getXAxis().setValueFormatter(new StatisticsFragment.ObjectValueFormatter<>(keys));
         data.setColors(colors);
@@ -158,20 +158,32 @@ public class QuestionFilter implements Slider.OnChangeListener {
         chart.invalidate();
     }
 
-    void doStuff() {
+    private void doStuff() {
 
     }
 
     private void renderLimit(int n) {
         this.chart.getAxisLeft().removeAllLimitLines();
-        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / slider.getValueTo() * n) {{
-            setLabel("mindestens "+n+" mal falsch");
-            setLabelPosition(n == slider.getValueTo() ? LimitLabelPosition.LEFT_TOP : LimitLabelPosition.LEFT_BOTTOM);
+        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / (slider.getValueTo()+1) * n) {{
+            setLabel(context.getResources().getString(R.string.questionfilter_limit_line, n));
+            setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
             setTextSize(10);
-            setTextColor(Color.BLACK);
-            setLineColor(Color.BLACK);
+            setTextColor(TitleActivity.lookupColor(context, R.attr.colorOnSurface));
+            setLineColor(color);
         }});
     }
+
+    private void updateBarColors(int n) {
+        List<Integer> colors = new ArrayList<>();
+        @ColorInt int ignoredColor = TitleActivity.lookupColor(context, R.attr.colorOnSecondary);
+        for (int i = 0; i < data.getEntryCount(); i++) {
+            boolean selected = Math.round(data.getEntryForIndex(i).getSumBelow(0) * (slider.getValueTo()+1)) >= n;
+            colors.add(selected ? color : ignoredColor);
+            colors.add(Color.TRANSPARENT);
+        }
+        data.setColors(colors);
+    }
+
 
     @Override
     public void onValueChange(Slider slider, float value) {
@@ -179,6 +191,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
         total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), limit));
         renderLimit(limit);
+        updateBarColors(limit);
         chart.invalidate();
 
     }
