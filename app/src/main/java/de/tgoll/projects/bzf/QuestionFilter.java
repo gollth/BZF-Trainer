@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.LimitLine;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -33,14 +35,16 @@ public class QuestionFilter implements Slider.OnChangeListener {
     private final TextView label;
     private final TextView total;
     private final Context context;
+    private final Slider slider;
+    private final BarChart chart;
 
     @SuppressLint("InflateParams")
     QuestionFilter(@NonNull Context context, String key, Catalogue cat) {
         this.context = context;
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_questionfilter, null);
-        Slider slider = view.findViewById(R.id.qf_slider);
-        BarChart chart = view.findViewById(R.id.qf_chart);
+        this.slider = view.findViewById(R.id.qf_slider);
+        this.chart = view.findViewById(R.id.qf_chart);
         TextView name = view.findViewById(R.id.qf_lbl_chart);
         name.setText(key.toUpperCase());
 
@@ -63,12 +67,12 @@ public class QuestionFilter implements Slider.OnChangeListener {
 
 
         // TODO max size to amount of corrects...
-        slider.setValueTo(5);
+        slider.setValueTo(list.size());
         slider.setOnChangeListener(this);
 
 
         // Update text once initially
-        onValueChange(slider, 5);
+        onValueChange(slider, list.size());
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(context)
             .setTitle(context.getResources().getString(R.string.questionfilter_tooltip))
@@ -92,7 +96,11 @@ public class QuestionFilter implements Slider.OnChangeListener {
         barchart.getXAxis().setEnabled(true);
         barchart.getXAxis().setTextColor(TitleActivity.lookupColor(context, R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        barchart.getAxisLeft().setEnabled(false);
+        barchart.getAxisLeft().setEnabled(true);
+        barchart.getAxisLeft().setDrawGridLines(false);
+        barchart.getAxisLeft().setDrawLabels(false);
+        barchart.getAxisLeft().setDrawAxisLine(false);
+        barchart.getAxisLeft().setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);
         barchart.setHighlightFullBarEnabled(true);
@@ -145,14 +153,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         chart.getAxisLeft().setAxisMaximum(1);
         chart.getAxisLeft().setAxisMinimum(0);
         chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
-        chart.setOnChartValueSelectedListener(
-            new QuestionTooltipOnChartValueSelectedListener(
-                context,
-                chart,
-                key,
-                keys
-            )
-        );
+
         chart.notifyDataSetChanged();
         chart.invalidate();
     }
@@ -161,10 +162,24 @@ public class QuestionFilter implements Slider.OnChangeListener {
 
     }
 
+    private void renderLimit(int n) {
+        this.chart.getAxisLeft().removeAllLimitLines();
+        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / slider.getValueTo() * n) {{
+            setLabel("mindestens "+n+" mal falsch");
+            setLabelPosition(n == slider.getValueTo() ? LimitLabelPosition.LEFT_TOP : LimitLabelPosition.LEFT_BOTTOM);
+            setTextSize(10);
+            setTextColor(Color.BLACK);
+            setLineColor(Color.BLACK);
+        }});
+    }
 
     @Override
     public void onValueChange(Slider slider, float value) {
-        label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), (int)value));
-        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), (int)value));
+        int limit = (int)value;
+        label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
+        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), limit));
+        renderLimit(limit);
+        chart.invalidate();
+
     }
 }
