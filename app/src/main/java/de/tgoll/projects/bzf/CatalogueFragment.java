@@ -143,7 +143,7 @@ public class CatalogueFragment extends Fragment implements
                 return true;
 
             case R.id.menu_filter:
-                new QuestionFilter(requireContext(), key, cat);
+                new QuestionFilter(requireContext(), key);
                 return true;
 
             default:
