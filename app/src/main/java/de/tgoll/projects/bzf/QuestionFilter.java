@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,29 +23,27 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.slider.Slider;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionFilter implements Slider.OnChangeListener {
+public class QuestionFilter implements View.OnTouchListener {
 
 
     private final TextView label;
     private final TextView total;
     private final Context context;
-    private final Slider slider;
     private final BarChart chart;
     private final @ColorInt int color;
+    private final int maximumCorrectAnswers;
     private BarDataSet data;
 
-    @SuppressLint("InflateParams")
+    @SuppressLint({"InflateParams", "ClickableViewAccessibility"})
     QuestionFilter(@NonNull Context context, String key) {
         this.context = context;
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_questionfilter, null);
-        this.slider = view.findViewById(R.id.qf_slider);
         this.chart = view.findViewById(R.id.qf_chart);
         TextView name = view.findViewById(R.id.qf_lbl_chart);
         name.setText(key.toUpperCase());
@@ -62,6 +61,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         Pair<BarDataSet, List<Integer>> pair = Util.createQuestionHistogram(list, color);
         if (pair == null) {
             Log.w("BZF", "WARNING: Attempting to show Question Filter despite no questions for " + key +" have yet been answered");
+            maximumCorrectAnswers = 0;
             return;
         }
         data = pair.first;
@@ -71,14 +71,14 @@ public class QuestionFilter implements Slider.OnChangeListener {
         chart.getAxisLeft().setAxisMinimum(0);
         chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
 
+        chart.setOnTouchListener(this);
+
         chart.notifyDataSetChanged();
         chart.invalidate();
 
-        // TODO max size to amount of corrects...
-        int maximumCorrectAnswer = Util.getMaxCorrectAnswered(pair.first, list.size());
-        slider.setValueTo(maximumCorrectAnswer - 1);  // use one less, such that you cannot select "no questions"
-        slider.setOnChangeListener(this);
-        slider.setValue(1); // Set "minimum 1 time incorrect" as default
+        // use one less, such that you cannot select "no questions"
+        this.maximumCorrectAnswers = Util.getMaxCorrectAnswered(pair.first, list.size()) - 1;
+        onValueChange(1); // Set "minimum 1 time incorrect" as default
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(context)
             .setTitle(context.getResources().getString(R.string.questionfilter_tooltip))
@@ -99,7 +99,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         barchart.setFitBars(true);
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
-        barchart.getXAxis().setEnabled(true);
+        barchart.getXAxis().setEnabled(false);
         barchart.getXAxis().setTextColor(Util.lookupColor(context, R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(true);
@@ -109,7 +109,10 @@ public class QuestionFilter implements Slider.OnChangeListener {
         barchart.getAxisLeft().setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
         barchart.getAxisRight().setEnabled(false);
         barchart.getXAxis().setGranularity(1f);
-        barchart.setTouchEnabled(false);
+        barchart.setTouchEnabled(true);
+        barchart.setDoubleTapToZoomEnabled(false);
+        barchart.setHighlightPerTapEnabled(false);
+        barchart.setHighlightPerDragEnabled(false);
     }
 
     private void doStuff() {
@@ -118,7 +121,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
 
     private void renderLimit(int n) {
         this.chart.getAxisLeft().removeAllLimitLines();
-        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / (slider.getValueTo()+1) * n) {{
+        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / (maximumCorrectAnswers+1) * n) {{
             setLabel(context.getResources().getString(R.string.questionfilter_limit_line, n));
             setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
             setTextSize(10);
@@ -131,7 +134,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         List<Integer> colors = new ArrayList<>();
         @ColorInt int ignoredColor = Util.lookupColor(context, R.attr.colorOnSecondary);
         for (int i = 0; i < data.getEntryCount(); i++) {
-            boolean selected = Math.round(data.getEntryForIndex(i).getSumBelow(0) * (slider.getValueTo()+1)) >= n;
+            boolean selected = Math.round(data.getEntryForIndex(i).getSumBelow(0) * (maximumCorrectAnswers+1)) >= n;
             colors.add(selected ? color : ignoredColor);
             colors.add(Color.TRANSPARENT);
         }
@@ -139,13 +142,34 @@ public class QuestionFilter implements Slider.OnChangeListener {
     }
 
 
-    @Override
-    public void onValueChange(Slider slider, float value) {
-        int limit = (int)value;
+    private void onValueChange(float value) {
+        int limit = Math.round(Util.saturate(value, 0, maximumCorrectAnswers));
         label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
+        // TODO Update `total` with acutal value
         total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), limit));
         renderLimit(limit);
         updateBarColors(limit);
         chart.invalidate();
+    }
+
+
+    @SuppressLint("ClickableViewAccessibility")
+    @Override
+    public boolean onTouch(View v, MotionEvent me) {
+        float value;
+        switch (me.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                value = me.getY() / chart.getHeight();
+                onValueChange(value * maximumCorrectAnswers);
+                break;
+
+                //Highlight highlight = chart.getHighlightByTouchPoint(me.getX(), me.getY());
+                //value = 1-Util.getValue(data, highlight.getX());
+                //onValueChange(slider, (slider.getValueTo()+1) * value);
+                //v.performClick();
+                //break;
+        }
+        return false;
     }
 }
