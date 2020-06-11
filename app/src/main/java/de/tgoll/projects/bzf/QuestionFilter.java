@@ -27,7 +27,6 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class QuestionFilter implements Slider.OnChangeListener {
 
@@ -56,11 +55,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         Gson gson = new Gson();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
 
-        Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
-        List<Trial> list = new ArrayList<>();
-
-        //noTrialsYet &= history.isEmpty();
-        for (String json : history) list.add(gson.fromJson(json, Trial.class));
+        List<Trial> list = Util.getTrials(settings, gson, key);
 
         setupBarChart(chart);
         color = Util.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
@@ -80,7 +75,7 @@ public class QuestionFilter implements Slider.OnChangeListener {
         chart.invalidate();
 
         // TODO max size to amount of corrects...
-        int maximumCorrectAnswer = list.size();
+        int maximumCorrectAnswer = Util.getMaxCorrectAnswered(pair.first, list.size());
         slider.setValueTo(maximumCorrectAnswer - 1);  // use one less, such that you cannot select "no questions"
         slider.setOnChangeListener(this);
         slider.setValue(1); // Set "minimum 1 time incorrect" as default
