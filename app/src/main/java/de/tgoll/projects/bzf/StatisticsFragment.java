@@ -27,7 +27,6 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -62,11 +61,8 @@ public class StatisticsFragment extends Fragment {
         Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf", "sim")) {
             Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
-            List<Trial> list = new ArrayList<>();
             noTrialsYet &= history.isEmpty();
-
-            for (String json : history) list.add(gson.fromJson(json, Trial.class));
-            trials.put(key, list);
+            trials.put(key, Util.getTrials(settings, gson, key));
         }
 
         if (noTrialsYet) {
