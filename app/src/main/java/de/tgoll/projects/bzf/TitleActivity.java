@@ -19,8 +19,11 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 
 import java.security.InvalidParameterException;
+import java.util.List;
+import java.util.Set;
 
 public class TitleActivity extends AppCompatActivity {
 
@@ -150,6 +153,11 @@ public class TitleActivity extends AppCompatActivity {
                 getMenuInflater().inflate(R.menu.main, menu);
                 MenuItem filter = menu.findItem(R.id.menu_filter);
                 filter.setVisible(true);
+
+                String key = getActiveFragment() == R.id.nav_azf ? "azf" : "bzf";
+                List<Trial> trials = Util.getTrials(settings, new Gson(), key);
+                filter.setEnabled(trials.size() > 0);
+
                 return true;
 
             case R.id.nav_sim:
