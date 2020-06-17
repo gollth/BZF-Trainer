@@ -47,12 +47,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.LevelEndEvent;
-import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,6 +65,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_END;
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_START;
 import static de.tgoll.projects.bzf.CatalogueFragment.EMPTY_SET;
 
 public class SimulatorFragment extends Fragment
@@ -110,6 +110,7 @@ public class SimulatorFragment extends Fragment
     private Random rng = new Random();
     private SharedPreferences settings;
     private boolean loggedLevelStart = false;
+    private FirebaseAnalytics firebase;
 
     private String getDifficultyName () {
         switch (getDifficulty()) {
@@ -217,10 +218,12 @@ public class SimulatorFragment extends Fragment
         int correct = Math.round(totalSuccessRates * 100 / answeredFromYou);
 
         // Send to Crashlytics, that the user completed the Simulator
-        if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
-                .putLevelName(getString(R.string.simulator))
-                .putScore(correct)
-                .putSuccess(correct > 50));
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, getString(R.string.simulator));
+        bundle.putInt(FirebaseAnalytics.Param.SCORE, correct);
+        bundle.putBoolean(FirebaseAnalytics.Param.SUCCESS, correct > 50);
+        firebase.logEvent(LEVEL_END, bundle);
 
         // Add the trial to the statistics
         Trial trial = new Trial(key, correct * .01f);
@@ -243,7 +246,7 @@ public class SimulatorFragment extends Fragment
                     } catch (ClassCastException cce){
                         String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
                         Log.e("BZF", error);
-                        Crashlytics.log(error);
+                        FirebaseCrashlytics.getInstance().log(error);
                     }
                 })
                 .setPositiveButton(getString(R.string.restart), (d, which) -> {
@@ -257,6 +260,7 @@ public class SimulatorFragment extends Fragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebase = FirebaseAnalytics.getInstance(requireContext());
         setHasOptionsMenu(true);
     }
 
@@ -329,7 +333,7 @@ public class SimulatorFragment extends Fragment
             phrases.addAll (parseConversation(arr,english));
         } catch (IOException ioe) {
             Log.e("Simulator", "" + ioe.getLocalizedMessage());
-            Crashlytics.logException(ioe);
+            FirebaseCrashlytics.getInstance().recordException(ioe);
             Toast.makeText(
                     activity,
                     "Upps, da ging leider etwas schief...",
@@ -461,10 +465,11 @@ public class SimulatorFragment extends Fragment
             case MotionEvent.ACTION_DOWN:
                 // If the record button got pushed the first time, send it to Crashlytics
                 if (!loggedLevelStart) {
-                    if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
-                            .putLevelName(getString(R.string.simulator))
-                            .putCustomAttribute(getString(R.string.language), getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de))
-                            .putCustomAttribute(getString(R.string.settings_sim_level), getDifficultyName()));
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, getString(R.string.simulator));
+                    bundle.putString(getString(R.string.language), getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de));
+                    bundle.putString(getString(R.string.settings_sim_level), getDifficultyName());
+                    firebase.logEvent(LEVEL_START, bundle);
                     loggedLevelStart = true;
                 }
                 startTime = new Date().getTime();

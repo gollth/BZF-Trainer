@@ -26,13 +26,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.LevelEndEvent;
-import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.gson.Gson;
 
 import java.security.InvalidParameterException;
@@ -43,6 +41,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_END;
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_START;
 
 public class CatalogueFragment extends Fragment implements
         Slider.OnChangeListener,
@@ -70,6 +71,7 @@ public class CatalogueFragment extends Fragment implements
     private String key;
     private Catalogue cat;
     private int sliderLastQuestion;
+    private FirebaseAnalytics analytics;
 
     static CatalogueFragment newInstance(String key) {
         Bundle args = new Bundle();
@@ -82,6 +84,7 @@ public class CatalogueFragment extends Fragment implements
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        analytics = FirebaseAnalytics.getInstance(requireContext());
         setHasOptionsMenu(true);
         Bundle args = getArguments();
         if (args == null) {
@@ -224,12 +227,12 @@ public class CatalogueFragment extends Fragment implements
 
         progress.setLabelFormatter(new CompletedFormatter(choices));
 
-        // Send to Crashlytics, that the user started a new trial
-        if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
-            .putLevelName(key)
-            .putCustomAttribute(getString(R.string.settings_shuffle_questions), ""+settings.getBoolean(getString(R.string.settings_shuffle_questions), false))
-            .putCustomAttribute(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false))
-        );
+        // Send to Firebase, that the user started a new trial
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, key);
+        bundle.putString(getString(R.string.settings_shuffle_questions), ""+settings.getBoolean(getString(R.string.settings_shuffle_questions), false));
+        bundle.putString(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false));
+        analytics.logEvent(LEVEL_START, bundle);
 
         progress.setValueTo(playlist.size());
         loadQuestion(0);
@@ -409,7 +412,7 @@ public class CatalogueFragment extends Fragment implements
                     } catch (ClassCastException cce){
                         String error = "CatalogueFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
                         Log.e("BZF", error);
-                        Crashlytics.log(error);
+                        FirebaseCrashlytics.getInstance().log(error);
                     }
                 })
                 .setPositiveButton(R.string.restart, (dialog, which) -> {
@@ -417,12 +420,12 @@ public class CatalogueFragment extends Fragment implements
                     dialog.dismiss();
                 }).show();
 
-        // Send to Crashlytics, that the user has successfully finished the catalogue
-        if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
-            .putLevelName(key)
-            .putScore(trial.getSuccessRate())
-            .putSuccess(success));
-
+        // Send to Firebase, that the user has finished the catalogue
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, key);
+        bundle.putDouble(FirebaseAnalytics.Param.SCORE, trial.getSuccessRate());
+        bundle.putBoolean(FirebaseAnalytics.Param.SUCCESS, success);
+        analytics.logEvent(LEVEL_END, bundle);
     }
 
     private boolean isNotFinalQuestion() {

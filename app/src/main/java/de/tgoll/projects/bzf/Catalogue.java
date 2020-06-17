@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -49,7 +49,7 @@ class Catalogue {
         } catch (Exception e) {
             String error = "Error occurred in asking \"isCorrect\" of question " + question + " and answer " + answer + ": " + e.getMessage();
             Log.e("BZF", error);
-            Crashlytics.log(error);
+            FirebaseCrashlytics.getInstance().log(error);
             return false;
         }
     }
@@ -62,7 +62,7 @@ class Catalogue {
         try {
             return questions[i];
         } catch (Exception e) {
-            Crashlytics.log("Error occurred in asking \"getQuestion\" of question " + i + ": " + e.getMessage());
+            FirebaseCrashlytics.getInstance().log("Error occurred in asking \"getQuestion\" of question " + i + ": " + e.getMessage());
             return "Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen";
         }
     }
@@ -71,7 +71,7 @@ class Catalogue {
         try {
             return solutions[question];
         } catch (Exception e) {
-            Crashlytics.log("Error occurred in asking \"getSolution\" of question " + question + ": " + e.getMessage());
+            FirebaseCrashlytics.getInstance().log("Error occurred in asking \"getSolution\" of question " + question + ": " + e.getMessage());
             return 0;
         }
     }
@@ -79,7 +79,7 @@ class Catalogue {
         try {
             return answers[question][answer];
         } catch (Exception e) {
-            Crashlytics.log("Error occurred in asking \"getAnswer\" of question " + question + " and answer " + answer + ": " + e.getMessage());
+            FirebaseCrashlytics.getInstance().log("Error occurred in asking \"getAnswer\" of question " + question + " and answer " + answer + ": " + e.getMessage());
             return "Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen";
         }
     }
@@ -88,7 +88,7 @@ class Catalogue {
         try {
             return answers[question];
         } catch (Exception e) {
-            Crashlytics.log("Error occurred in asking \"getAnswers\" of question " + question + ": " + e.getMessage());
+            FirebaseCrashlytics.getInstance().log("Error occurred in asking \"getAnswers\" of question " + question + ": " + e.getMessage());
             return new String[]{"Ups, es ist leider ein Fehler aufgetreten =(. Bitte mit der nächsten Frage weitermachen", "", "", ""};
         }
     }

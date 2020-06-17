@@ -53,10 +53,6 @@
                 android:value="de.tgoll.projects.bzf.TitleActivity" />
         </activity>
 
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="e7439a5e208cdf2d7c2958b8362f8707f9b2fa66" />
     </application>
-
 
 </manifest>
