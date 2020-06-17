@@ -256,7 +256,7 @@ public class CatalogueFragment extends Fragment implements
     }
 
     @Override
-    public void onValueChange(Slider slider, float value) {
+    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
         // Check if the value changed, if not, slider probably at a bound
         if ((int)value - 1 == sliderLastQuestion) return;
 
@@ -295,9 +295,9 @@ public class CatalogueFragment extends Fragment implements
 
     private void setQuestionProgress(int i) {
         progress.setValueTo(playlist.size());
-        progress.setOnChangeListener(null);
+        progress.removeOnChangeListener(this);
         progress.setValue(i+1);
-        progress.setOnChangeListener(this);
+        progress.addOnChangeListener(this);
         txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, playlist.size()));
     }
 
