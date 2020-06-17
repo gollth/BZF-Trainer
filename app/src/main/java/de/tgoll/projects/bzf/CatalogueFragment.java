@@ -107,7 +107,6 @@ public class CatalogueFragment extends Fragment implements
         btn_next = view.findViewById(R.id.btn_next);
         btn_prev = view.findViewById(R.id.btn_prev);
         progress = view.findViewById(R.id.progress);
-        progress.setValueTo(cat.size());
 
         vibrator = (Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE);
         settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
@@ -167,7 +166,10 @@ public class CatalogueFragment extends Fragment implements
         setTextSizes(fontSize);
 
         String s = settings.getString(key + "-state", "");
-        if (s.isEmpty()) resetQuestions();
+        if (s.isEmpty()) {
+            Log.i("BZF", "Could not find previous saved stated, resetting playlist");
+            resetQuestions();
+        }
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
             Log.i("BZF", "Loading State from " + key + "-state");
@@ -175,7 +177,7 @@ public class CatalogueFragment extends Fragment implements
             choices = state.choices;
 
             // if we contain an old state saved in app data, we clear it.
-            if (playlist == null || playlist.size() != cat.size()) resetQuestions();
+            if (playlist == null) resetQuestions();
             else loadQuestion(state.progress);
         }
 
@@ -207,9 +209,11 @@ public class CatalogueFragment extends Fragment implements
     private void resetQuestions(List<Integer> filter) {
         settings.edit().remove(key + "-state").apply();
 
+        boolean customPlaylist = filter != null;
         playlist = new ArrayList<>();
         choices = new ArrayList<>();
         for (int i = 0; i < cat.size(); i++) {
+            if (customPlaylist && !filter.contains(i+1)) continue;
             playlist.add(i);
             choices.add(-1);    // Not set
         }
@@ -227,6 +231,7 @@ public class CatalogueFragment extends Fragment implements
             .putCustomAttribute(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false))
         );
 
+        progress.setValueTo(playlist.size());
         loadQuestion(0);
     }
 
@@ -286,15 +291,16 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void setQuestionProgress(int i) {
+        progress.setValueTo(playlist.size());
         progress.setOnChangeListener(null);
         progress.setValue(i+1);
         progress.setOnChangeListener(this);
-        txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, cat.size()));
+        txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, playlist.size()));
     }
 
     private void loadQuestion(int i) {
         if (i < 0) i = 0;
-        if (i >= cat.size()) i = cat.size()-1;
+        if (i >= playlist.size()) i = playlist.size()-1;
 
         setQuestionProgress(i);
         updateButtons();
@@ -420,7 +426,7 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private boolean isNotFinalQuestion() {
-        return getProgress() != cat.size()-1;
+        return getProgress() != playlist.size()-1;
     }
 
     private void unhighlightAnswers(boolean alsoClearCheck) {

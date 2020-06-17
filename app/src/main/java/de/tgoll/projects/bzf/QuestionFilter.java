@@ -82,7 +82,7 @@ public class QuestionFilter implements View.OnTouchListener {
         chart.invalidate();
 
         // use one less, such that you cannot select "no questions"
-        this.maximumCorrectAnswers = Util.getMaxCorrectAnswered(data.first, list.size()) - 1;
+        this.maximumCorrectAnswers = Util.getMaxCorrectAnswered(data.first, list.size());
         onValueChange(1); // Set "minimum 1 time incorrect" as default
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(context)
@@ -123,8 +123,12 @@ public class QuestionFilter implements View.OnTouchListener {
 
     private void renderLimit(int n) {
         this.chart.getAxisLeft().removeAllLimitLines();
-        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / (maximumCorrectAnswers+1) * n) {{
-            setLabel(context.getResources().getString(R.string.questionfilter_limit_line, n));
+        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f/ maximumCorrectAnswers * n) {{
+            if (n == 0) {
+                setLabel(context.getResources().getString(R.string.questionfilter_limit_line_never));
+            } else {
+                setLabel(context.getResources().getString(R.string.questionfilter_limit_line, n));
+            }
             setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
             setTextSize(10);
             setTextColor(Util.lookupColor(context, R.attr.colorOnSurface));
@@ -136,7 +140,7 @@ public class QuestionFilter implements View.OnTouchListener {
         List<Integer> colors = new ArrayList<>();
         @ColorInt int ignoredColor = Util.lookupColor(context, R.attr.colorOnSecondary);
         for (int i = 0; i < data.first.getEntryCount(); i++) {
-            boolean selected = Math.round(data.first.getEntryForIndex(i).getSumBelow(0) * (maximumCorrectAnswers+1)) >= n;
+            boolean selected = Math.round(data.first.getEntryForIndex(i).getSumBelow(0) * (maximumCorrectAnswers)) >= n;
             colors.add(selected ? color : ignoredColor);
             colors.add(Color.TRANSPARENT);
         }
@@ -145,7 +149,7 @@ public class QuestionFilter implements View.OnTouchListener {
 
 
     private void onValueChange(float value) {
-        int limit = Math.round(Util.saturate(value, 0, maximumCorrectAnswers));
+        int limit = Math.round(Util.saturate(value, 0, maximumCorrectAnswers-1));
         label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
         playlist.clear();
         for(int i = 0; i < data.first.getEntryCount(); i++) {
