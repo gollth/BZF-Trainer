@@ -12,10 +12,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -106,13 +104,13 @@ class Util {
      * @param index the index of the bar in the dataset
      * @return the value of the lower stack in the bar entry
      */
-    static float getValue(BarDataSet set, int index) {
+    static int getValue(BarDataSet set, int index, int maximum) {
         BarEntry entry = set.getEntryForIndex(index);
         float[] values = entry.getYVals();
-        return values[0];
+        return Math.round(values[0] * maximum);
     }
-    static float getValue(BarDataSet set, float x) {
-        return getValue(set, set.getEntryIndex(x, Float.NaN, null));
+    static int getValue(BarDataSet set, float x, int maximum) {
+        return getValue(set, set.getEntryIndex(x, Float.NaN, null), maximum);
     }
 
     /**
@@ -122,7 +120,7 @@ class Util {
      * @return a number between 0 and `trialsAmount`
      */
     static int getMaxWrongAnswered(BarDataSet set, int trialsAmount) {
-        return Math.round(getValue(set, 0) * trialsAmount);
+        return getValue(set, 0, trialsAmount);
     }
 
     /**
@@ -132,7 +130,7 @@ class Util {
      * @return a number between 0 and `trialsAmount`
      */
     static int getMaxCorrectAnswered(BarDataSet set, int trialsAmount) {
-        return Math.round(getValue(set, set.getEntryCount()-1) * trialsAmount);
+        return getValue(set, set.getEntryCount()-1, trialsAmount);
     }
 
     /**
