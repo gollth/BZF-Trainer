@@ -145,8 +145,13 @@ public class QuestionFilter implements View.OnTouchListener {
     private void onValueChange(float value) {
         int limit = Math.round(Util.saturate(value, 0, maximumCorrectAnswers));
         label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
-        // TODO Update `total` with acutal value
-        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), limit));
+        // TODO Generate Playlist from selected questions
+        int n = 0;
+        for(int i = 0; i < data.getEntryCount(); i++) {
+            if (Util.getValue(data, i, maximumCorrectAnswers) > maximumCorrectAnswers - limit) continue;
+            n++;
+        }
+        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), n));
         renderLimit(limit);
         updateBarColors(limit);
         chart.invalidate();
