@@ -30,6 +30,10 @@ import java.util.List;
 
 public class QuestionFilter implements View.OnTouchListener {
 
+    public interface OnSubmitListener {
+        void onPlaylistGenerated(List<Integer> playlist);
+    }
+
 
     private final TextView label;
     private final TextView total;
@@ -37,10 +41,11 @@ public class QuestionFilter implements View.OnTouchListener {
     private final BarChart chart;
     private final @ColorInt int color;
     private final int maximumCorrectAnswers;
-    private BarDataSet data;
+    private final List<Integer> playlist;
+    private Pair<BarDataSet, List<Integer>> data;
 
     @SuppressLint({"InflateParams", "ClickableViewAccessibility"})
-    QuestionFilter(@NonNull Context context, String key) {
+    QuestionFilter(@NonNull Context context, String key, OnSubmitListener callback) {
         this.context = context;
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_questionfilter, null);
@@ -55,21 +60,21 @@ public class QuestionFilter implements View.OnTouchListener {
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
 
         List<Trial> list = Util.getTrials(settings, gson, key);
+        this.playlist = new ArrayList<>();
 
         setupBarChart(chart);
         color = Util.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
-        Pair<BarDataSet, List<Integer>> pair = Util.createQuestionHistogram(list, color);
-        if (pair == null) {
+        data = Util.createQuestionHistogram(list, color);
+        if (data == null) {
             Log.w("BZF", "WARNING: Attempting to show Question Filter despite no questions for " + key +" have yet been answered");
             maximumCorrectAnswers = 0;
             return;
         }
-        data = pair.first;
 
-        chart.getXAxis().setValueFormatter(new StatisticsFragment.ObjectValueFormatter<>(pair.second));
+        chart.getXAxis().setValueFormatter(new StatisticsFragment.ObjectValueFormatter<>(data.second));
         chart.getAxisLeft().setAxisMaximum(1);
         chart.getAxisLeft().setAxisMinimum(0);
-        chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
+        chart.setData(new BarData(data.first) {{ setBarWidth(0.99f); }});
 
         chart.setOnTouchListener(this);
 
@@ -77,7 +82,7 @@ public class QuestionFilter implements View.OnTouchListener {
         chart.invalidate();
 
         // use one less, such that you cannot select "no questions"
-        this.maximumCorrectAnswers = Util.getMaxCorrectAnswered(pair.first, list.size()) - 1;
+        this.maximumCorrectAnswers = Util.getMaxCorrectAnswered(data.first, list.size()) - 1;
         onValueChange(1); // Set "minimum 1 time incorrect" as default
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(context)
@@ -86,11 +91,12 @@ public class QuestionFilter implements View.OnTouchListener {
             .setCancelable(true)
             .setPositiveButton(
                 context.getResources().getString(R.string.questionfilter_btn_ok),
-                (d, btn) -> doStuff()
+                (d, btn) -> callback.onPlaylistGenerated(this.playlist)
             )
             .create();
         dialog.show();
     }
+
 
     private void setupBarChart(BarChart barchart) {
         barchart.getDescription().setEnabled(false);
@@ -115,10 +121,6 @@ public class QuestionFilter implements View.OnTouchListener {
         barchart.setHighlightPerDragEnabled(false);
     }
 
-    private void doStuff() {
-
-    }
-
     private void renderLimit(int n) {
         this.chart.getAxisLeft().removeAllLimitLines();
         this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f / (maximumCorrectAnswers+1) * n) {{
@@ -133,30 +135,29 @@ public class QuestionFilter implements View.OnTouchListener {
     private void updateBarColors(int n) {
         List<Integer> colors = new ArrayList<>();
         @ColorInt int ignoredColor = Util.lookupColor(context, R.attr.colorOnSecondary);
-        for (int i = 0; i < data.getEntryCount(); i++) {
-            boolean selected = Math.round(data.getEntryForIndex(i).getSumBelow(0) * (maximumCorrectAnswers+1)) >= n;
+        for (int i = 0; i < data.first.getEntryCount(); i++) {
+            boolean selected = Math.round(data.first.getEntryForIndex(i).getSumBelow(0) * (maximumCorrectAnswers+1)) >= n;
             colors.add(selected ? color : ignoredColor);
             colors.add(Color.TRANSPARENT);
         }
-        data.setColors(colors);
+        data.first.setColors(colors);
     }
 
 
     private void onValueChange(float value) {
         int limit = Math.round(Util.saturate(value, 0, maximumCorrectAnswers));
         label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
-        // TODO Generate Playlist from selected questions
-        int n = 0;
-        for(int i = 0; i < data.getEntryCount(); i++) {
-            if (Util.getValue(data, i, maximumCorrectAnswers) > maximumCorrectAnswers - limit) continue;
-            n++;
+        playlist.clear();
+        for(int i = 0; i < data.first.getEntryCount(); i++) {
+            if (Util.getValue(data.first, i, maximumCorrectAnswers) > maximumCorrectAnswers - limit) continue;
+            int x = data.second.get(i);   // X label to bar entry aka question index
+            playlist.add(x);
         }
-        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), n));
+        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), playlist.size()));
         renderLimit(limit);
         updateBarColors(limit);
         chart.invalidate();
     }
-
 
     @SuppressLint("ClickableViewAccessibility")
     @Override

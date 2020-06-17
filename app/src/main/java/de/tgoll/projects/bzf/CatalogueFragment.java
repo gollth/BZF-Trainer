@@ -143,7 +143,7 @@ public class CatalogueFragment extends Fragment implements
                 return true;
 
             case R.id.menu_filter:
-                new QuestionFilter(requireContext(), key);
+                new QuestionFilter(requireContext(), key, this::resetQuestions);
                 return true;
 
             default:
@@ -202,6 +202,9 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void resetQuestions() {
+        resetQuestions(null);
+    }
+    private void resetQuestions(List<Integer> filter) {
         settings.edit().remove(key + "-state").apply();
 
         playlist = new ArrayList<>();
