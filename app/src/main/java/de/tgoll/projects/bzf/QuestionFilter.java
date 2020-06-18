@@ -40,7 +40,6 @@ public class QuestionFilter implements View.OnTouchListener {
     private final Context context;
     private final BarChart chart;
     private final @ColorInt int color;
-    private final int maximumCorrectAnswers;
     private final List<Integer> playlist;
     private Pair<BarDataSet, List<Integer>> data;
 
@@ -64,10 +63,11 @@ public class QuestionFilter implements View.OnTouchListener {
 
         setupBarChart(chart);
         color = Util.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
+
+        // TODO create histogram correctly for trials of different playlist lengths
         data = Util.createQuestionHistogram(list, color);
         if (data == null) {
             Log.w("BZF", "WARNING: Attempting to show Question Filter despite no questions for " + key +" have yet been answered");
-            maximumCorrectAnswers = 0;
             return;
         }
 
@@ -81,9 +81,7 @@ public class QuestionFilter implements View.OnTouchListener {
         chart.notifyDataSetChanged();
         chart.invalidate();
 
-        // use one less, such that you cannot select "no questions"
-        this.maximumCorrectAnswers = Util.getMaxCorrectAnswered(data.first, list.size());
-        onValueChange(1); // Set "minimum 1 time incorrect" as default
+        onValueChange(0.9f); // Set "minimum 10% incorrect" as default
 
         AlertDialog dialog = new MaterialAlertDialogBuilder(context)
             .setTitle(context.getResources().getString(R.string.questionfilter_tooltip))
@@ -121,26 +119,30 @@ public class QuestionFilter implements View.OnTouchListener {
         barchart.setHighlightPerDragEnabled(false);
     }
 
-    private void renderLimit(int n) {
+    private void renderLimit(float limit) {
         this.chart.getAxisLeft().removeAllLimitLines();
-        this.chart.getAxisLeft().addLimitLine(new LimitLine(1f - 1f/ maximumCorrectAnswers * n) {{
-            if (n == 0) {
-                setLabel(context.getResources().getString(R.string.questionfilter_limit_line_never));
-            } else {
-                setLabel(context.getResources().getString(R.string.questionfilter_limit_line, n));
-            }
+        this.chart.getAxisLeft().addLimitLine(new LimitLine(limit) {{
             setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
+            if (limit == 1) {
+                // TODO find out correct condition to "snap"
+                setLabel(context.getResources().getString(R.string.questionfilter_limit_line_all));
+            } else if (limit == 0) {
+                setLabel(context.getResources().getString(R.string.questionfilter_limit_line_none));
+                setLabelPosition(LimitLabelPosition.RIGHT_TOP);
+            } else {
+                setLabel(context.getResources().getString(R.string.questionfilter_limit_line, Math.round(limit * 100)));
+            }
             setTextSize(10);
             setTextColor(Util.lookupColor(context, R.attr.colorOnSurface));
             setLineColor(color);
         }});
     }
 
-    private void updateBarColors(int n) {
+    private void updateBarColors(float limit) {
         List<Integer> colors = new ArrayList<>();
         @ColorInt int ignoredColor = Util.lookupColor(context, R.attr.colorOnSecondary);
         for (int i = 0; i < data.first.getEntryCount(); i++) {
-            boolean selected = Math.round(data.first.getEntryForIndex(i).getSumBelow(0) * (maximumCorrectAnswers)) >= n;
+            boolean selected = Util.getValue(data.first, i) <= limit;
             colors.add(selected ? color : ignoredColor);
             colors.add(Color.TRANSPARENT);
         }
@@ -149,17 +151,17 @@ public class QuestionFilter implements View.OnTouchListener {
 
 
     private void onValueChange(float value) {
-        int limit = Math.round(Util.saturate(value, 0, maximumCorrectAnswers-1));
-        label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), limit));
+        label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), Math.round(100- value *100)));
         playlist.clear();
         for(int i = 0; i < data.first.getEntryCount(); i++) {
-            if (Util.getValue(data.first, i, maximumCorrectAnswers) > maximumCorrectAnswers - limit) continue;
+            if (Util.getValue(data.first, i) > value) continue;
             int x = data.second.get(i);   // X label to bar entry aka question index
             playlist.add(x);
         }
+        Log.i("BZF", "Setting label to " + playlist.size());
         total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), playlist.size()));
-        renderLimit(limit);
-        updateBarColors(limit);
+        renderLimit(value);
+        updateBarColors(value);
         chart.invalidate();
     }
 
@@ -171,7 +173,7 @@ public class QuestionFilter implements View.OnTouchListener {
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
                 value = me.getY() / chart.getHeight();
-                onValueChange(value * maximumCorrectAnswers);
+                onValueChange(Util.saturate(1f-value, 0, 1));
                 break;
 
                 //Highlight highlight = chart.getHighlightByTouchPoint(me.getX(), me.getY());

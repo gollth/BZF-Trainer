@@ -61,6 +61,7 @@ class Util {
         for (Trial trial : trials) {
             if (trial.size() > max) max = trial.size();
         }
+        // TODO find a way to handle trials with of different catalogue lengths
         List<Float> questions = new ArrayList<>(Collections.nCopies(max, 0f));
 
         // Fill the list with data
@@ -104,13 +105,13 @@ class Util {
      * @param index the index of the bar in the dataset
      * @return the value of the lower stack in the bar entry
      */
-    static int getValue(BarDataSet set, int index, int maximum) {
+    static float getValue(BarDataSet set, int index) {
         BarEntry entry = set.getEntryForIndex(index);
         float[] values = entry.getYVals();
-        return Math.round(values[0] * maximum);
+        return values[0];
     }
-    static int getValue(BarDataSet set, float x, int maximum) {
-        return getValue(set, set.getEntryIndex(x, Float.NaN, null), maximum);
+    static float getValue(BarDataSet set, float x) {
+        return getValue(set, set.getEntryIndex(x, Float.NaN, null));
     }
 
     /**
@@ -120,7 +121,7 @@ class Util {
      * @return a number between 0 and `trialsAmount`
      */
     static int getMaxWrongAnswered(BarDataSet set, int trialsAmount) {
-        return getValue(set, 0, trialsAmount);
+        return Math.round(getValue(set, 0) * trialsAmount);
     }
 
     /**
@@ -130,7 +131,7 @@ class Util {
      * @return a number between 0 and `trialsAmount`
      */
     static int getMaxCorrectAnswered(BarDataSet set, int trialsAmount) {
-        return getValue(set, set.getEntryCount()-1, trialsAmount);
+        return Math.round(getValue(set, set.getEntryCount()-1) *  trialsAmount);
     }
 
     /**
