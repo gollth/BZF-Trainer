@@ -64,7 +64,6 @@ public class QuestionFilter implements View.OnTouchListener {
         setupBarChart(chart);
         color = Util.lookupColor(context, key.equals("azf") ? R.attr.colorSecondaryVariant : R.attr.colorPrimary);
 
-        // TODO create histogram correctly for trials of different playlist lengths
         data = Util.createQuestionHistogram(list, color);
         if (data == null) {
             Log.w("BZF", "WARNING: Attempting to show Question Filter despite no questions for " + key +" have yet been answered");

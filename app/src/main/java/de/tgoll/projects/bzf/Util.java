@@ -18,7 +18,9 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 class Util {
@@ -32,7 +34,6 @@ class Util {
         hsv[1] = saturation;
         return Color.HSVToColor(hsv);
     }
-
 
     static @ColorInt int lookupColor(@NonNull Context context, @AttrRes int id) {
         TypedValue typedValue = new TypedValue();
@@ -56,19 +57,17 @@ class Util {
     static @Nullable Pair<BarDataSet, List<Integer>> createQuestionHistogram(List<Trial> trials, @ColorInt int color) {
         if (trials == null) return null;
 
-        // Create a list capable of holding all choices
-        int max = 0;
-        for (Trial trial : trials) {
-            if (trial.size() > max) max = trial.size();
-        }
-        // TODO find a way to handle trials with of different catalogue lengths
-        List<Float> questions = new ArrayList<>(Collections.nCopies(max, 0f));
-
-        // Fill the list with data
+        // Map from #question to fraction (#correct / #total)
+        Map<Integer, Fraction> questions = new HashMap<>();
         for (Trial trial : trials) {
             for (int i = 0; i < trial.size(); i++) {
-                if (!trial.isCorrect(i)) continue;
-                questions.set(i, questions.get(i) + 1f);
+                int question = trial.getQuestion(i);
+                Fraction fraction = new Fraction(questions.get(question));
+                if (trial.isCorrect(i)) {
+                    fraction.denominator += 1;
+                }
+                fraction.nominator += 1;
+                questions.put(trial.getQuestion(i), fraction);
             }
         }
 
@@ -76,7 +75,9 @@ class Util {
         List<Pair<Integer, Float>> values = new ArrayList<>();
 
         for (int i = 0; i < questions.size(); i ++) {
-            values.add(new Pair<>(i+1, questions.get(i) / trials.size()));
+            Fraction fraction = questions.get(i);
+            if (fraction == null) continue;
+            values.add(new Pair<>(i+1, fraction.toRational()));
         }
 
         Collections.sort(values, (a, b) -> Float.compare(a.second, b.second));
