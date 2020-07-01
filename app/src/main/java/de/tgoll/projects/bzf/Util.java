@@ -23,6 +23,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+// Custom Exceptions
+class NoTrialsYetExcpetion extends Exception {}
+
+
 class Util {
 
     static @ColorInt int desaturate(@ColorInt int color) {

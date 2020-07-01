@@ -46,7 +46,7 @@ public class QuestionFilter implements View.OnTouchListener {
     private Pair<BarDataSet, List<Integer>> data;
 
     @SuppressLint({"InflateParams", "ClickableViewAccessibility"})
-    QuestionFilter(@NonNull Context context, String key, OnSubmitListener callback) {
+    QuestionFilter(@NonNull Context context, String key, OnSubmitListener callback) throws NoTrialsYetExcpetion {
         this.context = context;
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.dialog_questionfilter, null);
@@ -69,7 +69,7 @@ public class QuestionFilter implements View.OnTouchListener {
         data = Util.createQuestionHistogram(list, color);
         if (data == null) {
             Log.w("BZF", "WARNING: Attempting to show Question Filter despite no questions for " + key +" have yet been answered");
-            return;
+            throw new NoTrialsYetExcpetion();
         }
 
         maxLimitLine = Util.getMaxCorrectAnswered(data.first, list.size()) * 1f / list.size();

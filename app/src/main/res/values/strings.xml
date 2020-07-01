@@ -167,6 +167,7 @@
     <string name="questionfilter_limit_line_none">bisher immer falsch beantwortet</string>
     <string name="questionfilter_limit_line">maximal %1$d%% richtig beantwortet</string>
     <string name="questionfilter_btn_ok">Los geht\'s</string>
+    <string name="questionfilter_snackbar_message_no_trials">Absolviere einen Katalog um einen Fragenfilter einzustellen</string>
 
 
     <string name="answer_separator">;</string>

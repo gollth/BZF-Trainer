@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.gson.Gson;
@@ -145,7 +146,11 @@ public class CatalogueFragment extends Fragment implements
                 return true;
 
             case R.id.menu_filter:
-                new QuestionFilter(requireContext(), key, this::resetQuestions);
+                try {
+                    new QuestionFilter(requireContext(), key, this::resetQuestions);
+                } catch (NoTrialsYetExcpetion noTrialsYetExcpetion) {
+                    Snackbar.make(requireView(), R.string.questionfilter_snackbar_message_no_trials, Snackbar.LENGTH_SHORT).show();
+                }
                 return true;
 
             default:
