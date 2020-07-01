@@ -39,6 +39,8 @@ public class QuestionFilter implements View.OnTouchListener {
     private final TextView total;
     private final Context context;
     private final BarChart chart;
+    private float maxLimitLine;
+    private float minLimitLine;
     private final @ColorInt int color;
     private final List<Integer> playlist;
     private Pair<BarDataSet, List<Integer>> data;
@@ -69,6 +71,9 @@ public class QuestionFilter implements View.OnTouchListener {
             Log.w("BZF", "WARNING: Attempting to show Question Filter despite no questions for " + key +" have yet been answered");
             return;
         }
+
+        maxLimitLine = Util.getMaxCorrectAnswered(data.first, list.size()) * 1f / list.size();
+        minLimitLine = Util.getValue(data.first, 1);  // Not the lowest, but the 2nd lowest
 
         chart.getXAxis().setValueFormatter(new StatisticsFragment.ObjectValueFormatter<>(data.second));
         chart.getAxisLeft().setAxisMaximum(1);
@@ -122,14 +127,17 @@ public class QuestionFilter implements View.OnTouchListener {
         this.chart.getAxisLeft().removeAllLimitLines();
         this.chart.getAxisLeft().addLimitLine(new LimitLine(limit) {{
             setLabelPosition(LimitLabelPosition.RIGHT_BOTTOM);
-            if (limit == 1) {
-                // TODO find out correct condition to "snap"
+            if (limit >= maxLimitLine) {
                 setLabel(context.getResources().getString(R.string.questionfilter_limit_line_all));
-            } else if (limit == 0) {
+            } else if (limit <= minLimitLine) {
                 setLabel(context.getResources().getString(R.string.questionfilter_limit_line_none));
-                setLabelPosition(LimitLabelPosition.RIGHT_TOP);
             } else {
                 setLabel(context.getResources().getString(R.string.questionfilter_limit_line, Math.round(limit * 100)));
+            }
+
+            if (limit <= 0.12f) {
+                // If the limit is close the the bottom axis, put its label on top
+                setLabelPosition(LimitLabelPosition.RIGHT_TOP);
             }
             setTextSize(10);
             setTextColor(Util.lookupColor(context, R.attr.colorOnSurface));
@@ -150,7 +158,7 @@ public class QuestionFilter implements View.OnTouchListener {
 
 
     private void onValueChange(float value) {
-        label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), Math.round(100- value *100)));
+        label.setText(String.format(context.getString(R.string.questionfilter_lbl_slider), Math.round(value * 100)));
         playlist.clear();
         for(int i = 0; i < data.first.getEntryCount(); i++) {
             if (Util.getValue(data.first, i) > value) continue;

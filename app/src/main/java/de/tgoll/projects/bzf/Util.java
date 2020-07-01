@@ -55,7 +55,7 @@ class Util {
      * a list of question numbers according to the order, which can be assigned to X axis labels of the chart
      */
     static @Nullable Pair<BarDataSet, List<Integer>> createQuestionHistogram(List<Trial> trials, @ColorInt int color) {
-        if (trials == null) return null;
+        if (trials == null || trials.size() == 0) return null;
 
         // Map from #question to fraction (#correct / #total)
         Map<Integer, Fraction> questions = new HashMap<>();
