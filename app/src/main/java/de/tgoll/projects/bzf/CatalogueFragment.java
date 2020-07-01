@@ -334,6 +334,7 @@ public class CatalogueFragment extends Fragment implements
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (!isChecked) return;
+        if (choices == null) return;
         if (choices.get(getProgress()) != -1) return;
         for(int i = 0; i < 4; i++)
             if (buttons[i].getId() == buttonView.getId())
