@@ -149,10 +149,12 @@
     <string name="settings_theme_dark">Dunkel</string>
 
     <string name="shop_title">Gefällt dir der BZF-Trainer?</string>
-    <string name="shop_summary">Dann denke doch über eine Spende nach. Somit unterstützt du mich als Entwickler, damit du und andere immer die neusten Fragen bekommen.\n\nDie App wird immer kostenlos bleiben! Wenn du mich jedoch unterstützt, gibt\'s auch eine kleine kosmetische Belohnung.</string>
+    <string name="shop_summary">Dann denke doch über eine Spende nach. Somit unterstützt du mich als Entwickler, damit du und andere immer die neusten Fragen bekommen.\n\nDie App wird immer kostenlos bleiben! Wenn du mich jedoch unterstützt, gibt\'s auch eine kleine Belohnung.</string>
     <string name="shop_btn_ok">Nein Danke</string>
     <string name="shop_btn_dark_mode">2.99 €</string>
     <string name="shop_lbl_dark_mode">\&quot;Dark-Mode\&quot; freischalten</string>
+    <string name="shop_btn_question_filter">0.99 €</string>
+    <string name="shop_lbl_question_filter">\&quot;Fragenfilter\&quot; freischalten</string>
     <string name="shop_warn_service_unavailable">Verbinde dich bitte mit dem Internet</string>
     <string name="shop_warn_item_already_owned">Du scheinst das schon zu besitzen (%1$d)</string>
     <string name="shop_warn_billing_unavailable">Kann den Google Play Store nicht erreichen (%1$d). Bist du mit dem Internet verbunden?</string>
