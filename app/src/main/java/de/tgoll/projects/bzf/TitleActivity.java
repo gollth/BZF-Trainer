@@ -149,7 +149,6 @@ public class TitleActivity extends AppCompatActivity {
         switch (getActiveFragment()) {
             case R.id.nav_azf:
             case R.id.nav_bzf:
-                // TODO check here if filtering was purchased
                 getMenuInflater().inflate(R.menu.main, menu);
                 MenuItem filter = menu.findItem(R.id.menu_filter);
                 filter.setVisible(true);

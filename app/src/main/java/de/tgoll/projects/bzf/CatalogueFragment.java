@@ -71,6 +71,7 @@ public class CatalogueFragment extends Fragment implements
     private Gson gson;
     private String key;
     private Catalogue cat;
+    private Shop shop;
     private int sliderLastQuestion;
     private FirebaseAnalytics analytics;
 
@@ -87,6 +88,7 @@ public class CatalogueFragment extends Fragment implements
         super.onCreate(savedInstanceState);
         analytics = FirebaseAnalytics.getInstance(requireContext());
         setHasOptionsMenu(true);
+        shop = new Shop(requireActivity());
         Bundle args = getArguments();
         if (args == null) {
             throw new InvalidParameterException("CatalogueFragment is missing the required \"key\" parameter");
@@ -146,6 +148,13 @@ public class CatalogueFragment extends Fragment implements
                 return true;
 
             case R.id.menu_filter:
+                if (!Shop.isPurchased(settings, Shop.SKU_QUESTION_FILTER)) {
+                    // If question filter not yet purchased, show the shop and let the user purchase it...
+                    shop.show(false);
+                    return true;
+                }
+
+                // If purchased, try to show the question filter
                 try {
                     new QuestionFilter(requireContext(), key, this::resetQuestions);
                 } catch (NoTrialsYetExcpetion noTrialsYetExcpetion) {
