@@ -110,74 +110,41 @@
 
     </LinearLayout>
 
-    <TableLayout
+    <!-- Help Panel -->
+    <ScrollView
         android:id="@+id/sim_lyt_table_help"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_gravity="top"
-        android:shrinkColumns="1"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
         android:visibility="visible"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintEnd_toStartOf="@id/canvas"
+        app:layout_constraintHorizontal_weight="1">
 
-        <de.tgoll.projects.bzf.LineView
-            android:id="@+id/view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
-
-        <TableRow
-            android:id="@+id/sim_atc"
+        <LinearLayout
+            android:id="@+id/sim_lyt_table_help_chat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/sim_txt_atc_lbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_marginEnd="10dp" />
+            <!-- For testing in Design View, will be removed in SimulatorFragment -->
+            <include layout="@layout/sim_chat_message_atc" />
+            <include layout="@layout/sim_chat_message_you" />
+            <include layout="@layout/sim_chat_message_atc" />
+            <include layout="@layout/sim_chat_message_you" />
+            <include layout="@layout/sim_chat_message_atc" />
+            <include layout="@layout/sim_chat_message_atc" />
+            <include layout="@layout/sim_chat_message_you" />
+            <include layout="@layout/sim_chat_message_you" />
+            <include layout="@layout/sim_chat_message_atc" />
+            <include layout="@layout/sim_chat_message_atc" />
+            <include layout="@layout/sim_chat_message_you" />
+            <include layout="@layout/sim_chat_message_you" />
 
-            <TextView
-                android:id="@+id/sim_txt_atc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:gravity="center_vertical|start"
-                android:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
 
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/sim_you"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible">
-
-            <TextView
-                android:id="@+id/sim_txt_you_lbl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="@string/sim_lbl_you" />
-
-            <TextView
-                android:id="@+id/sim_txt_you"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical|start"
-                android:visibility="visible" />
-        </TableRow>
-
-    </TableLayout>
-
+    <!-- Notes -->
     <TextView
         android:id="@+id/txt_notes"
         android:layout_width="wrap_content"
@@ -185,21 +152,23 @@
         android:layout_alignTop="@+id/canvas"
         android:layout_margin="8dp"
         android:text="@string/txt_notes"
-        app:layout_constraintStart_toStartOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <de.tgoll.projects.bzf.PaintView
         android:id="@+id/canvas"
         android:layout_width="0dp"
-        android:layout_height="0sp"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8sp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@id/sim_lyt_table_help"
+        android:layout_marginBottom="8dp"
+
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/sim_lyt_table_help"
+    />
 
     <ImageButton
         android:id="@+id/btn_record"
