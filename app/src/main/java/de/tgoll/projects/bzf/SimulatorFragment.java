@@ -302,6 +302,10 @@ public class SimulatorFragment extends Fragment
         btn_record = view.findViewById(R.id.btn_record);
         btn_record.setOnTouchListener(this);
 
+        // set some default so that now flying to same airport
+        cbx_departure.setSelection(0);
+        cbx_arrival.setSelection(1);
+
         answers = new ArrayList<>();
         progress = 0;
         generateNewParameters();
