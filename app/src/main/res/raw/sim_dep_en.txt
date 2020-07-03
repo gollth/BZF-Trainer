@@ -18,7 +18,7 @@ P: #callsign, leav(ing) control zone, via #fixpoint[, Squawk #squawk]
 {T: #callsign, behind departing Airbus 320, line up and wait runway #runway}
 {P: #callsign, behind (departing) Airbus, line up and wait, runway #runway}
 [T: #callsign, are you ready for immediate departure?]
-[P: #callsign, affirmative]
+[P: #callsign, affirm]
 T: #callsign, wind #wind_dir degrees @ #wind_kn knots, runway #runway, cleared for takeoff
 P: #callsign, runway #runway, clear(ed) for takeoff
 P: #callsign, #fixpoint, 2000 ft, request (to) leav(e) frequency
