@@ -97,6 +97,7 @@
     <string name="sim_msg_departure_select">Wo soll gestartet werden?</string>
     <string name="sim_msg_arrival_select">Wo soll gelandet werden?</string>
     <string name="sim_msg_departure_complete">Jetzt bei %1$s melden</string>
+    <string name="sim_chat_message_hidden">•••</string>
 
     <string-array name="airports">
         <item>EDDB</item>

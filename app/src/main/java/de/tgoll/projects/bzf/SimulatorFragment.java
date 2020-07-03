@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
-import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -36,7 +35,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,8 +42,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -64,6 +62,9 @@ import java.util.Random;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import de.tgoll.projects.bzf.databinding.SimChatMessageAtcBinding;
+import de.tgoll.projects.bzf.databinding.SimChatMessageYouBinding;
 
 import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_END;
 import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_START;
@@ -87,8 +88,10 @@ public class SimulatorFragment extends Fragment
 
     // Views
     private TextView txt_callsign, txt_aircraft, txt_atis;
-    private TextView txt_you, txt_atc, lbl_atc;
     private Spinner cbx_departure, cbx_arrival;
+    private LinearLayout lyt_chat;
+    private ScrollView lyt_scroller;
+    private @Nullable SimChatMessageYouBinding firstChatMessage;
 
     // Record- and TTS- Stuff
     private TextToSpeech atc;
@@ -179,7 +182,7 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.AIRCRAFT = txt_aircraft.getText().toString();
         Phrase.Params.AIRPORT = showedDepartureFinishMessage ? cbx_departure.getSelectedItem().toString()
                                                : cbx_arrival.getSelectedItem().toString();
-        Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase();
+        Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase().replace("-", "");
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
         Phrase.Params.SQUAWK = String.format(Locale.GERMAN, "%04d", rng.nextInt(10000));
@@ -218,7 +221,6 @@ public class SimulatorFragment extends Fragment
         int correct = Math.round(totalSuccessRates * 100 / answeredFromYou);
 
         // Send to Crashlytics, that the user completed the Simulator
-
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, getString(R.string.simulator));
         bundle.putInt(FirebaseAnalytics.Param.SCORE, correct);
@@ -284,10 +286,9 @@ public class SimulatorFragment extends Fragment
         txt_atis = view.findViewById(R.id.sim_txt_atis);
         cbx_departure = view.findViewById(R.id.sim_cbx_dep);
         cbx_arrival = view.findViewById(R.id.sim_cbx_arr);
+        lyt_scroller = view.findViewById(R.id.sim_lyt_table_help);
+        lyt_chat = view.findViewById(R.id.sim_lyt_table_help_chat);
 
-        txt_atc = view.findViewById(R.id.sim_txt_atc);
-        txt_you = view.findViewById(R.id.sim_txt_you);
-        lbl_atc = view.findViewById(R.id.sim_txt_atc_lbl);
         if (TitleActivity.isDarkMode(requireContext())) {
             // Dark Mode
             ImageView arrival = view.findViewById(R.id.icon_arrival);
@@ -296,6 +297,8 @@ public class SimulatorFragment extends Fragment
             departure.setImageDrawable(activity.getDrawable(R.drawable.departure_dark));
         }
 
+        // Remove views from debugging layout
+        lyt_chat.removeAllViews();
         btn_record = view.findViewById(R.id.btn_record);
         btn_record.setOnTouchListener(this);
 
@@ -304,17 +307,8 @@ public class SimulatorFragment extends Fragment
         generateNewParameters();
 
         // Update the Help panel
-        TableLayout helpPanel = view.findViewById(R.id.sim_lyt_table_help);
-        helpPanel.setVisibility(
+        lyt_scroller.setVisibility(
             settings.getBoolean(getString(R.string.settings_sim_help), false)
-            ? View.VISIBLE : View.GONE
-        );
-        helpPanel.findViewById(R.id.sim_atc).setVisibility(
-            settings.getBoolean(getString(R.string.settings_sim_help_atc), true)
-            ? View.VISIBLE : View.GONE
-        );
-        helpPanel.findViewById(R.id.sim_you).setVisibility(
-            settings.getBoolean(getString(R.string.settings_sim_help_you), true)
             ? View.VISIBLE : View.GONE
         );
 
@@ -358,8 +352,7 @@ public class SimulatorFragment extends Fragment
 
         // After all texts have been setup correctly, we parse the values to new phrase params
         generateNewParameters();
-        txt_you.setText(phrases.get(0).toString());
-        highlightHelp(false, true);
+        createChatMessage(inflater, phrases.get(0));
 
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -395,20 +388,14 @@ public class SimulatorFragment extends Fragment
                 @Override
                 public void onDone(String utteranceId) {
                     enableButton();
+                    // Update the help "next phrase from pilot" text view
+                    if (progress >= phrases.size()) return;
+                    requireActivity().runOnUiThread(() -> createChatMessage(inflater, phrases.get(progress)));
                 }
 
                 @Override
                 public void onError(String utteranceId) {
                     enableButton();
-                }
-
-                private void enableButton() {
-                    Activity act = getActivity();
-                    if (act == null) return;
-                    act.runOnUiThread(() -> {
-                        btn_record.setEnabled(true);
-                        highlightHelp(false, true);
-                    });
                 }
             });
 
@@ -439,12 +426,45 @@ public class SimulatorFragment extends Fragment
     }
 
     private void restart() {
-        FragmentManager manager = getFragmentManager();
-        if (manager == null) return;
-        manager.beginTransaction()
-                .detach(SimulatorFragment.this)
-                .attach(SimulatorFragment.this)
-                .commit();
+        requireActivity()
+            .getSupportFragmentManager()
+            .beginTransaction()
+            .detach(SimulatorFragment.this)
+            .attach(SimulatorFragment.this)
+            .commit();
+    }
+
+    private void enableButton() {
+        requireActivity().runOnUiThread(() -> btn_record.setEnabled(true));
+    }
+
+    private void scrollFullDown() {
+        lyt_scroller.post(() -> lyt_scroller.fullScroll(View.FOCUS_DOWN));
+    }
+
+    private void createChatMessage(LayoutInflater inflater, Phrase phrase) {
+        createChatMessage(inflater, phrase.isFromATC(), phrase.toString());
+    }
+    private void createChatMessage(LayoutInflater inflater, boolean fromAtc, String message) {
+        if (fromAtc) {
+            SimChatMessageAtcBinding binding = DataBindingUtil.inflate(inflater, R.layout.sim_chat_message_atc, lyt_chat, true);
+            if (!settings.getBoolean(getString(R.string.settings_sim_help_atc), true)) {
+                message = getString(R.string.sim_chat_message_hidden);
+            }
+            binding.setMessage(message);
+            scrollFullDown();
+        }
+        else {
+            SimChatMessageYouBinding binding = DataBindingUtil.inflate(inflater, R.layout.sim_chat_message_you, lyt_chat, true);
+            if (!settings.getBoolean(getString(R.string.settings_sim_help_you), true)) {
+                message = getString(R.string.sim_chat_message_hidden);
+            }
+            binding.setMessage(message);
+
+            // Cache the first message, since its message can change, when the comboboxes change
+            if (firstChatMessage == null) firstChatMessage = binding;
+        }
+        scrollFullDown();
     }
 
     @Override
@@ -483,7 +503,7 @@ public class SimulatorFragment extends Fragment
                         Snackbar.make(txt_aircraft, R.string.msg_record_explanation, Snackbar.LENGTH_SHORT).show();
                     }
                     recorder.stopListening();
-                } else onHeard("");    // if speechrecognition is turned off, simulate nothing said
+                } else onHeard("");    // if speech recognition is turned off, simulate nothing said
                 break;
         }
         return false;
@@ -492,22 +512,18 @@ public class SimulatorFragment extends Fragment
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // Update the AIRPORT parameter
         Phrase.Params.AIRPORT = (showedDepartureFinishMessage ? cbx_arrival : cbx_departure).getSelectedItem().toString();
-        Phrase phrase = phrases.get(progress);
-        (phrase.isFromATC() ? txt_atc : txt_you).setText(phrase.toString());
+        if (firstChatMessage == null) return;
+        firstChatMessage.setMessage(phrases.get(0).toString());
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
 
-    private void highlightHelp(boolean atc, boolean you) {
-        int highlight = Util.lookupColor(requireContext(), R.attr.colorControlHighlight);
-        int normal = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
-        txt_atc.setTypeface(null, atc ? Typeface.BOLD : Typeface.NORMAL);
-        txt_you.setTypeface(null, you ? Typeface.BOLD : Typeface.NORMAL);
-        txt_atc.setTextColor(atc ? highlight : normal);
-        txt_you.setTextColor(you ? highlight : normal);
+    private boolean isDepartureFinished() {
+        return progress >= departurePhraseSize;
     }
-    private boolean isDepartureFinished() { return progress >= departurePhraseSize;}
-    private boolean isArrivalFinished() {return progress >= phrases.size();}
+    private boolean isArrivalFinished() {
+        return progress >= phrases.size();
+    }
 
     private void updateComboBoxes() {
         cbx_departure.setEnabled(progress == 0);
@@ -544,7 +560,7 @@ public class SimulatorFragment extends Fragment
             // If you said the last departure phrase, show message
             if (isDepartureFinished() && !showedDepartureFinishMessage) {
                 generateNewParameters();
-                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(requireView(), getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
                 showedDepartureFinishMessage = true;
             }
             // If you said the last arrival phrase, show result dialog and don't continue
@@ -559,10 +575,7 @@ public class SimulatorFragment extends Fragment
         final Phrase next = phrases.get(progress);
         if (!next.isFromATC()) {
             // Update the help "next phrase from pilot" text view
-            txt_you.setText(next.toString());
-            lbl_atc.setText("");
-            txt_atc.setText("");
-            highlightHelp(false, true);
+            createChatMessage(inflater, next);
             return;
         }
 
@@ -577,28 +590,19 @@ public class SimulatorFragment extends Fragment
            progress++;
 
            // Update the help, what is being said by ATC
-           String help = Phrase.Params.AIRPORT + " " + next.getSender() + ": ";
-           lbl_atc.setText(help);
-           txt_atc.setText(next.toString());
-           highlightHelp(true, false);
-
+           createChatMessage(inflater, next);
 
            // If ATC said the last departure  message, show the message
            if (isDepartureFinished() && !showedDepartureFinishMessage) {
                 generateNewParameters();
-                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(requireView(), getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
                 showedDepartureFinishMessage = true;
            }
            // If ATC said the last arrival message, show resulting dialog
            if (isArrivalFinished()) {
                btn_record.setEnabled(false);
                createResultDialog().show();
-               return;
            }
-
-           // Update the help "next phrase from pilot" text view
-           txt_you.setText(phrases.get(progress).toString());
-
        }, 1000);
 
     }

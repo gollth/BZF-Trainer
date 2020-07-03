@@ -21,6 +21,9 @@ android {
         versionCode 27
         versionName "1.2.1"
     }
+    dataBinding {
+        enabled = true
+    }
     buildTypes {
         debug {
             minifyEnabled true
