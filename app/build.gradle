@@ -18,8 +18,8 @@ android {
         applicationId "de.tgoll.projects.bzf"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 27
-        versionName "1.2.1"
+        versionCode 28
+        versionName "1.3.0"
     }
     dataBinding {
         enabled = true
