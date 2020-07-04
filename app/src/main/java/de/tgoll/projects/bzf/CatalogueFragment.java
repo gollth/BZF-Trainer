@@ -26,13 +26,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.LevelEndEvent;
-import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.slider.Slider;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.gson.Gson;
 
 import java.security.InvalidParameterException;
@@ -43,6 +42,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_END;
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_START;
 
 public class CatalogueFragment extends Fragment implements
         Slider.OnChangeListener,
@@ -69,7 +71,9 @@ public class CatalogueFragment extends Fragment implements
     private Gson gson;
     private String key;
     private Catalogue cat;
+    private Shop shop;
     private int sliderLastQuestion;
+    private FirebaseAnalytics analytics;
 
     static CatalogueFragment newInstance(String key) {
         Bundle args = new Bundle();
@@ -82,7 +86,9 @@ public class CatalogueFragment extends Fragment implements
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        analytics = FirebaseAnalytics.getInstance(requireContext());
         setHasOptionsMenu(true);
+        shop = new Shop(requireActivity());
         Bundle args = getArguments();
         if (args == null) {
             throw new InvalidParameterException("CatalogueFragment is missing the required \"key\" parameter");
@@ -107,7 +113,6 @@ public class CatalogueFragment extends Fragment implements
         btn_next = view.findViewById(R.id.btn_next);
         btn_prev = view.findViewById(R.id.btn_prev);
         progress = view.findViewById(R.id.progress);
-        progress.setValueTo(cat.size());
 
         vibrator = (Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE);
         settings = PreferenceManager.getDefaultSharedPreferences(view.getContext());
@@ -130,16 +135,36 @@ public class CatalogueFragment extends Fragment implements
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() != R.id.menu_restart) return false;
-        new MaterialAlertDialogBuilder(view.getContext())
-                .setTitle(R.string.restart)
-                .setMessage(R.string.restart_alert)
-                .setNegativeButton(R.string.negative, null)
-                .setPositiveButton(R.string.positive, (dialog, which) -> {
-                    resetQuestions();
-                    dialog.dismiss();
-                }).show();
-        return true;
+        switch (item.getItemId()) {
+            case R.id.menu_restart:
+                new MaterialAlertDialogBuilder(view.getContext())
+                        .setTitle(R.string.restart)
+                        .setMessage(R.string.restart_alert)
+                        .setNegativeButton(R.string.negative, null)
+                        .setPositiveButton(R.string.positive, (dialog, which) -> {
+                            resetQuestions();
+                            dialog.dismiss();
+                        }).show();
+                return true;
+
+            case R.id.menu_filter:
+                if (!Shop.isPurchased(settings, Shop.SKU_QUESTION_FILTER)) {
+                    // If question filter not yet purchased, show the shop and let the user purchase it...
+                    shop.show(false);
+                    return true;
+                }
+
+                // If purchased, try to show the question filter
+                try {
+                    new QuestionFilter(requireContext(), key, this::resetQuestions);
+                } catch (NoTrialsYetExcpetion noTrialsYetExcpetion) {
+                    Snackbar.make(requireView(), R.string.questionfilter_snackbar_message_no_trials, Snackbar.LENGTH_SHORT).show();
+                }
+                return true;
+
+            default:
+                return false;
+        }
     }
 
     private void setTextSizes(float sp) {
@@ -158,7 +183,10 @@ public class CatalogueFragment extends Fragment implements
         setTextSizes(fontSize);
 
         String s = settings.getString(key + "-state", "");
-        if (s.isEmpty()) resetQuestions();
+        if (s.isEmpty()) {
+            Log.i("BZF", "Could not find previous saved stated, resetting playlist");
+            resetQuestions();
+        }
         else {
             SavedState state = gson.fromJson(s, SavedState.class);
             Log.i("BZF", "Loading State from " + key + "-state");
@@ -166,7 +194,7 @@ public class CatalogueFragment extends Fragment implements
             choices = state.choices;
 
             // if we contain an old state saved in app data, we clear it.
-            if (playlist == null || playlist.size() != cat.size()) resetQuestions();
+            if (playlist == null) resetQuestions();
             else loadQuestion(state.progress);
         }
 
@@ -193,11 +221,16 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void resetQuestions() {
+        resetQuestions(null);
+    }
+    private void resetQuestions(List<Integer> filter) {
         settings.edit().remove(key + "-state").apply();
 
+        boolean customPlaylist = filter != null;
         playlist = new ArrayList<>();
         choices = new ArrayList<>();
         for (int i = 0; i < cat.size(); i++) {
+            if (customPlaylist && !filter.contains(i+1)) continue;
             playlist.add(i);
             choices.add(-1);    // Not set
         }
@@ -208,13 +241,14 @@ public class CatalogueFragment extends Fragment implements
 
         progress.setLabelFormatter(new CompletedFormatter(choices));
 
-        // Send to Crashlytics, that the user started a new trial
-        if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
-            .putLevelName(key)
-            .putCustomAttribute(getString(R.string.settings_shuffle_questions), ""+settings.getBoolean(getString(R.string.settings_shuffle_questions), false))
-            .putCustomAttribute(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false))
-        );
+        // Send to Firebase, that the user started a new trial
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, key);
+        bundle.putString(getString(R.string.settings_shuffle_questions), ""+settings.getBoolean(getString(R.string.settings_shuffle_questions), false));
+        bundle.putString(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false));
+        analytics.logEvent(LEVEL_START, bundle);
 
+        progress.setValueTo(playlist.size());
         loadQuestion(0);
     }
 
@@ -236,7 +270,7 @@ public class CatalogueFragment extends Fragment implements
     }
 
     @Override
-    public void onValueChange(Slider slider, float value) {
+    public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
         // Check if the value changed, if not, slider probably at a bound
         if ((int)value - 1 == sliderLastQuestion) return;
 
@@ -274,15 +308,16 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void setQuestionProgress(int i) {
-        progress.setOnChangeListener(null);
+        progress.setValueTo(playlist.size());
+        progress.removeOnChangeListener(this);
         progress.setValue(i+1);
-        progress.setOnChangeListener(this);
-        txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, cat.size()));
+        progress.addOnChangeListener(this);
+        txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, playlist.size()));
     }
 
     private void loadQuestion(int i) {
         if (i < 0) i = 0;
-        if (i >= cat.size()) i = cat.size()-1;
+        if (i >= playlist.size()) i = playlist.size()-1;
 
         setQuestionProgress(i);
         updateButtons();
@@ -308,6 +343,7 @@ public class CatalogueFragment extends Fragment implements
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (!isChecked) return;
+        if (choices == null) return;
         if (choices.get(getProgress()) != -1) return;
         for(int i = 0; i < 4; i++)
             if (buttons[i].getId() == buttonView.getId())
@@ -391,7 +427,7 @@ public class CatalogueFragment extends Fragment implements
                     } catch (ClassCastException cce){
                         String error = "CatalogueFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
                         Log.e("BZF", error);
-                        Crashlytics.log(error);
+                        FirebaseCrashlytics.getInstance().log(error);
                     }
                 })
                 .setPositiveButton(R.string.restart, (dialog, which) -> {
@@ -399,20 +435,20 @@ public class CatalogueFragment extends Fragment implements
                     dialog.dismiss();
                 }).show();
 
-        // Send to Crashlytics, that the user has successfully finished the catalogue
-        if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
-            .putLevelName(key)
-            .putScore(trial.getSuccessRate())
-            .putSuccess(success));
-
+        // Send to Firebase, that the user has finished the catalogue
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, key);
+        bundle.putDouble(FirebaseAnalytics.Param.SCORE, trial.getSuccessRate());
+        bundle.putBoolean(FirebaseAnalytics.Param.SUCCESS, success);
+        analytics.logEvent(LEVEL_END, bundle);
     }
 
     private boolean isNotFinalQuestion() {
-        return getProgress() != cat.size()-1;
+        return getProgress() != playlist.size()-1;
     }
 
     private void unhighlightAnswers(boolean alsoClearCheck) {
-        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
+        int color = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
         for(RadioButton button : buttons) {
             button.setTypeface(Typeface.DEFAULT);
             button.setTextColor(color);
@@ -427,7 +463,7 @@ public class CatalogueFragment extends Fragment implements
         unhighlightAnswers(false);
         RadioButton option = buttons[cat.getSolution(getCurrentQuestion())];
         option.setTypeface(Typeface.DEFAULT_BOLD);
-        option.setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight));
+        option.setTextColor(Util.lookupColor(requireContext(), R.attr.colorControlHighlight));
         return option.isChecked();
     }
 

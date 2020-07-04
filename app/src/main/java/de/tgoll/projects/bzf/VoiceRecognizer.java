@@ -65,7 +65,7 @@ public class VoiceRecognizer implements RecognitionListener {
                 message = "Das habe ich leider nicht verstanden #&8230";
                 break;
         }
-        Snackbar.make(container.findViewById(R.id.sim_txt_you),message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(container, message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

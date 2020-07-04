@@ -27,7 +27,6 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -62,11 +61,8 @@ public class StatisticsFragment extends Fragment {
         Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf", "sim")) {
             Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
-            List<Trial> list = new ArrayList<>();
             noTrialsYet &= history.isEmpty();
-
-            for (String json : history) list.add(gson.fromJson(json, Trial.class));
-            trials.put(key, list);
+            trials.put(key, Util.getTrials(settings, gson, key));
         }
 
         if (noTrialsYet) {
@@ -85,8 +81,8 @@ public class StatisticsFragment extends Fragment {
         setupBarChart(barazf, landscape);
         setupBarChart(barbzf, landscape);
 
-        fillBarChart(barazf, trials.get("azf"), "azf", TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
-        fillBarChart(barbzf, trials.get("bzf"), "bzf", TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary));
+        fillBarChart(barazf, trials.get("azf"), "azf", Util.lookupColor(requireContext(), R.attr.colorSecondaryVariant));
+        fillBarChart(barbzf, trials.get("bzf"), "bzf", Util.lookupColor(requireContext(), R.attr.colorPrimary));
 
         return view;
     }
@@ -111,7 +107,7 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void setupHistoryChart(LineChart history) {
-        int color = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
+        int color = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
         history.setTouchEnabled(true);
         history.setDragEnabled(true);
         history.setPinchZoom(true);
@@ -144,7 +140,7 @@ public class StatisticsFragment extends Fragment {
         barchart.getXAxis().setDrawAxisLine(false);
         barchart.getXAxis().setDrawGridLines(false);
         barchart.getXAxis().setEnabled(true);
-        barchart.getXAxis().setTextColor(TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground));
+        barchart.getXAxis().setTextColor(Util.lookupColor(requireContext(), R.attr.colorOnBackground));
         barchart.getXAxis().setPosition(landscape ? XAxis.XAxisPosition.TOP : XAxis.XAxisPosition.BOTTOM);
         barchart.getAxisLeft().setEnabled(false);
         barchart.getAxisRight().setEnabled(false);
@@ -153,58 +149,21 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void fillBarChart(BarChart chart, List<Trial> trials, String key, int color) {
-        if (trials == null) return;
-
-        // Create a list capable of holding all choices
-        int max = 0;
-        for (Trial trial : trials) {
-            if (trial.size() > max) max = trial.size();
-        }
-        List<Float> questions = new ArrayList<>(Collections.nCopies(max, 0f));
-
-        // Fill the list with data
-        for (Trial trial : trials) {
-            for (int i = 0; i < trial.size(); i++) {
-                if (!trial.isCorrect(i)) continue;
-                questions.set(i, questions.get(i) + 1f);
-            }
-        }
-
-        // Convert the data to BarChart entries
-        List<Pair<Integer, Float>> values = new ArrayList<>();
-
-        for (int i = 0; i < questions.size(); i ++) {
-            values.add(new Pair<>(i+1, questions.get(i) / trials.size()));
-        }
-
-        Collections.sort(values, (a, b) -> Float.compare(a.second, b.second));
-
-        List<Integer> keys = new ArrayList<>();
-        List<BarEntry> entries = new ArrayList<>();
-
-        for (int i = 0; i < values.size(); i++) {
-            Pair<Integer, Float> pair = values.get(i);
-            keys.add(pair.first);
-            entries.add(new BarEntry(i, new float[]{ pair.second, 1f-pair.second }));
-        }
-
-        int background = Color.TRANSPARENT;
-        int[] colors = new int[]{ color, background };
-
-        BarDataSet data = new BarDataSet(entries, "Antworten");
-        data.setValueFormatter(new NoneValueFormatter());
-        chart.getXAxis().setValueFormatter(new ObjectValueFormatter<>(keys));
-        data.setColors(colors);
+        Pair<BarDataSet, List<Integer>> pair;
+        pair = Util.createQuestionHistogram(trials, color);
+        if (pair == null) return;
+        chart.setData(new BarData(pair.first) {{ setBarWidth(0.99f); }});
+        chart.getXAxis().setValueFormatter(new ObjectValueFormatter<>(pair.second));
         chart.getAxisLeft().setAxisMaximum(1);
         chart.getAxisLeft().setAxisMinimum(0);
-        chart.setData(new BarData(data) {{ setBarWidth(0.99f); }});
+
         chart.setOnChartValueSelectedListener(
-                new QuestionTooltipOnChartValueSelectedListener(
-                        requireContext(),
-                        chart,
-                        key,
-                        keys
-                )
+            new QuestionTooltipOnChartValueSelectedListener(
+                requireContext(),
+                chart,
+                key,
+                pair.second
+            )
         );
         chart.notifyDataSetChanged();
         chart.invalidate();
@@ -257,13 +216,13 @@ public class StatisticsFragment extends Fragment {
             int color;
             switch (entry.getKey()) {
                 case "azf":
-                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorSecondaryVariant);
+                    color = Util.lookupColor(requireContext(), R.attr.colorSecondaryVariant);
                     line.setFillColor(color);
                     line.setColor(color);
                     line.setFillAlpha(100);
                     break;
                 case "bzf":
-                    color = TitleActivity.lookupColor(requireContext(), R.attr.colorPrimary);
+                    color = Util.lookupColor(requireContext(), R.attr.colorPrimary);
                     line.setFillColor(color);
                     line.setColor(color);
                     line.setFillAlpha(100);

@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
-import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -36,7 +36,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
-import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,15 +43,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.answers.Answers;
-import com.crashlytics.android.answers.LevelEndEvent;
-import com.crashlytics.android.answers.LevelStartEvent;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -67,6 +64,11 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.tgoll.projects.bzf.databinding.SimChatMessageAtcBinding;
+import de.tgoll.projects.bzf.databinding.SimChatMessageYouBinding;
+
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_END;
+import static com.google.firebase.analytics.FirebaseAnalytics.Event.LEVEL_START;
 import static de.tgoll.projects.bzf.CatalogueFragment.EMPTY_SET;
 
 public class SimulatorFragment extends Fragment
@@ -87,8 +89,10 @@ public class SimulatorFragment extends Fragment
 
     // Views
     private TextView txt_callsign, txt_aircraft, txt_atis;
-    private TextView txt_you, txt_atc, lbl_atc;
     private Spinner cbx_departure, cbx_arrival;
+    private LinearLayout lyt_chat;
+    private ScrollView lyt_scroller;
+    private @Nullable SimChatMessageYouBinding firstChatMessage;
 
     // Record- and TTS- Stuff
     private TextToSpeech atc;
@@ -106,10 +110,12 @@ public class SimulatorFragment extends Fragment
 
     // Misc
     private Gson gson;
+    private float fontSize;
     private LayoutInflater inflater;
     private Random rng = new Random();
     private SharedPreferences settings;
     private boolean loggedLevelStart = false;
+    private FirebaseAnalytics firebase;
 
     private String getDifficultyName () {
         switch (getDifficulty()) {
@@ -178,7 +184,7 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.AIRCRAFT = txt_aircraft.getText().toString();
         Phrase.Params.AIRPORT = showedDepartureFinishMessage ? cbx_departure.getSelectedItem().toString()
                                                : cbx_arrival.getSelectedItem().toString();
-        Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase();
+        Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase().replace("-", "");
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
         Phrase.Params.SQUAWK = String.format(Locale.GERMAN, "%04d", rng.nextInt(10000));
@@ -217,10 +223,11 @@ public class SimulatorFragment extends Fragment
         int correct = Math.round(totalSuccessRates * 100 / answeredFromYou);
 
         // Send to Crashlytics, that the user completed the Simulator
-        if (Answers.getInstance() != null) Answers.getInstance().logLevelEnd(new LevelEndEvent()
-                .putLevelName(getString(R.string.simulator))
-                .putScore(correct)
-                .putSuccess(correct > 50));
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, getString(R.string.simulator));
+        bundle.putInt(FirebaseAnalytics.Param.SCORE, correct);
+        bundle.putBoolean(FirebaseAnalytics.Param.SUCCESS, correct > 50);
+        firebase.logEvent(LEVEL_END, bundle);
 
         // Add the trial to the statistics
         Trial trial = new Trial(key, correct * .01f);
@@ -243,7 +250,7 @@ public class SimulatorFragment extends Fragment
                     } catch (ClassCastException cce){
                         String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
                         Log.e("BZF", error);
-                        Crashlytics.log(error);
+                        FirebaseCrashlytics.getInstance().log(error);
                     }
                 })
                 .setPositiveButton(getString(R.string.restart), (d, which) -> {
@@ -257,6 +264,7 @@ public class SimulatorFragment extends Fragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        firebase = FirebaseAnalytics.getInstance(requireContext());
         setHasOptionsMenu(true);
     }
 
@@ -272,6 +280,7 @@ public class SimulatorFragment extends Fragment
 
         settings = PreferenceManager.getDefaultSharedPreferences(activity);
         english = settings.getBoolean(getString(R.string.language), true);
+        fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
 
         Phrase.initialize(activity, english);
 
@@ -280,10 +289,9 @@ public class SimulatorFragment extends Fragment
         txt_atis = view.findViewById(R.id.sim_txt_atis);
         cbx_departure = view.findViewById(R.id.sim_cbx_dep);
         cbx_arrival = view.findViewById(R.id.sim_cbx_arr);
+        lyt_scroller = view.findViewById(R.id.sim_lyt_table_help);
+        lyt_chat = view.findViewById(R.id.sim_lyt_table_help_chat);
 
-        txt_atc = view.findViewById(R.id.sim_txt_atc);
-        txt_you = view.findViewById(R.id.sim_txt_you);
-        lbl_atc = view.findViewById(R.id.sim_txt_atc_lbl);
         if (TitleActivity.isDarkMode(requireContext())) {
             // Dark Mode
             ImageView arrival = view.findViewById(R.id.icon_arrival);
@@ -292,25 +300,22 @@ public class SimulatorFragment extends Fragment
             departure.setImageDrawable(activity.getDrawable(R.drawable.departure_dark));
         }
 
+        // Remove views from debugging layout
+        lyt_chat.removeAllViews();
         btn_record = view.findViewById(R.id.btn_record);
         btn_record.setOnTouchListener(this);
+
+        // set some default so that now flying to same airport
+        cbx_departure.setSelection(0);
+        cbx_arrival.setSelection(1);
 
         answers = new ArrayList<>();
         progress = 0;
         generateNewParameters();
 
         // Update the Help panel
-        TableLayout helpPanel = view.findViewById(R.id.sim_lyt_table_help);
-        helpPanel.setVisibility(
+        lyt_scroller.setVisibility(
             settings.getBoolean(getString(R.string.settings_sim_help), false)
-            ? View.VISIBLE : View.GONE
-        );
-        helpPanel.findViewById(R.id.sim_atc).setVisibility(
-            settings.getBoolean(getString(R.string.settings_sim_help_atc), true)
-            ? View.VISIBLE : View.GONE
-        );
-        helpPanel.findViewById(R.id.sim_you).setVisibility(
-            settings.getBoolean(getString(R.string.settings_sim_help_you), true)
             ? View.VISIBLE : View.GONE
         );
 
@@ -329,7 +334,7 @@ public class SimulatorFragment extends Fragment
             phrases.addAll (parseConversation(arr,english));
         } catch (IOException ioe) {
             Log.e("Simulator", "" + ioe.getLocalizedMessage());
-            Crashlytics.logException(ioe);
+            FirebaseCrashlytics.getInstance().recordException(ioe);
             Toast.makeText(
                     activity,
                     "Upps, da ging leider etwas schief...",
@@ -354,8 +359,7 @@ public class SimulatorFragment extends Fragment
 
         // After all texts have been setup correctly, we parse the values to new phrase params
         generateNewParameters();
-        txt_you.setText(phrases.get(0).toString());
-        highlightHelp(false, true);
+        createChatMessage(inflater, phrases.get(0));
 
         if (ContextCompat.checkSelfPermission(activity, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -391,20 +395,14 @@ public class SimulatorFragment extends Fragment
                 @Override
                 public void onDone(String utteranceId) {
                     enableButton();
+                    // Update the help "next phrase from pilot" text view
+                    if (progress >= phrases.size()) return;
+                    requireActivity().runOnUiThread(() -> createChatMessage(inflater, phrases.get(progress)));
                 }
 
                 @Override
                 public void onError(String utteranceId) {
                     enableButton();
-                }
-
-                private void enableButton() {
-                    Activity act = getActivity();
-                    if (act == null) return;
-                    act.runOnUiThread(() -> {
-                        btn_record.setEnabled(true);
-                        highlightHelp(false, true);
-                    });
                 }
             });
 
@@ -435,12 +433,50 @@ public class SimulatorFragment extends Fragment
     }
 
     private void restart() {
-        FragmentManager manager = getFragmentManager();
-        if (manager == null) return;
-        manager.beginTransaction()
-                .detach(SimulatorFragment.this)
-                .attach(SimulatorFragment.this)
-                .commit();
+        requireActivity()
+            .getSupportFragmentManager()
+            .beginTransaction()
+            .detach(SimulatorFragment.this)
+            .attach(SimulatorFragment.this)
+            .commit();
+    }
+
+    private void enableButton() {
+        requireActivity().runOnUiThread(() -> btn_record.setEnabled(true));
+    }
+
+    private void scrollFullDown() {
+        lyt_scroller.post(() -> lyt_scroller.fullScroll(View.FOCUS_DOWN));
+    }
+
+    private void createChatMessage(LayoutInflater inflater, Phrase phrase) {
+        createChatMessage(inflater, phrase.isFromATC(), phrase.toString());
+    }
+    private void createChatMessage(LayoutInflater inflater, boolean fromAtc, String message) {
+        if (fromAtc) {
+            SimChatMessageAtcBinding binding = DataBindingUtil.inflate(inflater, R.layout.sim_chat_message_atc, lyt_chat, true);
+            if (!settings.getBoolean(getString(R.string.settings_sim_help_atc), true)) {
+                message = getString(R.string.sim_chat_message_hidden);
+            }
+            binding.setMessage(message);
+            TextView txt = binding.getRoot().findViewById(R.id.txt_message);
+            if (txt != null) txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+            scrollFullDown();
+        }
+        else {
+            SimChatMessageYouBinding binding = DataBindingUtil.inflate(inflater, R.layout.sim_chat_message_you, lyt_chat, true);
+            if (!settings.getBoolean(getString(R.string.settings_sim_help_you), true)) {
+                message = getString(R.string.sim_chat_message_hidden);
+            }
+            binding.setMessage(message);
+            TextView txt = binding.getRoot().findViewById(R.id.txt_message);
+            if (txt != null) txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+
+            // Cache the first message, since its message can change, when the comboboxes change
+            if (firstChatMessage == null) firstChatMessage = binding;
+        }
+
+        scrollFullDown();
     }
 
     @Override
@@ -461,10 +497,11 @@ public class SimulatorFragment extends Fragment
             case MotionEvent.ACTION_DOWN:
                 // If the record button got pushed the first time, send it to Crashlytics
                 if (!loggedLevelStart) {
-                    if (Answers.getInstance() != null) Answers.getInstance().logLevelStart(new LevelStartEvent()
-                            .putLevelName(getString(R.string.simulator))
-                            .putCustomAttribute(getString(R.string.language), getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de))
-                            .putCustomAttribute(getString(R.string.settings_sim_level), getDifficultyName()));
+                    Bundle bundle = new Bundle();
+                    bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, getString(R.string.simulator));
+                    bundle.putString(getString(R.string.language), getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de));
+                    bundle.putString(getString(R.string.settings_sim_level), getDifficultyName());
+                    firebase.logEvent(LEVEL_START, bundle);
                     loggedLevelStart = true;
                 }
                 startTime = new Date().getTime();
@@ -478,7 +515,7 @@ public class SimulatorFragment extends Fragment
                         Snackbar.make(txt_aircraft, R.string.msg_record_explanation, Snackbar.LENGTH_SHORT).show();
                     }
                     recorder.stopListening();
-                } else onHeard("");    // if speechrecognition is turned off, simulate nothing said
+                } else onHeard("");    // if speech recognition is turned off, simulate nothing said
                 break;
         }
         return false;
@@ -487,22 +524,18 @@ public class SimulatorFragment extends Fragment
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // Update the AIRPORT parameter
         Phrase.Params.AIRPORT = (showedDepartureFinishMessage ? cbx_arrival : cbx_departure).getSelectedItem().toString();
-        Phrase phrase = phrases.get(progress);
-        (phrase.isFromATC() ? txt_atc : txt_you).setText(phrase.toString());
+        if (firstChatMessage == null) return;
+        firstChatMessage.setMessage(phrases.get(0).toString());
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
 
-    private void highlightHelp(boolean atc, boolean you) {
-        int highlight = TitleActivity.lookupColor(requireContext(), R.attr.colorControlHighlight);
-        int normal = TitleActivity.lookupColor(requireContext(), R.attr.colorOnBackground);
-        txt_atc.setTypeface(null, atc ? Typeface.BOLD : Typeface.NORMAL);
-        txt_you.setTypeface(null, you ? Typeface.BOLD : Typeface.NORMAL);
-        txt_atc.setTextColor(atc ? highlight : normal);
-        txt_you.setTextColor(you ? highlight : normal);
+    private boolean isDepartureFinished() {
+        return progress >= departurePhraseSize;
     }
-    private boolean isDepartureFinished() { return progress >= departurePhraseSize;}
-    private boolean isArrivalFinished() {return progress >= phrases.size();}
+    private boolean isArrivalFinished() {
+        return progress >= phrases.size();
+    }
 
     private void updateComboBoxes() {
         cbx_departure.setEnabled(progress == 0);
@@ -539,7 +572,7 @@ public class SimulatorFragment extends Fragment
             // If you said the last departure phrase, show message
             if (isDepartureFinished() && !showedDepartureFinishMessage) {
                 generateNewParameters();
-                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(requireView(), getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
                 showedDepartureFinishMessage = true;
             }
             // If you said the last arrival phrase, show result dialog and don't continue
@@ -554,10 +587,7 @@ public class SimulatorFragment extends Fragment
         final Phrase next = phrases.get(progress);
         if (!next.isFromATC()) {
             // Update the help "next phrase from pilot" text view
-            txt_you.setText(next.toString());
-            lbl_atc.setText("");
-            txt_atc.setText("");
-            highlightHelp(false, true);
+            createChatMessage(inflater, next);
             return;
         }
 
@@ -572,28 +602,19 @@ public class SimulatorFragment extends Fragment
            progress++;
 
            // Update the help, what is being said by ATC
-           String help = Phrase.Params.AIRPORT + " " + next.getSender() + ": ";
-           lbl_atc.setText(help);
-           txt_atc.setText(next.toString());
-           highlightHelp(true, false);
-
+           createChatMessage(inflater, next);
 
            // If ATC said the last departure  message, show the message
            if (isDepartureFinished() && !showedDepartureFinishMessage) {
                 generateNewParameters();
-                Snackbar.make(txt_you, getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
+                Snackbar.make(requireView(), getString(R.string.sim_msg_departure_complete, Phrase.Params.AIRPORT), Snackbar.LENGTH_LONG).show();
                 showedDepartureFinishMessage = true;
            }
            // If ATC said the last arrival message, show resulting dialog
            if (isArrivalFinished()) {
                btn_record.setEnabled(false);
                createResultDialog().show();
-               return;
            }
-
-           // Update the help "next phrase from pilot" text view
-           txt_you.setText(phrases.get(progress).toString());
-
        }, 1000);
 
     }

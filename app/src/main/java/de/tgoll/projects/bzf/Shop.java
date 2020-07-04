@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,16 +30,23 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+
+
 public class Shop implements PurchasesUpdatedListener {
 
     private static final String TIMESTAMP = "SHOP_LAST_SHOWN";
     static final String SKU_DARK_MODE = "sku_dark_mode";
-    private static final List<String> SKUs = Collections.singletonList(SKU_DARK_MODE);
+    static final String SKU_QUESTION_FILTER = "sku_question_filter";
+    private static final List<String> SKUs = Arrays.asList(
+        SKU_DARK_MODE,
+        SKU_QUESTION_FILTER
+    );
 
     private Activity context;
     private SharedPreferences settings;
@@ -86,7 +94,7 @@ public class Shop implements PurchasesUpdatedListener {
 
         billing.startConnection(new BillingClientStateListener() {
             @Override
-            public void onBillingSetupFinished(BillingResult result) {
+            public void onBillingSetupFinished(@NonNull BillingResult result) {
                if (isErroneous(result, !delayed)) {
                    setLoading(false, delayed);
                    return;
@@ -106,7 +114,7 @@ public class Shop implements PurchasesUpdatedListener {
                     synchronizePurchasesWithSettings();
 
                     // If the user already owns all products, don't bother him with annoying popups
-                    if (areAllPurchased(products)) return;
+                    if (products == null || areAllPurchased(products)) return;
 
                     // We finally ready to show the Shop dialog
                     dialog.show();
@@ -161,10 +169,11 @@ public class Shop implements PurchasesUpdatedListener {
     private void synchronizePurchasesWithSettings() {
         SharedPreferences.Editor editor = settings.edit();
         Purchase.PurchasesResult result = billing.queryPurchases(BillingClient.SkuType.INAPP);
+
         for(String sku : SKUs) {
             // For all possible IAPs...
             String token = null;
-            for(Purchase purchase : result.getPurchasesList()) {
+            for(Purchase purchase : Objects.requireNonNull(result.getPurchasesList())) {
                 // For all purchased IAPs ...
 
                 // Save the token
@@ -188,6 +197,7 @@ public class Shop implements PurchasesUpdatedListener {
             @IdRes int id;
             switch (product.getSku()) {
                 case SKU_DARK_MODE: id = R.id.shop_btn_dark_mode; break;
+                case SKU_QUESTION_FILTER: id = R.id.shop_btn_question_filter; break;
                 default: Log.w("BZF", "New Product with SKU \"" + product.getSku() + "\" found, which cannot be handled right now...");
                     continue;
             }
@@ -221,25 +231,26 @@ public class Shop implements PurchasesUpdatedListener {
     }
 
     private void handlePurchase(Purchase purchase) {
-        if (!purchase.getSku().equals(SKU_DARK_MODE)) {
-            Log.w("BZF", "Unknown purchase: " + purchase.getSku());
+        String sku = purchase.getSku();
+        if (!SKUs.contains(sku)) {
+            Log.w("BZF", "Unknown purchase: " + sku);
             return;
         }
         if (purchase.getPurchaseState() != Purchase.PurchaseState.PURCHASED) {
-            Log.w("BZF", "Purchase \"" + purchase.getSku() + "\" is not yet in PURCHASED state");
+            Log.w("BZF", "Purchase \"" + sku + "\" is not yet in PURCHASED state");
             return;
         }
 
         if (!purchase.isAcknowledged()) {
-            Log.i("BZF", "Purchase \"" + purchase.getSku() + "\" is not yet in acknowledged. Doing that now...");
+            Log.i("BZF", "Purchase \"" + sku + "\" is not yet in acknowledged. Doing that now...");
             billing.acknowledgePurchase(
                 AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.getPurchaseToken()).build(),
-                billingResult -> Log.i("BZF", "Purchase \"" + purchase.getSku() + "\" now acknowledged")
+                billingResult -> Log.i("BZF", "Purchase \"" + sku + "\" now acknowledged")
             );
         }
 
-        Log.i("BZF", "Saving purchase \""+ SKU_DARK_MODE +"\" in Preferences: " + purchase.getPurchaseToken());
-        settings.edit().putString(SKU_DARK_MODE, purchase.getPurchaseToken()).apply();
+        Log.i("BZF", "Saving purchase \""+ sku +"\" in Preferences: " + purchase.getPurchaseToken());
+        settings.edit().putString(sku, purchase.getPurchaseToken()).apply();
 
         dialog.dismiss();
         updateStampInSettings();

@@ -15,6 +15,15 @@
             android:icon="@drawable/palette"
             />
 
+        <EditTextPreference
+            android:key="@string/settings_text_size"
+            android:title="@string/settings_text_size"
+            android:summary="@string/settings_text_size_sum"
+            android:defaultValue="12"
+            android:inputType="numberDecimal"
+            android:dialogLayout="@layout/edit_text_preference"
+            android:icon="@drawable/font"/>
+
         <Preference
             android:key="@string/feedback"
             android:summary="@string/feedback_text"
@@ -43,15 +52,6 @@
             android:summary="@string/settings_shuffle_answers_sum"
             android:defaultValue="false"
             android:icon="@drawable/shuffle" />
-
-        <EditTextPreference
-            android:key="@string/settings_text_size"
-            android:title="@string/settings_text_size"
-            android:summary="@string/settings_text_size_sum"
-            android:defaultValue="12"
-            android:inputType="numberDecimal"
-            android:dialogLayout="@layout/edit_text_preference"
-            android:icon="@drawable/font"/>
 
         <EditTextPreference
             android:key="@string/settings_delay"

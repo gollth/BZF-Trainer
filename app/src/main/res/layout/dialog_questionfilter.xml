@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/qf_lbl_slider"
+        android:text="@string/questionfilter_lbl_slider"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/qf_chart"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        app:layout_constraintTop_toBottomOf="@id/qf_lbl_slider"
+        android:layout_marginBottom="16sp"
+    />
+
+    <TextView
+        android:id="@+id/qf_lbl_chart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:rotation="270"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/qf_chart"
+        app:layout_constraintBottom_toBottomOf="@id/qf_chart"
+        tools:layout_editor_absoluteX="5dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/qf_lbl_total"
+        android:text="@string/questionfilter_lbl_summary"
+        app:layout_constraintTop_toBottomOf="@id/qf_chart"
+        android:gravity="center_horizontal"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

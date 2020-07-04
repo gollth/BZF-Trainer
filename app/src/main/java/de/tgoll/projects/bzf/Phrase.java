@@ -57,7 +57,7 @@ public class Phrase {
         dict.put('P', "PAPA");
         dict.put('Q', english ? "QUEBEC" : "KEBECK");
         dict.put('R', "ROMEO");
-        dict.put('S', english ? "SIERRA" : "SSIEERAH");
+        dict.put('S', "SIERRA");
         dict.put('T', "TANGO");
         dict.put('U', "UNIFORM");
         dict.put('V', "VICTOR");
@@ -87,7 +87,7 @@ public class Phrase {
     private final String phrase;
     private final String sender;
     private final String[] groups;
-    private final static Pattern callsignFinder = Pattern.compile("\\d\\s?\\d\\s?\\d\\s?\\.(\\s?\\d){1,3}");    //Three digits, decimal, one, two or three furter digits
+    private final static Pattern callsignFinder = Pattern.compile("\\d\\s?\\d\\s?\\d\\s?\\.(\\s?\\d){1,3}");    //Three digits, decimal, one, two or three further digits
     private final static Pattern numberFinder = Pattern.compile("[A-Z]\\s?[A-Z]\\s?[A-Z]\\s?[A-Z]\\s?[A-Z]");   //Five Letters with optional spaces in between
     private final static Pattern runwayFinder = Pattern.compile("runway\\s\\d\\s\\d");
     private final static Pattern braceFinder = Pattern.compile("\\(.*?\\)");                                    // Find everything between braces (lazy)

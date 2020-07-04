@@ -16,6 +16,7 @@ public class Trial implements Comparable<Trial> {
     private final Date timestamp;
     private Integer[] choices;
     private Boolean[] corrects;
+    private final Integer[] playlist;
     final String key;
     private float success;
 
@@ -27,12 +28,14 @@ public class Trial implements Comparable<Trial> {
         this.key = key;
         this.timestamp = new Date();
         this.choices = new Integer[playlist.size()];
+        this.playlist = new Integer[playlist.size()];
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for(int i = 0; i < playlist.size(); i++) map.put(playlist.get(i), choices.get(i));
         map.values().toArray(this.choices);
         corrects = new Boolean[this.choices.length];
         success = 0;
         for(int i = 0; i < choices.size(); i++) {
+            this.playlist[i] = playlist.get(i);
             boolean correct = cat.isCorrect(i, getChoice(i));
             corrects[i] = correct;
             if (correct) success += 1;
@@ -40,6 +43,11 @@ public class Trial implements Comparable<Trial> {
         success /= choices.size();
     }
     int size() { return this.choices.length; }
+    int getQuestion(int i) {
+        // If no playlist was set in shared preferences, we assume a complete trial
+        if (this.playlist == null) return i;
+        return this.playlist[i];
+    }
     private int getChoice(int i) { return this.choices[i]; }
     boolean isCorrect(int i) { return this.corrects[i]; }
 
@@ -59,6 +67,5 @@ public class Trial implements Comparable<Trial> {
         if (asr.before(timestamp)) return -1;
         if (asr.after(timestamp)) return 1;
         return 0;
-
     }
 }
