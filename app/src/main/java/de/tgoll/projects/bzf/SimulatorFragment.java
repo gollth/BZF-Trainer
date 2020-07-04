@@ -22,6 +22,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -109,6 +110,7 @@ public class SimulatorFragment extends Fragment
 
     // Misc
     private Gson gson;
+    private float fontSize;
     private LayoutInflater inflater;
     private Random rng = new Random();
     private SharedPreferences settings;
@@ -278,6 +280,7 @@ public class SimulatorFragment extends Fragment
 
         settings = PreferenceManager.getDefaultSharedPreferences(activity);
         english = settings.getBoolean(getString(R.string.language), true);
+        fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
 
         Phrase.initialize(activity, english);
 
@@ -456,6 +459,8 @@ public class SimulatorFragment extends Fragment
                 message = getString(R.string.sim_chat_message_hidden);
             }
             binding.setMessage(message);
+            TextView txt = binding.getRoot().findViewById(R.id.txt_message);
+            if (txt != null) txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
             scrollFullDown();
         }
         else {
@@ -464,10 +469,13 @@ public class SimulatorFragment extends Fragment
                 message = getString(R.string.sim_chat_message_hidden);
             }
             binding.setMessage(message);
+            TextView txt = binding.getRoot().findViewById(R.id.txt_message);
+            if (txt != null) txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
 
             // Cache the first message, since its message can change, when the comboboxes change
             if (firstChatMessage == null) firstChatMessage = binding;
         }
+
         scrollFullDown();
     }
 
