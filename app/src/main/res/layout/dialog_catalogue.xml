@@ -34,6 +34,21 @@
                 android:layout_height="wrap_content"
                 />
 
+            <TextView
+                android:id="@+id/txt_stat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 von 5 mal richtig"
+                android:textAlignment="center"
+                android:textStyle="italic"
+                android:textSize="10sp"
+                android:textColor="?attr/colorOnSecondary"
+                android:typeface="sans"
+                app:layout_constraintBaseline_toBaselineOf="@id/txt_number"
+                app:layout_constraintStart_toEndOf="@id/txt_number"
+                app:layout_constraintEnd_toStartOf="@id/txt_version"
+                />
+
         </LinearLayout>
 
     </ScrollView>

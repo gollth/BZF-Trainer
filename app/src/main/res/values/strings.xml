@@ -12,6 +12,7 @@
     <string name="crash_msg">Entschuldigung, da ging leider etwas schief. Ein Fehlerbericht wurde automatisch versendet, damit das Problem so schnell wie möglich behoben werden kann.</string>
 
     <string name="catalogue">Fragen-Katalog</string>
+    <string name="catalogue_stat">bisher %1$d von %2$d mal richtig beantwortet</string>
     <string name="catalogue_version">Stand: April 2020</string>
     <string name="azf">AZF</string>
     <string name="bzf">BZF</string>
