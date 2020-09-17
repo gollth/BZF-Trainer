@@ -10,6 +10,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.util.Pair;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -56,6 +57,7 @@ public class CatalogueFragment extends Fragment implements
     private View view;
     private TextView txt_number;
     private TextView txt_questions;
+    private TextView txt_stat;
     private RadioGroup txt_answers;
     private RadioButton[] buttons;
     private Slider progress;
@@ -65,6 +67,7 @@ public class CatalogueFragment extends Fragment implements
     private List<Integer> playlist;
     private List<Integer> choices;
     private SparseArray<Integer[]> answers;
+    private List<Trial> trials;
 
     private Vibrator vibrator;
     private SharedPreferences settings;
@@ -110,6 +113,7 @@ public class CatalogueFragment extends Fragment implements
         txt_questions = view.findViewById(R.id.txt_question);
         txt_answers = view.findViewById(R.id.lyt_ABCD);
         txt_progress = view.findViewById(R.id.txt_progress);
+        txt_stat = view.findViewById(R.id.txt_stat);
         btn_next = view.findViewById(R.id.btn_next);
         btn_prev = view.findViewById(R.id.btn_prev);
         progress = view.findViewById(R.id.progress);
@@ -127,6 +131,8 @@ public class CatalogueFragment extends Fragment implements
         btn_prev.setOnClickListener(this);
         btn_next.setOnClickListener(this);
         setRadioCheckListener(this);
+
+        trials = Util.getTrials(settings, gson, key);
 
         enableInput();
 
@@ -170,6 +176,7 @@ public class CatalogueFragment extends Fragment implements
     private void setTextSizes(float sp) {
         txt_number.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp + 10);
         txt_questions.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp);
+        txt_stat.setTextSize(TypedValue.COMPLEX_UNIT_SP, (float) (0.8 * sp));
         for (RadioButton button : buttons) {
             button.setTextSize(TypedValue.COMPLEX_UNIT_SP, sp);
         }
@@ -181,6 +188,9 @@ public class CatalogueFragment extends Fragment implements
 
         float fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
         setTextSizes(fontSize);
+
+        boolean questionStats = settings.getBoolean(getString(R.string.settings_question_stats), true) && shop.isPurchased(Shop.SKU_QUESTION_FILTER);
+        txt_stat.setVisibility(questionStats ? View.VISIBLE : View.GONE);
 
         String s = settings.getString(key + "-state", "");
         if (s.isEmpty()) {
@@ -338,6 +348,18 @@ public class CatalogueFragment extends Fragment implements
             buttons[n].setText(cat.getAnswer(number, n));
             if (n == choice) buttons[n].setChecked(true);
         }
+
+        updateQuestionStatistics(number);
+    }
+
+    private void updateQuestionStatistics(int number) {
+        if (txt_stat.getVisibility() != View.VISIBLE) return;
+        Pair<Integer, Integer> ratio = Util.calculateQuestionRatio(trials, number);
+        txt_stat.setText(ratio.second > 0
+            ? String.format(getString(R.string.catalogue_stat), ratio.first, ratio.second)
+            : "(bisher noch nicht beantwortet)"
+        );
+
     }
 
     @Override

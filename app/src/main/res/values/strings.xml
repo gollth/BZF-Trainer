@@ -12,6 +12,7 @@
     <string name="crash_msg">Entschuldigung, da ging leider etwas schief. Ein Fehlerbericht wurde automatisch versendet, damit das Problem so schnell wie möglich behoben werden kann.</string>
 
     <string name="catalogue">Fragen-Katalog</string>
+    <string name="catalogue_stat">bisher %1$d von %2$d mal richtig beantwortet</string>
     <string name="catalogue_version">Stand: April 2020</string>
     <string name="azf">AZF</string>
     <string name="bzf">BZF</string>
@@ -36,6 +37,7 @@
     <string name="statistics_empty_good_luck">Viel Erfolg bei der Prüfung!</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
     <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
+    <string name="settings_reset_alert">Bist du sicher, dass du ALLE Daten der App zurücksetzen möchtests? Das umfasst deine Statistiken und aktuellen Katalogfortschritte. Deine In-App-Käufe bleiben aber erhalten.</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
 
     <string name="settings">Einstellung</string>
@@ -51,6 +53,8 @@
     <string name="settings_vibrate">Vibration</string>
     <string name="settings_vibrate_correct">&#8230;bei richtigen Antworten</string>
     <string name="settings_vibrate_false">&#8230;bei falschen Antworten</string>
+    <string name="settings_question_stats">Antwortstatistik</string>
+    <string name="settings_question_stats_sum">Soll unter jeder Frage angezeigt werden, wie oft du sie falsch beantwortet hast? (freigeschaltet mit \"Fragenfilter\")</string>
     <string name="settings_pen">Schreiben mit Stift</string>
     <string name="settings_pen_sum">Wenn du mit einem Stift schreibst, kannst du mit dem Finger radieren. Ansonsten mit einem Finger schreiben und mit zwei radieren.</string>
     <string name="settings_sim_language_sum">Willst du in Englisch funken?</string>

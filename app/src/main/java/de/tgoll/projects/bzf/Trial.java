@@ -50,10 +50,8 @@ public class Trial implements Comparable<Trial> {
     }
     private int getChoice(int i) { return this.choices[i]; }
     boolean isCorrect(int i) { return this.corrects[i]; }
-
-    double getSuccessRate() {
-        return success;
-    }
+    boolean wasAnswered(int i) { return this.getChoice(i) != -1; }
+    double getSuccessRate() { return success; }
 
     @NonNull
     @Override

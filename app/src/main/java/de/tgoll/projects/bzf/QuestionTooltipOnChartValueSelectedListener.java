@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RadioButton;
@@ -11,12 +12,14 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.PreferenceManager;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.Locale;
@@ -33,6 +36,8 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
     private final TextView txt_number;
     private final TextView txt_question;
     private final RadioButton[] buttons;
+    private final TextView txt_stat;
+    private List<Trial> trials;
 
     @SuppressLint("InflateParams")
     QuestionTooltipOnChartValueSelectedListener(@NonNull Context context, @NonNull BarChart chart, String key, List<Integer> questions) {
@@ -44,6 +49,7 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_catalogue, null);
         this.txt_number = view.findViewById(R.id.txt_number);
         this.txt_question = view.findViewById(R.id.txt_question);
+        this.txt_stat = view.findViewById(R.id.txt_stat);
         this.buttons = new RadioButton[]{
                 view.findViewById(R.id.A),
                 view.findViewById(R.id.B),
@@ -55,6 +61,14 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
                 .setView(view)
                 .setOnDismissListener(this)
                 .create();
+
+        trials = Util.getTrials(PreferenceManager.getDefaultSharedPreferences(context), new Gson(), key);
+    }
+
+    private void updateQuestionStatistics(int number) {
+        if (txt_stat.getVisibility() != View.VISIBLE) return;
+        Pair<Integer, Integer> ratio = Util.calculateQuestionRatio(trials, number);
+        txt_stat.setText(String.format(context.getString(R.string.catalogue_stat), ratio.first, ratio.second));
     }
 
     @Override
@@ -65,6 +79,7 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
         String[] parts = question.split("\\d{1,4}.\\s", 2);
         String format = key.equals("azf") ? "Question %d" : "Frage %d";
 
+        updateQuestionStatistics(number-1);
         txt_number.setText(String.format(Locale.getDefault(), format, number));
         txt_question.setText(parts[1]);
 

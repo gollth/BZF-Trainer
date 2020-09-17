@@ -162,4 +162,26 @@ class Util {
     static float saturate(float value, float min, float max) {
         return Math.max(Math.min(value, max), min);
     }
+
+    /** Calculate the number of correct and total answers for a question in a catalogue
+     * @param trials the trials to consider of one catalogue
+     * @param number the question number (not index) to consider
+     * @return a tuple with the correct as first and total number as second
+     */
+    public static Pair<Integer, Integer> calculateQuestionRatio(List<Trial> trials, int number) {
+        int correctlyAnswered = 0;
+        int totallyAnswered = 0;
+        for (Trial trial : trials) {
+            for(int i = 0; i < trial.size(); i++) {
+                int n = trial.getQuestion(i);
+                if (n != number) continue;
+                if (!trial.wasAnswered(i)) continue;
+                totallyAnswered++;
+                if (!trial.isCorrect(i)) continue;
+                correctlyAnswered++;
+            }
+        }
+        return new Pair<>(correctlyAnswered, totallyAnswered);
+    }
+
 }
