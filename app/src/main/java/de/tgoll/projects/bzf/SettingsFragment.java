@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.View;
 
 import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
@@ -14,6 +13,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
@@ -29,19 +29,21 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference button = findPreference(getString(R.string.settings_reset));
         assert button != null;
         button.setOnPreferenceClickListener(preference -> {
-            settings.edit()
-                    .remove("azf-history")
-                    .remove("bzf-history")
-                    .remove("sim-history")
-                    .remove("azf-state")
-                    .remove("bzf-state")
-                    .apply();
-
-            Activity context = getActivity();
-            if (context == null) return false;
-            View container = context.findViewById(R.id.fragment);
-
-            Snackbar.make(container, getString(R.string.settings_reset_toast), Snackbar.LENGTH_SHORT).show();
+            new MaterialAlertDialogBuilder(requireContext())
+                .setMessage(R.string.settings_reset_alert)
+                .setCancelable(true)
+                .setNegativeButton(R.string.negative, (d, btn) -> d.cancel())
+                .setPositiveButton(R.string.positive, (d, btn) -> {
+                    settings.edit()
+                            .remove("azf-history")
+                            .remove("bzf-history")
+                            .remove("sim-history")
+                            .remove("azf-state")
+                            .remove("bzf-state")
+                            .apply();
+                    Snackbar.make(requireView(), getString(R.string.settings_reset_toast), Snackbar.LENGTH_SHORT).show();
+                }
+            ).show();
             return false;
         });
 

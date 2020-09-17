@@ -37,6 +37,7 @@
     <string name="statistics_empty_good_luck">Viel Erfolg bei der Prüfung!</string>
     <string name="settings_reset">Ergebnisse zurücksetzen</string>
     <string name="settings_reset_sum">Löscht alle bisherigen Versuche und setzt die Statistiken wieder auf null</string>
+    <string name="settings_reset_alert">Bist du sicher, dass du ALLE Daten der App zurücksetzen möchtests? Das umfasst deine Statistiken und aktuellen Katalogfortschritte. Deine In-App-Käufe bleiben aber erhalten.</string>
     <string name="settings_reset_toast">Ergebnisse zurückgesetzt</string>
 
     <string name="settings">Einstellung</string>
