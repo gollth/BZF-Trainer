@@ -22,7 +22,7 @@
         android:theme="@style/AppThemeLight">
         <activity
             android:name=".TitleActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="unspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
