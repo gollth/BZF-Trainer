@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Layout;
 import android.util.Pair;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,12 +51,14 @@ import java.util.Set;
 
 public class StatisticsFragment extends Fragment {
 
+    SharedPreferences settings;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Gson gson = new Gson();
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
 
         boolean noTrialsYet = true;
         Map<String, List<Trial>> trials = new HashMap<>();
@@ -91,12 +94,21 @@ public class StatisticsFragment extends Fragment {
     private View createWelcomeView(LayoutInflater inflater, @Nullable ViewGroup container) {
         TitleActivity title = (TitleActivity) requireActivity();
         View view = inflater.inflate(R.layout.fragment_statistics_empty, container, false);
+        float fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
 
+        TextView pro = view.findViewById(R.id.statistics_welcome);
+        pro.setTextSize(TypedValue.COMPLEX_UNIT_SP, (float) (fontSize * 1.2));
+
+        TextView txt = view.findViewById(R.id.statistics_welcome_message);
+        txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+        txt.setGravity(Gravity.START);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            TextView txt = view.findViewById(R.id.statistics_welcome_message);
             txt.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-            txt.setGravity(Gravity.START);
         }
+
+        TextView epi = view.findViewById(R.id.statistics_welcome_epilogue);
+        epi.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
+
 
         Button bzf = view.findViewById(R.id.statistics_btn_start_bzf);
         bzf.setOnClickListener(v -> title.showFragment(getString(R.string.bzf), true));
