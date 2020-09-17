@@ -52,6 +52,8 @@
     <string name="settings_vibrate">Vibration</string>
     <string name="settings_vibrate_correct">&#8230;bei richtigen Antworten</string>
     <string name="settings_vibrate_false">&#8230;bei falschen Antworten</string>
+    <string name="settings_question_stats">Antwortstatistik</string>
+    <string name="settings_question_stats_sum">Soll unter jeder Frage angezeigt werden, wie oft du sie falsch beantwortet hast? (freigeschaltet mit \"Fragenfilter\")</string>
     <string name="settings_pen">Schreiben mit Stift</string>
     <string name="settings_pen_sum">Wenn du mit einem Stift schreibst, kannst du mit dem Finger radieren. Ansonsten mit einem Finger schreiben und mit zwei radieren.</string>
     <string name="settings_sim_language_sum">Willst du in Englisch funken?</string>

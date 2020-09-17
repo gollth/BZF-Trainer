@@ -108,5 +108,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (!shop.isPurchased(Shop.SKU_DARK_MODE)) {
             darkMode.setChecked(false);
         }
+
+        Preference questionStats = findPreference(getString(R.string.settings_question_stats));
+        assert questionStats != null;
+        questionStats.setEnabled(shop.isPurchased(Shop.SKU_QUESTION_FILTER));
+
     }
 }

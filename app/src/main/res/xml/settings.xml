@@ -61,6 +61,14 @@
             android:inputType="numberDecimal"
             android:dialogLayout="@layout/edit_text_preference"
             android:icon="@drawable/delay"/>
+
+        <CheckBoxPreference
+            android:key="@string/settings_question_stats"
+            android:title="@string/settings_question_stats"
+            android:summary="@string/settings_question_stats_sum"
+            android:defaultValue="true"
+            android:icon="@drawable/grading" />
+
         <CheckBoxPreference
             android:key="@string/settings_vibrate"
             android:defaultValue="true"
