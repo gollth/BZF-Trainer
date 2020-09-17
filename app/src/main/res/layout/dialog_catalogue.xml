@@ -5,29 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <include
-        android:id="@+id/lyt_questions"
-        layout="@layout/fragment_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250sp"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lyt_questions">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <include
-            layout="@layout/fragment_answers"
-            android:id="@+id/lyt_ABCD"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/fragment_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                />
+
+            <include
+                layout="@layout/fragment_answers"
+                android:id="@+id/lyt_ABCD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
 
     </ScrollView>
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,8 +8,6 @@
     tools:context=".CatalogueFragment">
 
 
-    <include layout="@layout/fragment_question" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,14 +17,28 @@
         app:layout_constraintBottom_toTopOf="@id/txt_progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_question">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <include
-            layout="@layout/fragment_answers"
-            android:id="@+id/lyt_ABCD"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/fragment_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                />
+
+            <include
+                layout="@layout/fragment_answers"
+                android:id="@+id/lyt_ABCD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
             />
+
+        </LinearLayout>
 
     </ScrollView>
 
