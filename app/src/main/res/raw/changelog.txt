@@ -19,6 +19,11 @@
     </style>
   </head>
   <body>
+    $ 1.4.0
+      % Version 1.4.0
+      _ 17. September 2020
+      * App reagiert besser auf Hoch-/Querformat
+      * Antwortstatistiken unterhalb der Frage
     $ 1.3.0
       % Version 1.3.0
       _ 05. Juli 2020
