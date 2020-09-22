@@ -132,7 +132,7 @@ public class CatalogueFragment extends Fragment implements
         btn_next.setOnClickListener(this);
         setRadioCheckListener(this);
 
-        trials = Util.getTrials(settings, gson, key);
+        trials = Util.getTrials(cat, settings, gson, key);
 
         enableInput();
 

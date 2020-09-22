@@ -59,8 +59,9 @@ public class QuestionFilter implements View.OnTouchListener {
 
         Gson gson = new Gson();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        Catalogue cat = new Catalogue(context, key);
 
-        List<Trial> list = Util.getTrials(settings, gson, key);
+        List<Trial> list = Util.getTrials(cat, settings, gson, key);
         this.playlist = new ArrayList<>();
 
         setupBarChart(chart);
