@@ -45,7 +45,7 @@ public class Trial implements Comparable<Trial> {
     int size() { return this.choices.length; }
     int getQuestion(int i) {
         // If no playlist was set in shared preferences, we assume a complete trial
-        if (this.playlist == null) return i;
+        if (this.playlist == null || this.playlist.length == 0) return i;
         return this.playlist[i];
     }
     private int getChoice(int i) { return this.choices[i]; }
