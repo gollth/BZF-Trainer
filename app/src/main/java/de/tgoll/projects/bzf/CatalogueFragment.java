@@ -447,7 +447,7 @@ public class CatalogueFragment extends Fragment implements
 
         new MaterialAlertDialogBuilder(view.getContext())
                 .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
-                .setMessage(String.format(getString(R.string.msg_finish), Math.round(trial.getSuccessRate() * 100)))
+                .setMessage(String.format(getString(R.string.msg_finish), trial.getSuccessful(), trial.size()))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
                 .setNegativeButton(R.string.statistics, (dialog, which) -> {
                     dialog.dismiss();

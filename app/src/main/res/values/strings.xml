@@ -21,7 +21,7 @@
 
     <string name="msg_finish_pass">Glückwunsch, du hast bestanden</string>
     <string name="msg_finish_fail">Schade, leider hast du nicht bestanden&#8230;</string>
-    <string name="msg_finish">Du hast %1$d %% aller Fragen richtig beantwortet. </string>
+    <string name="msg_finish">Du hast %1$d von %2$d Fragen richtig beantwortet.</string>
     <string name="msg_finish_sim">%1$d %% richtig gesagt</string>
     <string name="msg_record_explanation">Gedrückt halten zum Senden</string>
 
