@@ -258,8 +258,14 @@ public class CatalogueFragment extends Fragment implements
         bundle.putString(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false));
         analytics.logEvent(LEVEL_START, bundle);
 
-        progress.setValueTo(playlist.size());
+        setSliderRange(playlist.size());
         loadQuestion(0);
+    }
+
+    private void setSliderRange(int max) {
+        boolean singleQuestion = max == 1;
+        progress.setValueTo(singleQuestion ? 2 : max);
+        progress.setEnabled(!singleQuestion);
     }
 
     @Override
@@ -318,7 +324,7 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void setQuestionProgress(int i) {
-        progress.setValueTo(playlist.size());
+        setSliderRange(playlist.size());
         progress.removeOnChangeListener(this);
         progress.setValue(i+1);
         progress.addOnChangeListener(this);
