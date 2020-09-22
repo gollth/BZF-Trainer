@@ -24,11 +24,12 @@ public class BZFTrainerApplication extends Application {
                 PreferenceManager.getDefaultSharedPreferences(getApplicationContext())
                         .edit()
                         .remove("navigation")
-                        .remove("azf-state")
-                        .remove("bzf-state")
-                        .remove("azf-history")
-                        .remove("bzf-history")
-                        .remove("sim-history")
+                        // very sensitive data, dont delete
+                        //.remove("azf-state")
+                        //.remove("bzf-state")
+                        //.remove("azf-history")
+                        //.remove("bzf-history")
+                        //.remove("sim-history")
                         .apply();
 
                 Looper.loop();
