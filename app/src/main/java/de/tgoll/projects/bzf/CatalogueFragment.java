@@ -373,9 +373,12 @@ public class CatalogueFragment extends Fragment implements
         if (!isChecked) return;
         if (choices == null) return;
         if (choices.get(getProgress()) != -1) return;
-        for(int i = 0; i < 4; i++)
-            if (buttons[i].getId() == buttonView.getId())
+        for(int i = 0; i < 4; i++) {
+            if (buttons[i].getId() == buttonView.getId()) {
                 choices.set(getProgress(), i);
+                break;
+            }
+        }
         startHighlightAnimation();
     }
 
