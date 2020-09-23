@@ -328,7 +328,10 @@ public class CatalogueFragment extends Fragment implements
         progress.removeOnChangeListener(this);
         progress.setValue(i+1);
         progress.addOnChangeListener(this);
-        txt_progress.setText(String.format(getString(R.string.txt_progress), i+1, playlist.size()));
+        Context ctx = getContext();
+        if (ctx == null) return;
+        String text = ctx.getString(R.string.txt_progress);
+        txt_progress.setText(String.format(text, i+1, playlist.size()));
     }
 
     private void loadQuestion(int i) {
