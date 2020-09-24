@@ -78,6 +78,19 @@ public class CatalogueFragment extends Fragment implements
     private int sliderLastQuestion;
     private FirebaseAnalytics analytics;
 
+    private String settings_text_size;
+    private String settings_question_stats;
+    private String settings_shuffle_questions;
+    private String settings_shuffle_answers;
+    private String catalogue_stat;
+    private String settings_vibrate;
+    private String settings_vibrate_false;
+    private String settings_vibrate_correct;
+    private String settings_delay;
+    private String msg_finish;
+    private String statistics;
+    private String text_progress;
+
     static CatalogueFragment newInstance(String key) {
         Bundle args = new Bundle();
         args.putString("key", key);
@@ -106,6 +119,8 @@ public class CatalogueFragment extends Fragment implements
 
         gson = new Gson();
         answers = new SparseArray<>();
+
+        initializeStringResources(requireContext());
 
         cat = new Catalogue(view.getContext(), key);
 
@@ -137,6 +152,21 @@ public class CatalogueFragment extends Fragment implements
         enableInput();
 
         return view;
+    }
+
+    private void initializeStringResources(@NonNull Context context) {
+        settings_text_size = context.getString(R.string.settings_text_size);
+        settings_question_stats = context.getString(R.string.settings_question_stats);
+        settings_shuffle_questions = context.getString(R.string.settings_shuffle_questions);
+        settings_shuffle_answers = context.getString(R.string.settings_shuffle_answers);
+        settings_vibrate = context.getString(R.string.settings_vibrate);
+        settings_vibrate_false = context.getString(R.string.settings_vibrate_false);
+        settings_vibrate_correct = context.getString(R.string.settings_vibrate_correct);
+        settings_delay = context.getString(R.string.settings_delay);
+        msg_finish = context.getString(R.string.msg_finish);
+        statistics = context.getString(R.string.statistics);
+        catalogue_stat = context.getString(R.string.catalogue_stat);
+        text_progress = context.getString(R.string.txt_progress);
     }
 
     @Override
@@ -186,10 +216,10 @@ public class CatalogueFragment extends Fragment implements
     public void onStart() {
         super.onStart();
 
-        float fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
+        float fontSize = Float.parseFloat(settings.getString(settings_text_size, "14"));
         setTextSizes(fontSize);
 
-        boolean questionStats = settings.getBoolean(getString(R.string.settings_question_stats), true) && shop.isPurchased(Shop.SKU_QUESTION_FILTER);
+        boolean questionStats = settings.getBoolean(settings_question_stats, true) && shop.isPurchased(Shop.SKU_QUESTION_FILTER);
         txt_stat.setVisibility(questionStats ? View.VISIBLE : View.GONE);
 
         String s = settings.getString(key + "-state", "");
@@ -244,7 +274,7 @@ public class CatalogueFragment extends Fragment implements
             playlist.add(i);
             choices.add(-1);    // Not set
         }
-        if (settings.getBoolean(getString(R.string.settings_shuffle_questions), false))
+        if (settings.getBoolean(settings_shuffle_questions, false))
             Collections.shuffle(playlist);
 
         answers.clear();
@@ -254,8 +284,8 @@ public class CatalogueFragment extends Fragment implements
         // Send to Firebase, that the user started a new trial
         Bundle bundle = new Bundle();
         bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, key);
-        bundle.putString(getString(R.string.settings_shuffle_questions), ""+settings.getBoolean(getString(R.string.settings_shuffle_questions), false));
-        bundle.putString(getString(R.string.settings_shuffle_answers), ""+settings.getBoolean(getString(R.string.settings_shuffle_answers), false));
+        bundle.putString(settings_shuffle_questions, ""+settings.getBoolean(settings_shuffle_questions, false));
+        bundle.putString(settings_shuffle_answers, ""+settings.getBoolean(settings_shuffle_answers, false));
         analytics.logEvent(LEVEL_START, bundle);
 
         setSliderRange(playlist.size());
@@ -328,10 +358,7 @@ public class CatalogueFragment extends Fragment implements
         progress.removeOnChangeListener(this);
         progress.setValue(i+1);
         progress.addOnChangeListener(this);
-        Context ctx = getContext();
-        if (ctx == null) return;
-        String text = ctx.getString(R.string.txt_progress);
-        txt_progress.setText(String.format(text, i+1, playlist.size()));
+        txt_progress.setText(String.format(text_progress, i+1, playlist.size()));
     }
 
     private void loadQuestion(int i) {
@@ -341,7 +368,7 @@ public class CatalogueFragment extends Fragment implements
         setQuestionProgress(i);
         updateButtons();
 
-        if (settings.getBoolean(getString(R.string.settings_shuffle_answers), false))
+        if (settings.getBoolean(settings_shuffle_answers, false))
             shuffleAnswerFields(i);
 
         unhighlightAnswers(true);
@@ -365,7 +392,7 @@ public class CatalogueFragment extends Fragment implements
         if (txt_stat.getVisibility() != View.VISIBLE) return;
         Pair<Integer, Integer> ratio = Util.calculateQuestionRatio(trials, number);
         txt_stat.setText(ratio.second > 0
-            ? String.format(getString(R.string.catalogue_stat), ratio.first, ratio.second)
+            ? String.format(catalogue_stat, ratio.first, ratio.second)
             : "(bisher noch nicht beantwortet)"
         );
 
@@ -394,9 +421,9 @@ public class CatalogueFragment extends Fragment implements
 
     private void startHighlightAnimation() {
         ignoreInput();
-        boolean isVibrationGloballyEnabled = settings.getBoolean(getString(R.string.settings_vibrate), true);
-        boolean isVibrationOnFalseEnabled = settings.getBoolean(getString(R.string.settings_vibrate_false), true);
-        boolean isVibrationOnTrueEnabled = settings.getBoolean(getString(R.string.settings_vibrate_correct), true);
+        boolean isVibrationGloballyEnabled = settings.getBoolean(settings_vibrate, true);
+        boolean isVibrationOnFalseEnabled = settings.getBoolean(settings_vibrate_false, true);
+        boolean isVibrationOnTrueEnabled = settings.getBoolean(settings_vibrate_correct, true);
 
         if (highlightCorrectAnswer()) {
             if (isVibrationGloballyEnabled && isVibrationOnTrueEnabled)
@@ -412,7 +439,7 @@ public class CatalogueFragment extends Fragment implements
             if (allQuestionsAnswered()) showResultDialog();
             else if (isNotFinalQuestion()) loadQuestion(getProgress()+1);  // load next
 
-        }, (long) (Double.parseDouble(settings.getString(getString(R.string.settings_delay), "1")) * 1000));
+        }, (long) (Double.parseDouble(settings.getString(settings_delay, "1")) * 1000));
 
     }
 
@@ -450,14 +477,14 @@ public class CatalogueFragment extends Fragment implements
 
         new MaterialAlertDialogBuilder(view.getContext())
                 .setTitle(getString(success ? R.string.msg_finish_pass : R.string.msg_finish_fail))
-                .setMessage(String.format(getString(R.string.msg_finish), trial.getSuccessful(), trial.size()))
+                .setMessage(String.format(msg_finish, trial.getSuccessful(), trial.size()))
                 .setIcon(success ? R.drawable.like : R.drawable.dislike)
                 .setNegativeButton(R.string.statistics, (dialog, which) -> {
                     dialog.dismiss();
                     try {
                         TitleActivity activity = (TitleActivity) getActivity();
                         if (activity == null) return;
-                        activity.showFragment(getString(R.string.statistics), true);
+                        activity.showFragment(statistics, true);
                     } catch (ClassCastException cce){
                         String error = "CatalogueFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
                         Log.e("BZF", error);
