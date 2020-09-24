@@ -310,8 +310,8 @@ public class SimulatorFragment extends Fragment
             // Dark Mode
             ImageView arrival = view.findViewById(R.id.icon_arrival);
             ImageView departure = view.findViewById(R.id.icon_departure);
-            arrival.setImageDrawable(activity.getDrawable(R.drawable.arrival_dark));
-            departure.setImageDrawable(activity.getDrawable(R.drawable.departure_dark));
+            arrival.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.arrival_dark));
+            departure.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.departure_dark));
         }
 
         // Remove views from debugging layout
