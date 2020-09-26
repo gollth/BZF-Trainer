@@ -59,8 +59,9 @@ public class QuestionFilter implements View.OnTouchListener {
 
         Gson gson = new Gson();
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(inflater.getContext());
+        Catalogue cat = new Catalogue(context, key);
 
-        List<Trial> list = Util.getTrials(settings, gson, key);
+        List<Trial> list = Util.getTrials(cat, settings, gson, key);
         this.playlist = new ArrayList<>();
 
         setupBarChart(chart);
@@ -165,8 +166,11 @@ public class QuestionFilter implements View.OnTouchListener {
             int x = data.second.get(i);   // X label to bar entry aka question index
             playlist.add(x);
         }
-        Log.i("BZF", "Setting label to " + playlist.size());
-        total.setText(String.format(context.getString(R.string.questionfilter_lbl_summary), playlist.size()));
+        int catalogueSize = playlist.size();
+        total.setText(catalogueSize > 1
+            ? String.format(context.getString(R.string.questionfilter_lbl_summary), playlist.size())
+            : context.getString(R.string.questionfilter_lbl_summary_single)
+        );
         renderLimit(value);
         updateBarColors(value);
         chart.invalidate();

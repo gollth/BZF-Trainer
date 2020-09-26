@@ -117,6 +117,18 @@ public class SimulatorFragment extends Fragment
     private boolean loggedLevelStart = false;
     private FirebaseAnalytics firebase;
 
+    // Strings
+    private String statistics;
+    private String settings_sim_help;
+    private String settings_sim_help_atc;
+    private String settings_sim_level;
+    private String settings_text_size;
+    private String settings_sim_help_you;
+    private String settings_sim_recorder;
+    private String restart;
+    private String language;
+    private String sim_lbl_you;
+
     private String getDifficultyName () {
         switch (getDifficulty()) {
             case EASY:      return "EASY";
@@ -127,7 +139,7 @@ public class SimulatorFragment extends Fragment
     }
     private int getDifficulty () {
         String[] levels = getResources().getStringArray(R.array.settings_sim_levels_indices);
-        String value = settings.getString(getString(R.string.settings_sim_level), levels[0]);
+        String value = settings.getString(settings_sim_level, levels[0]);
         for(int i = 0; i < levels.length; i++) {
             if (levels[i].equals(value)) return i-1;
         }
@@ -246,14 +258,14 @@ public class SimulatorFragment extends Fragment
                     try {
                         TitleActivity activity = (TitleActivity) getActivity();
                         if (activity == null) return;
-                        activity.showFragment(getString(R.string.statistics), true);
+                        activity.showFragment(statistics, true);
                     } catch (ClassCastException cce){
                         String error = "SimulatorFragment: Error casting getActivity() to TitleActivity" + cce.getMessage();
                         Log.e("BZF", error);
                         FirebaseCrashlytics.getInstance().log(error);
                     }
                 })
-                .setPositiveButton(getString(R.string.restart), (d, which) -> {
+                .setPositiveButton(restart, (d, which) -> {
                     d.dismiss();
                     restart();
                 })
@@ -278,9 +290,11 @@ public class SimulatorFragment extends Fragment
         gson = new Gson();
         Activity activity = requireActivity();
 
+        initializeStringResources(activity);
+
         settings = PreferenceManager.getDefaultSharedPreferences(activity);
-        english = settings.getBoolean(getString(R.string.language), true);
-        fontSize = Float.parseFloat(settings.getString(getString(R.string.settings_text_size), "14"));
+        english = settings.getBoolean(language, true);
+        fontSize = Float.parseFloat(settings.getString(settings_text_size, "14"));
 
         Phrase.initialize(activity, english);
 
@@ -296,8 +310,8 @@ public class SimulatorFragment extends Fragment
             // Dark Mode
             ImageView arrival = view.findViewById(R.id.icon_arrival);
             ImageView departure = view.findViewById(R.id.icon_departure);
-            arrival.setImageDrawable(activity.getDrawable(R.drawable.arrival_dark));
-            departure.setImageDrawable(activity.getDrawable(R.drawable.departure_dark));
+            arrival.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.arrival_dark));
+            departure.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.departure_dark));
         }
 
         // Remove views from debugging layout
@@ -315,7 +329,7 @@ public class SimulatorFragment extends Fragment
 
         // Update the Help panel
         lyt_scroller.setVisibility(
-            settings.getBoolean(getString(R.string.settings_sim_help), false)
+            settings.getBoolean(settings_sim_help, false)
             ? View.VISIBLE : View.GONE
         );
 
@@ -411,17 +425,17 @@ public class SimulatorFragment extends Fragment
             Activity act = getActivity();
             if (act == null) return;
             new MaterialAlertDialogBuilder(act)
-                .setMessage(getString(R.string.sim_init))
-                .setNegativeButton(getString(R.string.negative), null)
-                .setNeutralButton(getString(R.string.btn_info), (dialog, which) -> {
+                .setMessage(R.string.sim_init)
+                .setNegativeButton(R.string.negative, null)
+                .setNeutralButton(R.string.btn_info, (dialog, which) -> {
                     Activity a = getActivity();
                     if (a == null) return;
                     new MaterialAlertDialogBuilder(act)
-                            .setMessage(getString(R.string.sim_info))
+                            .setMessage(R.string.sim_info)
                             .setPositiveButton("Roger", null)
                             .show();
                 })
-                .setPositiveButton(getString(R.string.positive), (dialog, which) -> {
+                .setPositiveButton(R.string.positive, (dialog, which) -> {
                     if (wifi != null) wifi.setWifiEnabled(true);
                     dialog.dismiss();
 
@@ -430,6 +444,19 @@ public class SimulatorFragment extends Fragment
         });
 
         return view;
+    }
+
+    private void initializeStringResources(@NonNull Context context) {
+        statistics = context.getString(R.string.statistics);
+        settings_sim_help = context.getString(R.string.settings_sim_help);
+        settings_sim_help_atc = context.getString(R.string.settings_sim_help_atc);
+        settings_sim_level = context.getString(R.string.settings_sim_level);
+        settings_text_size = context.getString(R.string.settings_text_size);
+        settings_sim_help_you = context.getString(R.string.settings_sim_help_you);
+        settings_sim_recorder = context.getString(R.string.settings_sim_recorder);
+        restart = context.getString(R.string.restart);
+        language = context.getString(R.string.language);
+        sim_lbl_you = context.getString(R.string.sim_lbl_you);
     }
 
     private void restart() {
@@ -455,7 +482,7 @@ public class SimulatorFragment extends Fragment
     private void createChatMessage(LayoutInflater inflater, boolean fromAtc, String message) {
         if (fromAtc) {
             SimChatMessageAtcBinding binding = DataBindingUtil.inflate(inflater, R.layout.sim_chat_message_atc, lyt_chat, true);
-            if (!settings.getBoolean(getString(R.string.settings_sim_help_atc), true)) {
+            if (!settings.getBoolean(settings_sim_help_atc, true)) {
                 message = getString(R.string.sim_chat_message_hidden);
             }
             binding.setMessage(message);
@@ -465,7 +492,7 @@ public class SimulatorFragment extends Fragment
         }
         else {
             SimChatMessageYouBinding binding = DataBindingUtil.inflate(inflater, R.layout.sim_chat_message_you, lyt_chat, true);
-            if (!settings.getBoolean(getString(R.string.settings_sim_help_you), true)) {
+            if (!settings.getBoolean(settings_sim_help_you, true)) {
                 message = getString(R.string.sim_chat_message_hidden);
             }
             binding.setMessage(message);
@@ -499,18 +526,18 @@ public class SimulatorFragment extends Fragment
                 if (!loggedLevelStart) {
                     Bundle bundle = new Bundle();
                     bundle.putString(FirebaseAnalytics.Param.LEVEL_NAME, getString(R.string.simulator));
-                    bundle.putString(getString(R.string.language), getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de));
-                    bundle.putString(getString(R.string.settings_sim_level), getDifficultyName());
+                    bundle.putString(language, getString(english ? R.string.settings_sim_language_en : R.string.settings_sim_language_de));
+                    bundle.putString(settings_sim_level, getDifficultyName());
                     firebase.logEvent(LEVEL_START, bundle);
                     loggedLevelStart = true;
                 }
                 startTime = new Date().getTime();
-                if (!settings.getBoolean(getString(R.string.settings_sim_recorder), false))
+                if (!settings.getBoolean(settings_sim_recorder, false))
                     recorder.startListening(recordIntent);
                 break;
 
             case MotionEvent.ACTION_UP:
-                if (!settings.getBoolean(getString(R.string.settings_sim_recorder), false)) {
+                if (!settings.getBoolean(settings_sim_recorder, false)) {
                     if (new Date().getTime() - startTime < 500) {
                         Snackbar.make(txt_aircraft, R.string.msg_record_explanation, Snackbar.LENGTH_SHORT).show();
                     }
@@ -567,7 +594,7 @@ public class SimulatorFragment extends Fragment
             Spanned comparison = phrase.compareWith(msg);
             totalSuccessRates += phrase.getSuccessRate();
             answeredFromYou++;
-            answers.add((Spanned) TextUtils.concat(Html.fromHtml(getString(R.string.sim_lbl_you)), comparison));
+            answers.add((Spanned) TextUtils.concat(Html.fromHtml(sim_lbl_you), comparison));
 
             // If you said the last departure phrase, show message
             if (isDepartureFinished() && !showedDepartureFinishMessage) {

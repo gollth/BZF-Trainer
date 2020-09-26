@@ -63,9 +63,10 @@ public class StatisticsFragment extends Fragment {
         boolean noTrialsYet = true;
         Map<String, List<Trial>> trials = new HashMap<>();
         for (String key : Arrays.asList("bzf", "azf", "sim")) {
+            Catalogue cat = key.equals("sim") ? null : new Catalogue(requireContext(), key);
             Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
             noTrialsYet &= history.isEmpty();
-            trials.put(key, Util.getTrials(settings, gson, key));
+            trials.put(key, Util.getTrials(cat, settings, gson, key));
         }
 
         if (noTrialsYet) {

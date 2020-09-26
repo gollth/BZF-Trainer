@@ -146,10 +146,14 @@ class Util {
      * @param key either "azf" or "bzf"
      * @return the list with all the trials for `key` in the history
      */
-    static List<Trial> getTrials(SharedPreferences settings, Gson gson, String key) {
+    static List<Trial> getTrials(Catalogue cat, SharedPreferences settings, Gson gson, String key) {
         Set<String> history = settings.getStringSet(key + "-history", CatalogueFragment.EMPTY_SET);
         List<Trial> list = new ArrayList<>();
-        for (String json : history) list.add(gson.fromJson(json, Trial.class));
+        for (String json : history) {
+            Trial trial = gson.fromJson(json, Trial.class);
+            trial.setCatalogue(cat);
+            list.add(trial);
+        }
         return list;
     }
 

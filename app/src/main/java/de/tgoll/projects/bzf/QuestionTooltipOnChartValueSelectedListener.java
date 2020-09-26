@@ -62,7 +62,7 @@ class QuestionTooltipOnChartValueSelectedListener implements OnChartValueSelecte
                 .setOnDismissListener(this)
                 .create();
 
-        trials = Util.getTrials(PreferenceManager.getDefaultSharedPreferences(context), new Gson(), key);
+        trials = Util.getTrials(catalogue, PreferenceManager.getDefaultSharedPreferences(context), new Gson(), key);
     }
 
     private void updateQuestionStatistics(int number) {
