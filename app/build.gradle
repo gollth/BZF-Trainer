@@ -21,8 +21,8 @@ android {
         versionCode 32
         versionName "1.4.3"
     }
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        dataBinding = true
     }
     buildTypes {
         debug {
