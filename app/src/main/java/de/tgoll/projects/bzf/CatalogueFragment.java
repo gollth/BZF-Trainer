@@ -509,7 +509,10 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void unhighlightAnswers(boolean alsoClearCheck) {
-        int color = Util.lookupColor(requireContext(), R.attr.colorOnBackground);
+        Context context = getContext();
+        if (context == null) return;
+
+        int color = Util.lookupColor(context, R.attr.colorOnBackground);
         for(RadioButton button : buttons) {
             button.setTypeface(Typeface.DEFAULT);
             button.setTextColor(color);
