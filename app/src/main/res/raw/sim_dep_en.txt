@@ -4,8 +4,8 @@ P: #callsign, #aircraft, GAT, VFR to the east, [information #atis,] request taxi
 G: #callsign, QNH #qnh, taxi to holding point runway #runway, via #taxi_route[, hold short of runway #runway2]
 P: #callsign, QNH #qnh, taxi (to) hold(ing point), (runway) #runway, via #taxi_route[, hold short (of), runway #runway2]
 [P: #callsign, request (to) cross runway #runway2]
-[G: #callsign, {behind landing piper,} cross runway #runway2]
-[P: #callsign, {behind (landing) piper,} cross runway #runway2]
+[G: #callsign, {behind landing piper,} cross runway #runway2{ behind}]
+[P: #callsign, {behind (landing) piper,} cross runway #runway2{ behind}]
 {G: #callsign, caution, Cirrus 12'o clock, report in sight}
 {P: #callsign, traffic in sight}
 G: #callsign, when ready, contact Tower #freq
