@@ -27,8 +27,7 @@ android {
     }
     buildTypes {
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.debug.pro'
+            minifyEnabled false
             signingConfig signingConfigs.debug
             debuggable true
             // Disable fabric build ID generation for debug builds
