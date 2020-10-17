@@ -1,6 +1,6 @@
 P: #airport Turm, #callsign
 T: #callsign, #airport Turm
-P: #callsign, #aircraft, VFR, 2000 Fuß, [Information #atis, ]zur Landung
+P: #callsign, #aircraft, VFR, 2000 Fuß, 10 NM (östlich) #fixpoint, [Information #atis, ]zur Landung
 T: #callsign, fliegen Sie in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer, Piste #runway, QNH #qnh
 P: #callsign, fliege in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer, Piste #runway, QNH #qnh
 P: #callsign, #fixpoint, 2000 Fuß

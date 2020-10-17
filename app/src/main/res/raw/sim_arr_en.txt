@@ -1,6 +1,6 @@
 P: #airport Tower, #callsign
 T: #callsign, #airport Tower
-P: #callsign, #aircraft, VFR, 2000 ft, [information #atis, ](inbound) for landing
+P: #callsign, #aircraft, VFR, 2000 ft, 10 NM (east of) #fixpoint, [information #atis, ](inbound) for landing
 T: #callsign, enter control zone via #fixpoint, 2000 ft or below, runway #runway, QNH #qnh
 P: #callsign, enter control zone, via #fixpoint, 2000 ft or below, runway #runway, QNH #qnh
 P: #callsign, #fixpoint, 2000 ft
