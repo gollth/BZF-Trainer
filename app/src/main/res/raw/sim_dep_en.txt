@@ -19,7 +19,7 @@ P: #callsign, leav(ing) control zone, via #fixpoint{, #altitude ft or below}[, S
 {P: #callsign, behind (departing) Airbus, line up and wait, runway #runway behind}
 [T: #callsign, are you ready for immediate departure?]
 [P: #callsign, affirm]
-T: #callsign, wind #wind_dir degrees @ #wind_kn knots, runway #runway, cleared for takeoff
+T: #callsign, Wind #wind_dir degrees @ #wind_kn knots, runway #runway, cleared for takeoff
 P: #callsign, runway #runway, clear(ed) for takeoff
 P: #callsign, #fixpoint, #altitude ft, request (to) leav(e) frequency
 T: #callsign, Roger, Squawk VFR, frequency change approved
