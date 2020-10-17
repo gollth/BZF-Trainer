@@ -27,12 +27,13 @@ public class Phrase {
     // Static members
     private static final String[] FIXPOINTS = new String[] {"N", "E", "S", "W" };
     private static String[] airports, airport_names;
+    private static String[] numbers;
     private static Map<Character, String> dict;
     private static final String[] numbersEN = new String[] {
         "zero","one", "two", "three", "four", "five", "six","seven","eight","niner", "decimal"
     };
     private static final String[] numbersDE = new String[] {
-        "null","eins","zwo", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "Punkt"
+        "null","eins","zwo", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "punkt"
     };
 
 
@@ -68,6 +69,7 @@ public class Phrase {
         int id = english ? R.array.airport_names_en : R.array.airport_names_de;
         airports = context.getResources().getStringArray(R.array.airports);
         airport_names = context.getResources().getStringArray(id);
+        numbers = english ? numbersEN : numbersDE;
     }
     static String getRandomFixpoint(Random rng) {
         return FIXPOINTS[rng.nextInt(4)];
@@ -83,7 +85,6 @@ public class Phrase {
 
 
     // private class members
-    private final String[] numbers;
     private final String phrase;
     private final String sender;
     private final String[] groups;
@@ -99,11 +100,10 @@ public class Phrase {
         sender = ps[0];
         phrase = ps[1];
         groups = phrase.split(", ");
-        numbers = english ? numbersEN : numbersDE;
     }
 
     // Converter Functions
-    private static String resolveParams(String s) {
+    static String resolveParams(String s) {
         return s.replaceAll("\r", "")
                 .replaceAll("#airport",     Params.AIRPORT)
                 .replaceAll("#callsign",    Params.CALLSIGN)
@@ -119,7 +119,7 @@ public class Phrase {
                 .replaceAll("#wind_dir",    Params.WIND_DIR)
                 .replaceAll("#wind_kn", Params.WIND_KN);
     }
-    private static String convertABC (String abc) {
+    static String convertABC(String abc) {
         StringBuilder answer = new StringBuilder();
         for(int i = 0; i < abc.length(); i++) {
             if (i > 0) answer.append(" ");
@@ -128,7 +128,7 @@ public class Phrase {
         }
         return answer.toString();
     }
-    private String convertNumber (String number) {
+    static String convertNumber(String number) {
         StringBuilder answer = new StringBuilder();
 
         // Check if number is an integer
@@ -146,7 +146,7 @@ public class Phrase {
         }
         return answer.substring(1); // without leading space
     }
-    private String convertAirport(String s) {
+    static String convertAirport(String s) {
         int i = Arrays.asList(airports).indexOf(s);
         if (i < 0) return "";
         else return airport_names[i];
