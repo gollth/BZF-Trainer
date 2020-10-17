@@ -81,7 +81,7 @@ public class Phrase {
     }
     static String getRandomFreq(Random rng) {
         int tenth = 18 + rng.nextInt(15); // [18 .. 32]
-        int decimals = rng.nextInt(20) * 5; // [00 ... 95]
+        int decimals = rng.nextInt(200) * 5; // [000 ... 995]
         return "1" + tenth + "." + decimals;
     }
     static char getRandomLetter(Random rng) {
