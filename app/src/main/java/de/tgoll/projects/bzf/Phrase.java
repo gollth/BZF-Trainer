@@ -19,7 +19,7 @@ public class Phrase {
 
     // Inner class
     static class Params {
-        static String AIRPORT, CALLSIGN, AIRCRAFT, ATIS, QNH, RUNWAY, RUNWAY2, TAXI_ROUTE,
+        static String AIRPORT, ALTITUDE, CALLSIGN, AIRCRAFT, ATIS, QNH, RUNWAY, RUNWAY2, TAXI_ROUTE,
                 FREQ, FIXPOINT, SQUAWK, WIND_DIR, WIND_KN;
     }
 
@@ -29,7 +29,7 @@ public class Phrase {
     private static String[] airports, airport_names;
     private static String[] numbers;
     private static Map<Character, String> dict;
-    private static String hundreds, thousands;
+    private static String hundreds, thousands, miles, feet;
     private static final String[] numbersEN = new String[] {
         "zero","one", "two", "three", "four", "five", "six","seven","eight","niner", "decimal"
     };
@@ -73,6 +73,8 @@ public class Phrase {
         numbers = english ? numbersEN : numbersDE;
         hundreds = english ? "hundred" : "hundert";
         thousands = english ? "thousand" : "tausend";
+        miles = english ? "miles" : "Meilen";
+        feet = english ? "feet" : "Fuß";
     }
     static String getRandomFixpoint(Random rng) {
         return FIXPOINTS[rng.nextInt(4)];
@@ -114,6 +116,7 @@ public class Phrase {
     static String resolveParams(String s) {
         return s.replaceAll("\r", "")
                 .replaceAll("#airport",     Params.AIRPORT)
+                .replaceAll("#altitude",    Params.ALTITUDE)
                 .replaceAll("#callsign",    Params.CALLSIGN)
                 .replaceAll("#aircraft",    Params.AIRCRAFT)
                 .replaceAll("#atis",        Params.ATIS)
@@ -266,9 +269,10 @@ public class Phrase {
             for(String word : group.split(" ")) {
                 answer.append(" ");
                 if (isAirport(word)) answer.append(convertAirport(word));
+                else if (word.equalsIgnoreCase("NM")) answer.append(miles);
                 else if (isABC(word)) answer.append(convertABC(word));
                 else if (isNumber(word)) answer.append(convertNumber(word));
-                else if (word.equalsIgnoreCase("ft")) answer.append("feet");
+                else if (word.equalsIgnoreCase("ft")) answer.append(feet);
                 else if (word.equals("GAT")) answer.append ("General Aviation Terminal");
                 else if (word.equalsIgnoreCase("roger")) answer.append("rodger");
                 else answer.append(word);

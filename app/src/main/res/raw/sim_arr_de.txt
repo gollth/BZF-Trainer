@@ -1,9 +1,9 @@
 P: #airport Turm, #callsign
 T: #callsign, #airport Turm
-P: #callsign, #aircraft, VFR, 2000 Fuß, 10 NM (östlich) #fixpoint, [Information #atis, ]zur Landung
-T: #callsign, fliegen Sie in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer, Piste #runway, QNH #qnh
-P: #callsign, fliege in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer, Piste #runway, QNH #qnh
-P: #callsign, #fixpoint, 2000 Fuß
+P: #callsign, #aircraft, VFR, 2500 ft, 10 NM (östlich) #fixpoint, [Information #atis, ]zur Landung
+T: #callsign, fliegen Sie in die Kontrollzone über #fixpoint, #altitude ft oder tiefer, Piste #runway, QNH #qnh
+P: #callsign, fliege in die Kontrollzone über #fixpoint, #altitude ft oder tiefer, Piste #runway, QNH #qnh
+P: #callsign, #fixpoint, #altitude ft
 T: #callsign, melden Sie Platz in Sicht
 P: #callsign, Platz in Sicht
 [T: #callsign, fliegen Sie in den {rechten} Gegenanflug Piste #runway, Wind #wind_dir Grad #wind_kn Knoten, {Nummer 2, hinter landender Bonanza im kurzen Endanflug, }melden Sie Queranflug]

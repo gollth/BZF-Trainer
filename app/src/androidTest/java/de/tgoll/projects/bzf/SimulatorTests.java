@@ -53,6 +53,14 @@ public class SimulatorTests {
         assertThat(Phrase.resolveParams(pre + "#aircraft" + post), containsString(needle));
     }
     @Test
+    public void resolveParamsReplacesMetaAltitudeVariable() {
+        String needle = randomWord(5);
+        String pre = randomWord(10);
+        String post = randomWord(10);
+        Phrase.Params.ALTITUDE = needle;
+        assertThat(Phrase.resolveParams(pre + "#altitude" + post), containsString(needle));
+    }
+    @Test
     public void resolveParamsReplacesMetaCallsignVariable() {
         String needle = randomWord(5);
         String pre = randomWord(10);

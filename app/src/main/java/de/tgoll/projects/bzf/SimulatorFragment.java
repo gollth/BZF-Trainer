@@ -196,6 +196,7 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.AIRCRAFT = txt_aircraft.getText().toString();
         Phrase.Params.AIRPORT = showedDepartureFinishMessage ? cbx_departure.getSelectedItem().toString()
                                                : cbx_arrival.getSelectedItem().toString();
+        Phrase.Params.ALTITUDE = "" + ((rng.nextInt(6) * 500) + 1000); // ranges from [1000..3500] ft
         Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase().replace("-", "");
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
