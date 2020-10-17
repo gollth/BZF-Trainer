@@ -15,8 +15,8 @@ T: #callsign, #airport Turm
 P: #callsign, Piste #runway, abflugbereit
 T: #callsign, verlassen Sie die Kontrollzone über #fixpoint[, Squawk #squawk]
 P: #callsign, verlasse Kontrollzone, über #fixpoint[, Squawk #squawk]
-{T: #callsign, hinter abfliegendem Airbus 320, zum Abflugpunkt und halten, Piste #runway}
-{P: #callsign, hinter (abfliegendem) Airbus, zum Abflugpunkt und halten, Piste #runway}
+{T: #callsign, hinter abfliegendem Airbus 320, zum Abflugpunkt und halten dahinter, Piste #runway}
+{P: #callsign, hinter (abfliegendem) Airbus, zum Abflugpunkt und halten dahinter, Piste #runway}
 [T: #callsign, sind Sie bereit zum Sofortabflug?]
 [P: #callsign, positiv]
 T: #callsign, Wind #wind_dir Grad #wind_kn Knoten, Piste #runway, Start frei

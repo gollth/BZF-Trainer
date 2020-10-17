@@ -15,8 +15,8 @@ T: #callsign, #airport Tower
 P: #callsign, runway #runway, ready for departure
 T: #callsign, leave control zone via #fixpoint[, Squawk #squawk]
 P: #callsign, leav(ing) control zone, via #fixpoint[, Squawk #squawk]
-{T: #callsign, behind departing Airbus 320, line up and wait runway #runway}
-{P: #callsign, behind (departing) Airbus, line up and wait, runway #runway}
+{T: #callsign, behind departing Airbus 320, line up and wait runway #runway behind}
+{P: #callsign, behind (departing) Airbus, line up and wait, runway #runway behind}
 [T: #callsign, are you ready for immediate departure?]
 [P: #callsign, affirm]
 T: #callsign, wind #wind_dir degrees @ #wind_kn knots, runway #runway, cleared for takeoff
