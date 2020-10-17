@@ -10,7 +10,7 @@ P: #callsign, field in sight
 [P: #callsign, join(ing) {right} downwind runway #runway {behind, traffic in sight}, wilco]
 [P: #callsign, {right} base runway #runway]
 {T: #callsign, continue approach, report final}
-{P: #callsign, wilco}
+{P: #callsign, continue approach, wilco}
 {P: #callsign, final runway #runway}
 T: #callsign, [short landing, ]{expect backtrack, }wind #wind_dir degrees #wind_kn knots, runway #runway, cleared to land
 P: #callsign, [short landing, ]{expecting backtrack, } #runway, cleared to land{, caution wake turbulence}
