@@ -8,7 +8,7 @@ T: #callsign, melden Sie Platz in Sicht
 P: #callsign, Platz in Sicht
 [T: #callsign, fliegen Sie in den {rechten} Gegenanflug Piste #runway, Wind #wind_dir Grad #wind_kn Knoten, {Nummer 2, hinter landender Bonanza im kurzen Endanflug, }melden Sie Queranflug]
 [P: #callsign, (fliege {hinter Bonanza} in den) {rechte(n)} Gegenanflug Piste #runway {dahinter, Verkehr in Sicht}, Wilco]
-[P: #callsign, {rechter} Gegenanflug Piste #runway]
+[P: #callsign, {rechter} Queranflug Piste #runway]
 {T: #callsign, Anflug fortsetzen, melden Sie Endanflug}
 {P: #callsign, setze Anflug fort, Wilco}
 {P: #callsign, Endanflug Piste #runway}
