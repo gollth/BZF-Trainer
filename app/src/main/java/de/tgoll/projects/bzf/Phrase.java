@@ -29,6 +29,7 @@ public class Phrase {
     private static String[] airports, airport_names;
     private static String[] numbers;
     private static Map<Character, String> dict;
+    private static String hundreds, thousands;
     private static final String[] numbersEN = new String[] {
         "zero","one", "two", "three", "four", "five", "six","seven","eight","niner", "decimal"
     };
@@ -70,6 +71,8 @@ public class Phrase {
         airports = context.getResources().getStringArray(R.array.airports);
         airport_names = context.getResources().getStringArray(id);
         numbers = english ? numbersEN : numbersDE;
+        hundreds = english ? "hundred" : "hundert";
+        thousands = english ? "thousand" : "tausend";
     }
     static String getRandomFixpoint(Random rng) {
         return FIXPOINTS[rng.nextInt(4)];
@@ -134,15 +137,42 @@ public class Phrase {
         // Check if number is an integer
         if (!number.contains(".")) {
             int i = Integer.parseInt(number);
-            // If number is multiple of hundreds, don't convert any further
-            if (i%100 == 0) return number;
+
+            // If number is multiple of hundreds, pronounce the digit plus the literal "hundred"
+            if (i%100 == 0) {
+                int hunds = i / 100;   // amount of "hundreds", 2500 -> 25
+                int thou = i / 1000;   // amount of "thousands", 2500 -> 2
+                String t = "";         // resulting pronunciation of "thousands"
+                String h = "";         // resulting pronunciation of "hundreds"
+
+                if (hunds%10 == 0) {
+                    // Number is a flat multiple of thousand, dont append any hundreds
+                    t = convertNumber("" + thou);
+                    if (t.equals("eins")) t = "ein"; // Special case in german -.-
+                    return t + " " + thousands;
+                }
+
+                if (hunds > 10) {
+                    // Number has both a thousands and a hundredth place
+                    t = convertNumber("" + thou);
+                    if (t.equals("eins")) t = "ein"; // Special case in german -.-
+                    t += " " + thousands + " ";
+                    hunds = hunds % 10;   // "consume" the thousands place, leave only hundreds
+                }
+
+                h = convertNumber("" + hunds);
+                if (h.equals("eins")) h = "ein"; // Special case in german -.-
+                h += " " + hundreds;
+
+                return t + h;
+            }
         }
-        for(String digit : number.split("")) {
+        for(char digit : number.toCharArray()) {
             answer.append(" ");
             for (int d = 0; d <= 9; d++) {
-               if (digit.equals("" + d)) answer.append (numbers[d]);
+                if (Character.digit(digit, 10) == d) answer.append(numbers[d]);
             }
-            if (digit.equals(".")) answer.append (numbers[10]);
+            if (digit == '.') answer.append (numbers[10]);
         }
         return answer.substring(1); // without leading space
     }

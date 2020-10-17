@@ -190,6 +190,22 @@ public class SimulatorTests {
     }
 
     @Test
+    public void convertNumberAbbreviatesThousandsCorrectlyInEnglish() {
+        Phrase.initialize(context, true);
+        assertEquals("one thousand", Phrase.convertNumber("1000"));
+        assertEquals("niner thousand five hundred", Phrase.convertNumber("9500"));
+        assertEquals("two six eight zero", Phrase.convertNumber("2680"));
+    }
+
+    @Test
+    public void convertNumberAbbreviatesThousandssCorrectlyInGerman() {
+        Phrase.initialize(context, false);
+        assertEquals("ein tausend", Phrase.convertNumber("1000"));
+        assertEquals("zwo tausend fünf hundert", Phrase.convertNumber("2500"));
+        assertEquals("zwo sechs acht null", Phrase.convertNumber("2680"));
+    }
+
+    @Test
     public void convertNumberPronouncesDecimalsCorrectlyInEnglish() {
         Phrase.initialize(context, true);
         assertEquals("one two three decimal four niner seven", Phrase.convertNumber("123.497"));
