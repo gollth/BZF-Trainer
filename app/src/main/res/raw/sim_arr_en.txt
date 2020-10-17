@@ -12,10 +12,10 @@ P: #callsign, field in sight
 {T: #callsign, continue approach, report final}
 {P: #callsign, continue approach, wilco}
 {P: #callsign, final runway #runway}
-T: #callsign, [short landing, ]{expect backtrack, }wind #wind_dir degrees #wind_kn knots, runway #runway, cleared to land
-P: #callsign, [short landing, ]{expecting backtrack, } #runway, cleared to land{, caution wake turbulence}
+T: #callsign, [short landing, ]{expect backtrack, }wind #wind_dir degrees #wind_kn knots, {caution wake turbulances, }runway #runway, cleared to land
+P: #callsign, [short landing, ]{expecting backtrack, } runway #runway, cleared to land
 T: #callsign, {backtrack approved runway #runway, }call Ground on #freq
-P: #callsign, {backtrack, runway #runway, }calling Ground, #freq
+P: #callsign, {backtrack approved runway #runway, }calling Ground, #freq
 P: #airport Ground, #callsign
 G: #callsign, #airport Ground, taxi via #taxi_route to GAT
 P: #callsign, taxi via #taxi_route to GAT
