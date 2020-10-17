@@ -86,6 +86,11 @@ public class Phrase {
         return Character.toChars(rng.nextInt(26)+65)[0];
     }
 
+    static String getRandomSquawk(Random rng) {
+        StringBuilder b = new StringBuilder();
+        for (int i = 0; i < 4; i++) b.append(rng.nextInt(8));
+        return b.toString();
+    }
 
     // private class members
     private final String phrase;

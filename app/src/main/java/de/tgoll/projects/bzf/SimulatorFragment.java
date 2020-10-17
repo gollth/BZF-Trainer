@@ -199,7 +199,7 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase().replace("-", "");
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
-        Phrase.Params.SQUAWK = String.format(Locale.GERMAN, "%04d", rng.nextInt(10000));
+        Phrase.Params.SQUAWK = Phrase.getRandomSquawk(rng);
         Phrase.Params.FREQ = Phrase.getRandomFreq(rng);
         Phrase.Params.QNH = "" + (rng.nextInt(31) + 995);  // ranges from [995...1025]
         Phrase.Params.TAXI_ROUTE = taxi.toString();
