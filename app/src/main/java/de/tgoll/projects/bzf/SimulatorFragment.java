@@ -315,6 +315,10 @@ public class SimulatorFragment extends Fragment
             departure.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.departure_dark));
         }
 
+        PaintView canvas = view.findViewById(R.id.canvas);
+        ImageButton btn = view.findViewById(R.id.btn_clear);
+        btn.setOnClickListener(v -> canvas.clear());
+
         // Remove views from debugging layout
         lyt_chat.removeAllViews();
         btn_record = view.findViewById(R.id.btn_record);
