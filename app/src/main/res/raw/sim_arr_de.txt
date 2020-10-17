@@ -6,8 +6,8 @@ P: #callsign, fliege in die Kontrollzone über #fixpoint, 2000 Fuß oder tiefer,
 P: #callsign, #fixpoint, 2000 Fuß
 T: #callsign, melden Sie Platz in Sicht
 P: #callsign, Platz in Sicht
-[T: #callsign, fliegen Sie in den {rechten} Gegenanflug Piste #runway, Wind #wind_dir Grad #wind_kn Knoten, {Nummer 2, folgen Sie Bonanza, 3 Meilen im Endanflug, }melden Sie Queranflug]
-[P: #callsign, (fliege in den) {rechte(n)} Gegenanflug Piste #runway, {Verkehr in Sicht,} Wilco]
+[T: #callsign, fliegen Sie in den {rechten} Gegenanflug Piste #runway, Wind #wind_dir Grad #wind_kn Knoten, {Nummer 2, hinter landender Bonanza im kurzen Endanflug, }melden Sie Queranflug]
+[P: #callsign, (fliege {hinter Bonanza} in den) {rechte(n)} Gegenanflug Piste #runway {dahinter, Verkehr in Sicht}, Wilco]
 [P: #callsign, {rechter} Gegenanflug Piste #runway]
 {T: #callsign, Anflug fortsetzen, melden Sie Endanflug}
 {P: #callsign, Wilco}

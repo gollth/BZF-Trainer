@@ -6,8 +6,8 @@ P: #callsign, enter control zone, via #fixpoint, 2000 ft or below, runway #runwa
 P: #callsign, #fixpoint, 2000 ft
 T: #callsign, report field in sight
 P: #callsign, field in sight
-[T: #callsign, join {right} downwind runway #runway, wind #wind_dir @ #wind_kn knots, {number 2, follow Bonanza, 3 miles final, }report base]
-[P: #callsign, join(ing) {right} downwind runway #runway, {traffic in sight,} wilco]
+[T: #callsign, join {right} downwind runway #runway, wind #wind_dir @ #wind_kn knots, {number 2, behind landing Bonanza on short final, }report base]
+[P: #callsign, join(ing) {right} downwind runway #runway {behind, traffic in sight}, wilco]
 [P: #callsign, {right} base runway #runway]
 {T: #callsign, continue approach, report final}
 {P: #callsign, wilco}
