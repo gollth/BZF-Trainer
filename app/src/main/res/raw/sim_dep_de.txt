@@ -4,8 +4,8 @@ P: #callsign, #aircraft, Abstellplatz allgemeine Luftfahrt, VFR über E, [Inform
 G: #callsign, QNH #qnh, rollen Sie zum Rollhalt Piste #runway, über #taxi_route[, überqueren Sie Piste #runway2]
 P: #callsign, QNH #qnh, rolle (zum) Rollhalt (Piste) #runway, über #taxi_route[, überquere Piste #runway2]
 [P: #callsign, erbitte überqueren (der) Piste #runway2]
-[G: #callsign, {hinter landender Piper,} überqueren Sie Piste #runway2{ danach}]
-[P: #callsign, {hinter (landender) Piper,} überquere Piste #runway2{ danach}]
+[G: #callsign, {hinter landender Piper,} überqueren Sie Piste #runway2{ dahinter}]
+[P: #callsign, {hinter (landender) Piper,} überquere Piste #runway2{ dahinter}]
 {G: #callsign, Achtung, Cirrus 12Uhr, melden Sie in Sicht}
 {P: #callsign, (Verkehr) in Sicht}
 G: #callsign, wenn abflugbereit, rufen Sie Turm auf #freq
