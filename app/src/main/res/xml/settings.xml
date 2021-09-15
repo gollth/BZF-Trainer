@@ -63,6 +63,13 @@
             android:icon="@drawable/delay"/>
 
         <CheckBoxPreference
+            android:key="@string/settings_delay_on_wrongs"
+            android:title="@string/settings_delay_on_wrongs"
+            android:summary="@string/settings_delay_on_wrongs_sum"
+            android:defaultValue="false"
+            android:icon="@drawable/delay" />
+
+        <CheckBoxPreference
             android:key="@string/settings_question_stats"
             android:title="@string/settings_question_stats"
             android:summary="@string/settings_question_stats_sum"

@@ -87,6 +87,7 @@ public class CatalogueFragment extends Fragment implements
     private String settings_vibrate_false;
     private String settings_vibrate_correct;
     private String settings_delay;
+    private String settings_delay_on_wrongs;
     private String msg_finish;
     private String statistics;
     private String text_progress;
@@ -163,6 +164,7 @@ public class CatalogueFragment extends Fragment implements
         settings_vibrate_false = context.getString(R.string.settings_vibrate_false);
         settings_vibrate_correct = context.getString(R.string.settings_vibrate_correct);
         settings_delay = context.getString(R.string.settings_delay);
+        settings_delay_on_wrongs = context.getString(R.string.settings_delay_on_wrongs);
         msg_finish = context.getString(R.string.msg_finish);
         statistics = context.getString(R.string.statistics);
         catalogue_stat = context.getString(R.string.catalogue_stat);
@@ -425,21 +427,26 @@ public class CatalogueFragment extends Fragment implements
         boolean isVibrationOnFalseEnabled = settings.getBoolean(settings_vibrate_false, true);
         boolean isVibrationOnTrueEnabled = settings.getBoolean(settings_vibrate_correct, true);
 
+        double delayMilliseconds = Double.parseDouble(settings.getString(settings_delay, "1"));
+
         if (highlightCorrectAnswer()) {
             if (isVibrationGloballyEnabled && isVibrationOnTrueEnabled)
                 vibrateClick();       // Correct
+            if (settings.getBoolean(settings_delay_on_wrongs, false)) {
+                // Delay only on wrongs, so skip the delay on correct answers
+                delayMilliseconds = 0;
+            }
         }
         else {
             if (isVibrationGloballyEnabled && isVibrationOnFalseEnabled)
                 vibrateDoubleClick(); // Wrong
-
         }
         new Handler().postDelayed(() -> {
             enableInput();
             if (allQuestionsAnswered()) showResultDialog();
             else if (isNotFinalQuestion()) loadQuestion(getProgress()+1);  // load next
 
-        }, (long) (Double.parseDouble(settings.getString(settings_delay, "1")) * 1000));
+        }, (long) delayMilliseconds * 1000);
 
     }
 
