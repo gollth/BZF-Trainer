@@ -1,21 +1,21 @@
 P: #airport Tower, #callsign
 T: #callsign, #airport Tower
-P: #callsign, #aircraft, VFR, 2000 ft, [information #atis, ](inbound) for landing
-T: #callsign, enter control zone via #fixpoint, 2000 ft or below, runway #runway, QNH #qnh
-P: #callsign, enter control zone, via #fixpoint, 2000 ft or below, runway #runway, QNH #qnh
-P: #callsign, #fixpoint, 2000 ft
+P: #callsign, #aircraft, VFR, 2500 ft, 10 NM (east of) #fixpoint, [information #atis, ](inbound) for landing
+T: #callsign, enter control zone via #fixpoint, #altitude ft or below, runway #runway, QNH #qnh
+P: #callsign, enter control zone, via #fixpoint, #altitude ft or below, runway #runway, QNH #qnh
+P: #callsign, #fixpoint, #altitude ft
 T: #callsign, report field in sight
 P: #callsign, field in sight
-[T: #callsign, join {right} downwind runway #runway, wind #wind_dir @ #wind_kn knots, {number 2, follow Bonanza, 3 miles final, }report base]
-[P: #callsign, join(ing) {right} downwind runway #runway, {traffic in sight,} wilco]
+[T: #callsign, join {right} downwind runway #runway, Wind #wind_dir @ #wind_kn knots, {number 2, behind landing Bonanza on short final, }report base]
+[P: #callsign, join(ing) {right} downwind runway #runway {behind, traffic in sight}, wilco]
 [P: #callsign, {right} base runway #runway]
 {T: #callsign, continue approach, report final}
-{P: #callsign, wilco}
+{P: #callsign, continue approach, wilco}
 {P: #callsign, final runway #runway}
-T: #callsign, [short landing, ]{expect backtrack, }wind #wind_dir degrees #wind_kn knots, runway #runway, cleared to land
-P: #callsign, [short landing, ]{expecting backtrack, } #runway, cleared to land{, caution wake turbulence}
+T: #callsign, [short landing, ]{expect backtrack, }Wind #wind_dir degrees #wind_kn knots, {caution wake turbulence, }runway #runway, cleared to land
+P: #callsign, [short landing, ]{expecting backtrack, } runway #runway, cleared to land
 T: #callsign, {backtrack approved runway #runway, }call Ground on #freq
-P: #callsign, {backtrack, runway #runway, }calling Ground, #freq
+P: #callsign, {backtrack approved runway #runway, }calling Ground, #freq
 P: #airport Ground, #callsign
 G: #callsign, #airport Ground, taxi via #taxi_route to GAT
 P: #callsign, taxi via #taxi_route to GAT

@@ -50,6 +50,8 @@
     <string name="settings_text_size_sum">Wie groß sollen Fragen und Antworten geschrieben werden?</string>
     <string name="settings_delay">Verzögerung</string>
     <string name="settings_delay_sum">Wie viele Sekunden soll die richtige Lösung angezeigt werden, bis zur nächsten Frage gewechselt wird? </string>
+    <string name="settings_delay_on_wrongs">Verzögerung nur bei falschen Antworten</string>
+    <string name="settings_delay_on_wrongs_sum">Soll nur bei falschen Antworten gewartet werden? Bei richtigen Antworten wird dann sofort die nächsten Frage angezeigt.</string>
     <string name="settings_vibrate">Vibration</string>
     <string name="settings_vibrate_correct">&#8230;bei richtigen Antworten</string>
     <string name="settings_vibrate_false">&#8230;bei falschen Antworten</string>

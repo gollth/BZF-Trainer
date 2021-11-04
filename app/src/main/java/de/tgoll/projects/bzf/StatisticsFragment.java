@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.text.LineBreaker;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -104,7 +105,7 @@ public class StatisticsFragment extends Fragment {
         txt.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize);
         txt.setGravity(Gravity.START);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            txt.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+            txt.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
         }
 
         TextView epi = view.findViewById(R.id.statistics_welcome_epilogue);

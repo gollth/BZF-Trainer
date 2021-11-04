@@ -19,6 +19,15 @@
     </style>
   </head>
   <body>
+    $ 1.5.0
+      % Version 1.5.0
+      _ 15. September 2021
+      * Notizen können nun einfacher gelöscht werden
+      * "behind landing ... behind" Phrasologie
+      * Positionsmeldung vor Einflug in the CTR
+      * Bugfix für Aussprache von Zahlen
+      * Squawks haben nur noch die Zahlen 0..7
+      * Einstellung, Verzögerung bei richtigen Fragen zu überspringen
     $ 1.4.0
       % Version 1.4.0
       _ 17. September 2020

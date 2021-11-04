@@ -196,10 +196,11 @@ public class SimulatorFragment extends Fragment
         Phrase.Params.AIRCRAFT = txt_aircraft.getText().toString();
         Phrase.Params.AIRPORT = showedDepartureFinishMessage ? cbx_departure.getSelectedItem().toString()
                                                : cbx_arrival.getSelectedItem().toString();
+        Phrase.Params.ALTITUDE = "" + ((rng.nextInt(6) * 500) + 1000); // ranges from [1000..3500] ft
         Phrase.Params.CALLSIGN = txt_callsign.getText().toString().toUpperCase().replace("-", "");
         Phrase.Params.ATIS = "" + Phrase.getRandomLetter(rng);
         Phrase.Params.FIXPOINT = Phrase.getRandomFixpoint(rng);
-        Phrase.Params.SQUAWK = String.format(Locale.GERMAN, "%04d", rng.nextInt(10000));
+        Phrase.Params.SQUAWK = Phrase.getRandomSquawk(rng);
         Phrase.Params.FREQ = Phrase.getRandomFreq(rng);
         Phrase.Params.QNH = "" + (rng.nextInt(31) + 995);  // ranges from [995...1025]
         Phrase.Params.TAXI_ROUTE = taxi.toString();
@@ -313,6 +314,10 @@ public class SimulatorFragment extends Fragment
             arrival.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.arrival_dark));
             departure.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.departure_dark));
         }
+
+        PaintView canvas = view.findViewById(R.id.canvas);
+        ImageButton btn = view.findViewById(R.id.btn_clear);
+        btn.setOnClickListener(v -> canvas.clear());
 
         // Remove views from debugging layout
         lyt_chat.removeAllViews();

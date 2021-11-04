@@ -19,7 +19,7 @@ public class Phrase {
 
     // Inner class
     static class Params {
-        static String AIRPORT, CALLSIGN, AIRCRAFT, ATIS, QNH, RUNWAY, RUNWAY2, TAXI_ROUTE,
+        static String AIRPORT, ALTITUDE, CALLSIGN, AIRCRAFT, ATIS, QNH, RUNWAY, RUNWAY2, TAXI_ROUTE,
                 FREQ, FIXPOINT, SQUAWK, WIND_DIR, WIND_KN;
     }
 
@@ -27,12 +27,14 @@ public class Phrase {
     // Static members
     private static final String[] FIXPOINTS = new String[] {"N", "E", "S", "W" };
     private static String[] airports, airport_names;
+    private static String[] numbers;
     private static Map<Character, String> dict;
+    private static String hundreds, thousands, miles, feet;
     private static final String[] numbersEN = new String[] {
         "zero","one", "two", "three", "four", "five", "six","seven","eight","niner", "decimal"
     };
     private static final String[] numbersDE = new String[] {
-        "null","eins","zwo", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "Punkt"
+        "null","eins","zwo", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "punkt"
     };
 
 
@@ -68,22 +70,31 @@ public class Phrase {
         int id = english ? R.array.airport_names_en : R.array.airport_names_de;
         airports = context.getResources().getStringArray(R.array.airports);
         airport_names = context.getResources().getStringArray(id);
+        numbers = english ? numbersEN : numbersDE;
+        hundreds = english ? "hundred" : "hundert";
+        thousands = english ? "thousand" : "tausend";
+        miles = english ? "miles" : "Meilen";
+        feet = english ? "feet" : "Fuß";
     }
     static String getRandomFixpoint(Random rng) {
         return FIXPOINTS[rng.nextInt(4)];
     }
     static String getRandomFreq(Random rng) {
         int tenth = 18 + rng.nextInt(15); // [18 .. 32]
-        int decimals = rng.nextInt(20) * 5; // [00 ... 95]
+        int decimals = rng.nextInt(200) * 5; // [000 ... 995]
         return "1" + tenth + "." + decimals;
     }
     static char getRandomLetter(Random rng) {
         return Character.toChars(rng.nextInt(26)+65)[0];
     }
 
+    static String getRandomSquawk(Random rng) {
+        StringBuilder b = new StringBuilder();
+        for (int i = 0; i < 4; i++) b.append(rng.nextInt(8));
+        return b.toString();
+    }
 
     // private class members
-    private final String[] numbers;
     private final String phrase;
     private final String sender;
     private final String[] groups;
@@ -99,13 +110,13 @@ public class Phrase {
         sender = ps[0];
         phrase = ps[1];
         groups = phrase.split(", ");
-        numbers = english ? numbersEN : numbersDE;
     }
 
     // Converter Functions
-    private static String resolveParams(String s) {
+    static String resolveParams(String s) {
         return s.replaceAll("\r", "")
                 .replaceAll("#airport",     Params.AIRPORT)
+                .replaceAll("#altitude",    Params.ALTITUDE)
                 .replaceAll("#callsign",    Params.CALLSIGN)
                 .replaceAll("#aircraft",    Params.AIRCRAFT)
                 .replaceAll("#atis",        Params.ATIS)
@@ -119,7 +130,7 @@ public class Phrase {
                 .replaceAll("#wind_dir",    Params.WIND_DIR)
                 .replaceAll("#wind_kn", Params.WIND_KN);
     }
-    private static String convertABC (String abc) {
+    static String convertABC(String abc) {
         StringBuilder answer = new StringBuilder();
         for(int i = 0; i < abc.length(); i++) {
             if (i > 0) answer.append(" ");
@@ -128,25 +139,52 @@ public class Phrase {
         }
         return answer.toString();
     }
-    private String convertNumber (String number) {
+    static String convertNumber(String number) {
         StringBuilder answer = new StringBuilder();
 
         // Check if number is an integer
         if (!number.contains(".")) {
             int i = Integer.parseInt(number);
-            // If number is multiple of hundreds, don't convert any further
-            if (i%100 == 0) return number;
+
+            // If number is multiple of hundreds, pronounce the digit plus the literal "hundred"
+            if (i%100 == 0) {
+                int hunds = i / 100;   // amount of "hundreds", 2500 -> 25
+                int thou = i / 1000;   // amount of "thousands", 2500 -> 2
+                String t = "";         // resulting pronunciation of "thousands"
+                String h = "";         // resulting pronunciation of "hundreds"
+
+                if (hunds%10 == 0) {
+                    // Number is a flat multiple of thousand, dont append any hundreds
+                    t = convertNumber("" + thou);
+                    if (t.equals("eins")) t = "ein"; // Special case in german -.-
+                    return t + " " + thousands;
+                }
+
+                if (hunds > 10) {
+                    // Number has both a thousands and a hundredth place
+                    t = convertNumber("" + thou);
+                    if (t.equals("eins")) t = "ein"; // Special case in german -.-
+                    t += " " + thousands + " ";
+                    hunds = hunds % 10;   // "consume" the thousands place, leave only hundreds
+                }
+
+                h = convertNumber("" + hunds);
+                if (h.equals("eins")) h = "ein"; // Special case in german -.-
+                h += " " + hundreds;
+
+                return t + h;
+            }
         }
-        for(String digit : number.split("")) {
+        for(char digit : number.toCharArray()) {
             answer.append(" ");
             for (int d = 0; d <= 9; d++) {
-               if (digit.equals("" + d)) answer.append (numbers[d]);
+                if (Character.digit(digit, 10) == d) answer.append(numbers[d]);
             }
-            if (digit.equals(".")) answer.append (numbers[10]);
+            if (digit == '.') answer.append (numbers[10]);
         }
         return answer.substring(1); // without leading space
     }
-    private String convertAirport(String s) {
+    static String convertAirport(String s) {
         int i = Arrays.asList(airports).indexOf(s);
         if (i < 0) return "";
         else return airport_names[i];
@@ -231,9 +269,10 @@ public class Phrase {
             for(String word : group.split(" ")) {
                 answer.append(" ");
                 if (isAirport(word)) answer.append(convertAirport(word));
+                else if (word.equalsIgnoreCase("NM")) answer.append(miles);
                 else if (isABC(word)) answer.append(convertABC(word));
                 else if (isNumber(word)) answer.append(convertNumber(word));
-                else if (word.equalsIgnoreCase("ft")) answer.append("feet");
+                else if (word.equalsIgnoreCase("ft")) answer.append(feet);
                 else if (word.equals("GAT")) answer.append ("General Aviation Terminal");
                 else if (word.equalsIgnoreCase("roger")) answer.append("rodger");
                 else answer.append(word);

@@ -119,4 +119,10 @@ public class PaintView extends View {
 
         canvas.drawLine(0,0,getWidth(),0,paint);
     }
+
+    public void clear() {
+        line.reset();
+        cache.drawColor(Color.TRANSPARENT, PorterDuff.Mode.MULTIPLY);
+        invalidate();
+    }
 }
