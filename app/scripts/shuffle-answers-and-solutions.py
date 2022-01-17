@@ -59,4 +59,4 @@ for item in ['answers', 'solutions']:
     with open(paths[item], 'wb') as file:
         file.write(xml.tostring(resources[item], encoding='utf-8'))
 
-print('Dont forget to auto-format the files in Android Studio with CTRL+ALT+L !!!')
+print('Dont forget to auto-format the files in Android Studio with CTRL+ALT+L / OPTION+CMD+L !!!')
