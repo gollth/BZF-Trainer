@@ -52,7 +52,7 @@ answers.set('formatted', 'false')
 answers.set('name', f'{args.cat}_answers')
 
 for row in data:
-    xml.SubElement(answers, 'item').text = u'A) {};\nB) {};\nC) {};\nD) {}'.format(*row)
+    xml.SubElement(answers, 'item').text = u'{};\n{};\n{};\n{}'.format(*row)
 
 for item in ['answers', 'solutions']:
     print('Writing file %s' % paths[item])
