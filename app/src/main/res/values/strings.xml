@@ -13,7 +13,7 @@
 
     <string name="catalogue">Fragen-Katalog</string>
     <string name="catalogue_stat">bisher %1$d von %2$d mal richtig beantwortet</string>
-    <string name="catalogue_version">Stand: April 2020</string>
+    <string name="catalogue_version">Stand: Feb 2022</string>
     <string name="azf">AZF</string>
     <string name="bzf">BZF</string>
     <string name="simulator">Simulator</string>
