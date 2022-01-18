@@ -10,10 +10,10 @@ A station forming part of the aeronautical telecommunication network</item>
         <item>A transmission of information relating to air navigation that is not addressed to a specific station or stations;
 A transmission of messages relating to enroute weather information which may affect the safety of aircraft operations that is not addressed to a specific station or stations;
 A transmission where no reply is required from the receiving station;
-A transmission of a message to a receiving station in cases where two-way radio communication cannot be established but on the assumption that the called station is able to receive the message</item>
+Transmission of a message to the air traffic service in cases where radio contact cannot be established</item>
         <item>A radiotelephony communication from a ground station to aircraft in flight;
 A transmission containing meteorological and operational information to aircraft engaged in flights over remote and oceanic areas out of range of VHF ground stations;
-A transmission of aeronautical information which is not intended for one or more specific stations;
+Stations in the aeronautical mobile service may simultaneously call all stations maintaining listening watch on a frequency;
 A transmission where no reply is required from the receiving station</item>
         <item>One-way communication from stations or locations on the surface of the earth;
 Any communication from aircraft to ground stations requiring handling by the Aeronautical Fixed Telecommunication Network (AFTN);
@@ -31,7 +31,7 @@ A visual manoeuvre executed by an IFR flight when the weather conditions at the 
 The time at which an aircraft is given an air traffic control clearance;
 The point to which an aircraft is granted by an air traffic control clearance;
 The time after which an air traffic control clearance will be automatically cancelled if the flight has not been commenced</item>
-        <item>The provision of current, routine information to arriving and departing aircraft throughout 24 hours or a specified portion thereof;
+        <item>The automatic provision of current, routine information to arriving and departing aircraft throughout 24 hours or a specified portion thereof;
 A service which provides aircraft with weather reports relating to a specific number of aerodromes located within a flight information region (FIR);
 A service established to provide information concerning enroute weather phenomena which may effect the safety of aircraft operation;
 A service by which aircraft operating within a flight information region (FIR) are provided with current meteorological and operational information essential for the safety of air navigation</item>
@@ -135,10 +135,10 @@ Messages of Airline Operators</item>
 Meteorological Messages;
 Radio Teletype Messages;
 Flight Safety Messages</item>
-        <item>higher than "TRANSMIT FOR QDM";
-lower than "CLEARED TO LAND";
-same as "LINE UP RUNWAY 07 AND WAIT";
-higher than "CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G"</item>
+        <item>higher than \"TRANSMIT FOR QDM\";
+lower than \"CLEARED TO LAND\";
+same as \"LINE UP RUNWAY 07 AND WAIT\";
+higher than \"CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G\"</item>
         <item>a Meteorological Message;
 a Message Relating to Direction Finding;
 an Urgency Message;
@@ -159,25 +159,25 @@ Distress message, Flight Safety Message, Urgency Message</item>
 Meteorological Message, Message Relating to Direction Finding, Flight Safety Message;
 Flight Safety Message, Message Relating to Direction Finding, Urgency Message;
 Flight Safety Message, Meteorological Message, Flight Regularity Message</item>
-        <item>lower than "REQUEST CLIMB FLIGHT LEVEL …";
-same as "LATEST QNH 1018";
-higher than "TURN LEFT HEADING …";
-lower than "DESCEND FLIGHT LEVEL …"</item>
+        <item>lower than \"REQUEST CLIMB FLIGHT LEVEL …\";
+same as \"LATEST QNH 1018\";
+higher than \"TURN LEFT HEADING …\";
+lower than \"DECEND FLIGHT LEVEL …\"</item>
         <item>Hotel Bravo India Yankee Charlie;
 Hotel Bravo Juliett India Kilo;
 Hotel Bravo Juliett Yankee Charlie;
 Hotel Bravo India Victor Charlie</item>
-        <item>Fox Romeo India – VOR;
-Foxtrot Romeo Juliett – VOR;
-Fox Romeo Yankee – VOR;
-Foxtrot Romeo India – VOR</item>
+        <item>Fox Romeo India - VOR;
+Foxtrot Romeo Juliett - VOR;
+Fox Romeo Yankee - VOR;
+Foxtrot Romeo India - VOR</item>
         <item>Three five hundred;
 Three thousand five hundred;
-Three five double "O";
+Three five double \"O\";
 Three five zero zero</item>
         <item>QNH one double zero one;
 QNH one zero zero one;
-QNH one double "O" one;
+QNH one double \"O\" one;
 QNH one thousand and one</item>
         <item>One one eight point zero one zero;
 One one eight decimal zero one zero;
@@ -261,7 +261,7 @@ When changing the destination airport during flight by the aircraft operator;
 To facilitate subsequent radiotelephony communications by an aeronautical station</item>
         <item>In dense traffic during the rush hours;
 Never;
-After the establishment of voice communication if confusion is excluded;
+After the establishment of voice communication;
 Only after the aeronautical station has used the abbreviated call sign</item>
         <item>Consider that transmission as not sent;
 A new flight plan has to be filed;
@@ -333,7 +333,7 @@ Changing over Fastair 345;
 Changing to ARRIVAL Fastair 345</item>
         <item>IMPOSSIBLE TO MAKE IT;
 DISREGARD;
-UNABLE (reason);
+UNABLE;
 NEGATIVE INSTRUCTION</item>
         <item>PULLING UP;
 OVERSHOOTING;
@@ -711,10 +711,10 @@ Squawk mode A code 7500</item>
 to all available aeronautical stations;
 on the frequency presently in use;
 on the international emergency frequency</item>
-        <item>"PAN PAN, PAN PAN, PAN PAN";
-"TRANSMITTING BLIND";
-"READ YOU ONE, READ YOU ONE";
-"HOW DO YOU READ?"</item>
+        <item>\"PAN PAN, PAN PAN, PAN PAN\";
+\"TRANSMITTING BLIND\";
+\"READ YOU ONE, READ YOU ONE\";
+\"HOW DO YOU READ?\"</item>
         <item>during VFR flights only;
 twice on the designated frequency;
 only once on the designated frequency;
@@ -768,7 +768,7 @@ continue the flight in VMC;
 land at the nearest suitable aerodrome for repair;
 squawk 7600</item>
         <item>obtain prior permission by ATC to conduct the flight;
-insert under item 18 of the flight plan "TRANSPONDER UNSERVICEABLE";
+insert under item 18 of the flight plan \"TRANSPONDER UNSERVICEABLE\";
 inform FIS for relay to AlS;
 inform ATC after departure</item>
         <item>Continue VFR to destination or alternate aerodrome;
@@ -787,10 +787,10 @@ Holding time</item>
 estimated time of arrival;
 estimated elapsed time;
 expected approach time, if the expected delay is more than 20 minutes</item>
-        <item>108.000 – 117.975 MHz;
-1810 – 2850 kHz;
+        <item>108.000 - 117.975 MHz;
+1810 - 2850 kHz;
 11650 -13200 kHz;
-117.975 – 137.000 MHz</item>
+117.975 - 137.000 MHz</item>
         <item>Medium frequency;
 Very low frequency;
 Very high frequency;
@@ -895,7 +895,7 @@ G1 ABC VFR</item>
 VFR XYZ IFR;
 F080 XYZ IFR;
 XYZ/N0120F080 IFR</item>
-        <item>… A101 N0250/F150 LEG G98 …;
+        <item>.… A101 N0250/F150 LEG G98 …;
 … A101 LEG/N0250F150 G98 …;
 … A101 F150/N0250 LEG G98 …;
 … A101 LEG/F150 G98 …</item>
@@ -978,11 +978,11 @@ leaving the transition layer</item>
         <item>Maximum 250 kt TAS;
 No speed limitation;
 Maximum 250 kt IAS;
-250 kt lAS below FL100</item>
-        <item>GND – FL245;
-GND – unlimited;
+250 kt IAS below FL100</item>
+        <item>GND - FL245;
+GND - unlimited;
 FL245 – FL460;
-FL245 – unlimited</item>
+FL245 - unlimited</item>
         <item>All aircraft;
 IFR from VFR;
 VFR from IFR;

@@ -13,12 +13,12 @@
         <item>A station in the aeronautical telecommunication service located on land or on board of an aircraft to exchange radiotelephony communications</item>
         <item>Any station established to exchange radiotelephony communications</item>
 
-        <item>A transmission of a message to a receiving station in cases where two-way radio communication cannot be established but on the assumption that the called station is able to receive the message</item>
+        <item>Transmission of a message to the air traffic service in cases where radio contact cannot be established</item>
         <item>A transmission of information relating to air navigation that is not addressed to a specific station or stations</item>
         <item>A transmission where no reply is required from the receiving station</item>
         <item>A transmission of messages relating to enroute weather information which may affect the safety of aircraft operations that is not addressed to a specific station or stations</item>
 
-        <item>A transmission of aeronautical information which is not intended for one or more specific stations</item>
+        <item>Stations in the aeronautical mobile service may simultaneously call all stations maintaining listening watch on a frequency</item>
         <item>A radiotelephony communication from a ground station to aircraft in flight</item>
         <item>A transmission containing meteorological and operational information to aircraft engaged in flights over remote and oceanic areas out of range of VHF ground stations</item>
         <item>A transmission where no reply is required from the receiving station</item>
@@ -43,7 +43,7 @@
         <item>The time after which an air traffic control clearance will be automatically cancelled if the flight has not been commenced</item>
         <item>The time at which an aircraft is given an air traffic control clearance</item>
 
-        <item>The provision of current, routine information to arriving and departing aircraft throughout 24 hours or a specified portion thereof</item>
+        <item>The automatic provision of current, routine information to arriving and departing aircraft throughout 24 hours or a specified portion thereof</item>
         <item>A service established to provide information concerning enroute weather phenomena which may effect the safety of aircraft operation</item>
         <item>A service which provides aircraft with weather reports relating to a specific number of aerodromes located within a flight information region (FIR)</item>
         <item>A service by which aircraft operating within a flight information region (FIR) are provided with current meteorological and operational information essential for the safety of air navigation</item>
@@ -173,10 +173,10 @@
         <item>Flight Safety Messages</item>
         <item>Meteorological Messages</item>
 
-        <item>same as "LINE UP RUNWAY 07 AND WAIT"</item>
-        <item>higher than "TRANSMIT FOR QDM"</item>
-        <item>lower than "CLEARED TO LAND"</item>
-        <item>higher than "CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G"</item>
+        <item>same as \"LINE UP RUNWAY 07 AND WAIT\"</item>
+        <item>higher than \"TRANSMIT FOR QDM\"</item>
+        <item>lower than \"CLEARED TO LAND\"</item>
+        <item>higher than \"CAUTION CONSTRUCTION WORK LEFT OF TAXIWAY G\"</item>
 
         <item>a Flight Safety Message</item>
         <item>a Meteorological Message</item>
@@ -203,30 +203,30 @@
         <item>Flight Safety Message, Message Relating to Direction Finding, Urgency Message</item>
         <item>Flight Regularity Message, Distress Message, Meteorological Message</item>
 
-        <item>higher than "TURN LEFT HEADING …"</item>
-        <item>same as "LATEST QNH 1018"</item>
-        <item>lower than "DECEND FLIGHT LEVEL …"</item>
-        <item>lower than "REQUEST CLIMB FLIGHT LEVEL …"</item>
+        <item>higher than \"TURN LEFT HEADING …\"</item>
+        <item>same as \"LATEST QNH 1018\"</item>
+        <item>lower than \"DECEND FLIGHT LEVEL …\"</item>
+        <item>lower than \"REQUEST CLIMB FLIGHT LEVEL …\"</item>
 
         <item>Hotel Bravo Juliett Yankee Charlie</item>
         <item>Hotel Bravo Juliett India Kilo</item>
         <item>Hotel Bravo India Yankee Charlie</item>
         <item>Hotel Bravo India Victor Charlie</item>
 
-        <item>Foxtrot Romeo India – VOR</item>
-        <item>Foxtrot Romeo Juliett – VOR</item>
-        <item>Fox Romeo Yankee – VOR</item>
-        <item>Fox Romeo India – VOR</item>
+        <item>Foxtrot Romeo India - VOR</item>
+        <item>Foxtrot Romeo Juliett - VOR</item>
+        <item>Fox Romeo Yankee - VOR</item>
+        <item>Fox Romeo India - VOR</item>
 
         <item>Three thousand five hundred</item>
         <item>Three five zero zero</item>
-        <item>Three five double "O"</item>
+        <item>Three five double \"O\"</item>
         <item>Three five hundred</item>
 
         <item>QNH one zero zero one</item>
         <item>QNH one double zero one</item>
         <item>QNH one thousand and one</item>
-        <item>QNH one double "O" one</item>
+        <item>QNH one double \"O\" one</item>
 
         <item>One one eight decimal zero one zero</item>
         <item>One eighteen decimal zero one</item>
@@ -328,7 +328,7 @@
         <item>When changing the destination airport during flight by the aircraft operator</item>
         <item>In case of diversion to the alternate aerodrome by the pilot-in-command</item>
 
-        <item>After the establishment of voice communication if confusion is excluded</item>
+        <item>After the establishment of voice communication</item>
         <item>Never</item>
         <item>In dense traffic during the rush hours</item>
         <item>Only after the aeronautical station has used the abbreviated call sign</item>
@@ -418,7 +418,7 @@
         <item>Changing to ARRIVAL Fastair 345</item>
         <item>Stephenville ARRIVAL Fastair 345</item>
 
-        <item>UNABLE (reason)</item>
+        <item>UNABLE</item>
         <item>NEGATIVE INSTRUCTION</item>
         <item>IMPOSSIBLE TO MAKE IT</item>
         <item>DISREGARD</item>
@@ -428,10 +428,10 @@
         <item>OVERSHOOTING</item>
         <item>PULLING UP</item>
 
-        <item>STOP CLIMB AT FL 80</item>
-        <item>MAINTAIN FL 80</item>
-        <item>CLEARED FL 80</item>
-        <item>LEVEL OFF AT FL 80</item>
+        <item>STOP CLIMB AT FL80</item>
+        <item>MAINTAIN FL80</item>
+        <item>CLEARED FL80</item>
+        <item>LEVEL OFF AT FL80</item>
 
         <item>SQUAWK 0410</item>
         <item>SQUAWK ALPHA 0410 AND CHARLIE</item>
@@ -516,7 +516,7 @@
         <item>The clearance is void if the aircraft is not airborne until or at 1025</item>
         <item>The clearance is void if the aircraft departs before 1025</item>
         <item>The pilot shall start engines not later than 1025</item>
-        <item>The pilot shall stand by and ask for clearance again at 1025. 104</item>
+        <item>The pilot shall stand by and ask for clearance again at 1025</item>
 
         <item>To acknowledge take-off clearance</item>
         <item>Never, it is used only by the control tower</item>
@@ -691,7 +691,7 @@
         <item>Fastair 345 leaving flight level 100 descending flight level 80</item>
         <item>Fastair 345 leaving 100 to 80</item>
         <item>Descending to 80, Fastair 345</item>
-        <item>Down to flight level 80, Fastair 345. 139</item>
+        <item>Down to flight level 80, Fastair 345</item>
 
         <item>less than 1500 m</item>
         <item>1000 ft or less</item>
@@ -826,7 +826,7 @@
         <item>A 7700</item>
         <item>A 7600</item>
         <item>A 7500</item>
-        <item>A 6700. 166</item>
+        <item>A 6700</item>
 
         <item>the aircraft is in distress</item>
         <item>the aircraft‘s transceiver is unserviceable</item>
@@ -871,7 +871,7 @@
         <item>7600</item>
         <item>6700</item>
         <item>7700</item>
-        <item>7500. 175</item>
+        <item>7500</item>
 
         <item>lt is unable to establish communication due to radio equipment failure</item>
         <item>It is diverting to the alternate aerodrome</item>
@@ -886,17 +886,17 @@
         <item>Try to establish radio contact with other aircraft or aeronautical stations</item>
         <item>Divert to the alternate airport</item>
         <item>Land at the nearest aerodrome appropriate to the route of flight</item>
-        <item>Squawk mode A code 7500. 178</item>
+        <item>Squawk mode A code 7500</item>
 
         <item>on the frequency presently in use</item>
         <item>on the regional guard frequency</item>
         <item>to all available aeronautical stations</item>
         <item>on the international emergency frequency</item>
 
-        <item>"TRANSMITTING BLIND"</item>
-        <item>"READ YOU ONE, READ YOU ONE"</item>
-        <item>"PAN PAN, PAN PAN, PAN PAN"</item>
-        <item>"HOW DO YOU READ?"</item>
+        <item>\"TRANSMITTING BLIND\"</item>
+        <item>\"READ YOU ONE, READ YOU ONE\"</item>
+        <item>\"PAN PAN, PAN PAN, PAN PAN\"</item>
+        <item>\"HOW DO YOU READ?\"</item>
 
         <item>twice on the designated frequency</item>
         <item>only once on the designated frequency</item>
@@ -966,7 +966,7 @@
         <item>obtain prior permission by ATC to conduct the flight</item>
         <item>inform FIS for relay to AlS</item>
         <item>inform ATC after departure</item>
-        <item>insert under item 18 of the flight plan "TRANSPONDER UNSERVICEABLE"</item>
+        <item>insert under item 18 of the flight plan \"TRANSPONDER UNSERVICEABLE\"</item>
 
         <item>Enter the holding pattern and request further clearance</item>
         <item>Proceed to the initial approach fix according to his current flight plan</item>
@@ -988,10 +988,10 @@
         <item>estimated time of arrival</item>
         <item>estimated elapsed time</item>
 
-        <item>117.975 – 137.000 MHz</item>
-        <item>108.000 – 117.975 MHz</item>
+        <item>117.975 - 137.000 MHz</item>
+        <item>108.000 - 117.975 MHz</item>
         <item>11650 -13200 kHz</item>
-        <item>1810 – 2850 kHz</item>
+        <item>1810 - 2850 kHz</item>
 
         <item>Very high frequency</item>
         <item>Low frequency</item>
@@ -1100,7 +1100,7 @@
 
         <item>only with a special permission</item>
         <item>if the aircraft is equipped with VOR and ADF</item>
-        <item>below FL 100, but not to or from international airports</item>
+        <item>below FL100, but not to or from international airports</item>
         <item>to and from international airports with RADAR control</item>
 
         <item>during ILS approach</item>
@@ -1116,7 +1116,7 @@
         <item>G1 ABC VFR</item>
         <item>VFR ABC G1</item>
         <item>G1 N0120/ABC VFR</item>
-        <item>N0120 VFR ABC G1. 224</item>
+        <item>N0120 VFR ABC G1</item>
 
         <item>XYZ/N0120F080 IFR</item>
         <item>VFR XYZ IFR</item>
@@ -1124,7 +1124,7 @@
         <item>F080 XYZ IFR</item>
 
         <item>… A101 LEG/N0250F150 G98 …</item>
-        <item>… A101 N0250/F150 LEG G98 …</item>
+        <item>.… A101 N0250/F150 LEG G98 …</item>
         <item>… A101 F150/N0250 LEG G98 …</item>
         <item>… A101 LEG/F150 G98 …</item>
 
@@ -1168,7 +1168,7 @@
         <item>lower limit of the controlled airspace</item>
         <item>minimum reception altitude for radio navigational aids</item>
 
-        <item>1000 ft up to FL 410 thereafter 2000 ft</item>
+        <item>1000 ft up to FL410 thereafter 2000 ft</item>
         <item>2000 m</item>
         <item>1000 ft</item>
         <item>500 ft</item>
@@ -1193,25 +1193,25 @@
         <item>2000 ft</item>
         <item>500 ft</item>
 
-        <item>FL 70</item>
-        <item>FL 50</item>
-        <item>FL 80</item>
-        <item>FL 60</item>
+        <item>FL70</item>
+        <item>FL50</item>
+        <item>FL80</item>
+        <item>FL60</item>
 
-        <item>FL 60</item>
-        <item>FL 50</item>
-        <item>FL 70</item>
-        <item>FL 80</item>
+        <item>FL60</item>
+        <item>FL50</item>
+        <item>FL70</item>
+        <item>FL80</item>
 
-        <item>FL 80</item>
-        <item>FL 50</item>
-        <item>FL 70</item>
-        <item>FL 60</item>
+        <item>FL80</item>
+        <item>FL50</item>
+        <item>FL70</item>
+        <item>FL60</item>
 
-        <item>passing FL 60</item>
-        <item>leaving FL 100</item>
-        <item>passing FL 70</item>
-        <item>passing FL 50</item>
+        <item>passing FL60</item>
+        <item>leaving FL100</item>
+        <item>passing FL70</item>
+        <item>passing FL50</item>
 
         <item>when passing the transition level</item>
         <item>when passing the transition altitude</item>
@@ -1226,12 +1226,12 @@
         <item>No speed limitation</item>
         <item>Maximum 250 kt IAS</item>
         <item>Maximum 250 kt TAS</item>
-        <item>250 kt lAS below FL 100. 246</item>
+        <item>250 kt IAS below FL100</item>
 
-        <item>FL 245 – unlimited</item>
-        <item>FL 245 – FL 460</item>
-        <item>GND – unlimited</item>
-        <item>GND – FL 245. 247</item>
+        <item>FL245 - unlimited</item>
+        <item>FL245 – FL460</item>
+        <item>GND - unlimited</item>
+        <item>GND - FL245</item>
 
         <item>IFR from IFR</item>
         <item>IFR from VFR</item>
