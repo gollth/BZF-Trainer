@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+    $ 1.6.0
+      % Version 1.6.0
+      _ 17. Januar 2022
+      Update des BZF- & AZF-Fragenkatalogs auf Stand Feb. 2022 der BNetzA
     $ 1.5.0
       % Version 1.5.0
       _ 15. September 2021

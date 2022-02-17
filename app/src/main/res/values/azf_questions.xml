@@ -41,15 +41,15 @@
         <item>35. The priority of the instruction \"TAXI TO HOLDING POINT RUNWAY 05 VIA A\" is\u00A0…</item>
         <item>36. The message addressed to an Area Control Centre \"REQUEST RADAR VECTORS TO CIRCUMNAVIGATE ADVERSE WEATHER\" is\u00A0…</item>
         <item>37. Air traffic control messages (clearances, instructions etc.) belong to the category of\u00A0…</item>
-        <item>38. The clearance \"RUNWAY 03, CLEARED FOR TAKE-OFF\" is\u00A0…</item>
+        <item>38. The clearance \"RUNWAY 03, CLEARED FOR TAKE-OFF\" is…</item>
         <item>39. The order of priority of the following messages in the aeronautical mobile service is\u00A0…</item>
-        <item>40. The order of priority of the following messages in the aeronautical mobile service is\u00A0…</item>
+        <item>40. The order of priority of the following messages in the aeronautical mobile service is…</item>
         <item>41. The priority of a pilot‘s message \"REQUEST QDM\" is\u00A0…</item>
         <item>42. What is the correct way of spelling HBJYC?</item>
         <item>43. What is the correct way of spelling FRl-VOR?</item>
         <item>44. What is the correct way of transmitting the number 3500?</item>
         <item>45. What is the correct way of transmitting a QNH of 1001?</item>
-        <item>46. What is the correct way of transmitting VHF frequency 118.010 MHz?</item>
+        <item>46. What is the correct way of transmitting VHF frequency 118.010\u00A0MHz?</item>
         <item>47. What is the correct way of transmitting the number 13500?</item>
         <item>48. When transmitting time, which time system shall be used?</item>
         <item>49. The time is 4:15 pm. What is the correct way of transmitting this time if there is a possibility of confusion?</item>
@@ -104,7 +104,7 @@
         <item>98. ATC will give a climb instruction by using the phrase:</item>
         <item>99. A pilot intending to close his flight plan shall use the phrase:</item>
         <item>100. If a transponder does not transmit on mode C as expected, ATC will instruct the pilot to switch on mode C by using the phrase:</item>
-        <item>101. The advice by a radar controller \"TRAFFIC AT THREE O\'CLOCK\" means that the position of the mentioned traffic is\u00A0…</item>
+        <item>101. The advice by a radar controller \"TRAFFIC THREE O‘CLOCK\" means that the position of the mentioned traffic is\u00A0…</item>
         <item>102. What is the correct procedure for the pilot to change from IFR-flight to VFR-flight?</item>
         <item>103. The phrase \"CLEARENCE EXPIRES AT 1025\" means?</item>
         <item>104. When shall the phrase \"TAKE-OFF\" be used by a pilot?</item>
@@ -115,11 +115,11 @@
         <item>109. The phrase \"ORBIT RIGHT\" means?</item>
         <item>110. The phrase \"VACATE RUNWAY IMMEDIATELY\" means:</item>
         <item>111. What is the correct way for the pilot to acknowledge that ATIS Information Golf has been received?</item>
-        <item>112. What is the correct way of transmitting frequency 120.375 MHz?</item>
+        <item>112. What is the correct way of transmitting frequency 120.375\u00A0MHz?</item>
         <item>113. Which elements of instructions or information shall be read back?</item>
         <item>114. Shall an ATC route clearance be read back?</item>
         <item>115. An aircraft is instructed to hold short of the runway-in-use. What is the correct phraseology to indicate it will follow this instruction?</item>
-        <item>116. Cherokee XYABC receives the following instruction: \"XBC climb straight ahead until altitude 2500 feet before turning right, wind 270 / 6 knots, Runway 22, cleared for take-off\". What is the correct read back?</item>
+        <item>116. Cherokee XYABC receives the following instruction: \"XBC climb straight ahead until altitude 2500 feet before turning right, wind 270 / 6 knots, Runway 22, cleared for take-off\". What is the correctread back?</item>
         <item>117. The phrase \"SQUAWK 1234\" means?</item>
         <item>118. RADAR informs aircraft XYABC: \"XBC IDENTIFIED\". What does this mean?</item>
         <item>119. RADAR instructs aircraft XYABC: \"XBC SQUAWK IDENT\". What does this mean?</item>
@@ -128,7 +128,7 @@
         <item>122. A pilot of an IFR flight has been instructed to establish radio contact with another ATC unit during climb. On initial contact he has to transmit the following data:</item>
         <item>123. To establish radio contact with \"MÜNCHEN GROUND\" the pilot of DIBEL shall transmit the following call:</item>
         <item>124. A radio station in the aeronautical mobile service may simultaneously call several stations. This call is named:</item>
-        <item>125. During approach to an airport with parallel runways the pilot of an IFR flight has to transmit on initial contact, after changing frequency from approach control to aerodrome control, the radio call sign of his aircraft and\u00A0…</item>
+        <item>125. During approach to an airport with parallel runways the pilot of an IFR flight has to transmit on initial contact, after changing frequency from approach control to aerodrome control, the radio callsign of his aircraft and\u00A0…</item>
         <item>126. The pilot of an IFR flight has to transmit the following data on initial contact after changing frequency from approach control to aerodrome control:</item>
         <item>127. When establishing radio contact, how shall aircraft XYABC call Stephenville TOWER?</item>
         <item>128. Aircraft XYABC has been instructed to contact Stephenville TOWER on frequency 118.700. What is the correct way to indicate it will follow this instruction?</item>
@@ -139,8 +139,8 @@
         <item>133. A compulsory reporting point is a defined location where a position report must be made\u00A0…</item>
         <item>134. A non-compulsory reporting point is a defined location where a position report must be made\u00A0…</item>
         <item>135. Which elements of information should an abbreviated position report during an IFR flight always contain?</item>
-        <item>136. What shall be the pilot\'s read back for: \"CLIMB FL280\"?</item>
-        <item>137. What shall the pilot\'s read back be for: \"CLIMB ALTITUDE 2500 feet\"?</item>
+        <item>136. What shall be the pilot‘s read back for: \"CLIMB FL280\"?</item>
+        <item>137. What shall the pilot‘s read back be for: \"CLIMB ALTITUDE 2500 feet\"?</item>
         <item>138. ATC clears Fastair 345 to descend from FL100 to FL80. What is the correct read back by the pilot?</item>
         <item>139. Runway visual range (RVR) is included in the weather report when the visibility is\u00A0…</item>
         <item>140. A pilot of an IFR flight shall inform the ATC unit competent for approaches and departures that he has received ATIS\u00A0…</item>
@@ -167,7 +167,7 @@
         <item>161. The frequency used for the first transmission of a \"MAYDAY\" call shall be\u00A0…</item>
         <item>162. The distress message shall contain the following data:</item>
         <item>163. Which of the following frequencies is an international emergency frequency?</item>
-        <item>164. The frequency 121.500 MHz is\u00A0…</item>
+        <item>164. The frequency 121.500\u00A0MHz is\u00A0…</item>
         <item>165. An aircraft in distress situation shall squawk:</item>
         <item>166. An aircraft squawking 7700 indicates to the aeronautical station that\u00A0…</item>
         <item>167. Under which of the following circumstances shall an aircraft squawk an internationally prescribed mode/code?</item>
@@ -202,17 +202,17 @@
         <item>196. A pilot receives the clearance to hold over an enroute reporting point until a specified time. This time is called:</item>
         <item>197. If a pilot has to hold over an initial approach fix ATC will issue an\u00A0…</item>
         <item>198. Which is the frequency band containing frequencies of the Aeronautical Mobile Service?</item>
-        <item>199. To which frequency band belong the frequencies 118.000–136.975 MHz of the Aeronautical Mobile Service?</item>
+        <item>199. To which frequency band belong the frequencies 118.000–136.975\u00A0MHz of the Aeronautical Mobile Service?</item>
         <item>200. Which channel spacing is used in the VHF band of aeronautical mobile service?</item>
         <item>201. What are the propagation characteristics of VHF?</item>
         <item>202. Which phenomena can influence the reception quality of VHF?</item>
-        <item>203. Under which of the following circumstances may you expect a solid reception of the TOWER frequency 118.200 MHz?</item>
+        <item>203. Under which of the following circumstances may you expect a solid reception of the TOWER frequency 118.200\u00A0MHz?</item>
         <item>204. The ELBA / ELT transmits on the following frequencies an emergency signal</item>
         <item>205. Which is the maximum distance at which you might expect solid VHF contact over flat terrain at flight level 100?</item>
         <item>206. The air traffic service is providing\u00A0…</item>
         <item>207. Air traffic control is provided for\u00A0…</item>
         <item>208. The air traffic control service comprises:</item>
-        <item>209. Information concerning the establishment, condition or change in any aeronautical facility, the timely knowledge of which is essential to personnel concerned with flight operations are published as\u00A0…</item>
+        <item>209. Information concerning the establishment, condition or change in any aeronautical facility, the timely knowledge of which is essential to personnel concerned with flight operations are publishedas\u00A0…</item>
         <item>210. A NOTAM is distributed by\u00A0…</item>
         <item>211. The collection of active NOTAM presented to the pilot by AIS is called:</item>
         <item>212. The Pre-flight Information Bulletins contain all valid\u00A0…</item>
@@ -226,7 +226,7 @@
         <item>220. An IFR-flight without DME interrogator may be operated\u00A0…</item>
         <item>221. An IFR flight intending to conduct an instrument approach has to be equipped with LLZ-, GP- and Marker beacon receivers\u00A0…</item>
         <item>222. By what time at the latest prior to EOBT will AlS / IFPS normally accept a flight plan?</item>
-        <item>223. A pilot intends to fly IFR via ATS route \"G1\" to the \"ABC\" VOR and thereafter VFR. What is the correct entry in his flight plan under item \"route\"?</item>
+        <item>223. A pilot intends to fly IFR via ATS route \"G1\" to the \"ABC\" VOR and thereafter VFR. What is the correct entry in his flight plan under item- \"route\"?</item>
         <item>224. A Pilot intends to fly VFR to the \"XYZ\" VOR and thereafter IFR. What is the correct entry in his flight plan under item \"route\"?</item>
         <item>225. What is the correct entry in an IFR flight plan for a flight level change over Leipzig VOR (LEG)?</item>
         <item>226. Which letter shall be used in the flight plan to indicate, that the flight commences in accordance with IFR and subsequently changes to VFR?</item>
@@ -239,7 +239,7 @@
         <item>233. Altitude information of route segments on German enroute charts indicate the\u00A0…</item>
         <item>234. What is the minimum vertical separation to other IFR flights above FL290?</item>
         <item>235. What is the minimum vertical separation to other IFR flights below FL410?</item>
-        <item>236. Prior to departure the pilot will be given enroute clearance including the departure route. The cruising altitude is normally not covered by the clearance. To which initial altitude has the pilot to climb after take-off?</item>
+        <item>236. Prior to departure the pilot will be given enroute clearance including the departure route. The cruising altitude is normally not covered by the clearance. To which initial altitude has the pilot toclimb after take-off?</item>
         <item>237. The transition level is determined on the basis of\u00A0…</item>
         <item>238. The vertical dimension of the transition layer must be at least:</item>
         <item>239. The published transition altitude is 5000 ft, the present QNH is 1005\u00A0hPa. What is the transition level?</item>
@@ -253,21 +253,21 @@
         <item>247. Flights within airspace E will be separated as follows:</item>
         <item>248. Which kind of flights are not permitted within airspace G?</item>
         <item>249. Flights below FL100 within airspace D and E are not permitted to exceed an indicated airspeed of\u00A0…</item>
-        <item>250. A pilot intends to cancel his IFR flight at the minimum IFR cruising altitude in airspace E below FL100, descend below controlled airspace and continue VFR. Which are the required weather minima?</item>
-        <item>251. A pilot departing on a VFR flight (Z-flight plan) and intending to change flight rules to IFR at the minimum IFR cruising altitude in airspace E below FL100, has to observe the following minimum values for flight visibility / distance from clouds:</item>
-        <item>252. A pilot on an IFR flight (Y-flight plan) intends to change flight rules to VFR at the minimum IFR cruising level. Until leaving the controlled airspace E below FL100 he has to observe the following minimum values for flight visibility:</item>
+        <item>250. A pilot intends to cancel his IFR flight at the minimum IFR cruising altitude in airspace E below FL100, descend below controlled airspace and continue VFR. Which are the required weatherminima?</item>
+        <item>251. A pilot departing on a VFR flight (Z–flight plan) and intending to change flight rules to IFR at the minimum IFR cruising altitude in airspace E below FL100, has to observe the following minimumvalues for flight visibility / distance from clouds:</item>
+        <item>252. A pilot on an IFR flight (Y–flight plan) intends to change flight rules to VFR at the minimum IFR cruising level. Until leaving the controlled airspace E below FL100 he has to observe the followingminimum values for flight visibility:</item>
         <item>253. During a flight with an intended change of flight rules the VFR part of this flight shall generally be conducted in such a way, that\u00A0…</item>
         <item>254. The start-up clearance shall not be requested before it has been ascertained that the aircraft can start the engine after the clearance has been issued\u00A0…</item>
         <item>255. For the regulation of taxiing aircraft under all-weather conditions, CAT II/III stop bars have been established\u00A0…</item>
-        <item>256. A pilot taxiing on an aerodrome under all-weather operations CAT II/III is approaching a stop bar, represented by red lights at 3 m intervals across the taxiway. When the lights are switched on, taxiing across the stop bar\u00A0…</item>
-        <item>257. When holding in front of a stop bar at a CAT II/III holding point during all-weather operations, a pilot receives a take-off clearance from TWR. The red lights of the stop bar remain switched on. The pilot must\u00A0…</item>
+        <item>256. A pilot taxiing on an aerodrome under all-weather operations CAT II/III is approaching a stop bar, represented by red lights at 3 m intervals across the taxiway. When the lights are switched on,taxiing across the stop bar\u00A0…</item>
+        <item>257. When holding in front of a stop bar at a CAT II/III holding point during all-weather operations, a pilot receives a take-off clearance from TWR. The red lights of the stop bar remain switched on.The pilot must\u00A0…</item>
         <item>258. The identification with SSR will be achieved by\u00A0…</item>
         <item>259. The height identification with SSR will be achieved by\u00A0…</item>
         <item>260. When switching the transponder to \"STBY\"\u00A0…</item>
         <item>261. If an aircraft has been cleared to land and fails to land within 5 minutes after the estimated landing time and communication cannot be established with the aircraft, ATC will\u00A0…</item>
-        <item>262. If an aircraft fails to land within 30 minutes of the estimated time of landing last notified to or estimated by air traffic services units, whichever is later, and communication cannot be established with the aircraft, ATC will\u00A0…</item>
+        <item>262. If an aircraft fails to land within 30 minutes of the estimated time of landing last notified to or estimated by air traffic services units, whichever is later, and communication cannot beestablished with the aircraft, ATC will\u00A0…</item>
         <item>263. If an aircraft fails to arrive within 30 minutes after his ETA and ATC has no knowledge about its position, the following phase will be declared:</item>
-        <item>264. Which time will be issued by ATC, if an arriving aircraft on an IFR flight has to hold over the navigation aid serving as clearance limit, when holding of more than 20 minutes is expected? The\u00A0…</item>
+        <item>264. Which time will be issued by ATC, if an arriving aircraft on an IFR flight has to hold over the navigation aid serving as clearance limit, when holding of more than 20 minutes is expected?The\u00A0…</item>
         <item>265. The terminology associated with the standard holding pattern is as follows:</item>
         <item>266. The outbound timing in a holding pattern shall begin\u00A0…</item>
         <item>267. What is the prescribed maximum indicated airspeed for an aircraft entering a holding pattern at FL140 or below?</item>

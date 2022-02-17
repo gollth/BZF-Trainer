@@ -52,11 +52,11 @@ answers.set('formatted', 'false')
 answers.set('name', f'{args.cat}_answers')
 
 for row in data:
-    xml.SubElement(answers, 'item').text = u'A) {};\nB) {};\nC) {};\nD) {}'.format(*row)
+    xml.SubElement(answers, 'item').text = u'{};\n{};\n{};\n{}'.format(*row)
 
 for item in ['answers', 'solutions']:
     print('Writing file %s' % paths[item])
     with open(paths[item], 'wb') as file:
         file.write(xml.tostring(resources[item], encoding='utf-8'))
 
-print('Dont forget to auto-format the files in Android Studio with CTRL+ALT+L !!!')
+print('Dont forget to auto-format the files in Android Studio with CTRL+ALT+L / OPTION+CMD+L !!!')

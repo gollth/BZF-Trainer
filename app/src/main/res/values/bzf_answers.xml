@@ -46,10 +46,10 @@ Eine ortsfeste Funkstelle im beweglichen Flugfunkdienst. In bestimmten Fällen a
         <item>Ein Funkspruch, dessen Erhalt vom Empfänger wiederholt werden muss;
 Eine Übermittlung von Informationen für die Luftfahrt, die nicht an einen bestimmten Empfänger gerichtet ist;
 Eine Übermittlung von meteorologischen und flugbetrieblichen Informationen für Flugzeuge über der hohen See oder Wüstengebieten außerhalb der Funküberdeckung von UKW-Bodenfunkstellen;
-Das Übermitteln einer Meldung an einen Empfänger, wenn Wechselsprechverkehr nicht hergestellt werden kann, unter der Annahme, dass die gerufene Station die Meldung empfangen kann</item>
+Das Übermitteln einer Meldung an die Flugverkehrsdienststelle, wenn eine Sprechfunkverbindung nicht hergestellt werden kann.</item>
         <item>Eine Meldung mittels Sprechfunk von einer Bodenfunkstelle an eine bestimmte Luftfunkstelle;
 Die Übermittlung von Meldungen über Wettererscheinungen, welche die Sicherheit des Flugbetriebes betreffen können, die an eine oder mehrere bestimmte Stellen gerichtet ist;
-Eine Übermittlung von Informationen für die Luftfahrt, die nicht an eine oder mehrere bestimmte Stellen gerichtet ist;
+Funkstellen des beweglichen Flugfunkdienstes können gleichzeitig alle Funkstellen, die auf einer Frequenz hörbereit sind, anrufen;
 Eine Übermittlung, deren Empfang bestätigt werden muss</item>
         <item>Eine markierte Position auf einer Startbahn, wo der Startlauf begonnen wird;
 Jeder markierte Abstellplatz auf dem Vorfeld eines Verkehrsflughafens;
@@ -127,7 +127,7 @@ Missweisender Steuerkurs zur Station (kein Wind)</item>
 QFE;
 QTE;
 QDM</item>
-        <item>der Übermittlung von QDM-Werten dienen;
+        <item>zur Übermittlung von Peilwerten zur navigatorischen Unterstützung dienen;
 den Ausfall von Funknavigationsanlagen an Bord eines Luftfahrzeuges betreffen;
 der Übermittlung von QNH-Werten dienen;
 den Ausfall von Funknavigationsanlagen am Boden betreffen</item>
@@ -276,7 +276,7 @@ BERICHTIGUNG;
 WIEDERHOLEN SIE WÖRTLICH;
 ÜBERMITTELN SIE NOCHMALS</item>
         <item>7500 ft;
-FL 75;
+FL75;
 7500 ft AGL;
 7500 ft AMSL</item>
         <item>QNH 1003 NEGATIV QNH 1002;
@@ -315,7 +315,7 @@ DEHOL PISTE 24 START FREI</item>
 DEKUL STARTBEREIT;
 DEKUL START FREI;
 DEKUL STARTET</item>
-        <item>Erbitte Testsendung auf Frequenz 135.200\u00A0MHz;
+        <item>Erbitte Testsendung auf Frequenz 135,200 MHz;
 Schalten Sie den Transponder auf Mode/Code 1352;
 Schalten Sie um auf Frequenz 135,200;
 Zählen Sie 1-3-5-2- für Funkpeilung</item>
@@ -337,7 +337,7 @@ Nein;
 Ja, nur von dem zuerst gerufenen Piloten</item>
         <item>LUFTHANSA 123, LUFTHANSA 456;
 D8765 BERLIN INFORMATION;
-AN ALLE HAMBURG TURM\u00A0… ENDE;
+AN ALLE HAMBURG TURM … ENDE;
 DEKOF, DIEBS, DKARL NÜRNBERG ROLLKONTROLLE</item>
         <item>DIENO DELLW;
 DEAMM ERFURT ROLLKONTROLLE;
@@ -376,13 +376,13 @@ Eine Wetterberatung einzuholen;
 In jedem Fall vor Beginn des Fluges einen Flugplan abzugeben;
 In jedem Teil der Platzrunde eine Standortmeldung abzusetzen</item>
         <item>bei Nacht im Luftraum G (außerhalb RMZ);
-über den Alpen;
-über geschlossenen Wolkendecken;
-bei Nacht in den Lufträumen C, D und E (außerhalb der Umgebung des Flugplatzes)</item>
-        <item>über geschlossenen Wolkendecken;
+bei Nacht im Luftraum E (außerhalb der Umgebung des Flugplatzes);
+bei Nacht im Luftraum D (außerhalb der Umgebung des Flugplatzes);
+bei Nacht im Luftraum C (außerhalb der Umgebung des Flugplatzes)</item>
+        <item>im Luftraum E (außerhalb RMZ);
 im Luftraum C;
 im Luftraum F;
-während der Nacht im Luftraum G</item>
+im Luftraum G (außerhalb RMZ)</item>
         <item>Rollen, Starten und Landen eingeleitet werden;
 Starten und Landen eingeleitet werden oder damit in Zusammenhang stehen;
 Starten und Landen eingeleitet werden;
@@ -519,7 +519,7 @@ Nur in NM</item>
 \"SICHT DREI KILOMETER\";
 \"SICHT ETWA NEUN TAUSEND FUSS\";
 \"SICHT DREI TAUSEND METER\"</item>
-        <item>Die Wetterfunksendungen für Flughafenwettermeldungen für Flughäfen;
+        <item>Die Wetterrundsendungen für Flughafenwettermeldungen;
 Den Fluginformationsdienst;
 Das Funkrufzeichen für eine Dienststelle des Deutschen Wetterdienstes (DWD);
 Das Rufzeichen des Flugverkehrsberatungsdienstes</item>
@@ -539,9 +539,9 @@ Als Flugrundfunksendung (broadcast) auf den Frequenzen des Fluginformationsdiens
 Angabe der Wolkenuntergrenze in Lufträumen der Klassen F und G;
 Meteorologische Angaben in Kartenform, erhältlich bei Flugwetterwarten;
 Routinewettermeldungen</item>
-        <item>Art der Notlage, Ursache der Notlage, Bitte um Frequenzwechsel auf 121.500\u00A0MHz;
-Art der Notlage, Absichten des Luftfahrzeugführers, Art der gewünschten Hilfe, Angaben über Standort, Kurs und Flughöhe;
-Steuerkurs, Absichten des Luftfahrzeugführers;
+        <item>Art der Notlage, Ursache der Notlage, Bitte um Frequenzwechsel auf 121,500 MHz;
+Art der Notlage, Absicht des verantwortlichen Piloten, aktueller Standort, Flughöhe und Kurs;
+Absichten des Piloten, Geschwindigkeit;
 Absichten des Luftfahrzeugführers, TAS, Standort, Sinkflugrate</item>
         <item>ein Luftfahrzeugführer eine außerplanmäßige Landung durchgeführt hat oder durchführen wird;
 eine schwere und/oder unmittelbare Gefahr droht und sofortige Hilfe erforderlich ist;
@@ -550,7 +550,7 @@ sich ein schwerkranker Passagier an Bord eines Luftfahrzeuges befindet</item>
         <item>auf einer SAR-Frequenz;
 nur auf einer FIS-Frequenz;
 auf der benutzten Frequenz oder einer Notfrequenz;
-immer auf der Notfrequenz 121.500\u00A0MHz</item>
+immer auf der Notfrequenz 121,500 MHz</item>
         <item>MAYDAY NOTFALL MAYDAY;
 NOTFALL, vorzugsweise dreimaliges Aussenden;
 PAN PAN, vorzugsweise dreimaliges Aussenden;
@@ -575,16 +575,16 @@ A 7600</item>
 Das Luftfahrzeug fliegt in den Luftraum E ein;
 Das Luftfahrzeug hat Funkausfall;
 Das Luftfahrzeug wird entführt</item>
-        <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich, und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen;
-den Transpondercode Mode A 7600 zu schalten, sofern möglich, und nach einer Umkehrkurve von 180° zum Startflugplatz zurück zu kehren;
-den Transpondercode Mode A 7600 zu schalten, sofern möglich, auf dem nächstgelegenen geeigneten Flugplatz zu landen, und der zuständigen Flugverkehrskontrollstelle schnellstmöglich die Landezeit zu übermitteln;
-den Transpondercode Mode A 7600 zu schalten, sofern möglich, und ein geeignetes Notlandegelände zu erkunden</item>
+        <item>den Transpondercode Mode A 7600 zu schalten, sofern möglich; und durch Vollkreise nach links und rechts auf sich aufmerksam zu machen;
+den Transpondercode Mode A 7600 zu schalten, sofern möglich; und nach einer Umkehrkurve von 180° zum Startflugplatz zurück zu kehren;
+den Transpondercode Mode A 7600 zu schalten, sofern möglich; auf dem nächstgelegenen geeigneten Flugplatz zu landen; und der zuständigen Flugverkehrskontrollstelle schnellstmöglich die Landezeit zu übermitteln;
+den Transpondercode Mode A 7600 zu schalten, sofern möglich; und ein geeignetes Notlandegelände zu erkunden</item>
         <item>Am Ende der Blindsendung wird das Rufzeichen des Luftfahrzeuges wiederholt;
 Die Meldung ist zweimal zu übermitteln;
 Die Meldung ist dreimal zu übermitteln;
 Am Ende der Blindsendung wird das Rufzeichen der Bodenfunkstelle wiederholt</item>
         <item>Am Ende einer Blindsendung wird das Rufzeichen der Bodenfunkstelle wiederholt;
-Angabe der Zeit und/oder der Position für die nächste Blindsendung;
+Angabe des Zeitpunkts der nächsten beabsichtigten Übermittlung;
 Der Meldung wird dreimal die Redewendung BLINDSENDUNG vorangestellt;
 Am Ende der Blindsendung wird das Rufzeichen der Luftfunkstelle wiederholt</item>
         <item>A 7000;
@@ -607,10 +607,10 @@ grünen Dauersignalen</item>
 Funkanweisungen;
 Bodensignale;
 Lichtsignale</item>
-        <item>117.975\u00A0MHz – 137.000\u00A0MHz;
+        <item>117,975 MHz – 137,000 MHz;
 108,000 kHz – 136,000 kHz;
 200 - 490 kHz;
-108.000\u00A0MHz – 117.975\u00A0MHz</item>
+108,000 MHz – 117,975 MHz</item>
         <item>25 MHz + 8,33 MHz;
 25 MHz;
 8,33 kHz;
@@ -623,13 +623,13 @@ Duplexverkehr</item>
 Bord-Bord-Frequenz;
 Informationsfrequenz;
 Internationale Notfrequenz</item>
-        <item>121.500\u00A0MHz;
-130.780\u00A0MHz;
-109.550\u00A0MHz;
+        <item>121,500 MHz;
+130,780 MHz;
+109,550 MHz;
 200 kHz</item>
-        <item>109.550\u00A0MHz;
-134.555\u00A0MHz;
-121.500\u00A0MHz;
+        <item>109,550 MHz;
+134,555 MHz;
+121,500 MHz;
 200 kHz</item>
         <item>Klemmen der Sprechtaste;
 Zu leises Sprechen;
@@ -832,8 +832,8 @@ Sicht in Flugrichtung aus dem Cockpit eines im Flug befindlichen Luftfahrzeuges<
 1500 ft;
 1500 m</item>
         <item>der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält;
-eine Bodensicht von mindestens 5 km herrscht;
-der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält, sowie eine Bodensicht von mindestens 5 km herrscht;
+der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält;
+der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält;
 der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 300 m, in senkrechter Richtung mindestens 300 ft Abstand hält</item>
         <item>Flugsicht mindestens 1500 m, Abstand von Wolken in waagerechter Richtung 300 m, in senkrechter Richtung 2000 ft;
 Bodensicht mindestens 1500 m, Wolken dürfen nicht berührt werden;
@@ -843,7 +843,7 @@ Bodensicht mindestens 5 km, Hauptwolkenuntergrenze mindestens 1500 ft</item>
 Ja, mindestens 1500 m in waagerechter Richtung;
 Ja, mindestens 1500 m in waagerechter und mindestens 1000 ft in senkrechter Richtung;
 Nein</item>
-        <item>Nur in FL 100 und darüber;
+        <item>Nur in FL100 und darüber;
 Im Luftraum E;
 In den Lufträumen C und D;
 Im Luftraum D (CTR)</item>
@@ -892,9 +892,9 @@ C, E, F;
 E, F, G;
 C, D, E</item>
         <item>von 1000 ft und 1700 ft AGL bis 5000 ft AMSL;
-ab 1000 ft und 1700 ft AGL, ansonsten ab 5000 ft AMSL bis FL 200;
-ab 1000 ft und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL 200;
-ab 1000 ft AGL und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL 100</item>
+ab 1000 ft und 1700 ft AGL, ansonsten ab 5000 ft AMSL bis FL200;
+ab 1000 ft und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL200;
+ab 1000 ft AGL und 1700 ft AGL, ansonsten ab 2500 ft AGL bis FL100</item>
         <item>Gefahrengebiet;
 Gebiet mit Flugbeschränkungen;
 Sperrgebiet;
@@ -909,11 +909,11 @@ Stets;
 Nur bei Flügen zu kontrollierten Flugplätzen</item>
         <item>nur nach Freigabe durch die Flugverkehrskontrolle;
 grundsätzlich nicht;
-wenn das Luftfahrzeug u.a. mit einem UKW-Sende-/Empfangsgerät und einer VOR-NavigationsEmpfangsanlage oder mit einem automatischen Funkpeilgerät (ADF) ausgerüstet ist;
+wenn das Luftfahrzeug u.a. mit einem UKW-Sende-/Empfangsgerät und einer VOR-Navigations-Empfangsanlage oder mit einem automatischen Funkpeilgerät (ADF) ausgerüstet ist;
 nur mit einer CVFR-Berechtigung</item>
         <item>in den Lufträumen C sowie D (nicht Kontrollzone);
 nicht erforderlich;
-bei Nacht im unkontrollierten Luftraum;
+in den Lufträumen G sowie D (nicht Kontrollzone);
 in den Lufträumen C sowie G</item>
         <item>A/C 7000;
 Der Transponder darf unaufgefordert nicht geschaltet werden;
@@ -955,10 +955,10 @@ Kurswähler</item>
 missweisend Nord;
 rechtweisend Nord;
 QTE</item>
-        <item>200\u00A0MHz bis 1750\u00A0MHz;
-118\u00A0MHz bis 137\u00A0MHz;
-108\u00A0MHz bis 117.975\u00A0MHz;
-108\u00A0MHz bis 112\u00A0MHz</item>
+        <item>200 MHz bis 1750 MHz;
+118 MHz bis 137 MHz;
+108 MHz bis 117,975 MHz;
+108 MHz bis 112 MHz</item>
         <item>Bei einer Änderung des Steuerkurses um 90°;
 Beim Betätigen des IDENT-Knopfes;
 Beim Überfliegen der VOR-Station;
