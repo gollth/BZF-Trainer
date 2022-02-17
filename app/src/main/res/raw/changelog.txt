@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+    $ 1.6.1
+      % Version 1.6.1
+      _ 17. Februar 2022
+      Doppelte Antwort in Frage 145 BZF entfernt
     $ 1.6.0
       % Version 1.6.0
       _ 17. Januar 2022
