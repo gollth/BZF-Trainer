@@ -19,8 +19,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 37
-        versionName "1.6.0"
+        versionCode 38
+        versionName "1.6.1"
     }
     buildFeatures {
         dataBinding = true
