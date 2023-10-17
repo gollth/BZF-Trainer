@@ -183,10 +183,10 @@ Windrichtungen</item>
 DELTA INDIA JULIETT YANKEE FOXTROT;
 DELTA INDIA JANKEE YULIETT FOXTROT;
 DELTA YULIETT INDIA JANKEE FOXTROT</item>
-        <item>viertausend fünf null null;
-vier füneff hundert;
-vier fünf null null;
-vier tausend fünf hundert</item>
+        <item>DREI TAUSEND FÜNF NULL NULL;
+DREI FÜNEFF HUNDERT;
+DREI FÜNF NULL NULL;
+DREI TAUSED FÜNF HUNDERT</item>
         <item>QNH ein tausend eins;
 QNH eins zero zero eins;
 QNH eins null null eins;
@@ -207,7 +207,7 @@ ROLLKONTROLLE</item>
 INFORMATION;
 VORFELD;
 TURM</item>
-        <item>INFO;
+        <item>RADIO;
 FLUGLEITUNG;
 TURM;
 LUFTAUFSICHT</item>
@@ -315,9 +315,9 @@ DEHOL PISTE 24 START FREI</item>
 DEKUL STARTBEREIT;
 DEKUL START FREI;
 DEKUL STARTET</item>
-        <item>Erbitte Testsendung auf Frequenz 135,200 MHz;
+        <item>Erbitte Testsendung auf Frequenz 135.200 MHz;
 Schalten Sie den Transponder auf Mode/Code 1352;
-Schalten Sie um auf Frequenz 135,200;
+Schalten Sie um auf Frequenz 135.200;
 Zählen Sie 1-3-5-2- für Funkpeilung</item>
         <item>Rechts voraus;
 Links voraus;
@@ -327,7 +327,7 @@ Querab rechts</item>
 Wenn eine Meldung nicht verstanden wurde;
 Nur in Notfällen;
 Bei jedem Funkkontakt</item>
-        <item>AACHEN INFO DELID;
+        <item>AACHEN RADIO DELID;
 D2468 FÜR WASSERKUPPE SEGELFLUG WIE HÖREN SIE MICH?;
 SAARBRÜCKEN TURM HIER DIAMK;
 HAMBURG TURM VON DER DEMIL KOMMEN</item>
@@ -341,7 +341,7 @@ AN ALLE HAMBURG TURM … ENDE;
 DEKOF, DIEBS, DKARL NÜRNBERG ROLLKONTROLLE</item>
         <item>DIENO DELLW;
 DEAMM ERFURT ROLLKONTROLLE;
-DEABC, DGIAL, DHHIA LEIPZIG TURM;
+DEABC, DGIAL, DHHIA LEIPZIG TURM (FREQUENZ);
 AN ALLE DRESDEN TURM</item>
         <item>Ja, in beliebiger Reihenfolge;
 Ja, in der von der rufenden Funkstelle benutzten Reihenfolge;
@@ -366,7 +366,7 @@ deutscher Sprache</item>
         <item>HAMBURG TURM DGIGA;
 DGIGA werde TURM rufen DGIGA;
 DGIGA wechsele Frequenz;
-DGIGA rufe 121,280</item>
+DGIGA rufe 121.280</item>
         <item>E und D;
 nur D;
 C und D;
@@ -434,7 +434,7 @@ Windrichtung und -stärke</item>
         <item>dreimaliges Drücken der Mikrofontaste;
 zweimaliges Drücken der Mikrofontaste;
 Nennung des eigenen, abgekürzten Rufzeichens;
-vollständige Wiederholung der Freigabe</item>
+Wiederholung von sicherheitsrelevanten Teilen der Freigabe</item>
         <item>DEL START FREI, PISTE 22, WIND 250 GRAD, 7 KNOTEN;
 DEL AUF 3000 FUSS STEIGEN, START FREI;
 DEL GERADEAUS STEIGEN AUF FLUGHÖHE 3000 FUSS, DANN RECHTSKURVE, PISTE 22, START FREI;
@@ -539,7 +539,7 @@ Als Flugrundfunksendung (broadcast) auf den Frequenzen des Fluginformationsdiens
 Angabe der Wolkenuntergrenze in Lufträumen der Klassen F und G;
 Meteorologische Angaben in Kartenform, erhältlich bei Flugwetterwarten;
 Routinewettermeldungen</item>
-        <item>Art der Notlage, Ursache der Notlage, Bitte um Frequenzwechsel auf 121,500 MHz;
+        <item>Art der Notlage, Ursache der Notlage, Bitte um Frequenzwechsel auf 121.500 MHz;
 Art der Notlage, Absicht des verantwortlichen Piloten, aktueller Standort, Flughöhe und Kurs;
 Absichten des Piloten, Geschwindigkeit;
 Absichten des Luftfahrzeugführers, TAS, Standort, Sinkflugrate</item>
@@ -607,14 +607,14 @@ grünen Dauersignalen</item>
 Funkanweisungen;
 Bodensignale;
 Lichtsignale</item>
-        <item>117,975 MHz – 137,000 MHz;
-108,000 kHz – 136,000 kHz;
+        <item>117.975 MHz – 137.000 MHz;
+108.000 kHz – 136.000 kHz;
 200 - 490 kHz;
-108,000 MHz – 117,975 MHz</item>
-        <item>25 MHz + 8,33 MHz;
+108.000 MHz – 117.975 MHz</item>
+        <item>25 MHz + 8.33 MHz;
 25 MHz;
-8,33 kHz;
-25 kHz + 8,33 kHz</item>
+8.33 kHz;
+25 kHz + 8.33 kHz</item>
         <item>Gegensprechverkehr;
 Wechsel- und Gegensprechverkehr;
 Wechselsprechverkehr;
@@ -623,13 +623,13 @@ Duplexverkehr</item>
 Bord-Bord-Frequenz;
 Informationsfrequenz;
 Internationale Notfrequenz</item>
-        <item>121,500 MHz;
-130,780 MHz;
-109,550 MHz;
+        <item>121.500 MHz;
+118.305 MHz;
+109.550 MHz;
 200 kHz</item>
-        <item>109,550 MHz;
-134,555 MHz;
-121,500 MHz;
+        <item>109.550 MHz;
+134.555 MHz;
+121.500 MHz;
 200 kHz</item>
         <item>Klemmen der Sprechtaste;
 Zu leises Sprechen;
@@ -683,12 +683,12 @@ Ortszeit</item>
 Meilen je Minute;
 Kilometer je Stunde;
 Knoten</item>
-        <item>Fuss je Minute;
+        <item>Fuß je Minute;
 Knoten;
 Meter je Minute;
-Fuss je Sekunde</item>
+Fuß je Sekunde</item>
         <item>Zoll;
-Fuss;
+Fuß;
 Kilometer;
 Meter</item>
         <item>Landmeile;
@@ -853,7 +853,7 @@ Bei Flügen bis zu 5000 ft AGL;
 Hierfür gelten unterschiedliche Vorschriften</item>
         <item>QNH;
 QFF;
-1013,2 hPa;
+1013.2 hPa;
 QFE</item>
         <item>das QNH des zur Flugstrecke nächstgelegenen Flugplatzes mit Flugverkehrskontrolle;
 das QFE des nächstgelegenen Flugplatzes mit Flugverkehrskontrolle;
@@ -957,7 +957,7 @@ rechtweisend Nord;
 QTE</item>
         <item>200 MHz bis 1750 MHz;
 118 MHz bis 137 MHz;
-108 MHz bis 117,975 MHz;
+108 MHz bis 117.975 MHz;
 108 MHz bis 112 MHz</item>
         <item>Bei einer Änderung des Steuerkurses um 90°;
 Beim Betätigen des IDENT-Knopfes;
