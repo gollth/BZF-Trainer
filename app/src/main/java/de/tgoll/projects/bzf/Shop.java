@@ -168,27 +168,27 @@ public class Shop implements PurchasesUpdatedListener {
 
     private void synchronizePurchasesWithSettings() {
         SharedPreferences.Editor editor = settings.edit();
-        Purchase.PurchasesResult result = billing.queryPurchases(BillingClient.SkuType.INAPP);
+        billing.queryPurchasesAsync(BillingClient.SkuType.INAPP, (result, purchases) -> {
+            for(String sku : SKUs) {
+                // For all possible IAPs...
+                String token = null;
+                for(Purchase purchase : purchases) {
+                    // For all purchased IAPs ...
 
-        for(String sku : SKUs) {
-            // For all possible IAPs...
-            String token = null;
-            for(Purchase purchase : Objects.requireNonNull(result.getPurchasesList())) {
-                // For all purchased IAPs ...
-
-                // Save the token
-                if (purchase.getSku().equals(sku)) {
-                    token = purchase.getPurchaseToken();
-                    Log.i("BZF", "User owns IAP \"" + purchase.getSku() + "\" with token " + purchase.getPurchaseToken());
+                    // Save the token
+                    if (purchase.getProducts().contains(sku)) {
+                        token = purchase.getPurchaseToken();
+                        Log.i("BZF", "User owns IAP \"" + sku + "\" with token " + token);
+                    }
                 }
-            }
-            // If the user owns this IAP, cache it in preferences
-            if (token != null) editor.putString(sku, token);
+                // If the user owns this IAP, cache it in preferences
+                if (token != null) editor.putString(sku, token);
 
-            // Otherwise remove this possible product from preferences
-            else editor.remove(sku);
-        }
-        editor.apply();
+                // Otherwise remove this possible product from preferences
+                else editor.remove(sku);
+            }
+            editor.apply();
+        });
     }
 
     private void onProductsFetched(List<SkuDetails> products) {
@@ -231,26 +231,26 @@ public class Shop implements PurchasesUpdatedListener {
     }
 
     private void handlePurchase(Purchase purchase) {
-        String sku = purchase.getSku();
-        if (!SKUs.contains(sku)) {
-            Log.w("BZF", "Unknown purchase: " + sku);
-            return;
-        }
-        if (purchase.getPurchaseState() != Purchase.PurchaseState.PURCHASED) {
-            Log.w("BZF", "Purchase \"" + sku + "\" is not yet in PURCHASED state");
-            return;
-        }
+        for (String sku : purchase.getProducts()) {
+            if (!SKUs.contains(sku)) {
+                Log.w("BZF", "Unknown purchase: " + sku);
+                return;
+            }
+            if (purchase.getPurchaseState() != Purchase.PurchaseState.PURCHASED) {
+                Log.w("BZF", "Purchase \"" + sku + "\" is not yet in PURCHASED state");
+                return;
+            }
 
-        if (!purchase.isAcknowledged()) {
-            Log.i("BZF", "Purchase \"" + sku + "\" is not yet in acknowledged. Doing that now...");
-            billing.acknowledgePurchase(
-                AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.getPurchaseToken()).build(),
-                billingResult -> Log.i("BZF", "Purchase \"" + sku + "\" now acknowledged")
-            );
+            if (!purchase.isAcknowledged()) {
+                Log.i("BZF", "Purchase \"" + sku + "\" is not yet in acknowledged. Doing that now...");
+                billing.acknowledgePurchase(
+                        AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.getPurchaseToken()).build(),
+                        billingResult -> Log.i("BZF", "Purchase \"" + sku + "\" now acknowledged")
+                );
+            }
+            Log.i("BZF", "Saving purchase \""+ sku +"\" in Preferences: " + purchase.getPurchaseToken());
+            settings.edit().putString(sku, purchase.getPurchaseToken()).apply();
         }
-
-        Log.i("BZF", "Saving purchase \""+ sku +"\" in Preferences: " + purchase.getPurchaseToken());
-        settings.edit().putString(sku, purchase.getPurchaseToken()).apply();
 
         dialog.dismiss();
         updateStampInSettings();

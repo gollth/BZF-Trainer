@@ -49,7 +49,7 @@
         <item>44. Wie wird die Uhrzeit im Flugfunkdienst übermittelt, wenn Verwechslungen ausgeschlossen sind?</item>
         <item>45. Zahlen sind grundsätzlich in einzelnen Ziffern zu übermitteln. Ausgenommen von dieser Regelung sind\u00A0…</item>
         <item>46. Wie wird das Rufzeichen DIJYF richtig buchstabiert?</item>
-        <item>47. Wie wird die Zahl 4500 richtig übermittelt?</item>
+        <item>47. Wie wird die Zahl 3500 richtig übermittelt?</item>
         <item>48. Wie übermittelt man \"QNH 1001\" richtig?</item>
         <item>49. Wie wird die VHF-Frequenz 120.275\u00A0MHz übermittelt?</item>
         <item>50. Wie übermittelt man die Zeit 1318, wenn man einen Irrtum oder eine Verwechslung ausschließen will?</item>
@@ -92,7 +92,7 @@
         <item>87. Muss ein \"MEHRFACHANRUF\" bestätigt werden?</item>
         <item>88. Ein Pilot empfängt einen Funkanruf, ist sich aber nicht sicher, ob er gerufen wurde. Wie verhält er sich richtig? Er\u00A0…</item>
         <item>89. Was ist vor Aufnahme des Sprechfunkverkehrs zu beachten?</item>
-        <item>90. Vor Einflug in den Luftraum C unter FL100 in der Umgebung von Verkehrsflughäfen muss Sprechfunkverbindung mit der zuständigen Flugverkehrskontrollstelle spätestens aufgenommenwerden:</item>
+        <item>90. Vor Einflug in den Luftraum C unter FL100 in der Umgebung von Verkehrsflughäfen muss Sprechfunkverbindung mit der zuständigen Flugverkehrskontrollstelle spätestens aufgenommen werden:</item>
         <item>91. Der Sprechfunkverkehr bei VFR-Flügen in und oberhalb Flugfläche 100 wird durchgeführt in\u00A0…</item>
         <item>92. DGIGA erhält die Anweisung, HAMBURG TURM auf Frequenz 121.280\u00A0MHz zu rufen. Wie lautet die richtige Bestätigung des Piloten?</item>
         <item>93. Dauernde Hörbereitschaft ist aufrechtzuerhalten bei VFR-Flügen im Luftraum:</item>
@@ -112,7 +112,7 @@
         <item>107. Welche Meldungen müssen wiederholt werden?</item>
         <item>108. Welche Meldungen müssen wiederholt werden?</item>
         <item>109. Wie wird der Empfang einer Flugverkehrskontrollfreigabe bestätigt? Durch\u00A0…</item>
-        <item>110. DESEL erhält die folgende Freigabe/Anweisung: \"DEL NACH DEM ABHEBEN STEIGEN SIE GERADEAUS AUF FLUGHÖHE 3000 FUSS, MACHEN SIE DANN EINE RECHTSKURVE, WIND250 GRAD, 7 KNOTEN, PISTE 22, START FREI\". Wie lautet die richtige Bestätigung seitens</item>
+        <item>110. DESEL erhält die folgende Freigabe/Anweisung: \"DEL NACH DEM ABHEBEN STEIGEN SIE GERADEAUS AUF FLUGHÖHE 3000 FUSS, MACHEN SIE DANN EINE RECHTSKURVE, WIND 250 GRAD, 7 KNOTEN, PISTE 22, START FREI\". Wie lautet die richtige Bestätigung seitens</item>
         <item>111. Welche Teile der nachfolgenden Anweisungen oder Informationen müssen bestätigt werden?</item>
         <item>112. Bei welchen VFR-Flügen ist in der Regel die Übermittlung von Standortmeldungen erforderlich? Bei\u00A0…</item>
         <item>113. Bei einem VFR-Flug zu einem Flughafen mit Flugverkehrskontrolle gelten die im \"Luftfahrthandbuch VFR\" festgelegten Verfahren. Standortmeldungen über den Pflichtmeldepunkten müssen\u00A0…</item>
@@ -159,8 +159,8 @@
         <item>154. Welcher Kanalabstand (Frequenzbereich 117.975\u00A0MHz–137.000\u00A0MHz) wird im Flugfunkdienst im unteren Luftraum betrieben?</item>
         <item>155. In welcher Betriebsart wird der Sprechfunkverkehr im Flugfunkdienst durchgeführt?</item>
         <item>156. Welche Bezeichnung hat die Frequenz 121.500\u00A0MHz?</item>
-        <item>157. Welche der angegebenen Frequenzen entspricht der einer deutschen Bodenfunkstelle mit dem Rufzeichen \"INFO\"?</item>
-        <item>158. Welche Frequenz wird im Kanalabstand von 8,33 kHz betrieben?</item>
+        <item>157. Welche der angegebenen Frequenzen entspricht der einer deutschen Bodenfunkstelle mit dem Rufzeichen \"TURM\"?</item>
+        <item>158. Welche Frequenz wird im Kanalabstand von 8.33 kHz betrieben?</item>
         <item>159. Wodurch kann eine Sprechfunkfrequenz blockiert werden?</item>
         <item>160. Wie breiten sich Ultrakurzwellen (UKW) aus?</item>
         <item>161. Welche Phänomene können beim Flugfunk die Empfangsqualität der UKW beeinflussen?</item>
@@ -247,7 +247,7 @@
         <item>242. Ein Luftfahrzeug befindet sich im Anflug auf eine VOR-Station. Eingestellt ist 320° bei einer Richtungsanzeige \"TO\". Der Ablageanzeiger (CDI) wandert nach links aus. Wo befindet sich dasLuftfahrzeug?</item>
         <item>243. Ein mit einer VOR-Navigations-Empfangsanlage ausgerüstetes Luftfahrzeug will eine VOR-Station auf dem kürzesten Weg anfliegen. Welche Aussage ist richtig? Der Kurswähler wird so lange gedreht, bis die…</item>
         <item>244. Wie groß ist die Kursablage pro Punkt (dot) auf dem VOR-Anzeigegerät?</item>
-        <item>245. Auf der ICAO-Luftfahrtkarte 1:500000 finden Sie die Angabe \"TRENT 108,45 TRT\". Um welche Art von Funknavigationsanlage handelt es sich dabei? Um ein(e)\u00A0…</item>
+        <item>245. Auf der ICAO-Luftfahrtkarte 1:500000 finden Sie die Angabe \"TRENT 108.45 TRT\". Um welche Art von Funknavigationsanlage handelt es sich dabei? Um ein(e)\u00A0…</item>
         <item>246. Beim Anflug auf eine VOR-Station erscheint kurz vor der berechneten Überflugzeit die OFF-Flagge. Was ist wahrscheinlich die Ursache?</item>
         <item>247. Die Richtung eines VOR-Leitstrahls (Radial) entspricht dem\u00A0…</item>
         <item>248. Welche Kennung hat ein ungerichtetes Funkfeuer (NDB)?</item>
