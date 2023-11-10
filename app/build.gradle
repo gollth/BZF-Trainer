@@ -19,15 +19,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 38
-        versionName "1.6.1"
+        versionCode 42
+        versionName "1.7.1"
     }
     buildFeatures {
         dataBinding = true
     }
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
             debuggable true
             // Disable fabric build ID generation for debug builds
@@ -52,7 +53,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/gson-2.2.2.jar')
+    implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.android.billingclient:billing:6.0.1'
