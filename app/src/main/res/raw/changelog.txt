@@ -19,6 +19,10 @@
     </style>
   </head>
   <body>
+    $ 1.7.1
+      % Version 1.7.1
+      _ 8. November 2023
+      Absturz beim Starten eines Kataloges gefixt (super fieser Bug durch Zusammenspiel mehrerer Bibliotheksupdates)
     $ 1.7.0
       % Version 1.7.0
       _ 17. Oktober 2023

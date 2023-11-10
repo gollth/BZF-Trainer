@@ -1,5 +1,6 @@
 package de.tgoll.projects.bzf;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -34,6 +35,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.crashlytics.FirebaseCrashlytics;
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.reflect.TypeToken;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -230,13 +233,15 @@ public class CatalogueFragment extends Fragment implements
             resetQuestions();
         }
         else {
-            SavedState state = gson.fromJson(s, SavedState.class);
+            TypeToken<SavedState> type = new TypeToken<SavedState>(){};
+            SavedState state = gson.fromJson(s, type);
             Log.i("BZF", "Loading State from " + key + "-state");
+            FirebaseCrashlytics.getInstance().log("onStart(): State: " + s);
             playlist = state.playlist;
             choices = state.choices;
 
             // if we contain an old state saved in app data, we clear it.
-            if (playlist == null) resetQuestions();
+            if (playlist == null || playlist.size() == 0 || choices == null || choices.size() == 0 || state.progress < 0) resetQuestions();
             else loadQuestion(state.progress);
         }
 
@@ -251,11 +256,11 @@ public class CatalogueFragment extends Fragment implements
         Log.i("BZF", "Saving Catalogue state in " + key + "-state");
         // Only save, it at least one question has been answered
         for (Integer c : choices)  if (c != -1) {
+            String state = gson.toJson(new SavedState(playlist, choices, getProgress()));
+            FirebaseCrashlytics.getInstance().log("onStop(): State: " + state);
             settings
                 .edit()
-                .putString(
-                    key + "-state",
-                    gson.toJson(new SavedState(playlist, choices, getProgress())))
+                .putString(key + "-state", state)
                 .apply();
             break;
         }
@@ -309,14 +314,17 @@ public class CatalogueFragment extends Fragment implements
     }
 
     private void updateButtons () {
+        int progress = getProgress();
         btn_next.setEnabled(isNotFinalQuestion());
-        btn_prev.setEnabled(getProgress() != 0);
-        boolean enabled = choices.get(getProgress()) == -1;
+        btn_prev.setEnabled(progress != 0);
+        Integer choice = choices.get(progress);
+        boolean enabled = choice == -1;
         for (RadioButton button : buttons) {
             button.setEnabled(enabled);
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
         // Check if the value changed, if not, slider probably at a bound
@@ -551,8 +559,12 @@ public class CatalogueFragment extends Fragment implements
     }
 
     public static class SavedState {
+        // NOTE: SerializedName attribute important for ProGuard not to obfuscate member names!!
+        @SerializedName("playlist")
         private final List<Integer> playlist;
+        @SerializedName("choices")
         private final List<Integer> choices;
+        @SerializedName("progress")
         private final int progress;
 
         public SavedState () {
